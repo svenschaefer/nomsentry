@@ -105,18 +105,22 @@ for (const testCase of [
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
   { value: "s3curity", kind: "tenantSlug", expected: "reject", label: "leet security" },
   { value: "0penai", kind: "tenantSlug", expected: "reject", label: "leet brand" },
+  { value: "H!Tler", kind: "tenantName", expected: "review", label: "leet hate term" },
+  { value: "n!gga", kind: "tenantName", expected: "review", label: "leet slur" },
   { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
   { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
   { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
   { value: "s_e_c_u_r_i_t_y-support", kind: "tenantSlug", expected: "reject", label: "separator obfuscated security support" },
   { value: "ѕupport", kind: "tenantSlug", expected: "reject", label: "cyrillic support homoglyph" },
   { value: "оpenai", kind: "tenantSlug", expected: "reject", label: "cyrillic brand homoglyph" },
-  { value: "αdmin", kind: "tenantSlug", expected: "review", label: "greek mixed script admin" },
+  { value: "αdmin", kind: "tenantSlug", expected: "reject", label: "greek mixed script admin homoglyph" },
   { value: "раypal", kind: "tenantName", expected: "review", label: "mixed script tenant name" },
   { value: "Ａdmin", kind: "tenantSlug", expected: "reject", label: "nfkc fullwidth admin" },
   { value: "normal-company", kind: "tenantSlug", expected: "allow", label: "normal slug" },
   { value: "cybersecurity-support", kind: "tenantSlug", expected: "reject", label: "no composite false positive regression" },
-  { value: "securite", kind: "tenantName", expected: "allow", label: "foreign language lookalike should not match" }
+  { value: "securite", kind: "tenantName", expected: "allow", label: "foreign language lookalike should not match" },
+  { value: "müller", kind: "tenantName", expected: "allow", label: "latin diacritics should remain allowed" },
+  { value: "sécurité", kind: "tenantName", expected: "allow", label: "foreign language with accent should remain allowed" }
 ]) {
   const result = engine.evaluate({
     value: testCase.value,
@@ -127,16 +131,38 @@ for (const testCase of [
 }
 
 {
-  const result = engine.evaluate({
-    value: "αdmin",
-    kind: "tenantSlug"
-  });
+  const variants = [
+    ["admin", "adm1n", "tenantSlug", "reject"],
+    ["admin", "ad-min", "tenantSlug", "reject"],
+    ["admin", "ad\u200Bmin", "tenantSlug", "reject"],
+    ["admin", "αdmin", "tenantSlug", "reject"],
+    ["support", "supp0rt", "tenantSlug", "reject"],
+    ["support", "ѕupport", "tenantSlug", "reject"],
+    ["openai", "0penai", "tenantSlug", "reject"],
+    ["openai", "оpenai", "tenantSlug", "reject"],
+    ["hitler", "H!Tler", "tenantName", "review"],
+    ["nigga", "n!gga", "tenantName", "review"]
+  ];
 
-  assert.equal(
-    result.reasons.some((reason) => reason.category === "scriptRisk"),
-    true,
-    "greek mixed-script input should surface scriptRisk"
-  );
+  for (const [canonical, candidate, kind, expected] of variants) {
+    const result = engine.evaluate({ value: candidate, kind });
+    assert.equal(result.decision, expected, `variant ${candidate} should normalize like ${canonical}`);
+  }
+}
+
+{
+  for (const testCase of [
+    { value: "αdmin", kind: "tenantSlug" },
+    { value: "раypal", kind: "tenantName" },
+    { value: "оpenai", kind: "tenantSlug" }
+  ]) {
+    const result = engine.evaluate(testCase);
+    assert.equal(
+      result.reasons.some((reason) => reason.category === "scriptRisk"),
+      true,
+      `${testCase.value} should surface scriptRisk`
+    );
+  }
 }
 
 {
