@@ -8,7 +8,8 @@
     "nomsentry": "./bin/nomsentry.js"
   },
   "scripts": {
-    "test": "node test/run-tests.js"
+    "test": "node test/run-tests.js",
+    "import:ldnoobw": "node scripts/import-ldnoobw.js"
   },
   "license": "MIT"
 }

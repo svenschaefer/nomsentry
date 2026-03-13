@@ -1,0 +1,55 @@
+{
+  "id": "imported-ldnoobw-en-seed",
+  "description": "Seed snapshot modeled after LDNOOBW-style profanity data",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "en",
+    "severity": "mixed",
+    "tags": ["external-import", "profanity"],
+    "notes": "Small seed file kept in-repo; use scripts/import-ldnoobw.js for a fuller snapshot."
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-en-seed/asshole",
+      "term": "asshole",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "en",
+        "severity": "mixed",
+        "tags": ["external-import", "profanity"]
+      }
+    },
+    {
+      "id": "imported-ldnoobw-en-seed/bitch",
+      "term": "bitch",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "en",
+        "severity": "mixed",
+        "tags": ["external-import", "profanity"]
+      }
+    },
+    {
+      "id": "imported-ldnoobw-en-seed/shit",
+      "term": "shit",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "en",
+        "severity": "mixed",
+        "tags": ["external-import", "profanity"]
+      }
+    }
+  ]
+}

@@ -5,8 +5,10 @@ import { applyAllowOverrides } from "../src/core/overrides.js";
 import { reserved, impersonation, profanity, product } from "../src/sources/index.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
 import { loadSourceFromFile } from "../src/loaders/source-loader.js";
+import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
+import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 
 const engine = createEngine({
   sources: [
@@ -14,7 +16,7 @@ const engine = createEngine({
     impersonation(),
     profanity(),
     product(),
-    loadSourceFromFile(new URL("../custom/sources/example-custom.json", import.meta.url))
+    ...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))
   ],
   policies: [username(), tenantSlug(), tenantName()],
   allowOverrides: [
@@ -46,6 +48,12 @@ for (const name of ["allow", "reject", "review"]) {
     assert.equal(result.decision, testCase.expected, `${name}: ${testCase.value}`);
   }
 }
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/ldnoobw-en-seed.json", import.meta.url)).metadata.source,
+  "LDNOOBW",
+  "imported source metadata should load from JSON"
+);
 
 {
   const result = applyAllowOverrides({
@@ -107,6 +115,8 @@ for (const testCase of [
   { value: "0penai", kind: "tenantSlug", expected: "reject", label: "leet brand" },
   { value: "H!Tler", kind: "tenantName", expected: "reject", label: "leet hate term" },
   { value: "n!gga", kind: "tenantName", expected: "reject", label: "leet slur" },
+  { value: "bitch", kind: "tenantName", expected: "reject", label: "ldnoobw seed term" },
+  { value: "sh!t", kind: "tenantName", expected: "reject", label: "ldnoobw seed leet term" },
   { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
   { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
   { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
@@ -131,6 +141,20 @@ for (const testCase of [
 }
 
 {
+  const terms = parseLdnoobwWordList("\nshit\nSHIT\n#comment\nbitch \n");
+  assert.deepEqual(terms, ["bitch", "shit"], "ldnoobw parser should normalize, dedupe and skip comments");
+
+  const source = buildLdnoobwSource({
+    id: "imported-ldnoobw-test",
+    language: "en",
+    terms
+  });
+
+  assert.equal(source.rules.length, 2, "ldnoobw importer should emit one rule per normalized term");
+  assert.equal(source.rules[0].metadata.source, "LDNOOBW", "ldnoobw importer should stamp source metadata");
+}
+
+{
   const variants = [
     ["admin", "adm1n", "tenantSlug", "reject"],
     ["admin", "ad-min", "tenantSlug", "reject"],
@@ -140,6 +164,7 @@ for (const testCase of [
     ["support", "ѕupport", "tenantSlug", "reject"],
     ["openai", "0penai", "tenantSlug", "reject"],
     ["openai", "оpenai", "tenantSlug", "reject"],
+    ["shit", "sh!t", "tenantName", "reject"],
     ["hitler", "H!Tler", "tenantName", "reject"],
     ["nigga", "n!gga", "tenantName", "reject"]
   ];
