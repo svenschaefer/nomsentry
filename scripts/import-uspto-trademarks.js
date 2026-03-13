@@ -1,12 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
-import { buildUsptoTrademarkSourceFromCsvFile } from "../src/importers/uspto.js";
+import {
+  buildUsptoTrademarkSourceFromCsvFile,
+  splitUsptoTrademarkSource
+} from "../src/importers/uspto.js";
 
 function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputFile: "",
-    outputDir: path.resolve(process.cwd(), "custom", "sources")
+    outputDir: path.resolve(process.cwd(), "data", "uspto", "full-sources"),
+    chunkSize: 5000
   };
 
   while (args.length > 0) {
@@ -15,6 +19,8 @@ function parseArgs(argv) {
       options.inputFile = path.resolve(process.cwd(), String(args.shift() || ""));
     } else if (token === "--output-dir") {
       options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+    } else if (token === "--chunk-size") {
+      options.chunkSize = Number.parseInt(String(args.shift() || ""), 10);
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
@@ -23,6 +29,9 @@ function parseArgs(argv) {
   if (!options.inputFile) {
     throw new Error("Missing required option: --input-file <path-to-uspto-case-file-csv>");
   }
+  if (!Number.isInteger(options.chunkSize) || options.chunkSize < 1) {
+    throw new Error("Invalid option: --chunk-size must be a positive integer");
+  }
 
   return options;
 }
@@ -30,6 +39,17 @@ function parseArgs(argv) {
 const options = parseArgs(process.argv.slice(2));
 fs.mkdirSync(options.outputDir, { recursive: true });
 const source = await buildUsptoTrademarkSourceFromCsvFile(options.inputFile);
-const targetFile = path.join(options.outputDir, "uspto-trademarks.json");
-fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
-console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
+const chunkFiles = splitUsptoTrademarkSource(source, { chunkSize: options.chunkSize });
+
+for (const file of fs.readdirSync(options.outputDir)) {
+  if (file.startsWith("uspto-trademarks-") && file.endsWith(".json")) {
+    fs.unlinkSync(path.join(options.outputDir, file));
+  }
+}
+
+for (const chunk of chunkFiles) {
+  const targetFile = path.join(options.outputDir, `${chunk.id}.json`);
+  fs.writeFileSync(targetFile, `${JSON.stringify(chunk, null, 2)}\n`, "utf8");
+}
+
+console.log(`Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`);

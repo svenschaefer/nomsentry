@@ -14,7 +14,7 @@
 - `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
 - `src/importers/cuss.js` - cuss normalization into source JSON
 - `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source JSON
-- `src/importers/uspto.js` - USPTO bulk trademark case files into protectedBrand source JSON
+- `src/importers/uspto.js` - USPTO bulk trademark case files into full and derived protectedBrand source JSON
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/policies/*` - policy mapping
 
@@ -31,3 +31,10 @@ raw input
 External third-party lists are imported offline into versioned JSON source files and then loaded through the same source loader path at runtime. The repository does not maintain built-in source packs anymore.
 
 For `protectedBrand`, the strategy is restricted to ingestible official trademark sources. The first implemented source is USPTO bulk data. WIPO is not part of the ingest plan.
+
+USPTO is handled in two layers:
+
+- full official imports live outside the default runtime path in local `data/uspto/full-sources/`
+- a derived review-level subset is generated into `custom/sources/derived-uspto-brand-risk-*.json`
+
+The derivation step is intentionally structural rather than editorial. The repository does not maintain its own brand allow/block list.

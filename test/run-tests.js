@@ -14,7 +14,9 @@ import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
-  parseUsptoCaseFileCsv
+  deriveUsptoBrandRiskSource,
+  parseUsptoCaseFileCsv,
+  splitUsptoTrademarkSource
 } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
 
@@ -76,7 +78,9 @@ const syntheticPolicySource = {
 const engine = createEngine({
   sources: [
     syntheticPolicySource,
-    ...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))
+    ...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).filter(
+      (source) => !source.id.startsWith("imported-uspto-trademarks-")
+    )
   ],
   policies: [username(), tenantSlug(), tenantName()],
   allowOverrides: [
@@ -150,20 +154,20 @@ assert.equal(
 {
   const records = parseUsptoCaseFileCsv(
     fs.readFileSync(new URL("./fixtures/uspto-case-file-sample.csv", import.meta.url), "utf8")
-  );
+  ).map((record) => ({ ...record, trade_mark_in: "1" }));
   const source = buildUsptoTrademarkSource(records);
   assert.equal(source.metadata.source, "USPTO", "uspto importer should stamp source metadata");
   assert.deepEqual(
     source.rules.map((rule) => rule.term).sort(),
     ["azure", "mega corp", "openai"],
-    "uspto importer should keep only live standard-character trademarks"
+    "uspto importer should keep only live standard-character trademarks and service marks"
   );
 }
 
 {
   const records = parseUsptoCaseFileCsv(
     fs.readFileSync(new URL("./fixtures/uspto-case-file-alt-sample.csv", import.meta.url), "utf8")
-  );
+  ).map((record) => ({ ...record, trade_mark_in: "1" }));
   const source = buildUsptoTrademarkSource(records);
   assert.deepEqual(
     source.rules.map((rule) => rule.term),
@@ -180,6 +184,103 @@ assert.equal(
     source.rules.map((rule) => rule.term),
     ["github"],
     "uspto file importer should stream and produce the same filtered result"
+  );
+}
+
+{
+  const source = buildUsptoTrademarkSource([
+    {
+      serial_no: "1",
+      registration_no: "1",
+      mark_id_char: "Alpha",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1",
+      serv_mark_in: "0"
+    },
+    {
+      serial_no: "2",
+      registration_no: "2",
+      mark_id_char: "Beta",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "0",
+      serv_mark_in: "1"
+    },
+    {
+      serial_no: "3",
+      registration_no: "3",
+      mark_id_char: "Gamma",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1",
+      serv_mark_in: "0"
+    }
+  ], { id: "imported-uspto-trademarks" });
+  const chunks = splitUsptoTrademarkSource(source, { chunkSize: 2 });
+  assert.deepEqual(
+    chunks.map((chunk) => ({ id: chunk.id, size: chunk.rules.length })),
+    [
+      { id: "imported-uspto-trademarks-001", size: 2 },
+      { id: "imported-uspto-trademarks-002", size: 1 }
+    ],
+    "uspto source splitting should create stable chunk ids and sizes"
+  );
+}
+
+{
+  const source = buildUsptoTrademarkSource([
+    {
+      serial_no: "1",
+      registration_no: "1",
+      mark_id_char: "Superbrandname",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1"
+    },
+    {
+      serial_no: "2",
+      registration_no: "2",
+      mark_id_char: "Silver Rocket",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1"
+    },
+    {
+      serial_no: "3",
+      registration_no: "3",
+      mark_id_char: "AB",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1"
+    },
+    {
+      serial_no: "4",
+      registration_no: "4",
+      mark_id_char: "Alpha 360",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1"
+    },
+    {
+      serial_no: "5",
+      registration_no: "5",
+      mark_id_char: "tiny app suite",
+      mark_draw_cd: "4000",
+      cfh_status_cd: "800",
+      trade_mark_in: "1"
+    }
+  ], { id: "imported-uspto-trademarks" });
+  const derived = deriveUsptoBrandRiskSource(source, {
+    singleWordMinLength: 12,
+    multiWordMinTokenLength: 5,
+    maxWords: 2,
+    allowDigits: false
+  });
+  assert.deepEqual(
+    derived.rules.map((rule) => rule.term).sort(),
+    ["silver rocket", "superbrandname"],
+    "uspto derived risk subset should keep only structurally stronger review candidates"
   );
 }
 

@@ -13,6 +13,7 @@
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",
     "import:uspto": "node scripts/import-uspto-trademarks.js",
+    "derive:uspto-brand-risk": "node scripts/derive-uspto-brand-risk.js",
     "import:cuss": "node scripts/import-cuss.js",
     "import:dsojevic": "node scripts/import-dsojevic-profanity.js"
   },

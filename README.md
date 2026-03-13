@@ -25,6 +25,7 @@ npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
 npm run import:uspto -- --input-file path\\to\\case_file.csv
+npm run derive:uspto-brand-risk
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
 ```
@@ -55,7 +56,8 @@ custom/sources/2toad-profanity-<language>.json
 custom/sources/obscenity-en.json
 custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
-custom/sources/uspto-trademarks.json
+custom/sources/derived-uspto-brand-risk-<chunk>.json
+data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 ```
 
 Refresh imports with:
@@ -67,6 +69,22 @@ npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
 npm run import:uspto -- --input-file path\to\case_file.csv
+npm run derive:uspto-brand-risk
 ```
 
 `protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.
+
+For USPTO, the repository now separates:
+
+- full official import snapshots in local `data/uspto/full-sources/`
+- derived review-level runtime subsets in `custom/sources/`
+
+The default derived USPTO profile is structural and conservative:
+
+- one-word marks: minimum 12 characters
+- multi-word marks: maximum 2 words, each token minimum 6 characters
+- terms containing digits are dropped
+
+This keeps the official full set available while limiting default runtime `protectedBrand` noise.
+
+The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.

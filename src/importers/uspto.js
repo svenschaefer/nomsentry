@@ -93,6 +93,7 @@ function looksLive(record) {
   }
 
   const status = firstValue(record, [
+    "cfh_status_cd",
     "status_category",
     "status_type",
     "status_code",
@@ -100,14 +101,17 @@ function looksLive(record) {
   ]).toLowerCase();
 
   if (!status) return true;
+  if (["700", "701", "702", "703", "704", "705", "800"].includes(status)) return true;
+  if (/^\d+$/.test(status)) return false;
   if (status.includes("dead") || status.includes("cancel") || status.includes("abandon")) return false;
   if (status.includes("live") || status.includes("registered")) return true;
 
-  return true;
+  return false;
 }
 
 function isStandardCharacterMark(record) {
   if (isTruthyFlag(firstValue(record, [
+    "std_char_claim_in",
     "standard_character_claim_indicator",
     "standard_character_claim",
     "standard_char_claim_ind"
@@ -116,10 +120,18 @@ function isStandardCharacterMark(record) {
   }
 
   const drawingCode = firstValue(record, [
+    "mark_draw_cd",
     "mark_drawing_code",
     "drawing_code"
   ]);
-  if (drawingCode === "4") return true;
+  if (
+    drawingCode === "1" ||
+    drawingCode === "4" ||
+    drawingCode === "1000" ||
+    drawingCode === "4000"
+  ) {
+    return true;
+  }
 
   const drawingDescription = firstValue(record, [
     "mark_drawing_code_description",
@@ -132,6 +144,7 @@ function isStandardCharacterMark(record) {
 
 function extractBrandTerm(record) {
   const rawTerm = firstValue(record, [
+    "mark_id_char",
     "mark_identification",
     "literal_element",
     "mark_literal",
@@ -143,9 +156,18 @@ function extractBrandTerm(record) {
   return normalizeValue(rawTerm).latinFolded;
 }
 
+function isTrademarkOrServiceMark(record) {
+  return isTruthyFlag(firstValue(record, [
+    "trade_mark_in"
+  ])) || isTruthyFlag(firstValue(record, [
+    "serv_mark_in"
+  ]));
+}
+
 function createUsptoRule(record, id) {
   if (!looksLive(record)) return null;
   if (!isStandardCharacterMark(record)) return null;
+  if (!isTrademarkOrServiceMark(record)) return null;
 
   const term = extractBrandTerm(record);
   if (!term || term.length < 2) return null;
@@ -201,7 +223,7 @@ export function buildUsptoTrademarkSource(records, {
 
   return validateSource({
     id,
-    description: "Imported USPTO live standard-character trademarks",
+    description: "Imported USPTO live standard-character trademarks and service marks",
     metadata: {
       source: "USPTO",
       language: "en",
@@ -231,7 +253,7 @@ export async function buildUsptoTrademarkSourceFromCsvFile(path, {
 
   return validateSource({
     id,
-    description: "Imported USPTO live standard-character trademarks",
+    description: "Imported USPTO live standard-character trademarks and service marks",
     metadata: {
       source: "USPTO",
       language: "en",
@@ -245,4 +267,69 @@ export async function buildUsptoTrademarkSourceFromCsvFile(path, {
 
 export function loadUsptoCaseFileCsv(path) {
   return parseUsptoCaseFileCsv(fs.readFileSync(path, "utf8"));
+}
+
+export function splitUsptoTrademarkSource(source, {
+  chunkSize = 5000
+} = {}) {
+  const rules = Array.isArray(source?.rules) ? source.rules : [];
+  if (rules.length === 0) return [];
+
+  const chunks = [];
+  for (let index = 0; index < rules.length; index += chunkSize) {
+    const chunkNumber = String(Math.floor(index / chunkSize) + 1).padStart(3, "0");
+    chunks.push(validateSource({
+      ...source,
+      id: `${source.id}-${chunkNumber}`,
+      description: `${source.description} (chunk ${chunkNumber})`,
+      rules: rules.slice(index, index + chunkSize)
+    }));
+  }
+
+  return chunks;
+}
+
+export function deriveUsptoBrandRiskSource(source, {
+  id = "derived-uspto-brand-risk",
+  singleWordMinLength = 12,
+  multiWordMinTokenLength = 6,
+  maxWords = 2,
+  allowDigits = false
+} = {}) {
+  const rules = Array.isArray(source?.rules) ? source.rules : [];
+
+  const filteredRules = rules.filter((rule) => {
+    const term = String(rule.term ?? "").trim();
+    if (!term) return false;
+    if (!allowDigits && /\d/.test(term)) return false;
+
+    const tokens = term.split(/\s+/).filter(Boolean);
+    if (tokens.length === 0 || tokens.length > maxWords) return false;
+
+    if (tokens.length === 1) {
+      return tokens[0].length >= singleWordMinLength;
+    }
+
+    return tokens.every((token) => token.length >= multiWordMinTokenLength);
+  }).map((rule) => ({
+    ...rule,
+    id: `${id}/${rule.id.split("/").pop()}`,
+    metadata: {
+      ...rule.metadata,
+      tags: [...new Set([...(rule.metadata?.tags ?? []), "derived-risk-subset"])],
+      notes: `${rule.metadata?.notes ?? ""}${rule.metadata?.notes ? "; " : ""}derived: single>=${singleWordMinLength}, multiToken>=${multiWordMinTokenLength}, maxWords=${maxWords}, digits=${allowDigits ? "allow" : "drop"}`
+    }
+  }));
+
+  return validateSource({
+    id,
+    description: "Derived USPTO protected-brand risk subset for review-level identifier screening",
+    metadata: {
+      ...source.metadata,
+      source: "USPTO",
+      tags: ["external-import", "brand", "trademark", "official", "derived-risk-subset"],
+      notes: `Derived from ${source.id} with singleWordMinLength=${singleWordMinLength}, multiWordMinTokenLength=${multiWordMinTokenLength}, maxWords=${maxWords}, allowDigits=${allowDigits}`
+    },
+    rules: filteredRules
+  });
 }
