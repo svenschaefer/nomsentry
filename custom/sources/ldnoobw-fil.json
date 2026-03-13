@@ -1,0 +1,302 @@
+{
+  "id": "imported-ldnoobw-fil",
+  "description": "Imported LDNOOBW snapshot (fil)",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "fil",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity"
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-fil/anak ka ng puta",
+      "term": "anak ka ng puta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/bayag",
+      "term": "bayag",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/bobo",
+      "term": "bobo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/burat",
+      "term": "burat",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/jakol",
+      "term": "jakol",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/kantot",
+      "term": "kantot",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/nognog",
+      "term": "nognog",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/puta ka",
+      "term": "puta ka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/putang ina",
+      "term": "putang ina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/tang ina",
+      "term": "tang ina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/tanga",
+      "term": "tanga",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/tangina",
+      "term": "tangina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-fil/ulol",
+      "term": "ulol",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "fil",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/fil"
+      }
+    }
+  ]
+}

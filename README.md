@@ -41,14 +41,14 @@ Place JSON files in `custom/sources/`. The CLI and tests load all `*.json` files
 
 ## External seed lists
 
-Imported snapshots should stay versioned in-repo as JSON sources. A small LDNOOBW-style seed file lives in:
+Imported snapshots should stay versioned in-repo as JSON sources. Full LDNOOBW snapshots live in:
 
 ```text
-custom/sources/ldnoobw-en-seed.json
+custom/sources/ldnoobw-<language>.json
 ```
 
-To import a fuller LDNOOBW snapshot:
+To import the complete available LDNOOBW language set:
 
 ```bash
-npm run import:ldnoobw -- --languages en,de
+npm run import:ldnoobw
 ```

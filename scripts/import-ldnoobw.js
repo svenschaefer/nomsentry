@@ -1,15 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 
-const DEFAULT_LANGUAGES = ["en"];
+const REPO_API_URL = "https://api.github.com/repos/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/contents";
 const RAW_BASE_URL = "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master";
+const IGNORED_FILES = new Set(["LICENSE", "README.md", "USERS.md"]);
 
 function parseArgs(argv) {
   const args = [...argv];
   const options = {
-    languages: DEFAULT_LANGUAGES,
+    languages: ["all"],
     outputDir: path.resolve(process.cwd(), "custom", "sources")
   };
 
@@ -30,6 +30,22 @@ function parseArgs(argv) {
   return options;
 }
 
+async function fetchAvailableLanguages() {
+  const response = await fetch(REPO_API_URL, {
+    headers: { "User-Agent": "nomsentry" }
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${REPO_API_URL}: ${response.status} ${response.statusText}`);
+  }
+
+  const entries = await response.json();
+  return entries
+    .filter((entry) => entry.type === "file" && !IGNORED_FILES.has(entry.name))
+    .map((entry) => entry.name)
+    .sort((left, right) => left.localeCompare(right));
+}
+
 async function fetchWordList(language) {
   const sourceUrl = `${RAW_BASE_URL}/${language}`;
   const response = await fetch(sourceUrl);
@@ -47,8 +63,11 @@ async function fetchWordList(language) {
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   fs.mkdirSync(options.outputDir, { recursive: true });
+  const languages = options.languages.includes("all")
+    ? await fetchAvailableLanguages()
+    : options.languages;
 
-  for (const language of options.languages) {
+  for (const language of languages) {
     const { terms, sourceUrl } = await fetchWordList(language);
     const source = buildLdnoobwSource({
       id: `imported-ldnoobw-${language}`,

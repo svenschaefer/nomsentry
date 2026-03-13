@@ -1,0 +1,3712 @@
+{
+  "id": "imported-ldnoobw-it",
+  "description": "Imported LDNOOBW snapshot (it)",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "it",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity"
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-it/allupato",
+      "term": "allupato",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ammucchiata",
+      "term": "ammucchiata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/anale",
+      "term": "anale",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/arrapato",
+      "term": "arrapato",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/arrusa",
+      "term": "arrusa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/arruso",
+      "term": "arruso",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/assatanato",
+      "term": "assatanato",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bagascia",
+      "term": "bagascia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bagassa",
+      "term": "bagassa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bagnarsi",
+      "term": "bagnarsi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/baldracca",
+      "term": "baldracca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/balle",
+      "term": "balle",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/battere",
+      "term": "battere",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/battona",
+      "term": "battona",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/belino",
+      "term": "belino",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/biga",
+      "term": "biga",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bocchinara",
+      "term": "bocchinara",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bocchino",
+      "term": "bocchino",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bofilo",
+      "term": "bofilo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/boiata",
+      "term": "boiata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bordello",
+      "term": "bordello",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/brinca",
+      "term": "brinca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/bucaiolo",
+      "term": "bucaiolo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/budiùlo",
+      "term": "budiùlo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/busone",
+      "term": "busone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cacca",
+      "term": "cacca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/caciocappella",
+      "term": "caciocappella",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cadavere",
+      "term": "cadavere",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cagare",
+      "term": "cagare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cagata",
+      "term": "cagata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cagna",
+      "term": "cagna",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/casci",
+      "term": "casci",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cazzata",
+      "term": "cazzata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cazzimma",
+      "term": "cazzimma",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cazzo",
+      "term": "cazzo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cazzone",
+      "term": "cazzone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cesso",
+      "term": "cesso",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/checca",
+      "term": "checca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/chiappa",
+      "term": "chiappa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/chiavare",
+      "term": "chiavare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/chiavata",
+      "term": "chiavata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ciospo",
+      "term": "ciospo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ciucciami il cazzo",
+      "term": "ciucciami il cazzo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/coglione",
+      "term": "coglione",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/coglioni",
+      "term": "coglioni",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cornuto",
+      "term": "cornuto",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/cozza",
+      "term": "cozza",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/culattina",
+      "term": "culattina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/culattone",
+      "term": "culattone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/culo",
+      "term": "culo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ditalino",
+      "term": "ditalino",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fava",
+      "term": "fava",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/femminuccia",
+      "term": "femminuccia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fica",
+      "term": "fica",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/figa",
+      "term": "figa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/figlio di buona donna",
+      "term": "figlio di buona donna",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/figlio di puttana",
+      "term": "figlio di puttana",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/figone",
+      "term": "figone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/finocchio",
+      "term": "finocchio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fottere",
+      "term": "fottere",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fottersi",
+      "term": "fottersi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fracicone",
+      "term": "fracicone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/fregna",
+      "term": "fregna",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/frocio",
+      "term": "frocio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/froscio",
+      "term": "froscio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/goldone",
+      "term": "goldone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/guardone",
+      "term": "guardone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/imbecille",
+      "term": "imbecille",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/incazzarsi",
+      "term": "incazzarsi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/incoglionirsi",
+      "term": "incoglionirsi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ingoio",
+      "term": "ingoio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/leccaculo",
+      "term": "leccaculo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/lecchino",
+      "term": "lecchino",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/lofare",
+      "term": "lofare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/loffa",
+      "term": "loffa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/loffare",
+      "term": "loffare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/mannaggia",
+      "term": "mannaggia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/merda",
+      "term": "merda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/merdata",
+      "term": "merdata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/merdoso",
+      "term": "merdoso",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/mignotta",
+      "term": "mignotta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/minchia",
+      "term": "minchia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/minchione",
+      "term": "minchione",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/mona",
+      "term": "mona",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/monta",
+      "term": "monta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/montare",
+      "term": "montare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/mussa",
+      "term": "mussa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/nave scuola",
+      "term": "nave scuola",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/nerchia",
+      "term": "nerchia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/padulo",
+      "term": "padulo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/palle",
+      "term": "palle",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/palloso",
+      "term": "palloso",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/patacca",
+      "term": "patacca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/patonza",
+      "term": "patonza",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pecorina",
+      "term": "pecorina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pesce",
+      "term": "pesce",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/picio",
+      "term": "picio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pincare",
+      "term": "pincare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pinnolone",
+      "term": "pinnolone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pipì",
+      "term": "pipì",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pippa",
+      "term": "pippa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pippone",
+      "term": "pippone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pirla",
+      "term": "pirla",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pisciare",
+      "term": "pisciare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/piscio",
+      "term": "piscio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pisello",
+      "term": "pisello",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pistolotto",
+      "term": "pistolotto",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pomiciare",
+      "term": "pomiciare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pompa",
+      "term": "pompa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/pompino",
+      "term": "pompino",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porca",
+      "term": "porca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porca madonna",
+      "term": "porca madonna",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porca miseria",
+      "term": "porca miseria",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porca puttana",
+      "term": "porca puttana",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porco",
+      "term": "porco",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porco due",
+      "term": "porco due",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/porco zio",
+      "term": "porco zio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/potta",
+      "term": "potta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/puppami",
+      "term": "puppami",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/puttana",
+      "term": "puttana",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/quaglia",
+      "term": "quaglia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/recchione",
+      "term": "recchione",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/regina",
+      "term": "regina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/rincoglionire",
+      "term": "rincoglionire",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/rizzarsi",
+      "term": "rizzarsi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/rompiballe",
+      "term": "rompiballe",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/rompipalle",
+      "term": "rompipalle",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/ruffiano",
+      "term": "ruffiano",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sbattere",
+      "term": "sbattere",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sbattersi",
+      "term": "sbattersi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sborra",
+      "term": "sborra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sborrata",
+      "term": "sborrata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sborrone",
+      "term": "sborrone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sbrodolata",
+      "term": "sbrodolata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/scopare",
+      "term": "scopare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/scopata",
+      "term": "scopata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/scorreggiare",
+      "term": "scorreggiare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sega",
+      "term": "sega",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/slinguare",
+      "term": "slinguare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/slinguata",
+      "term": "slinguata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/smandrappata",
+      "term": "smandrappata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/soccia",
+      "term": "soccia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/socmel",
+      "term": "socmel",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sorca",
+      "term": "sorca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/spagnola",
+      "term": "spagnola",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/spompinare",
+      "term": "spompinare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sticchio",
+      "term": "sticchio",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/stronza",
+      "term": "stronza",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/stronzata",
+      "term": "stronzata",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/stronzo",
+      "term": "stronzo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/succhiami",
+      "term": "succhiami",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/succhione",
+      "term": "succhione",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sveltina",
+      "term": "sveltina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/sverginare",
+      "term": "sverginare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/tarzanello",
+      "term": "tarzanello",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/terrone",
+      "term": "terrone",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/testa di cazzo",
+      "term": "testa di cazzo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/tette",
+      "term": "tette",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/tirare",
+      "term": "tirare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/topa",
+      "term": "topa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/troia",
+      "term": "troia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/trombare",
+      "term": "trombare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/vacca",
+      "term": "vacca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/vaffanculo",
+      "term": "vaffanculo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/vangare",
+      "term": "vangare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/zinne",
+      "term": "zinne",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/zio cantante",
+      "term": "zio cantante",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-it/zoccola",
+      "term": "zoccola",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "it",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/it"
+      }
+    }
+  ]
+}

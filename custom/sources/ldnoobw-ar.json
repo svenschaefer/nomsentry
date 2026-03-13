@@ -1,0 +1,852 @@
+{
+  "id": "imported-ldnoobw-ar",
+  "description": "Imported LDNOOBW snapshot (ar)",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "ar",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity"
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-ar/احتلام",
+      "term": "احتلام",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/اغتصاب",
+      "term": "اغتصاب",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/بز",
+      "term": "بز",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/بزاز",
+      "term": "بزاز",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/بظر",
+      "term": "بظر",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/بيضان",
+      "term": "بيضان",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/تمص",
+      "term": "تمص",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/ثدي",
+      "term": "ثدي",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/جماع",
+      "term": "جماع",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/حلمة",
+      "term": "حلمة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/خنثي",
+      "term": "خنثي",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/خول",
+      "term": "خول",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/زب",
+      "term": "زب",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/سحاق",
+      "term": "سحاق",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/سحاقية",
+      "term": "سحاقية",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/سكس",
+      "term": "سكس",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/شاذ",
+      "term": "شاذ",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/شرج",
+      "term": "شرج",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/شرموطة",
+      "term": "شرموطة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/شهوة",
+      "term": "شهوة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/طيز",
+      "term": "طيز",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/عاهرة",
+      "term": "عاهرة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/عرص",
+      "term": "عرص",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/فرج",
+      "term": "فرج",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/قحبة",
+      "term": "قحبة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/قضيب",
+      "term": "قضيب",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/كس",
+      "term": "كس",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/لبوة",
+      "term": "لبوة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/لحس",
+      "term": "لحس",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/لعق",
+      "term": "لعق",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/لواط",
+      "term": "لواط",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/لوطي",
+      "term": "لوطي",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/مبادل",
+      "term": "مبادل",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/متناك",
+      "term": "متناك",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/متناكة",
+      "term": "متناكة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/مص",
+      "term": "مص",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/مفلقسة",
+      "term": "مفلقسة",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ar/نيك",
+      "term": "نيك",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ar",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ar"
+      }
+    }
+  ]
+}

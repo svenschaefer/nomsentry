@@ -1,0 +1,698 @@
+{
+  "id": "imported-ldnoobw-th",
+  "description": "Imported LDNOOBW snapshot (th)",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "th",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity"
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-th/กระดอ",
+      "term": "กระดอ",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/กระเด้า",
+      "term": "กระเด้า",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/กระหรี่",
+      "term": "กระหรี่",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/กะปิ",
+      "term": "กะปิ",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/กู",
+      "term": "กู",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ขี้",
+      "term": "ขี้",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ควย",
+      "term": "ควย",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/จิ๋ม",
+      "term": "จิ๋ม",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/จู๋",
+      "term": "จู๋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/เจ๊ก",
+      "term": "เจ๊ก",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/เจี๊ยว",
+      "term": "เจี๊ยว",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ดอกทอง",
+      "term": "ดอกทอง",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ตอแหล",
+      "term": "ตอแหล",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ตูด",
+      "term": "ตูด",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/น้ําแตก",
+      "term": "น้ําแตก",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/มึง",
+      "term": "มึง",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/แม่ง",
+      "term": "แม่ง",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/เย็ด",
+      "term": "เย็ด",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/รูตูด",
+      "term": "รูตูด",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ล้างตู้เย็น",
+      "term": "ล้างตู้เย็น",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ส้นตีน",
+      "term": "ส้นตีน",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/สัด",
+      "term": "สัด",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/เสือก",
+      "term": "เสือก",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/หญิงชาติชั่ว",
+      "term": "หญิงชาติชั่ว",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/หลั่ง",
+      "term": "หลั่ง",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ห่า",
+      "term": "ห่า",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/หํา",
+      "term": "หํา",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/หี",
+      "term": "หี",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/เหี้ย",
+      "term": "เหี้ย",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/อมนกเขา",
+      "term": "อมนกเขา",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-th/ไอ้ควาย",
+      "term": "ไอ้ควาย",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "th",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/th"
+      }
+    }
+  ]
+}

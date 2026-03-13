@@ -1,0 +1,1600 @@
+{
+  "id": "imported-ldnoobw-ko",
+  "description": "Imported LDNOOBW snapshot (ko)",
+  "metadata": {
+    "source": "LDNOOBW",
+    "language": "ko",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity"
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+  },
+  "rules": [
+    {
+      "id": "imported-ldnoobw-ko/강간",
+      "term": "강간",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/개새끼",
+      "term": "개새끼",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/개자식",
+      "term": "개자식",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/개좆",
+      "term": "개좆",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/개차반",
+      "term": "개차반",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/거유",
+      "term": "거유",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/계집년",
+      "term": "계집년",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/고자",
+      "term": "고자",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/근친",
+      "term": "근친",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/노모",
+      "term": "노모",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/니기미",
+      "term": "니기미",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/뒤질래",
+      "term": "뒤질래",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/딸딸이",
+      "term": "딸딸이",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/때씹",
+      "term": "때씹",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/또라이",
+      "term": "또라이",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/뙤놈",
+      "term": "뙤놈",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/로리타",
+      "term": "로리타",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/망가",
+      "term": "망가",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/몰카",
+      "term": "몰카",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/미친",
+      "term": "미친",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/미친새끼",
+      "term": "미친새끼",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/바바리맨",
+      "term": "바바리맨",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/변태",
+      "term": "변태",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/병신",
+      "term": "병신",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/보지",
+      "term": "보지",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/불알",
+      "term": "불알",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/빠구리",
+      "term": "빠구리",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/사까시",
+      "term": "사까시",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/섹스",
+      "term": "섹스",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/스와핑",
+      "term": "스와핑",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/쌍놈",
+      "term": "쌍놈",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씨발",
+      "term": "씨발",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씨발놈",
+      "term": "씨발놈",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씨팔",
+      "term": "씨팔",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹",
+      "term": "씹",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹물",
+      "term": "씹물",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹빨",
+      "term": "씹빨",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹새끼",
+      "term": "씹새끼",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹알",
+      "term": "씹알",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹창",
+      "term": "씹창",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/씹팔",
+      "term": "씹팔",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/암캐",
+      "term": "암캐",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/애자",
+      "term": "애자",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/야동",
+      "term": "야동",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/야사",
+      "term": "야사",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/야애니",
+      "term": "야애니",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/엄창",
+      "term": "엄창",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/에로",
+      "term": "에로",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/염병",
+      "term": "염병",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/옘병",
+      "term": "옘병",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/유모",
+      "term": "유모",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/육갑",
+      "term": "육갑",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/은꼴",
+      "term": "은꼴",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/자위",
+      "term": "자위",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/자지",
+      "term": "자지",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/잡년",
+      "term": "잡년",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/종간나",
+      "term": "종간나",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/좆",
+      "term": "좆",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/좆만",
+      "term": "좆만",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/죽일년",
+      "term": "죽일년",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/쥐좆",
+      "term": "쥐좆",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/직촬",
+      "term": "직촬",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/짱깨",
+      "term": "짱깨",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/쪽바리",
+      "term": "쪽바리",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/창녀",
+      "term": "창녀",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/포르노",
+      "term": "포르노",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/하드코어",
+      "term": "하드코어",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/호로",
+      "term": "호로",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/화냥년",
+      "term": "화냥년",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/후레아들",
+      "term": "후레아들",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/후장",
+      "term": "후장",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    },
+    {
+      "id": "imported-ldnoobw-ko/희쭈그리",
+      "term": "희쭈그리",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "LDNOOBW",
+        "language": "ko",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity"
+        ],
+        "sourceUrl": "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/ko"
+      }
+    }
+  ]
+}

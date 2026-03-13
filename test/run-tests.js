@@ -50,7 +50,7 @@ for (const name of ["allow", "reject", "review"]) {
 }
 
 assert.equal(
-  loadSourceFromFile(new URL("../custom/sources/ldnoobw-en-seed.json", import.meta.url)).metadata.source,
+  loadSourceFromFile(new URL("../custom/sources/ldnoobw-en.json", import.meta.url)).metadata.source,
   "LDNOOBW",
   "imported source metadata should load from JSON"
 );
