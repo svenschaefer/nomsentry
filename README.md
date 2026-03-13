@@ -56,7 +56,7 @@ custom/sources/2toad-profanity-<language>.json
 custom/sources/obscenity-en.json
 custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
-custom/sources/derived-uspto-brand-risk-<chunk>.json
+custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 ```
 

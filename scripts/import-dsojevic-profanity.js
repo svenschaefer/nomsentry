@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
 
 const BASE_URL = "https://raw.githubusercontent.com/dsojevic/profanity-list/main";
 
@@ -45,6 +46,6 @@ for (const language of options.languages) {
   const entries = await fetchLanguage(language);
   const source = buildDsojevicSource({ language, entries });
   const targetFile = path.join(options.outputDir, `dsojevic-profanity-${language}.json`);
-  fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
+  writeSourceFile(targetFile, source);
   console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
 }

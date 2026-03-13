@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { buildCussSource, getCussLanguages } from "../src/importers/cuss.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
 
 function parseArgs(argv) {
   const args = [...argv];
@@ -36,6 +37,6 @@ const languages = options.languages.includes("all") ? getCussLanguages() : optio
 for (const language of languages) {
   const source = buildCussSource({ language, minRating: options.minRating });
   const targetFile = path.join(options.outputDir, `cuss-${language}.json`);
-  fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
+  writeSourceFile(targetFile, source);
   console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
 }

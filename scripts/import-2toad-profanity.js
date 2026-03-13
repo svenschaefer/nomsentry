@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
 
 function parseArgs(argv) {
   const args = [...argv];
@@ -33,6 +34,6 @@ const languages = options.languages.includes("all") ? get2ToadLanguages() : opti
 for (const language of languages) {
   const source = build2ToadSource({ language });
   const targetFile = path.join(options.outputDir, `2toad-profanity-${language}.json`);
-  fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
+  writeSourceFile(targetFile, source);
   console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
 }

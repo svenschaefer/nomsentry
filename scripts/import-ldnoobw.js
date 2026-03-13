@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
 
 const REPO_API_URL = "https://api.github.com/repos/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/contents";
 const RAW_BASE_URL = "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master";
@@ -76,7 +77,7 @@ async function main() {
       sourceUrl
     });
     const targetFile = path.join(options.outputDir, `ldnoobw-${language}.json`);
-    fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
+    writeSourceFile(targetFile, source);
     console.log(`Wrote ${targetFile} (${terms.length} terms)`);
   }
 }

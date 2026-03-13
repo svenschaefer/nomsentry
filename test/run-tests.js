@@ -19,6 +19,7 @@ import {
   splitUsptoTrademarkSource
 } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
+import { compactSource } from "../src/schema/source-format.js";
 
 const syntheticPolicySource = {
   id: "synthetic-policy-source",
@@ -357,6 +358,42 @@ assert.throws(
   /source\.metadata\.tags\[1\] must be a non-empty string/,
   "metadata tag arrays should enforce strings"
 );
+
+{
+  const compact = compactSource({
+    id: "compact-test",
+    metadata: { source: "test" },
+    rules: [
+      {
+        id: "compact-test/a",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["username"],
+        match: "token",
+        normalizationField: "confusableSkeleton",
+        metadata: { source: "test", notes: "n1" }
+      },
+      {
+        id: "compact-test/b",
+        term: "beta",
+        category: "profanity",
+        scopes: ["username"],
+        match: "token",
+        normalizationField: "confusableSkeleton",
+        metadata: { source: "test", notes: "n2" }
+      }
+    ]
+  });
+  const validated = validateSource(compact);
+  assert.deepEqual(
+    validated.rules.map((rule) => ({ id: rule.id, term: rule.term, notes: rule.metadata?.notes })),
+    [
+      { id: "compact-test/a", term: "alpha", notes: "n1" },
+      { id: "compact-test/b", term: "beta", notes: "n2" }
+    ],
+    "compact sources should expand and validate to the canonical rule model"
+  );
+}
 
 for (const testCase of [
   { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },

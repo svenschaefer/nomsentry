@@ -4,6 +4,7 @@ import {
   buildUsptoTrademarkSourceFromCsvFile,
   splitUsptoTrademarkSource
 } from "../src/importers/uspto.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
 
 function parseArgs(argv) {
   const args = [...argv];
@@ -49,7 +50,7 @@ for (const file of fs.readdirSync(options.outputDir)) {
 
 for (const chunk of chunkFiles) {
   const targetFile = path.join(options.outputDir, `${chunk.id}.json`);
-  fs.writeFileSync(targetFile, `${JSON.stringify(chunk, null, 2)}\n`, "utf8");
+  writeSourceFile(targetFile, chunk);
 }
 
 console.log(`Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`);

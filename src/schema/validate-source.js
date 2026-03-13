@@ -1,3 +1,5 @@
+import { expandSource } from "./source-format.js";
+
 function assertString(value, name) {
   if (typeof value !== "string" || value.length === 0) {
     throw new Error(`${name} must be a non-empty string`);
@@ -59,18 +61,19 @@ function validateCompositeRule(rule, pointer) {
 }
 
 export function validateSource(source) {
-  assertString(source.id, "source.id");
-  assertOptionalString(source.description, "source.description");
-  if (source.metadata !== undefined) validateMetadata(source.metadata, "source.metadata");
-  if (source.rules !== undefined) {
-    assertArray(source.rules, "source.rules");
-    source.rules.forEach((rule, index) => validateRule(rule, `source.rules[${index}]`));
+  const expanded = expandSource(source);
+  assertString(expanded.id, "source.id");
+  assertOptionalString(expanded.description, "source.description");
+  if (expanded.metadata !== undefined) validateMetadata(expanded.metadata, "source.metadata");
+  if (expanded.rules !== undefined) {
+    assertArray(expanded.rules, "source.rules");
+    expanded.rules.forEach((rule, index) => validateRule(rule, `source.rules[${index}]`));
   }
-  if (source.compositeRules !== undefined) {
-    assertArray(source.compositeRules, "source.compositeRules");
-    source.compositeRules.forEach((rule, index) =>
+  if (expanded.compositeRules !== undefined) {
+    assertArray(expanded.compositeRules, "source.compositeRules");
+    expanded.compositeRules.forEach((rule, index) =>
       validateCompositeRule(rule, `source.compositeRules[${index}]`)
     );
   }
-  return source;
+  return expanded;
 }
