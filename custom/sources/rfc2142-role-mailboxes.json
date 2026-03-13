@@ -1,0 +1,37 @@
+{
+  "id": "imported-rfc2142-role-mailboxes",
+  "description": "Mailbox names for common services, roles and functions from RFC 2142",
+  "metadata": {
+    "source": "RFC 2142",
+    "severity": "high",
+    "tags": ["external-import", "impersonation", "role-account"],
+    "sourceUrl": "https://datatracker.ietf.org/doc/rfc2142/",
+    "notes": "Derived from the RFC 2142 mailbox tables for business, network operations, and common Internet services."
+  },
+  "rules": [
+    { "id": "rfc2142/abuse", "term": "abuse", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/info", "term": "info", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/marketing", "term": "marketing", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/sales", "term": "sales", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/support", "term": "support", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/noc", "term": "noc", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/security", "term": "security", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/postmaster", "term": "postmaster", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/hostmaster", "term": "hostmaster", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/usenet", "term": "usenet", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/news", "term": "news", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/webmaster", "term": "webmaster", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "high", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/www", "term": "www", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/uucp", "term": "uucp", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } },
+    { "id": "rfc2142/ftp", "term": "ftp", "category": "impersonation", "scopes": ["username", "tenantSlug", "tenantName"], "match": "token", "normalizationField": "confusableSkeleton", "metadata": { "source": "RFC 2142", "severity": "medium", "tags": ["external-import", "impersonation", "role-account"] } }
+  ],
+  "compositeRules": [
+    {
+      "id": "rfc2142/security-support",
+      "term": "security+support",
+      "category": "compositeRisk",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "allOf": ["security", "support"]
+    }
+  ]
+}

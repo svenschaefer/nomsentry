@@ -1,0 +1,35 @@
+{
+  "id": "imported-windows-reserved-device-names",
+  "description": "Reserved Windows device names derived from Microsoft Win32 naming rules",
+  "metadata": {
+    "source": "Microsoft Learn",
+    "severity": "high",
+    "tags": ["external-import", "reserved-technical", "windows"],
+    "sourceUrl": "https://learn.microsoft.com/windows/win32/fileio/naming-a-file",
+    "notes": "Reserved device names cannot be used as file or directory names on Windows."
+  },
+  "rules": [
+    { "id": "windows-reserved/con", "term": "con", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/prn", "term": "prn", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/aux", "term": "aux", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/nul", "term": "nul", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com1", "term": "com1", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com2", "term": "com2", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com3", "term": "com3", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com4", "term": "com4", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com5", "term": "com5", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com6", "term": "com6", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com7", "term": "com7", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com8", "term": "com8", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/com9", "term": "com9", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt1", "term": "lpt1", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt2", "term": "lpt2", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt3", "term": "lpt3", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt4", "term": "lpt4", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt5", "term": "lpt5", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt6", "term": "lpt6", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt7", "term": "lpt7", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt8", "term": "lpt8", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } },
+    { "id": "windows-reserved/lpt9", "term": "lpt9", "category": "reservedTechnical", "scopes": ["username", "tenantSlug"], "match": "exact", "normalizationField": "slug", "metadata": { "source": "Microsoft Learn", "severity": "high", "tags": ["external-import", "reserved-technical", "windows"] } }
+  ]
+}
