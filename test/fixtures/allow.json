@@ -1,0 +1,5 @@
+[
+  { "value": "northwind", "kind": "tenantSlug", "expected": "allow" },
+  { "value": "sven1974", "kind": "username", "expected": "allow" },
+  { "value": "support", "kind": "tenantSlug", "context": { "namespace": "internal" }, "expected": "allow" }
+]

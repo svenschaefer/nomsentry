@@ -1,0 +1,13 @@
+{
+  "id": "custom-source",
+  "rules": [
+    {
+      "id": "custom/seven",
+      "term": "seven",
+      "category": "protectedBrand",
+      "scopes": ["tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton"
+    }
+  ]
+}

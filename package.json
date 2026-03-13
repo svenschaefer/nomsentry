@@ -1,0 +1,14 @@
+{
+  "name": "nomsentry",
+  "version": "0.3.0",
+  "description": "Deterministic identifier policy and deception detection engine",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "nomsentry": "./bin/nomsentry.js"
+  },
+  "scripts": {
+    "test": "node test/run-tests.js"
+  },
+  "license": "MIT"
+}
