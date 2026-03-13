@@ -6,7 +6,7 @@ export function tenantSlug() {
       reservedTechnical: "reject",
       impersonation: "reject",
       protectedBrand: "reject",
-      profanity: "review",
+      profanity: "reject",
       scriptRisk: "review",
       compositeRisk: "reject"
     }

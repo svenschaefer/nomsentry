@@ -6,7 +6,7 @@ export function username() {
       reservedTechnical: "reject",
       impersonation: "reject",
       protectedBrand: "reject",
-      profanity: "review",
+      profanity: "reject",
       scriptRisk: "review",
       compositeRisk: "review"
     }

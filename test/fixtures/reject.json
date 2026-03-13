@@ -3,5 +3,6 @@
   { "value": "adm1n", "kind": "tenantSlug", "expected": "reject" },
   { "value": "аdmin", "kind": "tenantSlug", "expected": "reject" },
   { "value": "security-support", "kind": "tenantSlug", "expected": "reject" },
-  { "value": "seven-labs", "kind": "tenantSlug", "expected": "reject" }
+  { "value": "seven-labs", "kind": "tenantSlug", "expected": "reject" },
+  { "value": "damn-space", "kind": "tenantName", "expected": "reject" }
 ]

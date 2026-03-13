@@ -1,4 +1,3 @@
 [
-  { "value": "damn-space", "kind": "tenantName", "expected": "review" },
   { "value": "раypal", "kind": "tenantName", "expected": "review" }
 ]

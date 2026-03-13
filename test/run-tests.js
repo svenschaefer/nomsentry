@@ -54,7 +54,7 @@ for (const name of ["allow", "reject", "review"]) {
     provisional: "reject",
     reasons: [
       { category: "impersonation" },
-      { category: "profanity" }
+      { category: "scriptRisk" }
     ],
     policy: tenantSlug(),
     overrides: [
@@ -75,7 +75,7 @@ for (const name of ["allow", "reject", "review"]) {
   assert.equal(result.decision, "review", "override suppression should recompute the final outcome");
   assert.deepEqual(
     result.reasons.map((reason) => reason.category),
-    ["profanity"],
+    ["scriptRisk"],
     "override suppression should remove only the suppressed categories"
   );
 }
@@ -105,8 +105,8 @@ for (const testCase of [
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
   { value: "s3curity", kind: "tenantSlug", expected: "reject", label: "leet security" },
   { value: "0penai", kind: "tenantSlug", expected: "reject", label: "leet brand" },
-  { value: "H!Tler", kind: "tenantName", expected: "review", label: "leet hate term" },
-  { value: "n!gga", kind: "tenantName", expected: "review", label: "leet slur" },
+  { value: "H!Tler", kind: "tenantName", expected: "reject", label: "leet hate term" },
+  { value: "n!gga", kind: "tenantName", expected: "reject", label: "leet slur" },
   { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
   { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
   { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
@@ -140,8 +140,8 @@ for (const testCase of [
     ["support", "ѕupport", "tenantSlug", "reject"],
     ["openai", "0penai", "tenantSlug", "reject"],
     ["openai", "оpenai", "tenantSlug", "reject"],
-    ["hitler", "H!Tler", "tenantName", "review"],
-    ["nigga", "n!gga", "tenantName", "review"]
+    ["hitler", "H!Tler", "tenantName", "reject"],
+    ["nigga", "n!gga", "tenantName", "reject"]
   ];
 
   for (const [canonical, candidate, kind, expected] of variants) {
