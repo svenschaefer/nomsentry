@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { buildUsptoTrademarkSource, loadUsptoCaseFileCsv } from "../src/importers/uspto.js";
+import { buildUsptoTrademarkSourceFromCsvFile } from "../src/importers/uspto.js";
 
 function parseArgs(argv) {
   const args = [...argv];
@@ -29,8 +29,7 @@ function parseArgs(argv) {
 
 const options = parseArgs(process.argv.slice(2));
 fs.mkdirSync(options.outputDir, { recursive: true });
-const records = loadUsptoCaseFileCsv(options.inputFile);
-const source = buildUsptoTrademarkSource(records);
+const source = await buildUsptoTrademarkSourceFromCsvFile(options.inputFile);
 const targetFile = path.join(options.outputDir, "uspto-trademarks.json");
 fs.writeFileSync(targetFile, `${JSON.stringify(source, null, 2)}\n`, "utf8");
 console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);

@@ -9,7 +9,11 @@ import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
 import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
-import { buildUsptoTrademarkSource, parseUsptoCaseFileCsv } from "../src/importers/uspto.js";
+import {
+  buildUsptoTrademarkSource,
+  buildUsptoTrademarkSourceFromCsvFile,
+  parseUsptoCaseFileCsv
+} from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
 
 const syntheticPolicySource = {
@@ -129,8 +133,31 @@ assert.equal(
   assert.equal(source.metadata.source, "USPTO", "uspto importer should stamp source metadata");
   assert.deepEqual(
     source.rules.map((rule) => rule.term).sort(),
-    ["azure", "openai"],
+    ["azure", "mega corp", "openai"],
     "uspto importer should keep only live standard-character trademarks"
+  );
+}
+
+{
+  const records = parseUsptoCaseFileCsv(
+    fs.readFileSync(new URL("./fixtures/uspto-case-file-alt-sample.csv", import.meta.url), "utf8")
+  );
+  const source = buildUsptoTrademarkSource(records);
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["github"],
+    "uspto importer should handle alternate column names and live/dead codes"
+  );
+}
+
+{
+  const source = await buildUsptoTrademarkSourceFromCsvFile(
+    new URL("./fixtures/uspto-case-file-alt-sample.csv", import.meta.url)
+  );
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["github"],
+    "uspto file importer should stream and produce the same filtered result"
   );
 }
 

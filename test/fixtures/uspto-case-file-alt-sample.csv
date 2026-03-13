@@ -1,0 +1,4 @@
+serial_num,registration_num,literal_element,standard_char_claim_ind,live_dead_cd,mark_drawing_code,status_desc
+11111111,9999999,GitHub,Y,L,4,Registered
+22222222,8888888,Octo Illustrative,N,L,3,Registered
+33333333,7777777,Dead Brand,Y,D,4,Dead
