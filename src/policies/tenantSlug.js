@@ -5,7 +5,7 @@ export function tenantSlug() {
     decisionMatrix: {
       reservedTechnical: "reject",
       impersonation: "reject",
-      protectedBrand: "reject",
+      protectedBrand: "review",
       profanity: "reject",
       scriptRisk: "review",
       compositeRisk: "reject"

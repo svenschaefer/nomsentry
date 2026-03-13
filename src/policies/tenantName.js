@@ -5,7 +5,7 @@ export function tenantName() {
     decisionMatrix: {
       reservedTechnical: "reject",
       impersonation: "review",
-      protectedBrand: "reject",
+      protectedBrand: "review",
       profanity: "reject",
       scriptRisk: "review",
       compositeRisk: "review"

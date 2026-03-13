@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 
 import { createEngine } from "../src/core/evaluate.js";
-import { reserved, impersonation, profanity, product } from "../src/sources/index.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 
 const engine = createEngine({
-  sources: [
-    reserved(),
-    impersonation(),
-    profanity(),
-    product(),
-    ...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))
-  ],
+  sources: [...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))],
   policies: [username(), tenantSlug(), tenantName()],
   allowOverrides: [
     {

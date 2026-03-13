@@ -5,7 +5,7 @@ export function username() {
     decisionMatrix: {
       reservedTechnical: "reject",
       impersonation: "reject",
-      protectedBrand: "reject",
+      protectedBrand: "review",
       profanity: "reject",
       scriptRisk: "review",
       compositeRisk: "review"

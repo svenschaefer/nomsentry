@@ -9,7 +9,14 @@
   },
   "scripts": {
     "test": "node test/run-tests.js",
-    "import:ldnoobw": "node scripts/import-ldnoobw.js"
+    "import:ldnoobw": "node scripts/import-ldnoobw.js",
+    "import:2toad": "node scripts/import-2toad-profanity.js",
+    "import:obscenity": "node scripts/import-obscenity.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@2toad/profanity": "^3.2.0",
+    "obscenity": "^0.4.6",
+    "slugify": "^1.6.6"
+  }
 }

@@ -10,9 +10,10 @@
 - `src/core/overrides.js` - final allow overrides
 - `src/loaders/source-loader.js` - JSON source loading + validation
 - `src/importers/ldnoobw.js` - external wordlist normalization into source JSON
+- `src/importers/toad-profanity.js` - @2toad/profanity normalization into source JSON
+- `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/policies/*` - policy mapping
-- `src/sources/*` - built-in rule packs
 
 ## Data flow
 
@@ -24,4 +25,4 @@ raw input
 -> allow overrides
 -> final explainable result
 
-External seed lists are imported offline into versioned JSON source files and then loaded through the same source loader path as built-in/custom sources.
+External third-party lists are imported offline into versioned JSON source files and then loaded through the same source loader path at runtime. The repository does not maintain built-in source packs anymore.

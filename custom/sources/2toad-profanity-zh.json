@@ -1,0 +1,2846 @@
+{
+  "id": "imported-2toad-profanity-zh",
+  "description": "Imported @2toad/profanity snapshot (zh)",
+  "metadata": {
+    "source": "@2toad/profanity",
+    "language": "zh",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity",
+      "library"
+    ],
+    "license": "MIT"
+  },
+  "rules": [
+    {
+      "id": "imported-2toad-profanity-zh/arsearse韩语",
+      "term": "arsearse韩语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/ass个",
+      "term": "ass个",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/bitch英语",
+      "term": "bitch英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/bi吨级",
+      "term": "bi吨级",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/blowjob",
+      "term": "blowjob",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/carpetmuncher",
+      "term": "carpetmuncher",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/clit键",
+      "term": "clit键",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/cock英语",
+      "term": "cock英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/dick英语",
+      "term": "dick英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/fany英语",
+      "term": "fany英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/fcuk英语",
+      "term": "fcuk英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/fuck",
+      "term": "fuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/fucker",
+      "term": "fucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/fudgepacker",
+      "term": "fudgepacker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/furxor英语",
+      "term": "furxor英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/jism语句",
+      "term": "jism语句",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/leitch键",
+      "term": "leitch键",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/masterb8键",
+      "term": "masterb8键",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/mas位点",
+      "term": "mas位点",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/mofo数据",
+      "term": "mofo数据",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/mofo时",
+      "term": "mofo时",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/niah",
+      "term": "niah",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/nigger英语",
+      "term": "nigger英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/nobjokey",
+      "term": "nobjokey",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/porn语录",
+      "term": "porn语录",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/shit",
+      "term": "shit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/shit键",
+      "term": "shit键",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/s小时i小时",
+      "term": "s小时i小时",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/titties键",
+      "term": "titties键",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/twa吨级",
+      "term": "twa吨级",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/uμ㼯a",
+      "term": "uμ㼯a",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/viagra英语",
+      "term": "viagra英语",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/via草",
+      "term": "via草",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/vi颜色",
+      "term": "vi颜色",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/watt",
+      "term": "watt",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/wa头",
+      "term": "wa头",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/主减法",
+      "term": "主减法",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/主机b8",
+      "term": "主机b8",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/乌克维特",
+      "term": "乌克维特",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/乌克金",
+      "term": "乌克金",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/乱七八糟",
+      "term": "乱七八糟",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/乱七八糟的",
+      "term": "乱七八糟的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/二极管",
+      "term": "二极管",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/他妈的",
+      "term": "他妈的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/他妈的我",
+      "term": "他妈的我",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/他妈的拳头",
+      "term": "他妈的拳头",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/他妈的混蛋",
+      "term": "他妈的混蛋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/作为美元",
+      "term": "作为美元",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/你个混蛋",
+      "term": "你个混蛋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/最佳状态",
+      "term": "最佳状态",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/单位美元",
+      "term": "单位美元",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/双倍径",
+      "term": "双倍径",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/发牢骚",
+      "term": "发牢骚",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/变种人",
+      "term": "变种人",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/口交时",
+      "term": "口交时",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/同性恋",
+      "term": "同性恋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/同性恋者",
+      "term": "同性恋者",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/啄木鸟",
+      "term": "啄木鸟",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/大便师",
+      "term": "大便师",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/天杀的",
+      "term": "天杀的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/女同性恋",
+      "term": "女同性恋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/奶头s",
+      "term": "奶头s",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/婊子们",
+      "term": "婊子们",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/射精术",
+      "term": "射精术",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/小便便便便便时",
+      "term": "小便便便便便时",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/尿裤子",
+      "term": "尿裤子",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/屁股整齐",
+      "term": "屁股整齐",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/屎东西",
+      "term": "屎东西",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/山羊队",
+      "term": "山羊队",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/已锁定",
+      "term": "已锁定",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/布鲁塞塔",
+      "term": "布鲁塞塔",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/库克萨",
+      "term": "库克萨",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/库克门彻",
+      "term": "库克门彻",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/库尼灵格斯",
+      "term": "库尼灵格斯",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/库林斯",
+      "term": "库林斯",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/扇形叶片",
+      "term": "扇形叶片",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/手指他妈的",
+      "term": "手指他妈的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/拉屎了",
+      "term": "拉屎了",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/拳头他妈的",
+      "term": "拳头他妈的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/拳头操",
+      "term": "拳头操",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/掷掷器",
+      "term": "掷掷器",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/摩塔他妈的",
+      "term": "摩塔他妈的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/摩尔福",
+      "term": "摩尔福",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/撒尿器",
+      "term": "撒尿器",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/斯迈格马",
+      "term": "斯迈格马",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/旋钮头",
+      "term": "旋钮头",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/日数a",
+      "term": "日数a",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/波罗克",
+      "term": "波罗克",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/泰兹语name",
+      "term": "泰兹语name",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/流浪汉",
+      "term": "流浪汉",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/灭鼠机",
+      "term": "灭鼠机",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/烂透了",
+      "term": "烂透了",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/狗娘养的",
+      "term": "狗娘养的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/皮条客",
+      "term": "皮条客",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/硬核性行为",
+      "term": "硬核性行为",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/神经病",
+      "term": "神经病",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/福尔克",
+      "term": "福尔克",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/累积射击",
+      "term": "累积射击",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/细小的叶片",
+      "term": "细小的叶片",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/网络他妈的",
+      "term": "网络他妈的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/网络操",
+      "term": "网络操",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/网络混蛋",
+      "term": "网络混蛋",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/网络福克",
+      "term": "网络福克",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/色情制品",
+      "term": "色情制品",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/色情电影",
+      "term": "色情电影",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/虐待狂",
+      "term": "虐待狂",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/虐恋狂",
+      "term": "虐恋狂",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/角最强",
+      "term": "角最强",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/该死的",
+      "term": "该死的",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/调味料",
+      "term": "调味料",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/贾宝玉",
+      "term": "贾宝玉",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/轨道se",
+      "term": "轨道se",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/软糖包装机",
+      "term": "软糖包装机",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/连环画",
+      "term": "连环画",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/迪尔多",
+      "term": "迪尔多",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/阿斯福卡语name",
+      "term": "阿斯福卡语name",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/零点er",
+      "term": "零点er",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/驴肋架",
+      "term": "驴肋架",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/高级bate",
+      "term": "高级bate",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/高级项目",
+      "term": "高级项目",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/鸡尾酒",
+      "term": "鸡尾酒",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/鸡巴脸",
+      "term": "鸡巴脸",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-zh/黑鬼们",
+      "term": "黑鬼们",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "zh",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    }
+  ]
+}

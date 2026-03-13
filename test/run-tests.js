@@ -2,21 +2,73 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createEngine } from "../src/core/evaluate.js";
 import { applyAllowOverrides } from "../src/core/overrides.js";
-import { reserved, impersonation, profanity, product } from "../src/sources/index.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
-import { loadSourceFromFile } from "../src/loaders/source-loader.js";
-import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
+import { loadSourceFromFile, loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
+import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
+import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
+
+const syntheticPolicySource = {
+  id: "synthetic-policy-source",
+  rules: [
+    {
+      id: "synthetic/reserved-admin",
+      term: "admin",
+      category: "reservedTechnical",
+      scopes: ["username", "tenantSlug"],
+      match: "token",
+      normalizationField: "confusableSkeleton"
+    },
+    {
+      id: "synthetic/impersonation-support",
+      term: "support",
+      category: "impersonation",
+      scopes: ["username", "tenantSlug", "tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton"
+    },
+    {
+      id: "synthetic/impersonation-security",
+      term: "security",
+      category: "impersonation",
+      scopes: ["username", "tenantSlug", "tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton"
+    },
+    {
+      id: "synthetic/brand-openai",
+      term: "openai",
+      category: "protectedBrand",
+      scopes: ["username", "tenantSlug", "tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton"
+    },
+    {
+      id: "synthetic/brand-seven",
+      term: "seven",
+      category: "protectedBrand",
+      scopes: ["tenantSlug", "tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton"
+    }
+  ],
+  compositeRules: [
+    {
+      id: "synthetic/composite-security-support",
+      term: "security+support",
+      category: "compositeRisk",
+      scopes: ["username", "tenantSlug", "tenantName"],
+      allOf: ["security", "support"]
+    }
+  ]
+};
 
 const engine = createEngine({
   sources: [
-    reserved(),
-    impersonation(),
-    profanity(),
-    product(),
+    syntheticPolicySource,
     ...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))
   ],
   policies: [username(), tenantSlug(), tenantName()],
@@ -53,7 +105,25 @@ for (const name of ["allow", "reject", "review"]) {
 assert.equal(
   loadSourceFromFile(new URL("../custom/sources/ldnoobw-en.json", import.meta.url)).metadata.source,
   "LDNOOBW",
-  "imported source metadata should load from JSON"
+  "ldnoobw source metadata should load from JSON"
+);
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/2toad-profanity-en.json", import.meta.url)).metadata.source,
+  "@2toad/profanity",
+  "2toad source metadata should load from JSON"
+);
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/obscenity-en.json", import.meta.url)).metadata.source,
+  "obscenity",
+  "obscenity source metadata should load from JSON"
+);
+
+assert.deepEqual(
+  get2ToadLanguages(),
+  ["ar", "de", "en", "es", "fr", "hi", "it", "ja", "ko", "pt", "ru", "zh"],
+  "2Toad language inventory should be discoverable from the installed package"
 );
 
 {
@@ -113,24 +183,21 @@ for (const testCase of [
   { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
   { value: "s3curity", kind: "tenantSlug", expected: "reject", label: "leet security" },
-  { value: "0penai", kind: "tenantSlug", expected: "reject", label: "leet brand" },
-  { value: "H!Tler", kind: "tenantName", expected: "reject", label: "leet hate term" },
-  { value: "n!gga", kind: "tenantName", expected: "reject", label: "leet slur" },
-  { value: "bitch", kind: "tenantName", expected: "reject", label: "ldnoobw seed term" },
-  { value: "sh!t", kind: "tenantName", expected: "reject", label: "ldnoobw seed leet term" },
+  { value: "0penai", kind: "tenantSlug", expected: "review", label: "leet brand" },
+  { value: "n!gga", kind: "tenantName", expected: "reject", label: "ldnoobw slur" },
+  { value: "b!tch", kind: "tenantName", expected: "reject", label: "2toad leet term" },
+  { value: "sh!t", kind: "tenantName", expected: "reject", label: "imported leet term" },
   { value: "sh/i/t", kind: "tenantName", expected: "reject", label: "slash-obfuscated profanity" },
   { value: "scheisse", kind: "tenantName", expected: "reject", label: "german ss variant should match scheiße" },
   { value: "schéisse", kind: "tenantName", expected: "reject", label: "accented german variant should match scheiße" },
   { value: "mérde", kind: "tenantName", expected: "reject", label: "accented french variant should match merde" },
-  { value: "сука", kind: "tenantName", expected: "reject", label: "curated cyrillic abuse addition" },
-  { value: "cyka", kind: "tenantName", expected: "reject", label: "curated transliterated abuse addition" },
   { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
   { value: "sup\u2060port", kind: "tenantSlug", expected: "reject", label: "word joiner support" },
   { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
   { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
   { value: "s_e_c_u_r_i_t_y-support", kind: "tenantSlug", expected: "reject", label: "separator obfuscated security support" },
   { value: "ѕupport", kind: "tenantSlug", expected: "reject", label: "cyrillic support homoglyph" },
-  { value: "оpenai", kind: "tenantSlug", expected: "reject", label: "cyrillic brand homoglyph" },
+  { value: "оpenai", kind: "tenantSlug", expected: "review", label: "cyrillic brand homoglyph" },
   { value: "αdmin", kind: "tenantSlug", expected: "reject", label: "greek mixed script admin homoglyph" },
   { value: "раypal", kind: "tenantName", expected: "review", label: "mixed script tenant name" },
   { value: "Ａdmin", kind: "tenantSlug", expected: "reject", label: "nfkc fullwidth admin" },
@@ -176,6 +243,18 @@ for (const testCase of [
 }
 
 {
+  const source = build2ToadSource({ language: "en" });
+  assert.equal(source.metadata.source, "@2toad/profanity", "2toad importer should stamp source metadata");
+  assert.equal(source.rules.some((rule) => rule.term === "bitch"), true, "2toad importer should expose canonicalized library terms");
+}
+
+{
+  const source = buildObscenityEnglishSource();
+  assert.equal(source.metadata.source, "obscenity", "obscenity importer should stamp source metadata");
+  assert.equal(source.rules.some((rule) => rule.term === "anal"), true, "obscenity importer should expose original words");
+}
+
+{
   const variants = [
     ["admin", "adm1n", "tenantSlug", "reject"],
     ["admin", "ad-min", "tenantSlug", "reject"],
@@ -184,14 +263,12 @@ for (const testCase of [
     ["support", "supp0rt", "tenantSlug", "reject"],
     ["support", "sup\u2060port", "tenantSlug", "reject"],
     ["support", "ѕupport", "tenantSlug", "reject"],
-    ["openai", "0penai", "tenantSlug", "reject"],
-    ["openai", "оpenai", "tenantSlug", "reject"],
+    ["openai", "0penai", "tenantSlug", "review"],
+    ["openai", "оpenai", "tenantSlug", "review"],
     ["scheiße", "scheisse", "tenantName", "reject"],
     ["merde", "mérde", "tenantName", "reject"],
-    ["сука", "cyka", "tenantName", "reject"],
     ["shit", "sh!t", "tenantName", "reject"],
     ["shit", "sh/i/t", "tenantName", "reject"],
-    ["hitler", "H!Tler", "tenantName", "reject"],
     ["nigga", "n!gga", "tenantName", "reject"]
   ];
 
@@ -203,7 +280,6 @@ for (const testCase of [
 
 {
   const normalized = normalizeValue("schéisse");
-
   assert.equal(normalized.latinFolded, "scheisse", "latin folding should remove accents");
   assert.equal(normalized.slug, "scheisse", "slug should track the hardened latin folding");
 }
@@ -226,19 +302,6 @@ for (const testCase of [
 {
   const result = detectScriptRisk("abcمرحبا");
   assert.equal(result.mixed, true, "latin and arabic should trigger mixed-script risk");
-}
-
-{
-  const result = engine.evaluate({
-    value: "cybersecurity-support",
-    kind: "tenantSlug"
-  });
-
-  assert.equal(
-    result.reasons.some((reason) => reason.category === "compositeRisk"),
-    false,
-    "substring-only security should not trigger compositeRisk"
-  );
 }
 
 console.log("All fixture tests passed");

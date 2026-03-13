@@ -1,0 +1,7561 @@
+{
+  "id": "imported-2toad-profanity-es",
+  "description": "Imported @2toad/profanity snapshot (es)",
+  "metadata": {
+    "source": "@2toad/profanity",
+    "language": "es",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity",
+      "library"
+    ],
+    "license": "MIT"
+  },
+  "rules": [
+    {
+      "id": "imported-2toad-profanity-es/adolares",
+      "term": "adolares",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/anal",
+      "term": "anal",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/arse",
+      "term": "arse",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/ass",
+      "term": "ass",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/assfukka",
+      "term": "assfukka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/aus",
+      "term": "aus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bastardo",
+      "term": "bastardo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bellend",
+      "term": "bellend",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bestia",
+      "term": "bestia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bestial",
+      "term": "bestial",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bestialidad",
+      "term": "bestialidad",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/biatch",
+      "term": "biatch",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bigotes",
+      "term": "bigotes",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bitch",
+      "term": "bitch",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/blowjob",
+      "term": "blowjob",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/boiolas",
+      "term": "boiolas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bolas",
+      "term": "bolas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bollock",
+      "term": "bollock",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bollok",
+      "term": "bollok",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bolsadebolas",
+      "term": "bolsadebolas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/boobs",
+      "term": "boobs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/booobs",
+      "term": "booobs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/boooobs",
+      "term": "boooobs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/booooobs",
+      "term": "booooobs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/booooooobs",
+      "term": "booooooobs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/brida",
+      "term": "brida",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/buceta",
+      "term": "buceta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/bum",
+      "term": "bum",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/butt",
+      "term": "butt",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/buttmuch",
+      "term": "buttmuch",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/buttplug",
+      "term": "buttplug",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cabra",
+      "term": "cabra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cabron",
+      "term": "cabron",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/caido",
+      "term": "caido",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/caliente",
+      "term": "caliente",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/carpetmuncher",
+      "term": "carpetmuncher",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cawk",
+      "term": "cawk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/chink",
+      "term": "chink",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/chulos",
+      "term": "chulos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/chupapenes",
+      "term": "chupapenes",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/chupapollas",
+      "term": "chupapollas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/chupavergas",
+      "term": "chupavergas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/ciberdelincuente",
+      "term": "ciberdelincuente",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cibernetico",
+      "term": "cibernetico",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/ciberpolvo",
+      "term": "ciberpolvo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cipa",
+      "term": "cipa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/clit",
+      "term": "clit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/clitoris",
+      "term": "clitoris",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/clits",
+      "term": "clits",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cnut",
+      "term": "cnut",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cock",
+      "term": "cock",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cocksucker",
+      "term": "cocksucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cocksuka",
+      "term": "cocksuka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cocksukka",
+      "term": "cocksukka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cok",
+      "term": "cok",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cokmuncher",
+      "term": "cokmuncher",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/coksucka",
+      "term": "coksucka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/colibri",
+      "term": "colibri",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/consoladores",
+      "term": "consoladores",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/coon",
+      "term": "coon",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/corrida",
+      "term": "corrida",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cox",
+      "term": "cox",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/culo",
+      "term": "culo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/culocompleto",
+      "term": "culocompleto",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/culodemierda",
+      "term": "culodemierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/culos",
+      "term": "culos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cum",
+      "term": "cum",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cummer",
+      "term": "cummer",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cunada",
+      "term": "cunada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cunas",
+      "term": "cunas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cunilingus",
+      "term": "cunilingus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cunillingus",
+      "term": "cunillingus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cunnilingus",
+      "term": "cunnilingus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cuntlick",
+      "term": "cuntlick",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cuntlicker",
+      "term": "cuntlicker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cuntlicking",
+      "term": "cuntlicking",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cyalis",
+      "term": "cyalis",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/cyberfuc",
+      "term": "cyberfuc",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dedo",
+      "term": "dedo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dedodemierda",
+      "term": "dedodemierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dedos",
+      "term": "dedos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dedosdemierda",
+      "term": "dedosdemierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dick",
+      "term": "dick",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dildo",
+      "term": "dildo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dink",
+      "term": "dink",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dinks",
+      "term": "dinks",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dirsa",
+      "term": "dirsa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/donkeyribber",
+      "term": "donkeyribber",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/doosh",
+      "term": "doosh",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/duche",
+      "term": "duche",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/dyke",
+      "term": "dyke",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/enojada",
+      "term": "enojada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/entendido",
+      "term": "entendido",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/escroto",
+      "term": "escroto",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculacion",
+      "term": "eyaculacion",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculaciones",
+      "term": "eyaculaciones",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculada",
+      "term": "eyaculada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculado",
+      "term": "eyaculado",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculados",
+      "term": "eyaculados",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyaculando",
+      "term": "eyaculando",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/eyakulate",
+      "term": "eyakulate",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/faggit",
+      "term": "faggit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/faggs",
+      "term": "faggs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fanny",
+      "term": "fanny",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fannyflaps",
+      "term": "fannyflaps",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fannyfucker",
+      "term": "fannyfucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fanyy",
+      "term": "fanyy",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fcuk",
+      "term": "fcuk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fcuker",
+      "term": "fcuker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fcuting",
+      "term": "fcuting",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/feck",
+      "term": "feck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fecker",
+      "term": "fecker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/felching",
+      "term": "felching",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfuck",
+      "term": "fistfuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfucker",
+      "term": "fistfucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfuckers",
+      "term": "fistfuckers",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfucking",
+      "term": "fistfucking",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfuckings",
+      "term": "fistfuckings",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fistfucks",
+      "term": "fistfucks",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/follada",
+      "term": "follada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fook",
+      "term": "fook",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fooker",
+      "term": "fooker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fuck",
+      "term": "fuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fucker",
+      "term": "fucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fudgepacker",
+      "term": "fudgepacker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fuk",
+      "term": "fuk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fuker",
+      "term": "fuker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fukker",
+      "term": "fukker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fukkin",
+      "term": "fukkin",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fukwhit",
+      "term": "fukwhit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fukwit",
+      "term": "fukwit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fusibles",
+      "term": "fusibles",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fux",
+      "term": "fux",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/fuxor",
+      "term": "fuxor",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gallos",
+      "term": "gallos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gangbang",
+      "term": "gangbang",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gangbanged",
+      "term": "gangbanged",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gangbangs",
+      "term": "gangbangs",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gaylord",
+      "term": "gaylord",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/gaysex",
+      "term": "gaysex",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/grasa",
+      "term": "grasa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hardcoresex",
+      "term": "hardcoresex",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/headass",
+      "term": "headass",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hijodeputa",
+      "term": "hijodeputa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hijosdeputa",
+      "term": "hijosdeputa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hoar",
+      "term": "hoar",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hoare",
+      "term": "hoare",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hoer",
+      "term": "hoer",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hoes",
+      "term": "hoes",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/homo",
+      "term": "homo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hore",
+      "term": "hore",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hotsex",
+      "term": "hotsex",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/hueso",
+      "term": "hueso",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/idiota",
+      "term": "idiota",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/idiotas",
+      "term": "idiotas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/imbecil",
+      "term": "imbecil",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jackoff",
+      "term": "jackoff",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jap",
+      "term": "jap",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jism",
+      "term": "jism",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jiz",
+      "term": "jiz",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jizm",
+      "term": "jizm",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/jizz",
+      "term": "jizz",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kawk",
+      "term": "kawk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kno",
+      "term": "kno",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/knobed",
+      "term": "knobed",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/knobend",
+      "term": "knobend",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/knobhead",
+      "term": "knobhead",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/knobjocky",
+      "term": "knobjocky",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/knobjokey",
+      "term": "knobjokey",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kock",
+      "term": "kock",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kondum",
+      "term": "kondum",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kondums",
+      "term": "kondums",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kum",
+      "term": "kum",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kummer",
+      "term": "kummer",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kumming",
+      "term": "kumming",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kums",
+      "term": "kums",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/kunilingus",
+      "term": "kunilingus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/labia",
+      "term": "labia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/leitch",
+      "term": "leitch",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/losciberdelincuentes",
+      "term": "losciberdelincuentes",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/lujuria",
+      "term": "lujuria",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/madremierda",
+      "term": "madremierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/maldicion",
+      "term": "maldicion",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/malditasea",
+      "term": "malditasea",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/maldito",
+      "term": "maldito",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mamada",
+      "term": "mamada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mamadas",
+      "term": "mamadas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/maricas",
+      "term": "maricas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/maricon",
+      "term": "maricon",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mascaliente",
+      "term": "mascaliente",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masoquista",
+      "term": "masoquista",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masterb8",
+      "term": "masterb8",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masterbat",
+      "term": "masterbat",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masterbate",
+      "term": "masterbate",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masterbation",
+      "term": "masterbation",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masterbations",
+      "term": "masterbations",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/masturbacion",
+      "term": "masturbacion",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/meadas",
+      "term": "meadas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/meando",
+      "term": "meando",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/meandos",
+      "term": "meandos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mierda",
+      "term": "mierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mierdamierdamierdamadremierdamierdamierda",
+      "term": "mierdamierdamierdamadremierdamierdamierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mierdas",
+      "term": "mierdas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mofo",
+      "term": "mofo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafuck",
+      "term": "mothafuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafucka",
+      "term": "mothafucka",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafuckas",
+      "term": "mothafuckas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafuckaz",
+      "term": "mothafuckaz",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafucker",
+      "term": "mothafucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafuckin",
+      "term": "mothafuckin",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafucking",
+      "term": "mothafucking",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mothafucks",
+      "term": "mothafucks",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/muff",
+      "term": "muff",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/muthafecker",
+      "term": "muthafecker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/muthafuckker",
+      "term": "muthafuckker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/mutherfucker",
+      "term": "mutherfucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nazi",
+      "term": "nazi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/negro",
+      "term": "negro",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/negros",
+      "term": "negros",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nigga",
+      "term": "nigga",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/niggah",
+      "term": "niggah",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/niggas",
+      "term": "niggas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/niggaz",
+      "term": "niggaz",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nigger",
+      "term": "nigger",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nob",
+      "term": "nob",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nobhead",
+      "term": "nobhead",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nobjocky",
+      "term": "nobjocky",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nobjokey",
+      "term": "nobjokey",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/nueces",
+      "term": "nueces",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orgasim",
+      "term": "orgasim",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orgasims",
+      "term": "orgasims",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orgasmo",
+      "term": "orgasmo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orgasmos",
+      "term": "orgasmos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orina",
+      "term": "orina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/orinar",
+      "term": "orinar",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pecker",
+      "term": "pecker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pene",
+      "term": "pene",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/penesnegrosgrandes",
+      "term": "penesnegrosgrandes",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/peon",
+      "term": "peon",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/perra",
+      "term": "perra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/perras",
+      "term": "perras",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/perro",
+      "term": "perro",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/perromierda",
+      "term": "perromierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phuk",
+      "term": "phuk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phuked",
+      "term": "phuked",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phuking",
+      "term": "phuking",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phukked",
+      "term": "phukked",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phukking",
+      "term": "phukking",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phuks",
+      "term": "phuks",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/phuq",
+      "term": "phuq",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pispa",
+      "term": "pispa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/polla",
+      "term": "polla",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pollagrande",
+      "term": "pollagrande",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pollas",
+      "term": "pollas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pollasucked",
+      "term": "pollasucked",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pollasucker",
+      "term": "pollasucker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/poop",
+      "term": "poop",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/porn",
+      "term": "porn",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/porno",
+      "term": "porno",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pornografia",
+      "term": "pornografia",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pornos",
+      "term": "pornos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pron",
+      "term": "pron",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pube",
+      "term": "pube",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pusse",
+      "term": "pusse",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pussi",
+      "term": "pussi",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/pussies",
+      "term": "pussies",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/puta",
+      "term": "puta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/putamierda",
+      "term": "putamierda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/putas",
+      "term": "putas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/recto",
+      "term": "recto",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/retardado",
+      "term": "retardado",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/rimjaw",
+      "term": "rimjaw",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/rimming",
+      "term": "rimming",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/sadista",
+      "term": "sadista",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/schlong",
+      "term": "schlong",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/scroat",
+      "term": "scroat",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/scrote",
+      "term": "scrote",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/semen",
+      "term": "semen",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/senos",
+      "term": "senos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/sexo",
+      "term": "sexo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/shag",
+      "term": "shag",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/shagger",
+      "term": "shagger",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/shaggin",
+      "term": "shaggin",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/shit",
+      "term": "shit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/skank",
+      "term": "skank",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/smegma",
+      "term": "smegma",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/smut",
+      "term": "smut",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/snatch",
+      "term": "snatch",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/sob",
+      "term": "sob",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/spac",
+      "term": "spac",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/sunk",
+      "term": "sunk",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/teets",
+      "term": "teets",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/teez",
+      "term": "teez",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/telefonosex",
+      "term": "telefonosex",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/temblando",
+      "term": "temblando",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/testiculo",
+      "term": "testiculo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tetas",
+      "term": "tetas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tit",
+      "term": "tit",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/titfuck",
+      "term": "titfuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tities",
+      "term": "tities",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tittie",
+      "term": "tittie",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/titties",
+      "term": "titties",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tittyfuck",
+      "term": "tittyfuck",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tittywank",
+      "term": "tittywank",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/titular",
+      "term": "titular",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/titwank",
+      "term": "titwank",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tornillo",
+      "term": "tornillo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/tosser",
+      "term": "tosser",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/transexual",
+      "term": "transexual",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/turd",
+      "term": "turd",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/twat",
+      "term": "twat",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/twathead",
+      "term": "twathead",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/twatty",
+      "term": "twatty",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/twunt",
+      "term": "twunt",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/twunter",
+      "term": "twunter",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/vagina",
+      "term": "vagina",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/vaginas",
+      "term": "vaginas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/viagra",
+      "term": "viagra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/vigra",
+      "term": "vigra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/vulva",
+      "term": "vulva",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/wang",
+      "term": "wang",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/wank",
+      "term": "wank",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/wanker",
+      "term": "wanker",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/wanky",
+      "term": "wanky",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/whoar",
+      "term": "whoar",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/willies",
+      "term": "willies",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/willy",
+      "term": "willy",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "imported-2toad-profanity-es/woose",
+      "term": "woose",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "@2toad/profanity",
+        "language": "es",
+        "severity": "mixed",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library"
+        ],
+        "license": "MIT"
+      }
+    }
+  ]
+}

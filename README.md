@@ -6,12 +6,11 @@ Deterministic identifier policy and deception detection engine.
 
 - normalization pipeline
 - rule schema validation
-- custom JSON source loading
+- third-party JSON source loading
 - fixture based tests
 - explicit allow overrides
 - `check` and `explain` CLI commands
 - explainable result model
-- reserved / impersonation / profanity / product categories
 - composite risk detection
 - script risk detection
 - importable external wordlists
@@ -20,9 +19,11 @@ Deterministic identifier policy and deception detection engine.
 
 ```bash
 npm test
-npm run import:ldnoobw -- --languages en,de
-node bin/nomsentry.js check tenantSlug adm1n-support
-node bin/nomsentry.js explain tenantSlug support --namespace internal
+npm run import:ldnoobw
+npm run import:2toad
+npm run import:obscenity
+node bin/nomsentry.js check tenantName sh!t
+node bin/nomsentry.js explain tenantName mierda
 ```
 
 ## Fixture tests
@@ -35,20 +36,26 @@ test/fixtures/reject.json
 test/fixtures/review.json
 ```
 
-## Custom sources
+## Source model
 
-Place JSON files in `custom/sources/`. The CLI and tests load all `*.json` files from that directory.
+The project ships only imported third-party source files in `custom/sources/`. The CLI loads all `*.json` files from that directory.
+
+Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
 
 ## External seed lists
 
-Imported snapshots should stay versioned in-repo as JSON sources. Full LDNOOBW snapshots live in:
+Imported snapshots stay versioned in-repo as JSON sources. Current third-party imports include:
 
 ```text
 custom/sources/ldnoobw-<language>.json
+custom/sources/2toad-profanity-<language>.json
+custom/sources/obscenity-en.json
 ```
 
-To import the complete available LDNOOBW language set:
+Refresh imports with:
 
 ```bash
 npm run import:ldnoobw
+npm run import:2toad
+npm run import:obscenity
 ```

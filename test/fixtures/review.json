@@ -1,3 +1,4 @@
 [
+  { "value": "seven-labs", "kind": "tenantSlug", "expected": "review" },
   { "value": "раypal", "kind": "tenantName", "expected": "review" }
 ]
