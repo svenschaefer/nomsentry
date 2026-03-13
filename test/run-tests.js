@@ -9,6 +9,8 @@ import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
 import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
+import { buildCussSource, getCussLanguages } from "../src/importers/cuss.js";
+import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
@@ -126,6 +128,18 @@ assert.equal(
 );
 
 assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/cuss-en.json", import.meta.url)).metadata.source,
+  "cuss",
+  "cuss source metadata should load from JSON"
+);
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/dsojevic-profanity-en.json", import.meta.url)).metadata.source,
+  "dsojevic/profanity-list",
+  "dsojevic source metadata should load from JSON"
+);
+
+assert.equal(
   loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).some(
     (source) => source.id === "imported-rfc2142-role-mailboxes"
   ),
@@ -173,6 +187,12 @@ assert.deepEqual(
   get2ToadLanguages(),
   ["ar", "de", "en", "es", "fr", "hi", "it", "ja", "ko", "pt", "ru", "zh"],
   "2Toad language inventory should be discoverable from the installed package"
+);
+
+assert.deepEqual(
+  getCussLanguages(),
+  ["ar-latn", "en", "es", "fr", "it", "pt", "pt-pt"],
+  "cuss language inventory should be discoverable from the installed package"
 );
 
 {
@@ -352,6 +372,31 @@ for (const testCase of [
 }
 
 {
+  const source = buildCussSource({ language: "en" });
+  assert.equal(source.metadata.source, "cuss", "cuss importer should stamp source metadata");
+  assert.equal(source.rules.some((rule) => rule.term === "abbo"), true, "cuss importer should expose rated words");
+  assert.equal(source.rules.some((rule) => rule.term === "adult"), false, "cuss importer should skip zero-rated entries");
+}
+
+{
+  const source = buildDsojevicSource({
+    language: "en",
+    entries: [
+      { id: "simple", match: "dumb|d*mb", tags: ["general"], severity: 2 },
+      { id: "shock", match: "2 girls 1 cup|2g1c", tags: ["shock"], severity: 4, exceptions: ["x*"] }
+    ]
+  });
+  assert.equal(source.metadata.source, "dsojevic/profanity-list", "dsojevic importer should stamp source metadata");
+  assert.equal(source.rules.some((rule) => rule.term === "dumb"), true, "dsojevic importer should keep literal matches");
+  assert.equal(source.rules.some((rule) => rule.term === "dmb"), false, "dsojevic importer should skip wildcard patterns");
+  assert.equal(
+    source.rules.some((rule) => rule.id.includes("/shock/")),
+    true,
+    "dsojevic importer should keep literal multi-word matches"
+  );
+}
+
+{
   const variants = [
     ["admin", "adm1n", "tenantSlug", "reject"],
     ["admin", "ad-min", "tenantSlug", "reject"],
@@ -366,7 +411,8 @@ for (const testCase of [
     ["merde", "mérde", "tenantName", "reject"],
     ["shit", "sh!t", "tenantName", "reject"],
     ["shit", "sh/i/t", "tenantName", "reject"],
-    ["nigga", "n!gga", "tenantName", "reject"]
+    ["nigga", "n!gga", "tenantName", "reject"],
+    ["abbo", "abbo", "tenantName", "reject"]
   ];
 
   for (const [canonical, candidate, kind, expected] of variants) {

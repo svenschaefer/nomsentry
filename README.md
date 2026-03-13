@@ -22,6 +22,8 @@ npm test
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
+npm run import:cuss
+npm run import:dsojevic
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
@@ -51,6 +53,8 @@ Imported snapshots stay versioned in-repo as JSON sources. Current third-party i
 custom/sources/ldnoobw-<language>.json
 custom/sources/2toad-profanity-<language>.json
 custom/sources/obscenity-en.json
+custom/sources/cuss-<language>.json
+custom/sources/dsojevic-profanity-<language>.json
 custom/sources/uspto-trademarks.json
 ```
 
@@ -60,6 +64,8 @@ Refresh imports with:
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
+npm run import:cuss
+npm run import:dsojevic
 npm run import:uspto -- --input-file path\to\case_file.csv
 ```
 

@@ -12,6 +12,8 @@
 - `src/importers/ldnoobw.js` - external wordlist normalization into source JSON
 - `src/importers/toad-profanity.js` - @2toad/profanity normalization into source JSON
 - `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
+- `src/importers/cuss.js` - cuss normalization into source JSON
+- `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source JSON
 - `src/importers/uspto.js` - USPTO bulk trademark case files into protectedBrand source JSON
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/policies/*` - policy mapping

@@ -1,0 +1,1118 @@
+{
+  "id": "imported-cuss-pt-pt",
+  "description": "Imported cuss profanity snapshot (pt-pt)",
+  "metadata": {
+    "source": "cuss",
+    "language": "pt-pt",
+    "severity": "mixed",
+    "tags": [
+      "external-import",
+      "profanity",
+      "library",
+      "rating-based"
+    ],
+    "license": "MIT"
+  },
+  "rules": [
+    {
+      "id": "imported-cuss-pt-pt/anus",
+      "term": "anus",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/badalhoca",
+      "term": "badalhoca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/badalhoco",
+      "term": "badalhoco",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/besta",
+      "term": "besta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/bicha",
+      "term": "bicha",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/bosseta",
+      "term": "bosseta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/bosta",
+      "term": "bosta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/breque",
+      "term": "breque",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/broche",
+      "term": "broche",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/cabrao",
+      "term": "cabrao",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/canalhas",
+      "term": "canalhas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/caralhinho",
+      "term": "caralhinho",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/caralho",
+      "term": "caralho",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/cona",
+      "term": "cona",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/conas",
+      "term": "conas",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/corno",
+      "term": "corno",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/cu",
+      "term": "cu",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/dar-uma-queca",
+      "term": "dar uma queca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/fazer-um-bico",
+      "term": "fazer um bico",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/filha-da-puta",
+      "term": "filha da puta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/foda",
+      "term": "foda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/foda-se",
+      "term": "foda se",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/foder",
+      "term": "foder",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/fufa",
+      "term": "fufa",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/grelos",
+      "term": "grelos",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/mamada",
+      "term": "mamada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/merda",
+      "term": "merda",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/olho-do-cu",
+      "term": "olho do cu",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/orgasmo",
+      "term": "orgasmo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pachacha",
+      "term": "pachacha",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pancada",
+      "term": "pancada",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/paneleiro",
+      "term": "paneleiro",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/peido",
+      "term": "peido",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pentelho",
+      "term": "pentelho",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pila",
+      "term": "pila",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pilinha",
+      "term": "pilinha",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/pita-que-te-pariu",
+      "term": "pita que te pariu",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/po-caralho",
+      "term": "po caralho",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/porra",
+      "term": "porra",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/punheta",
+      "term": "punheta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/puta",
+      "term": "puta",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "high",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:2"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/queca",
+      "term": "queca",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/rabo",
+      "term": "rabo",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    },
+    {
+      "id": "imported-cuss-pt-pt/veado",
+      "term": "veado",
+      "category": "profanity",
+      "scopes": [
+        "username",
+        "tenantSlug",
+        "tenantName"
+      ],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "cuss",
+        "language": "pt-pt",
+        "severity": "medium",
+        "tags": [
+          "external-import",
+          "profanity",
+          "library",
+          "rating-based"
+        ],
+        "license": "MIT",
+        "notes": "rating:1"
+      }
+    }
+  ]
+}
