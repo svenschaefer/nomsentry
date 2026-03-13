@@ -1,0 +1,5 @@
+serial_number,registration_number,mark_identification,standard_character_claim_indicator,live_dead_indicator,mark_drawing_code_description,status_category
+98765432,7654321,OpenAI,Y,LIVE,4 - STANDARD CHARACTER MARK,Live
+87654321,6543210,Contoso,Y,DEAD,4 - STANDARD CHARACTER MARK,Dead
+76543210,5432109,Fabrikam,N,LIVE,3 - AN ILLUSTRATION DRAWING WHICH INCLUDES WORD(S)/ LETTER(S)/NUMBER(S),Live
+65432109,4321098,Azure,Y,LIVE,4 - STANDARD CHARACTER MARK,Registered

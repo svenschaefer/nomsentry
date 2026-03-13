@@ -22,6 +22,7 @@ npm test
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
+npm run import:uspto -- --input-file path\\to\\case_file.csv
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
 ```
@@ -50,6 +51,7 @@ Imported snapshots stay versioned in-repo as JSON sources. Current third-party i
 custom/sources/ldnoobw-<language>.json
 custom/sources/2toad-profanity-<language>.json
 custom/sources/obscenity-en.json
+custom/sources/uspto-trademarks.json
 ```
 
 Refresh imports with:
@@ -58,4 +60,7 @@ Refresh imports with:
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
+npm run import:uspto -- --input-file path\to\case_file.csv
 ```
+
+`protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.

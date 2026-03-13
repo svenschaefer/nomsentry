@@ -11,7 +11,8 @@
     "test": "node test/run-tests.js",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
-    "import:obscenity": "node scripts/import-obscenity.js"
+    "import:obscenity": "node scripts/import-obscenity.js",
+    "import:uspto": "node scripts/import-uspto-trademarks.js"
   },
   "license": "MIT",
   "dependencies": {

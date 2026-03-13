@@ -9,6 +9,7 @@ import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
 import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
+import { buildUsptoTrademarkSource, parseUsptoCaseFileCsv } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
 
 const syntheticPolicySource = {
@@ -119,6 +120,19 @@ assert.equal(
   "obscenity",
   "obscenity source metadata should load from JSON"
 );
+
+{
+  const records = parseUsptoCaseFileCsv(
+    fs.readFileSync(new URL("./fixtures/uspto-case-file-sample.csv", import.meta.url), "utf8")
+  );
+  const source = buildUsptoTrademarkSource(records);
+  assert.equal(source.metadata.source, "USPTO", "uspto importer should stamp source metadata");
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term).sort(),
+    ["azure", "openai"],
+    "uspto importer should keep only live standard-character trademarks"
+  );
+}
 
 assert.deepEqual(
   get2ToadLanguages(),
