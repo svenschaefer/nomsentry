@@ -18,6 +18,15 @@ function validateRule(rule, pointer) {
   assertString(rule.match, `${pointer}.match`);
 }
 
+function validateCompositeRule(rule, pointer) {
+  assertString(rule.id, `${pointer}.id`);
+  assertString(rule.term, `${pointer}.term`);
+  assertString(rule.category, `${pointer}.category`);
+  assertArray(rule.scopes, `${pointer}.scopes`);
+  assertArray(rule.allOf, `${pointer}.allOf`);
+  rule.allOf.forEach((term, index) => assertString(term, `${pointer}.allOf[${index}]`));
+}
+
 export function validateSource(source) {
   assertString(source.id, "source.id");
   if (source.rules !== undefined) {
@@ -26,6 +35,9 @@ export function validateSource(source) {
   }
   if (source.compositeRules !== undefined) {
     assertArray(source.compositeRules, "source.compositeRules");
+    source.compositeRules.forEach((rule, index) =>
+      validateCompositeRule(rule, `source.compositeRules[${index}]`)
+    );
   }
   return source;
 }

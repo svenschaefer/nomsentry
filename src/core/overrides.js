@@ -1,4 +1,24 @@
-export function applyAllowOverrides({ normalized, kind, provisional, reasons, overrides = [], context = {} }) {
+function deriveDecision({ reasons, policy, fallback }) {
+  let outcome = "allow";
+
+  for (const reason of reasons) {
+    const action = policy?.decisionMatrix?.[reason.category] || "review";
+    if (action === "reject") outcome = "reject";
+    else if (action === "review" && outcome !== "reject") outcome = "review";
+  }
+
+  return reasons.length === 0 ? "allow" : (outcome || fallback);
+}
+
+export function applyAllowOverrides({
+  normalized,
+  kind,
+  provisional,
+  reasons,
+  overrides = [],
+  context = {},
+  policy
+}) {
   for (const rule of overrides) {
     if (!(rule.scopes || []).includes(kind)) continue;
     if (rule.match === "exact" && normalized.slug !== rule.term) continue;
@@ -11,7 +31,7 @@ export function applyAllowOverrides({ normalized, kind, provisional, reasons, ov
       if (remaining.length === reasons.length) continue;
       return {
         overridden: true,
-        decision: remaining.length === 0 ? "allow" : provisional,
+        decision: deriveDecision({ reasons: remaining, policy, fallback: provisional }),
         reasons: remaining,
         override: {
           ruleId: rule.id,

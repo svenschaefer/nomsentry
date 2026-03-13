@@ -52,6 +52,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       kind,
       provisional: provisional.outcome,
       reasons: provisional.reasons,
+      policy,
       overrides: allowOverrides,
       context
     });
