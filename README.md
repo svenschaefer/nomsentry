@@ -24,6 +24,7 @@ npm run import:2toad
 npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
+npm run import:insult-wiki
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
@@ -57,6 +58,7 @@ custom/sources/2toad-profanity-<language>.json
 custom/sources/obscenity-en.json
 custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
+custom/sources/insult-wiki-<language>.json
 custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
@@ -70,12 +72,15 @@ npm run import:2toad
 npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
+npm run import:insult-wiki
 npm run import:uspto -- --input-file path\to\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
 ```
 
 `protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.
+
+`words/profanities` is intentionally not imported into the default runtime source set. Its flat list contains many generic high-noise terms, so it is not a good policy input without an additional curation layer.
 
 For USPTO, the repository now separates:
 

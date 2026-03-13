@@ -15,6 +15,7 @@
 - `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
 - `src/importers/cuss.js` - cuss normalization into source JSON
 - `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source JSON
+- `src/importers/insult-wiki.js` - insult.wiki HTML list normalization into source JSON
 - `src/importers/uspto.js` - USPTO bulk trademark case files into full and derived protectedBrand source JSON
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/policies/*` - policy mapping
@@ -33,6 +34,8 @@ External third-party lists are imported offline into versioned JSON source files
 External third-party lists are imported offline into versioned JSON source files. Those source artifacts are then compiled into `dist/runtime-sources.json`, which is the default runtime input for the CLI.
 
 For `protectedBrand`, the strategy is restricted to ingestible official trademark sources. The first implemented source is USPTO bulk data. WIPO is not part of the ingest plan.
+
+`words/profanities` is deliberately excluded from the default maintained source set because the flat list includes many generic low-signal terms that would create avoidable false positives without an additional curation layer.
 
 USPTO is handled in two layers:
 

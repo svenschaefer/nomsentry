@@ -17,7 +17,8 @@
     "compact:sources": "node scripts/compact-sources.js",
     "build:runtime-sources": "node scripts/build-runtime-sources.js",
     "import:cuss": "node scripts/import-cuss.js",
-    "import:dsojevic": "node scripts/import-dsojevic-profanity.js"
+    "import:dsojevic": "node scripts/import-dsojevic-profanity.js",
+    "import:insult-wiki": "node scripts/import-insult-wiki.js"
   },
   "license": "MIT",
   "dependencies": {

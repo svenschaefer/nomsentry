@@ -13,6 +13,11 @@ import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
 import { buildCussSource, getCussLanguages } from "../src/importers/cuss.js";
 import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import {
+  buildInsultWikiSource,
+  extractInsultWikiTerms,
+  getInsultWikiLanguages
+} from "../src/importers/insult-wiki.js";
+import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
   deriveUsptoBrandRiskSource,
@@ -143,6 +148,18 @@ assert.equal(
   loadSourceFromFile(new URL("../custom/sources/dsojevic-profanity-en.json", import.meta.url)).metadata.source,
   "dsojevic/profanity-list",
   "dsojevic source metadata should load from JSON"
+);
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/insult-wiki-en.json", import.meta.url)).metadata.source,
+  "insult.wiki",
+  "insult.wiki english source metadata should load from JSON"
+);
+
+assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/insult-wiki-de.json", import.meta.url)).metadata.source,
+  "insult.wiki",
+  "insult.wiki german source metadata should load from JSON"
 );
 
 assert.equal(
@@ -310,6 +327,12 @@ assert.deepEqual(
   getCussLanguages(),
   ["ar-latn", "en", "es", "fr", "it", "pt", "pt-pt"],
   "cuss language inventory should be discoverable from the installed package"
+);
+
+assert.deepEqual(
+  getInsultWikiLanguages(),
+  ["de", "en"],
+  "insult.wiki language inventory should be explicit and stable"
 );
 
 {
@@ -598,6 +621,29 @@ for (const testCase of [
     true,
     "dsojevic importer should keep literal multi-word matches"
   );
+}
+
+{
+  const terms = extractInsultWikiTerms(`
+    <html><body><ol>
+      <li><a href="/insult/ahole">a-hole</a></li>
+      <li><a href="/insult/depp">Depp</a></li>
+      <li><a href="/insult/abscheisser">Abschei&szlig;er</a></li>
+    </ol></body></html>
+  `);
+  assert.deepEqual(
+    terms,
+    ["a-hole", "Depp", "Abscheißer"],
+    "insult.wiki parser should extract and decode list entries"
+  );
+
+  const source = buildInsultWikiSource({
+    language: "de",
+    terms
+  });
+  assert.equal(source.metadata.source, "insult.wiki", "insult.wiki importer should stamp source metadata");
+  assert.equal(source.rules.some((rule) => rule.term === "depp"), true, "insult.wiki importer should normalize german insults");
+  assert.equal(source.rules.some((rule) => rule.term === "abscheisser"), true, "insult.wiki importer should latinize german sharp s");
 }
 
 {
