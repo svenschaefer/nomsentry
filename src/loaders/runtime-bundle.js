@@ -5,24 +5,35 @@ function readJson(path) {
 }
 
 export function expandRuntimeBundle(bundle) {
+  const idPrefixTable = bundle.idPrefixTable ?? [];
   const scopeTable = bundle.scopeTable ?? [];
   const matchTable = bundle.matchTable ?? [];
+  const categoryTable = bundle.categoryTable ?? [];
+  const severityTable = bundle.severityTable ?? [];
   const normalizationFieldTable = bundle.normalizationFieldTable ?? [];
+  const profileTable = bundle.profileTable ?? [];
 
   const rules = (bundle.rules ?? []).map((entry, index) => {
-    if (!Array.isArray(entry) || entry.length < 6 || entry.length > 7) {
-      throw new Error(`runtime bundle rule[${index}] must be a tuple of length 6 or 7`);
+    if (!Array.isArray(entry) || entry.length < 3 || entry.length > 4) {
+      throw new Error(`runtime bundle rule[${index}] must be a tuple of length 3 or 4`);
     }
 
-    const [id, term, category, matchIndex, scopeIndex, normalizationFieldIndex, severity] = entry;
+    const [prefixIndex, suffix, profileIndex, explicitTerm] = entry;
+    const profile = profileTable[profileIndex];
+    if (!Array.isArray(profile) || profile.length < 4 || profile.length > 5) {
+      throw new Error(`runtime bundle profile[${profileIndex}] must be a tuple of length 4 or 5`);
+    }
+
+    const [categoryIndex, matchIndex, scopeIndex, normalizationFieldIndex, severityIndex] = profile;
+    const term = explicitTerm ?? suffix;
     return {
-      id,
+      id: `${idPrefixTable[prefixIndex] ?? ""}${suffix}`,
       term,
-      category,
+      category: categoryTable[categoryIndex],
       match: matchTable[matchIndex],
       scopes: scopeTable[scopeIndex],
       normalizationField: normalizationFieldTable[normalizationFieldIndex],
-      ...(severity ? { severity } : {})
+      ...(severityIndex !== undefined ? { severity: severityTable[severityIndex] } : {})
     };
   });
 

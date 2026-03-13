@@ -35,24 +35,36 @@ function intern(values, value) {
 }
 
 function buildRuntimeBundle(sources) {
+  const idPrefixTable = { items: [], indexByKey: new Map() };
   const scopeTable = { items: [], indexByKey: new Map() };
   const matchTable = { items: [], indexByKey: new Map() };
+  const categoryTable = { items: [], indexByKey: new Map() };
+  const severityTable = { items: [], indexByKey: new Map() };
   const normalizationFieldTable = { items: [], indexByKey: new Map() };
+  const profileTable = { items: [], indexByKey: new Map() };
 
   const rules = [];
   const compositeRules = [];
 
   for (const source of sources) {
     for (const rule of source.rules ?? []) {
-      rules.push([
-        rule.id,
-        rule.term,
-        rule.category,
+      const lastSlash = String(rule.id).lastIndexOf("/");
+      const prefix = lastSlash >= 0 ? String(rule.id).slice(0, lastSlash + 1) : "";
+      const suffix = lastSlash >= 0 ? String(rule.id).slice(lastSlash + 1) : String(rule.id);
+      const profile = [
+        intern(categoryTable, rule.category),
         intern(matchTable, rule.match),
         intern(scopeTable, rule.scopes),
         intern(normalizationFieldTable, rule.normalizationField ?? "separatorFolded"),
-        ...(rule.severity ? [rule.severity] : [])
-      ]);
+        ...(rule.severity ? [intern(severityTable, rule.severity)] : [])
+      ];
+      const entry = [
+        intern(idPrefixTable, prefix),
+        suffix,
+        intern(profileTable, profile),
+        ...(suffix === rule.term ? [] : [rule.term])
+      ];
+      rules.push(entry);
     }
 
     for (const rule of source.compositeRules ?? []) {
@@ -69,9 +81,13 @@ function buildRuntimeBundle(sources) {
   return {
     id: "runtime-sources",
     version: 1,
+    idPrefixTable: idPrefixTable.items,
     scopeTable: scopeTable.items,
     matchTable: matchTable.items,
+    categoryTable: categoryTable.items,
+    severityTable: severityTable.items,
     normalizationFieldTable: normalizationFieldTable.items,
+    profileTable: profileTable.items,
     rules,
     compositeRules
   };
