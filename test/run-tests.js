@@ -100,4 +100,56 @@ assert.throws(
   "composite rules should be fully schema-validated"
 );
 
+for (const testCase of [
+  { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },
+  { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
+  { value: "s3curity", kind: "tenantSlug", expected: "reject", label: "leet security" },
+  { value: "0penai", kind: "tenantSlug", expected: "reject", label: "leet brand" },
+  { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
+  { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
+  { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
+  { value: "s_e_c_u_r_i_t_y-support", kind: "tenantSlug", expected: "reject", label: "separator obfuscated security support" },
+  { value: "ѕupport", kind: "tenantSlug", expected: "reject", label: "cyrillic support homoglyph" },
+  { value: "оpenai", kind: "tenantSlug", expected: "reject", label: "cyrillic brand homoglyph" },
+  { value: "αdmin", kind: "tenantSlug", expected: "review", label: "greek mixed script admin" },
+  { value: "раypal", kind: "tenantName", expected: "review", label: "mixed script tenant name" },
+  { value: "Ａdmin", kind: "tenantSlug", expected: "reject", label: "nfkc fullwidth admin" },
+  { value: "normal-company", kind: "tenantSlug", expected: "allow", label: "normal slug" },
+  { value: "cybersecurity-support", kind: "tenantSlug", expected: "reject", label: "no composite false positive regression" },
+  { value: "securite", kind: "tenantName", expected: "allow", label: "foreign language lookalike should not match" }
+]) {
+  const result = engine.evaluate({
+    value: testCase.value,
+    kind: testCase.kind
+  });
+
+  assert.equal(result.decision, testCase.expected, testCase.label);
+}
+
+{
+  const result = engine.evaluate({
+    value: "αdmin",
+    kind: "tenantSlug"
+  });
+
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "scriptRisk"),
+    true,
+    "greek mixed-script input should surface scriptRisk"
+  );
+}
+
+{
+  const result = engine.evaluate({
+    value: "cybersecurity-support",
+    kind: "tenantSlug"
+  });
+
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "compositeRisk"),
+    false,
+    "substring-only security should not trigger compositeRisk"
+  );
+}
+
 console.log("All fixture tests passed");

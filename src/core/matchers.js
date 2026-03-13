@@ -3,6 +3,19 @@ function tokenize(v) {
   return v.split(/[\s-]+/).filter(Boolean);
 }
 
+function hasTokenSequenceMatch(tokens, term) {
+  for (let start = 0; start < tokens.length; start += 1) {
+    let combined = "";
+    for (let end = start; end < tokens.length; end += 1) {
+      combined += tokens[end];
+      if (combined === term) return true;
+      if (combined.length >= term.length) break;
+    }
+  }
+
+  return false;
+}
+
 function projection(normalized, field) {
   return normalized[field] || "";
 }
@@ -25,7 +38,7 @@ export function matchRules({ normalized, kind, rules }) {
       matched = target === term;
       matchType = matched ? "exact" : null;
     } else if (rule.match === "token") {
-      matched = tokenize(target).includes(term);
+      matched = hasTokenSequenceMatch(tokenize(target), term);
       matchType = matched ? "token" : null;
     } else if (rule.match === "contains") {
       matched = target.includes(term);
