@@ -370,6 +370,7 @@ assert.throws(
         category: "profanity",
         scopes: ["username"],
         match: "token",
+        severity: "low",
         normalizationField: "confusableSkeleton",
         metadata: { source: "test", notes: "n1" }
       },
@@ -379,6 +380,7 @@ assert.throws(
         category: "profanity",
         scopes: ["username"],
         match: "token",
+        severity: "high",
         normalizationField: "confusableSkeleton",
         metadata: { source: "test", notes: "n2" }
       }
@@ -392,6 +394,55 @@ assert.throws(
       { id: "compact-test/b", term: "beta", notes: "n2" }
     ],
     "compact sources should expand and validate to the canonical rule model"
+  );
+}
+
+{
+  const severityEngine = createEngine({
+    sources: [{
+      id: "severity-test-source",
+      rules: [
+        {
+          id: "severity-test-source/heck",
+          term: "heck",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "low",
+          normalizationField: "confusableSkeleton"
+        },
+        {
+          id: "severity-test-source/slurx",
+          term: "slurx",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "high",
+          normalizationField: "confusableSkeleton"
+        }
+      ]
+    }],
+    policies: [{
+      id: "severity-test-policy",
+      appliesTo: ["tenantName"],
+      decisionMatrix: {
+        profanity: {
+          low: "review",
+          high: "reject",
+          default: "review"
+        }
+      }
+    }]
+  });
+  assert.equal(
+    severityEngine.evaluate({ value: "heck", kind: "tenantName" }).decision,
+    "review",
+    "severity-aware policies should allow category-level review for low severity"
+  );
+  assert.equal(
+    severityEngine.evaluate({ value: "slurx", kind: "tenantName" }).decision,
+    "reject",
+    "severity-aware policies should escalate high-severity rules"
   );
 }
 

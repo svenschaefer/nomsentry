@@ -53,11 +53,11 @@ export function buildCussSource({
       category,
       scopes,
       match: "token",
+      severity: ratingToSeverity(rating),
       normalizationField: "confusableSkeleton",
       metadata: {
         source: "cuss",
         language,
-        severity: ratingToSeverity(rating),
         tags: ["external-import", "profanity", "library", "rating-based"],
         license: "MIT",
         notes: `rating:${rating}`

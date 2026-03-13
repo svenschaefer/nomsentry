@@ -99,6 +99,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
         ruleId: m.rule.id,
         category: m.rule.category,
         term: m.rule.term,
+        severity: m.rule.severity,
         matchType: m.matchType,
         comparedField: m.comparedField
       })),

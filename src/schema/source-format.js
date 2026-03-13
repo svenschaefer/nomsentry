@@ -25,7 +25,7 @@ function getRuleDefaults(source) {
   if (rules.length === 0) return undefined;
 
   const defaults = {};
-  for (const key of ["category", "scopes", "match", "normalizationField"]) {
+  for (const key of ["category", "scopes", "match", "severity", "normalizationField"]) {
     const common = getCommonValue(rules.map((rule) => rule[key]));
     if (common !== undefined) defaults[key] = clone(common);
   }
@@ -63,7 +63,7 @@ function compactRule(rule, defaults) {
   entry.push(rawId, rule.term);
 
   const override = {};
-  for (const key of ["category", "scopes", "match", "normalizationField"]) {
+  for (const key of ["category", "scopes", "match", "severity", "normalizationField"]) {
     if (JSON.stringify(rule[key]) !== JSON.stringify(defaults?.[key])) {
       override[key] = clone(rule[key]);
     }
@@ -126,6 +126,7 @@ function expandCompactRule(rule, defaults, index) {
     category: override?.category ?? defaults?.category,
     scopes: clone(override?.scopes ?? defaults?.scopes),
     match: override?.match ?? defaults?.match,
+    severity: override?.severity ?? defaults?.severity,
     normalizationField: override?.normalizationField ?? defaults?.normalizationField,
     ...(metadata ? { metadata } : {})
   };

@@ -47,6 +47,7 @@ function validateRule(rule, pointer) {
   assertString(rule.category, `${pointer}.category`);
   assertArray(rule.scopes, `${pointer}.scopes`);
   assertString(rule.match, `${pointer}.match`);
+  assertOptionalString(rule.severity, `${pointer}.severity`);
   assertOptionalString(rule.normalizationField, `${pointer}.normalizationField`);
   if (rule.metadata !== undefined) validateMetadata(rule.metadata, `${pointer}.metadata`);
 }

@@ -38,11 +38,11 @@ export function buildDsojevicSource({
         category,
         scopes,
         match: "token",
+        severity: severityToLabel(entry.severity),
         normalizationField: "confusableSkeleton",
         metadata: {
           source: "dsojevic/profanity-list",
           language,
-          severity: severityToLabel(entry.severity),
           tags: ["external-import", "profanity", "repo", ...(entry.tags || [])],
           license: "MIT",
           notes: entry.exceptions?.length ? "exceptions omitted during import" : undefined
