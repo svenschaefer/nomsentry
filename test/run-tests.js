@@ -9,6 +9,7 @@ import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
+import { detectScriptRisk } from "../src/core/script-risk.js";
 
 const engine = createEngine({
   sources: [
@@ -117,7 +118,14 @@ for (const testCase of [
   { value: "n!gga", kind: "tenantName", expected: "reject", label: "leet slur" },
   { value: "bitch", kind: "tenantName", expected: "reject", label: "ldnoobw seed term" },
   { value: "sh!t", kind: "tenantName", expected: "reject", label: "ldnoobw seed leet term" },
+  { value: "sh/i/t", kind: "tenantName", expected: "reject", label: "slash-obfuscated profanity" },
+  { value: "scheisse", kind: "tenantName", expected: "reject", label: "german ss variant should match scheiße" },
+  { value: "schéisse", kind: "tenantName", expected: "reject", label: "accented german variant should match scheiße" },
+  { value: "mérde", kind: "tenantName", expected: "reject", label: "accented french variant should match merde" },
+  { value: "сука", kind: "tenantName", expected: "reject", label: "curated cyrillic abuse addition" },
+  { value: "cyka", kind: "tenantName", expected: "reject", label: "curated transliterated abuse addition" },
   { value: "ad\u200Bmin", kind: "tenantSlug", expected: "reject", label: "zero width admin" },
+  { value: "sup\u2060port", kind: "tenantSlug", expected: "reject", label: "word joiner support" },
   { value: "sup\u200Bport", kind: "tenantSlug", expected: "reject", label: "zero width support" },
   { value: "ad-min", kind: "tenantSlug", expected: "reject", label: "separator folded admin" },
   { value: "s_e_c_u_r_i_t_y-support", kind: "tenantSlug", expected: "reject", label: "separator obfuscated security support" },
@@ -141,6 +149,19 @@ for (const testCase of [
 }
 
 {
+  const result = engine.evaluate({
+    value: "s.h.i.t",
+    kind: "tenantName"
+  });
+
+  assert.deepEqual(
+    result.reasons.map((reason) => `${reason.category}:${reason.term}`),
+    ["profanity:shit"],
+    "equivalent terms imported from multiple sources should collapse to one reason"
+  );
+}
+
+{
   const terms = parseLdnoobwWordList("\nshit\nSHIT\n#comment\nbitch \n");
   assert.deepEqual(terms, ["bitch", "shit"], "ldnoobw parser should normalize, dedupe and skip comments");
 
@@ -161,10 +182,15 @@ for (const testCase of [
     ["admin", "ad\u200Bmin", "tenantSlug", "reject"],
     ["admin", "αdmin", "tenantSlug", "reject"],
     ["support", "supp0rt", "tenantSlug", "reject"],
+    ["support", "sup\u2060port", "tenantSlug", "reject"],
     ["support", "ѕupport", "tenantSlug", "reject"],
     ["openai", "0penai", "tenantSlug", "reject"],
     ["openai", "оpenai", "tenantSlug", "reject"],
+    ["scheiße", "scheisse", "tenantName", "reject"],
+    ["merde", "mérde", "tenantName", "reject"],
+    ["сука", "cyka", "tenantName", "reject"],
     ["shit", "sh!t", "tenantName", "reject"],
+    ["shit", "sh/i/t", "tenantName", "reject"],
     ["hitler", "H!Tler", "tenantName", "reject"],
     ["nigga", "n!gga", "tenantName", "reject"]
   ];
@@ -173,6 +199,13 @@ for (const testCase of [
     const result = engine.evaluate({ value: candidate, kind });
     assert.equal(result.decision, expected, `variant ${candidate} should normalize like ${canonical}`);
   }
+}
+
+{
+  const normalized = normalizeValue("schéisse");
+
+  assert.equal(normalized.latinFolded, "scheisse", "latin folding should remove accents");
+  assert.equal(normalized.slug, "scheisse", "slug should track the hardened latin folding");
 }
 
 {
@@ -188,6 +221,11 @@ for (const testCase of [
       `${testCase.value} should surface scriptRisk`
     );
   }
+}
+
+{
+  const result = detectScriptRisk("abcمرحبا");
+  assert.equal(result.mixed, true, "latin and arabic should trigger mixed-script risk");
 }
 
 {

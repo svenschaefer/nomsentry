@@ -4,6 +4,14 @@ function tokenize(v) {
 }
 
 function hasTokenSequenceMatch(tokens, term) {
+  const termTokens = tokenize(term);
+  if (termTokens.length > 1) {
+    const targetWindowSize = termTokens.length;
+    for (let start = 0; start <= tokens.length - targetWindowSize; start += 1) {
+      if (termTokens.every((token, index) => tokens[start + index] === token)) return true;
+    }
+  }
+
   for (let start = 0; start < tokens.length; start += 1) {
     let combined = "";
     for (let end = start; end < tokens.length; end += 1) {
@@ -29,7 +37,7 @@ export function matchRules({ normalized, kind, rules }) {
 
     const field = rule.normalizationField || "separatorFolded";
     const target = projection(normalized, field);
-    const term = String(rule.term ?? "").toLowerCase();
+    const term = String(rule.normalizedTerm ?? rule.term ?? "").toLowerCase();
 
     let matched = false;
     let matchType = null;

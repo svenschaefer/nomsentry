@@ -1,0 +1,68 @@
+{
+  "id": "curated-abuse-additions",
+  "description": "Curated high-signal abuse terms missing from imported seed lists",
+  "metadata": {
+    "source": "Curated",
+    "severity": "high",
+    "tags": ["curated", "abuse", "profanity"],
+    "notes": "Small manual supplement for high-signal gaps discovered during audit."
+  },
+  "rules": [
+    {
+      "id": "curated-abuse-additions/cyka",
+      "term": "cyka",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "Curated",
+        "language": "ru",
+        "severity": "high",
+        "tags": ["curated", "abuse", "transliteration"]
+      }
+    },
+    {
+      "id": "curated-abuse-additions/сука",
+      "term": "сука",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "Curated",
+        "language": "ru",
+        "severity": "high",
+        "tags": ["curated", "abuse", "cyrillic"]
+      }
+    },
+    {
+      "id": "curated-abuse-additions/blyat",
+      "term": "blyat",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "Curated",
+        "language": "ru",
+        "severity": "high",
+        "tags": ["curated", "abuse", "transliteration"]
+      }
+    },
+    {
+      "id": "curated-abuse-additions/блять",
+      "term": "блять",
+      "category": "profanity",
+      "scopes": ["username", "tenantSlug", "tenantName"],
+      "match": "token",
+      "normalizationField": "confusableSkeleton",
+      "metadata": {
+        "source": "Curated",
+        "language": "ru",
+        "severity": "high",
+        "tags": ["curated", "abuse", "cyrillic"]
+      }
+    }
+  ]
+}

@@ -5,9 +5,42 @@ import { detectScriptRisk } from "./script-risk.js";
 import { decide } from "./decision.js";
 import { applyAllowOverrides } from "./overrides.js";
 
+function dedupeMatches(matches) {
+  const seen = new Set();
+  const deduped = [];
+
+  for (const match of matches) {
+    const key = [
+      match.rule.category,
+      match.rule.normalizedTerm || match.rule.term,
+      match.matchType,
+      match.comparedField
+    ].join("|");
+
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push(match);
+  }
+
+  return deduped;
+}
+
 export function createEngine({ sources = [], policies = [], allowOverrides = [] } = {}) {
-  const rules = sources.flatMap((s) => s.rules || []);
-  const compositeRules = sources.flatMap((s) => s.compositeRules || []);
+  const rules = sources.flatMap((s) =>
+    (s.rules || []).map((rule) => {
+      const field = rule.normalizationField || "separatorFolded";
+      return {
+        ...rule,
+        normalizedTerm: normalizeValue(rule.term)[field] || String(rule.term ?? "").toLowerCase()
+      };
+    })
+  );
+  const compositeRules = sources.flatMap((s) =>
+    (s.compositeRules || []).map((rule) => ({
+      ...rule,
+      normalizedAllOf: (rule.allOf || []).map((term) => normalizeValue(term).latinFolded)
+    }))
+  );
 
   function resolvePolicy(kind) {
     const policy = policies.find((p) => (p.appliesTo || []).includes(kind));
@@ -46,7 +79,8 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       });
     }
 
-    const provisional = decide({ matches, policy });
+    const dedupedMatches = dedupeMatches(matches);
+    const provisional = decide({ matches: dedupedMatches, policy });
     const override = applyAllowOverrides({
       normalized,
       kind,
@@ -61,7 +95,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       input: value,
       kind,
       normalized,
-      matchedRules: matches.map((m) => ({
+      matchedRules: dedupedMatches.map((m) => ({
         ruleId: m.rule.id,
         category: m.rule.category,
         term: m.rule.term,
@@ -73,7 +107,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       overridden: override.overridden,
       override: override.override,
       reasons: override.reasons,
-      projectionsUsed: Array.from(new Set(matches.map((m) => m.comparedField).filter(Boolean)))
+      projectionsUsed: Array.from(new Set(dedupedMatches.map((m) => m.comparedField).filter(Boolean)))
     };
   }
 
