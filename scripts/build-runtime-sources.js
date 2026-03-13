@@ -35,7 +35,6 @@ function intern(values, value) {
 }
 
 function buildRuntimeBundle(sources) {
-  const idPrefixTable = { items: [], indexByKey: new Map() };
   const scopeTable = { items: [], indexByKey: new Map() };
   const matchTable = { items: [], indexByKey: new Map() };
   const categoryTable = { items: [], indexByKey: new Map() };
@@ -48,9 +47,7 @@ function buildRuntimeBundle(sources) {
 
   for (const source of sources) {
     for (const rule of source.rules ?? []) {
-      const lastSlash = String(rule.id).lastIndexOf("/");
-      const prefix = lastSlash >= 0 ? String(rule.id).slice(0, lastSlash + 1) : "";
-      const suffix = lastSlash >= 0 ? String(rule.id).slice(lastSlash + 1) : String(rule.id);
+      const suffix = String(rule.id).slice(String(rule.id).lastIndexOf("/") + 1);
       const profile = [
         intern(categoryTable, rule.category),
         intern(matchTable, rule.match),
@@ -59,7 +56,6 @@ function buildRuntimeBundle(sources) {
         ...(rule.severity ? [intern(severityTable, rule.severity)] : [])
       ];
       const entry = [
-        intern(idPrefixTable, prefix),
         suffix,
         intern(profileTable, profile),
         ...(suffix === rule.term ? [] : [rule.term])
@@ -69,7 +65,6 @@ function buildRuntimeBundle(sources) {
 
     for (const rule of source.compositeRules ?? []) {
       compositeRules.push([
-        rule.id,
         rule.term,
         rule.category,
         intern(scopeTable, rule.scopes),
@@ -81,7 +76,6 @@ function buildRuntimeBundle(sources) {
   return {
     id: "runtime-sources",
     version: 1,
-    idPrefixTable: idPrefixTable.items,
     scopeTable: scopeTable.items,
     matchTable: matchTable.items,
     categoryTable: categoryTable.items,

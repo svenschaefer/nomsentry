@@ -156,12 +156,12 @@ assert.equal(
 {
   const bundle = loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
   assert.equal(
-    bundle.rules.some((rule) => rule.id === "rfc2142/abuse"),
+    bundle.rules.some((rule) => rule.term === "abuse" && rule.category === "impersonation"),
     true,
     "runtime bundle should expose flattened rules"
   );
   assert.equal(
-    bundle.compositeRules.some((rule) => rule.id === "rfc2142/security-support"),
+    bundle.compositeRules.some((rule) => rule.term === "security+support"),
     true,
     "runtime bundle should expose flattened composite rules"
   );

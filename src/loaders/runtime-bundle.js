@@ -5,7 +5,6 @@ function readJson(path) {
 }
 
 export function expandRuntimeBundle(bundle) {
-  const idPrefixTable = bundle.idPrefixTable ?? [];
   const scopeTable = bundle.scopeTable ?? [];
   const matchTable = bundle.matchTable ?? [];
   const categoryTable = bundle.categoryTable ?? [];
@@ -14,11 +13,11 @@ export function expandRuntimeBundle(bundle) {
   const profileTable = bundle.profileTable ?? [];
 
   const rules = (bundle.rules ?? []).map((entry, index) => {
-    if (!Array.isArray(entry) || entry.length < 3 || entry.length > 4) {
-      throw new Error(`runtime bundle rule[${index}] must be a tuple of length 3 or 4`);
+    if (!Array.isArray(entry) || entry.length < 2 || entry.length > 3) {
+      throw new Error(`runtime bundle rule[${index}] must be a tuple of length 2 or 3`);
     }
 
-    const [prefixIndex, suffix, profileIndex, explicitTerm] = entry;
+    const [suffix, profileIndex, explicitTerm] = entry;
     const profile = profileTable[profileIndex];
     if (!Array.isArray(profile) || profile.length < 4 || profile.length > 5) {
       throw new Error(`runtime bundle profile[${profileIndex}] must be a tuple of length 4 or 5`);
@@ -27,7 +26,7 @@ export function expandRuntimeBundle(bundle) {
     const [categoryIndex, matchIndex, scopeIndex, normalizationFieldIndex, severityIndex] = profile;
     const term = explicitTerm ?? suffix;
     return {
-      id: `${idPrefixTable[prefixIndex] ?? ""}${suffix}`,
+      id: `r${index.toString(36)}`,
       term,
       category: categoryTable[categoryIndex],
       match: matchTable[matchIndex],
@@ -38,13 +37,13 @@ export function expandRuntimeBundle(bundle) {
   });
 
   const compositeRules = (bundle.compositeRules ?? []).map((entry, index) => {
-    if (!Array.isArray(entry) || entry.length !== 5) {
-      throw new Error(`runtime bundle compositeRules[${index}] must be a tuple of length 5`);
+    if (!Array.isArray(entry) || entry.length !== 4) {
+      throw new Error(`runtime bundle compositeRules[${index}] must be a tuple of length 4`);
     }
 
-    const [id, term, category, scopeIndex, allOf] = entry;
+    const [term, category, scopeIndex, allOf] = entry;
     return {
-      id,
+      id: `c${index.toString(36)}`,
       term,
       category,
       scopes: scopeTable[scopeIndex],
