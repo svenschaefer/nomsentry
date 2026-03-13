@@ -125,6 +125,14 @@ assert.equal(
   "obscenity source metadata should load from JSON"
 );
 
+assert.equal(
+  loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).some(
+    (source) => source.id === "imported-rfc2142-role-mailboxes"
+  ),
+  true,
+  "directory loader should include official role-mailbox source"
+);
+
 {
   const records = parseUsptoCaseFileCsv(
     fs.readFileSync(new URL("./fixtures/uspto-case-file-sample.csv", import.meta.url), "utf8")
@@ -220,6 +228,15 @@ assert.throws(
   "composite rules should be fully schema-validated"
 );
 
+assert.throws(
+  () => validateSource({
+    id: "invalid-metadata",
+    metadata: { tags: ["ok", 123] }
+  }),
+  /source\.metadata\.tags\[1\] must be a non-empty string/,
+  "metadata tag arrays should enforce strings"
+);
+
 for (const testCase of [
   { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
@@ -257,6 +274,31 @@ for (const testCase of [
 }
 
 {
+  const result = applyAllowOverrides({
+    normalized: normalizeValue("support"),
+    kind: "tenantSlug",
+    provisional: "reject",
+    reasons: [{ category: "impersonation" }],
+    policy: tenantSlug(),
+    overrides: [
+      {
+        id: "allow/internal-support",
+        term: "support",
+        scopes: ["tenantSlug"],
+        match: "exact",
+        override: {
+          action: "allow"
+        }
+      }
+    ],
+    context: {}
+  });
+
+  assert.equal(result.decision, "allow", "explicit allow override should force allow");
+  assert.equal(result.override?.action, "allow", "explicit allow override should surface its action");
+}
+
+{
   const result = engine.evaluate({
     value: "s.h.i.t",
     kind: "tenantName"
@@ -266,6 +308,20 @@ for (const testCase of [
     result.reasons.map((reason) => `${reason.category}:${reason.term}`),
     ["profanity:shit"],
     "equivalent terms imported from multiple sources should collapse to one reason"
+  );
+}
+
+{
+  const result = engine.evaluate({
+    value: "0penai",
+    kind: "tenantSlug"
+  });
+
+  assert.equal(result.provisionalDecision, "review", "brand hits should be review under current policy");
+  assert.deepEqual(
+    result.reasons.map((reason) => reason.category),
+    ["protectedBrand"],
+    "brand hits should surface the protectedBrand category"
   );
 }
 
@@ -326,6 +382,21 @@ for (const testCase of [
 }
 
 {
+  const normalized = normalizeValue("A+\u2060B");
+  assert.equal(normalized.leetFolded, "atb", "plus signs should fold as leetspeak before separator handling");
+  assert.equal(normalized.separatorFolded, "atb", "word joiners should be removed before tokenization");
+}
+
+{
+  const unconfigured = createEngine({ sources: [], policies: [] });
+  assert.throws(
+    () => unconfigured.evaluate({ value: "test", kind: "tenantSlug" }),
+    /No policy configured for kind: tenantSlug/,
+    "engine should fail loudly when no policy exists"
+  );
+}
+
+{
   for (const testCase of [
     { value: "αdmin", kind: "tenantSlug" },
     { value: "раypal", kind: "tenantName" },
@@ -343,6 +414,16 @@ for (const testCase of [
 {
   const result = detectScriptRisk("abcمرحبا");
   assert.equal(result.mixed, true, "latin and arabic should trigger mixed-script risk");
+}
+
+{
+  const result = detectScriptRisk("abc漢字");
+  assert.equal(result.mixed, true, "latin and han should trigger mixed-script risk");
+}
+
+{
+  const result = detectScriptRisk("abcעברית");
+  assert.equal(result.mixed, true, "latin and hebrew should trigger mixed-script risk");
 }
 
 console.log("All fixture tests passed");
