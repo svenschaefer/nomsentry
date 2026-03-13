@@ -2,4 +2,5 @@ export { createEngine } from "./core/evaluate.js";
 export * as builtinPolicies from "./policies/index.js";
 export { loadSourceFromFile } from "./loaders/source-loader.js";
 export { loadSourcesFromDirectory } from "./loaders/source-loader.js";
+export { loadRuntimeBundleFromFile } from "./loaders/runtime-bundle.js";
 export { validateSource } from "./schema/validate-source.js";

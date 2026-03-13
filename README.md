@@ -26,6 +26,7 @@ npm run import:cuss
 npm run import:dsojevic
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
+npm run build:runtime-sources
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
 ```
@@ -42,7 +43,7 @@ test/fixtures/review.json
 
 ## Source model
 
-The project ships only imported third-party source files in `custom/sources/`. The CLI loads all `*.json` files from that directory.
+The project ships only imported third-party source files in `custom/sources/`. These files are build inputs. The CLI loads the compiled runtime bundle in `dist/runtime-sources.json`.
 
 Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
 
@@ -58,6 +59,7 @@ custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
 custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
+dist/runtime-sources.json
 ```
 
 Refresh imports with:
@@ -70,6 +72,7 @@ npm run import:cuss
 npm run import:dsojevic
 npm run import:uspto -- --input-file path\to\case_file.csv
 npm run derive:uspto-brand-risk
+npm run build:runtime-sources
 ```
 
 `protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.
@@ -88,3 +91,5 @@ The default derived USPTO profile is structural and conservative:
 This keeps the official full set available while limiting default runtime `protectedBrand` noise.
 
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
+
+For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.

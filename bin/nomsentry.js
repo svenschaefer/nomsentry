@@ -2,10 +2,10 @@
 
 import { createEngine } from "../src/core/evaluate.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
-import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
+import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 
 const engine = createEngine({
-  sources: [...loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url))],
+  sources: [loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url))],
   policies: [username(), tenantSlug(), tenantName()],
   allowOverrides: [
     {

@@ -4,6 +4,7 @@ import { createEngine } from "../src/core/evaluate.js";
 import { applyAllowOverrides } from "../src/core/overrides.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
 import { loadSourceFromFile, loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
+import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
@@ -151,6 +152,20 @@ assert.equal(
   true,
   "directory loader should include official role-mailbox source"
 );
+
+{
+  const bundle = loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
+  assert.equal(
+    bundle.rules.some((rule) => rule.id === "rfc2142/abuse"),
+    true,
+    "runtime bundle should expose flattened rules"
+  );
+  assert.equal(
+    bundle.compositeRules.some((rule) => rule.id === "rfc2142/security-support"),
+    true,
+    "runtime bundle should expose flattened composite rules"
+  );
+}
 
 {
   const records = parseUsptoCaseFileCsv(
