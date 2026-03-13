@@ -312,24 +312,17 @@ export function deriveUsptoBrandRiskSource(source, {
 
     return tokens.every((token) => token.length >= multiWordMinTokenLength);
   }).map((rule) => ({
-    ...rule,
     id: `${id}/${rule.id.split("/").pop()}`,
-    metadata: {
-      ...rule.metadata,
-      tags: [...new Set([...(rule.metadata?.tags ?? []), "derived-risk-subset"])],
-      notes: `${rule.metadata?.notes ?? ""}${rule.metadata?.notes ? "; " : ""}derived: single>=${singleWordMinLength}, multiToken>=${multiWordMinTokenLength}, maxWords=${maxWords}, digits=${allowDigits ? "allow" : "drop"}`
-    }
+    term: rule.term,
+    category: rule.category,
+    scopes: rule.scopes,
+    match: rule.match,
+    normalizationField: rule.normalizationField
   }));
 
   return validateSource({
     id,
     description: "Derived USPTO protected-brand risk subset for review-level identifier screening",
-    metadata: {
-      ...source.metadata,
-      source: "USPTO",
-      tags: ["external-import", "brand", "trademark", "official", "derived-risk-subset"],
-      notes: `Derived from ${source.id} with singleWordMinLength=${singleWordMinLength}, multiWordMinTokenLength=${multiWordMinTokenLength}, maxWords=${maxWords}, allowDigits=${allowDigits}`
-    },
     rules: filteredRules
   });
 }
