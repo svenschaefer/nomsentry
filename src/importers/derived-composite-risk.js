@@ -3,7 +3,7 @@ import { validateSource } from "../schema/validate-source.js";
 const ANCHOR_TERMS = ["security", "support"];
 
 const DERIVED_COMPOSITE_TERM_PATTERN =
-  /^(admin|administrator|help|login|oauth|profile|secure|ssladmin|ssladministrator|sslwebmaster|sysadmin|sysadministrator|webmail)$/;
+  /^(account|accounts|admin|administrator|billing|help|login|oauth|official|password|profile|secure|ssladmin|ssladministrator|sslwebmaster|sysadmin|sysadministrator|webmail)$/;
 
 function compareStrings(left, right) {
   return left.localeCompare(right);

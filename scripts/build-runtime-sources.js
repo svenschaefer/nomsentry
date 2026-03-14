@@ -110,9 +110,12 @@ export function buildRuntimeBundle(sources) {
 }
 
 export function buildRuntimeBundleFromDirectory(inputDir) {
-  return buildRuntimeBundle(
-    loadSourcesFromDirectory(pathToFileURL(`${inputDir}${path.sep}`)),
+  const absoluteInputDir = path.resolve(inputDir);
+  const directoryUrl = new URL(
+    "./",
+    `${pathToFileURL(absoluteInputDir).href}/`,
   );
+  return buildRuntimeBundle(loadSourcesFromDirectory(directoryUrl));
 }
 
 export function writeRuntimeBundle(outputFile, bundle) {

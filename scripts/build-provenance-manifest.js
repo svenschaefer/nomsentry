@@ -27,6 +27,10 @@ const TRANSFORM_VERSION_BY_PREFIX = [
   ["imported-insult-wiki-", "import-insult-wiki@1"],
   ["imported-ldnoobw-", "import-ldnoobw@1"],
   ["imported-obscenity-", "import-obscenity@1"],
+  [
+    "imported-reserved-usernames-impersonation",
+    "import-reserved-usernames-impersonation@1",
+  ],
   ["imported-rfc2142-role-mailboxes", "extract-rfc2142-role-mailboxes@1"],
   ["imported-uspto-trademarks-", "import-uspto-trademarks@1"],
   ["derived-wikidata-brand-risk", "derive-wikidata-brand-risk@1"],

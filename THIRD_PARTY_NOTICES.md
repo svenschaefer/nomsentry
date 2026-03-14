@@ -94,11 +94,13 @@ The current maintained source families are:
 
 ### reserved-usernames
 
-- Purpose: reserved technical identifiers for namespace and system-identifier collisions
-- Used in: `custom/sources/reserved-usernames.json`
+- Purpose: reserved technical and impersonation-adjacent identifiers for namespace, account-access, and system-identifier collisions
+- Used in:
+  - `custom/sources/reserved-usernames.json`
+  - `custom/sources/reserved-usernames-impersonation.json`
 - Source: https://github.com/mvila/reserved-usernames
 - License: MIT
-- Notes: imported through a conservative derived filter that keeps only clearly technical or namespace-collision terms from the broader package dataset
+- Notes: imported through conservative derived filters that keep only clearly technical namespace-collision terms and a small additive impersonation subset from the broader package dataset
 
 ### Microsoft Learn Windows reserved device names
 

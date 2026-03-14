@@ -57,6 +57,10 @@ import {
   loadReservedUsernamesTerms,
 } from "../src/importers/reserved-usernames.js";
 import {
+  buildReservedUsernamesImpersonationSource,
+  filterReservedUsernameImpersonationTerms,
+} from "../src/importers/reserved-usernames-impersonation.js";
+import {
   buildWindowsReservedUriSchemesSource,
   extractWindowsReservedUriSchemes,
   fetchWindowsReservedUriSchemes,
@@ -96,6 +100,7 @@ import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojev
 import { parseArgs as parseGitHubReservedArgs } from "../scripts/import-github-reserved-usernames.js";
 import { parseArgs as parseIcannReservedArgs } from "../scripts/import-icann-reserved-names.js";
 import { parseArgs as parseReservedUsernamesArgs } from "../scripts/import-reserved-usernames.js";
+import { parseArgs as parseReservedUsernamesImpersonationArgs } from "../scripts/import-reserved-usernames-impersonation.js";
 import { parseArgs as parseWindowsReservedUriArgs } from "../scripts/import-windows-reserved-uri-schemes.js";
 import {
   parseArgs as parseUsptoImportArgs,
@@ -372,6 +377,17 @@ assert.equal(
   ).metadata.source,
   "GitLab Docs",
   "gitlab reserved names metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
+    new URL(
+      "../custom/sources/reserved-usernames-impersonation.json",
+      import.meta.url,
+    ),
+  ).metadata.source,
+  "reserved-usernames",
+  "reserved-usernames impersonation metadata should load from JSON",
 );
 
 assert.equal(
@@ -1039,6 +1055,15 @@ assert.throws(
   assert.equal(
     manifest.sourceArtifacts.some(
       (entry) =>
+        entry.id === "imported-reserved-usernames-impersonation" &&
+        entry.source === "reserved-usernames",
+    ),
+    true,
+    "build manifest should enumerate the reserved-usernames impersonation artifact",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
         entry.id === "imported-windows-reserved-uri-schemes" &&
         entry.source === "Microsoft Learn",
     ),
@@ -1116,6 +1141,13 @@ assert.throws(
     )?.transformVersion,
     "import-icann-reserved-names@1",
     "build manifest should record deterministic transform versions for ICANN reserved names",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "imported-reserved-usernames-impersonation",
+    )?.transformVersion,
+    "import-reserved-usernames-impersonation@1",
+    "build manifest should record deterministic transform versions for reserved-usernames impersonation",
   );
   assert.equal(
     manifest.sourceArtifacts.find(
@@ -1640,6 +1672,21 @@ assert.throws(
     "reserved-usernames import script should report direct argument errors",
   );
 
+  const reservedUsernamesImpersonationUnknownOption = runScript(
+    "import-reserved-usernames-impersonation.js",
+    "--wat",
+  );
+  assert.equal(
+    reservedUsernamesImpersonationUnknownOption.status,
+    1,
+    "reserved-usernames impersonation import script should fail for unknown options",
+  );
+  assert.match(
+    reservedUsernamesImpersonationUnknownOption.stderr,
+    /Unknown option: --wat/,
+    "reserved-usernames impersonation import script should report direct argument errors",
+  );
+
   const runtimeUnknownOption = runScript("build-runtime-sources.js", "--wat");
   assert.equal(
     runtimeUnknownOption.status,
@@ -1858,6 +1905,19 @@ await assert.rejects(
       outputDir: path.resolve(process.cwd(), "custom-sources"),
     },
     "reserved-usernames import args should support overriding the package base dir",
+  );
+  assert.deepEqual(
+    parseReservedUsernamesImpersonationArgs([
+      "--base-dir",
+      tempDir,
+      "--output-dir",
+      "custom-sources",
+    ]),
+    {
+      baseDir: tempDir,
+      outputDir: path.resolve(process.cwd(), "custom-sources"),
+    },
+    "reserved-usernames impersonation import args should support overriding the package base dir",
   );
   fs.rmSync(tempDir, { recursive: true, force: true });
 }
@@ -2588,6 +2648,11 @@ assert.equal(
   resolveCompactFilename({ id: "imported-reserved-usernames" }),
   "reserved-usernames.json",
   "compact-sources should preserve reserved-usernames filenames",
+);
+assert.equal(
+  resolveCompactFilename({ id: "imported-reserved-usernames-impersonation" }),
+  "reserved-usernames-impersonation.json",
+  "compact-sources should preserve reserved-usernames impersonation filenames",
 );
 
 assert.equal(
@@ -3809,6 +3874,19 @@ await assert.rejects(
     ["admin", "mail", "root", "server", "status", "system"],
     "reserved-usernames filtering should keep only the conservative technical subset",
   );
+  assert.deepEqual(
+    filterReservedUsernameImpersonationTerms([
+      "account",
+      "accounts",
+      "billing",
+      "official",
+      "password",
+      "payments",
+      "verify",
+    ]),
+    ["account", "accounts", "billing", "official", "password"],
+    "reserved-usernames impersonation filtering should keep only the conservative account-access subset",
+  );
 
   const source = buildReservedUsernamesSource({
     terms: ["admin", "root", "system", "mail", "status", "default", "service"],
@@ -3822,6 +3900,26 @@ await assert.rejects(
     source.rules.map((rule) => rule.term),
     ["admin", "mail", "root", "status", "system"],
     "reserved-usernames importer should keep only filtered technical terms",
+  );
+  const impersonationSource = buildReservedUsernamesImpersonationSource({
+    terms: [
+      "account",
+      "accounts",
+      "billing",
+      "official",
+      "password",
+      "payments",
+    ],
+  });
+  assert.equal(
+    impersonationSource.metadata.source,
+    "reserved-usernames",
+    "reserved-usernames impersonation importer should stamp source metadata",
+  );
+  assert.deepEqual(
+    impersonationSource.rules.map((rule) => rule.term),
+    ["account", "accounts", "billing", "official", "password"],
+    "reserved-usernames impersonation importer should keep only filtered impersonation terms",
   );
 }
 
@@ -3975,6 +4073,40 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "compositeRisk"),
     true,
     "admin-support should now surface derived composite risk in the maintained baseline",
+  );
+}
+
+{
+  const official = maintainedEngine.evaluate({
+    value: "official",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    official.reasons.some((reason) => reason.category === "impersonation"),
+    true,
+    "reserved-usernames impersonation imports should now surface official as impersonation in the maintained baseline",
+  );
+
+  const accountRecovery = maintainedEngine.evaluate({
+    value: "account-recovery",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    accountRecovery.decision,
+    "reject",
+    "account-recovery should no longer remain a documented maintained gap",
+  );
+
+  const billingSupport = maintainedEngine.evaluate({
+    value: "billing-support",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    billingSupport.reasons.some(
+      (reason) => reason.category === "compositeRisk",
+    ),
+    true,
+    "billing-support should now surface derived composite risk in the maintained baseline",
   );
 }
 

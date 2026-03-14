@@ -119,6 +119,7 @@ custom/sources/gitlab-reserved-names.json
 custom/sources/github-reserved-usernames.json
 custom/sources/icann-reserved-names.json
 custom/sources/reserved-usernames.json
+custom/sources/reserved-usernames-impersonation.json
 custom/sources/rfc2142-role-mailboxes.json
 custom/sources/windows-reserved-device-names.json
 custom/sources/windows-reserved-uri-schemes.json
@@ -168,6 +169,7 @@ npm run import:gitlab-reserved
 npm run import:github-reserved-usernames
 npm run import:icann-reserved-names
 npm run import:reserved-usernames
+npm run import:reserved-usernames-impersonation
 npm run import:windows-reserved-uri-schemes
 npm run derive:impersonation
 npm run derive:composite-risk
@@ -189,11 +191,11 @@ The USPTO subset remains the official trademark path. The Wikidata supplement is
 
 `RFC 2142` currently feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are used as impersonation-relevant identifiers such as `abuse`, `security`, `postmaster`, and `webmaster`.
 
-`reservedTechnical` is now sourced from Microsoft Windows reserved device names, a conservative Microsoft Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN reserved-name subset, and a conservative filtered `reserved-usernames` import. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
+`reservedTechnical` is now sourced from Microsoft Windows reserved device names, a conservative Microsoft Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN reserved-name subset, and a conservative filtered `reserved-usernames` import. That maintained baseline now also includes exact technical namespace-collision terms such as `settings`. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
 
-`impersonation` is now fed by the RFC 2142 core, a conservative GitHub Enterprise reserved-username import, and a conservative derived additive layer in `custom/sources/derived-impersonation.json`. That maintained additive baseline now covers identifiers such as `staff`, `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail` without introducing a hand-maintained project wordlist.
+`impersonation` is now fed by the RFC 2142 core, a conservative GitHub Enterprise reserved-username import, a conservative additive `reserved-usernames` impersonation import, and a conservative derived additive layer in `custom/sources/derived-impersonation.json`. That maintained additive baseline now covers identifiers such as `staff`, `account`, `accounts`, `admin`, `administrator`, `billing`, `help`, `login`, `oauth`, `official`, `password`, `profile`, `secure`, `sysadmin`, and `webmail` without introducing a hand-maintained project wordlist.
 
-`compositeRisk` is now fed by the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer in `custom/sources/derived-composite-risk.json`. That layer covers exact-token combinations such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`, while broader trust, billing, and recovery combinations remain an explicit open product-policy question.
+`compositeRisk` is now fed by the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer in `custom/sources/derived-composite-risk.json`. That layer covers exact-token combinations such as `admin-support`, `admin-security`, `billing-support`, `login-support`, `login-security`, `oauth-support`, `official-support`, `password-security`, and `profile-security`, while broader trust, verification, and recovery combinations remain an explicit open product-policy question.
 
 The first explicit profanity-category refinements are now in place as well: `insult.wiki` feeds `insult`, and `dsojevic/profanity-list` now maps `racial`, `religious`, and `lgbtq` tagged entries to `slur` instead of the broad `profanity` bucket. This is intentionally source-based for now, so some overlapping terms can still surface both `profanity` and `insult` evidence or both `profanity` and `slur` evidence until the broader category refinement is completed.
 

@@ -2,6 +2,14 @@
 
 ## Completed recently
 
+- Added a conservative `reserved-usernames` impersonation import and widened the derived composite baseline.
+  - added [src/importers/reserved-usernames-impersonation.js](/C:/code/nomsentry/src/importers/reserved-usernames-impersonation.js)
+  - added [scripts/import-reserved-usernames-impersonation.js](/C:/code/nomsentry/scripts/import-reserved-usernames-impersonation.js)
+  - added [custom/sources/reserved-usernames-impersonation.json](/C:/code/nomsentry/custom/sources/reserved-usernames-impersonation.json)
+  - the maintained impersonation baseline now includes additive exact-token terms `account`, `accounts`, `billing`, `official`, and `password`
+  - [custom/sources/derived-composite-risk.json](/C:/code/nomsentry/custom/sources/derived-composite-risk.json) was regenerated and now also covers additive combinations such as `billing-support`, `official-support`, and `password-security`
+  - grouped maintained positive, obfuscated-positive, mixed-script, and documented-gap fixtures were updated to reflect the narrower remaining impersonation and composite gaps
+
 - Broadened the conservative `reserved-usernames` technical subset with `settings`.
   - [src/importers/reserved-usernames.js](/C:/code/nomsentry/src/importers/reserved-usernames.js) now treats `settings` as part of the maintained technical namespace-collision profile
   - [custom/sources/reserved-usernames.json](/C:/code/nomsentry/custom/sources/reserved-usernames.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
@@ -43,7 +51,7 @@
   - added [custom/sources/derived-impersonation.json](/C:/code/nomsentry/custom/sources/derived-impersonation.json)
   - added [custom/sources/derived-composite-risk.json](/C:/code/nomsentry/custom/sources/derived-composite-risk.json)
   - the maintained default baseline now lifts conservative exact-token account-access identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail` into `impersonation`
-  - the maintained default baseline now derives 26 exact-token composite rules such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`
+  - the maintained default baseline originally derived 26 exact-token composite rules such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`
 
 - Expanded maintained `reservedTechnical` coverage with a conservative Windows reserved URI-scheme subset.
   - added [src/importers/windows-reserved-uri-schemes.js](/C:/code/nomsentry/src/importers/windows-reserved-uri-schemes.js)

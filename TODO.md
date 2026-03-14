@@ -14,9 +14,9 @@
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
-    - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
-    - A catalog-based runtime evaluation still shows that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` do not match maintained `impersonation` sources.
-    - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern trust, billing, verification, and recovery vocabulary.
+    - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, a conservative additive `reserved-usernames` impersonation import now contributes `account`, `accounts`, `billing`, `official`, and `password`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
+    - A catalog-based runtime evaluation now closes `official`, `billing`, `account-recovery`, and `password-reset`, but still shows that `payments`, `verified`, `trust`, and `safety` do not match maintained `impersonation` sources.
+    - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern payments, verification, trust, and safety vocabulary.
     - A follow-up source review did not identify a strong freely redistributable standard source for the modern trust, billing, verification, and recovery vocabulary.
   - Target:
     - define the intended impersonation-role vocabulary
@@ -51,8 +51,8 @@
 
 - Expand maintained `compositeRisk` coverage beyond the current support/security-anchor derived layer if the product expects broader deception-combination coverage.
   - Why:
-    - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer, which closes combinations such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`.
-    - A catalog-based runtime evaluation still shows that combinations such as `account-recovery`, `trust-safety`, `billing-support`, `customer-recovery`, and `privacy-team` remain uncovered unless one component independently matches another category.
+    - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer, which closes combinations such as `admin-support`, `admin-security`, `billing-support`, `login-support`, `login-security`, `official-support`, `oauth-support`, `password-security`, and `profile-security`.
+    - A catalog-based runtime evaluation still shows that combinations such as `trust-safety`, `customer-recovery`, and `privacy-team` remain uncovered unless one component independently matches another category.
     - A follow-up source review did not identify a strong free third-party source that directly ships these product-relevant composite combinations.
   - Target:
     - define the intended composite vocabulary explicitly

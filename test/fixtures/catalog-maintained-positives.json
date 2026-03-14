@@ -112,11 +112,16 @@
     "kind": "tenantSlug",
     "expected": "reject",
     "values": [
+      "account",
+      "accounts",
       "admin",
       "administrator",
+      "billing",
       "help",
       "login",
       "oauth",
+      "official",
+      "password",
       "profile",
       "secure",
       "sysadmin",
@@ -130,9 +135,12 @@
     "values": [
       "admin-support",
       "admin-security",
+      "billing-support",
       "login-support",
       "login-security",
+      "official-support",
       "oauth-support",
+      "password-security",
       "profile-security"
     ]
   },
@@ -178,6 +186,6 @@
     "label": "mixed script review fallback",
     "kind": "tenantSlug",
     "expected": "review",
-    "values": ["раypalx", "аdminx", "gооglex", "offіcial"]
+    "values": ["раypalx", "аdminx", "gооglex"]
   }
 ]

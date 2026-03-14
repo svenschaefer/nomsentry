@@ -46,6 +46,7 @@
     "import:github-reserved-usernames": "node scripts/import-github-reserved-usernames.js",
     "import:icann-reserved-names": "node scripts/import-icann-reserved-names.js",
     "import:reserved-usernames": "node scripts/import-reserved-usernames.js",
+    "import:reserved-usernames-impersonation": "node scripts/import-reserved-usernames-impersonation.js",
     "import:windows-reserved-uri-schemes": "node scripts/import-windows-reserved-uri-schemes.js",
     "derive:impersonation": "node scripts/derive-impersonation.js",
     "derive:composite-risk": "node scripts/derive-composite-risk.js",

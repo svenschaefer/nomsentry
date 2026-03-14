@@ -29,6 +29,8 @@ export function resolveCompactFilename(source) {
     filename = "icann-reserved-names.json";
   else if (source.id === "imported-reserved-usernames")
     filename = "reserved-usernames.json";
+  else if (source.id === "imported-reserved-usernames-impersonation")
+    filename = "reserved-usernames-impersonation.json";
   else if (source.id === "imported-obscenity-en")
     filename = "obscenity-en.json";
   else if (source.id === "imported-windows-reserved-uri-schemes")
