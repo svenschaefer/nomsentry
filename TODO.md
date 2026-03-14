@@ -34,12 +34,19 @@
   - Why:
     - The current derivation in [src/importers/uspto.js](/C:/code/nomsentry/src/importers/uspto.js) is intentionally structural only.
     - That is defensible, but not yet enterprise-grade from a precision/recall perspective.
-    - A catalog-based runtime evaluation showed that short global brands such as `openai`, `paypal`, `google`, and `github` currently evaluate to `allow` under the official-only derived subset.
   - Target:
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks
     - decide whether the official-source-derived heuristics should also retain short globally sensitive marks
-    - evaluate a `derived-wikidata-brand-risk.json` supplement as a free CC0 seed for short global brands alongside the USPTO-derived subset
+
+- Evaluate a `derived-wikidata-brand-risk.json` supplement for short global brands.
+  - Why:
+    - A catalog-based runtime evaluation showed that short global brands such as `openai`, `paypal`, `google`, and `github` currently evaluate to `allow` under the official-only derived subset.
+    - Current source research suggests that a Wikidata-derived CC0 supplement is the most plausible free seed source for those short globally recognizable brands.
+  - Target:
+    - define the inclusion criteria for a Wikidata-derived short-brand subset
+    - evaluate whether the supplement materially improves coverage without introducing unacceptable false positives
+    - document how a Wikidata-derived subset would coexist with the USPTO-derived subset
 
 - Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
   - Why:
