@@ -45,13 +45,14 @@
 - Implement a conservative `derived-wikidata-brand-risk.json` supplement for uncovered brands.
   - Why:
     - A catalog-based runtime evaluation showed that globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple` currently evaluate to `allow` under the official-only derived subset.
-    - The Wikidata evaluation in [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md) confirmed that clean candidate item pages exist for the uncovered-brand examples.
+    - The Wikidata evaluation in [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md) and [docs/generated/wikidata-brand-gap-report.json](/C:/code/nomsentry/docs/generated/wikidata-brand-gap-report.json) confirmed that clean candidate item pages exist for the uncovered-brand examples.
     - The same evaluation also showed that some pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so the supplement must be filtered rather than imported blindly.
   - Target:
     - implement the supplement as a build-step extractor, not as a runtime dependency
     - prefer deterministic SPARQL JSON extraction over full dump parsing unless Query Service limits become the blocker
     - implement a conservative extractor for brand-relevant Wikidata items
     - allow overlap with the USPTO-derived subset instead of forcing a strict non-overlap rule
+    - derive runtime-facing brand terms without legal suffixes such as `Inc.` or `Ltd.`
     - define allowed item classes and ambiguity filters explicitly
     - document how the Wikidata-derived subset coexists with the USPTO-derived subset
     - add grouped TP and FP coverage for the first accepted Wikidata-derived brand cohort

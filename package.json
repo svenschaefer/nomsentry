@@ -42,7 +42,8 @@
     "import:dsojevic": "node scripts/import-dsojevic-profanity.js",
     "import:insult-wiki": "node scripts/import-insult-wiki.js",
     "import:gitlab-reserved": "node scripts/import-gitlab-reserved-names.js",
-    "import:reserved-usernames": "node scripts/import-reserved-usernames.js"
+    "import:reserved-usernames": "node scripts/import-reserved-usernames.js",
+    "evaluate:wikidata-brands": "node scripts/evaluate-wikidata-brand-supplement.js"
   },
   "engines": {
     "node": ">=20.0.0"

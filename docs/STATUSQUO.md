@@ -65,7 +65,9 @@
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `mastercardio`, and `dropboxing`
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
+  - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`
   - the evaluation confirmed that Wikidata has clean candidate pages for several current uncovered-brand examples
+  - the evaluator derives runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
   - a future Wikidata supplement still needs explicit ambiguity filters for terms such as `visa`, `amazon`, and `apple`
 - Maintenance-script failure coverage now includes:
   - importer argument validation

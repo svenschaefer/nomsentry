@@ -75,6 +75,13 @@ import {
   parseArgs as parseRuntimeBenchmarkArgs,
 } from "../scripts/benchmark-runtime.js";
 import {
+  deriveFilterTerm,
+  evaluateSearchResults,
+  loadTermsFromFixture,
+  parseArgs as parseWikidataBrandArgs,
+  scoreCandidate,
+} from "../scripts/evaluate-wikidata-brand-supplement.js";
+import {
   assessFreshness,
   findRefreshPolicy,
   getLastCommitDate,
@@ -304,6 +311,165 @@ assert.equal(
     benchmarkArgs.warmupIterations,
     5,
     "runtime benchmark args should parse warmup iterations",
+  );
+}
+
+{
+  const wikidataArgs = parseWikidataBrandArgs([
+    "--terms",
+    "openai,paypal",
+    "--output-file",
+    "tmp/wikidata-report.json",
+  ]);
+  assert.deepEqual(
+    wikidataArgs.terms,
+    ["openai", "paypal"],
+    "wikidata evaluation args should parse explicit brand terms",
+  );
+  assert.equal(
+    path.basename(wikidataArgs.outputFile),
+    "wikidata-report.json",
+    "wikidata evaluation args should parse output files",
+  );
+}
+
+assert.throws(
+  () => parseWikidataBrandArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "wikidata evaluation args should reject unknown options",
+);
+
+{
+  const fixtureTerms = loadTermsFromFixture(
+    path.resolve(
+      process.cwd(),
+      "test",
+      "fixtures",
+      "catalog-documented-current-gaps.json",
+    ),
+  );
+  assert.equal(
+    fixtureTerms.includes("openai") && fixtureTerms.includes("paypal"),
+    true,
+    "wikidata evaluation should load the documented uncovered-brand fixture terms",
+  );
+}
+
+{
+  assert.equal(
+    deriveFilterTerm({
+      label: "Visa Inc.",
+      aliases: ["Visa"],
+    }),
+    "visa",
+    "wikidata evaluation should derive filter terms without corporate suffixes",
+  );
+  assert.equal(
+    deriveFilterTerm({
+      label: "Stripe",
+      aliases: [],
+    }),
+    "stripe",
+    "wikidata evaluation should preserve plain brand-facing labels as filter terms",
+  );
+}
+
+{
+  const exactBrandCandidate = scoreCandidate("openai", {
+    id: "Q21708200",
+    page: "https://www.wikidata.org/wiki/Q21708200",
+    label: "OpenAI",
+    description: "American artificial intelligence research organization",
+    aliases: [],
+    instanceOf: ["Q163740"],
+  });
+  const ambiguousCommonNounCandidate = scoreCandidate("apple", {
+    id: "Q89",
+    page: "https://www.wikidata.org/wiki/Q89",
+    label: "apple",
+    description: "edible fruit of the apple tree",
+    aliases: [],
+    instanceOf: [],
+  });
+  const legalSuffixCandidate = scoreCandidate("apple", {
+    id: "Q312",
+    page: "https://www.wikidata.org/wiki/Q312",
+    label: "Apple Inc.",
+    description:
+      "American multinational technology company based in Cupertino, California",
+    aliases: ["Apple"],
+    instanceOf: ["Q4830453", "Q6881511"],
+  });
+
+  assert.equal(
+    exactBrandCandidate.score > 0,
+    true,
+    "wikidata scoring should reward exact brand-facing labels",
+  );
+  assert.equal(
+    legalSuffixCandidate.score > exactBrandCandidate.score,
+    true,
+    "wikidata scoring should strongly reward legal-suffix company labels when they also expose the bare brand alias",
+  );
+  assert.equal(
+    legalSuffixCandidate.derivedTerm,
+    "apple",
+    "wikidata scoring should derive the brand term without the legal suffix when a company page is selected",
+  );
+  assert.equal(
+    ambiguousCommonNounCandidate.score < 0,
+    true,
+    "wikidata scoring should down-rank obvious common-noun collisions",
+  );
+}
+
+{
+  const candidates = evaluateSearchResults(
+    "apple",
+    [
+      {
+        id: "Q89",
+        label: "apple",
+        description: "edible fruit of the apple tree",
+      },
+      {
+        id: "Q312",
+        label: "Apple Inc.",
+        description:
+          "American multinational technology company based in Cupertino, California",
+      },
+    ],
+    {
+      Q89: {
+        id: "Q89",
+        labels: { en: { value: "apple" } },
+        descriptions: { en: { value: "edible fruit of the apple tree" } },
+        aliases: {},
+        claims: {},
+      },
+      Q312: {
+        id: "Q312",
+        labels: { en: { value: "Apple Inc." } },
+        descriptions: {
+          en: {
+            value:
+              "American multinational technology company based in Cupertino, California",
+          },
+        },
+        aliases: { en: [{ value: "Apple" }] },
+        claims: {
+          P31: [
+            { mainsnak: { datavalue: { value: { id: "Q4830453" } } } },
+            { mainsnak: { datavalue: { value: { id: "Q6881511" } } } },
+          ],
+        },
+      },
+    },
+  );
+  assert.equal(
+    candidates[0].id,
+    "Q312",
+    "wikidata evaluation should rank the brand/company page ahead of the common-noun page",
   );
 }
 

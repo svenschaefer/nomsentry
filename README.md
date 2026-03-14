@@ -52,6 +52,7 @@ npm run import:dsojevic
 npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
+npm run evaluate:wikidata-brands
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
@@ -147,6 +148,7 @@ npm run import:dsojevic
 npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
+npm run evaluate:wikidata-brands
 npm run import:uspto -- --input-file path\to\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources

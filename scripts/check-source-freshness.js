@@ -110,6 +110,7 @@ export function getLastCommitDate(filePath) {
       {
         cwd: process.cwd(),
         encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
       },
     ).trim();
     if (output) {

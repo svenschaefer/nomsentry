@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added a reproducible Wikidata uncovered-brand evaluation path.
+  - added [scripts/evaluate-wikidata-brand-supplement.js](/C:/code/nomsentry/scripts/evaluate-wikidata-brand-supplement.js)
+  - added [docs/generated/wikidata-brand-gap-report.json](/C:/code/nomsentry/docs/generated/wikidata-brand-gap-report.json)
+  - added `npm run evaluate:wikidata-brands` in [package.json](/C:/code/nomsentry/package.json)
+  - the evaluator now derives runtime-facing terms without legal suffixes, so pages such as `Visa Inc.` or `Apple Inc.` map to `visa` and `apple`
+
 - Expanded maintained `reservedTechnical` coverage with a conservative `reserved-usernames` import.
   - added [src/importers/reserved-usernames.js](/C:/code/nomsentry/src/importers/reserved-usernames.js)
   - added [scripts/import-reserved-usernames.js](/C:/code/nomsentry/scripts/import-reserved-usernames.js)

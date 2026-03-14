@@ -9,6 +9,11 @@ The question is whether a conservative Wikidata-derived supplement can close cle
 
 Overlap with the USPTO-derived subset is acceptable.
 
+The current repo now includes a reproducible evaluation script:
+
+- `npm run evaluate:wikidata-brands`
+- generated report: `docs/generated/wikidata-brand-gap-report.json`
+
 ## Current runtime gap
 
 The current runtime still evaluates these representative brand terms to `allow`:
@@ -32,9 +37,21 @@ The evaluation used:
 
 - the current local runtime through `node bin/nomsentry.js explain tenantSlug <brand>`
 - the official Wikidata entity search API
-- the official Wikidata item pages and entity payloads
+- the official Wikidata entity payload API
+- the official Wikidata item pages
 
 The goal was to identify whether the uncovered runtime terms have clean, machine-usable Wikidata items that could seed a future derived supplement.
+
+The evaluator now scores candidates from the official API and records:
+
+- candidate page
+- label and description
+- aliases
+- `instance of` identifiers
+- a recommended runtime term
+
+For company-style pages, the recommended runtime term strips common legal suffixes.
+That means pages such as `Visa Inc.` or `Apple Inc.` are still treated as candidates for the runtime term `visa` or `apple`.
 
 ## Result
 
@@ -44,25 +61,25 @@ Wikidata has clean candidate items for the current uncovered-brand examples.
 
 These pages are good candidates for a future derived supplement because the item label is the intended brand-facing identifier and the item is not primarily a generic noun or place name.
 
-| Runtime term | Wikidata item | Why it is useful |
-| --- | --- | --- |
-| `openai` | `Q21708200` - [OpenAI](https://www.wikidata.org/wiki/Q21708200) | clean organization label for a globally recognizable technology brand |
-| `chatgpt` | `Q115564437` - [ChatGPT](https://www.wikidata.org/wiki/Q115564437) | clean product label for a globally recognizable digital product |
-| `paypal` | `Q483959` - [PayPal](https://www.wikidata.org/wiki/Q483959) | clean payments brand label |
-| `google` | `Q95` - [Google](https://www.wikidata.org/wiki/Q95) | clean company label used directly as the public brand |
-| `github` | `Q364` - [GitHub](https://www.wikidata.org/wiki/Q364) | clean product or service label used directly as the public brand |
-| `stripe` | `Q7624104` - [Stripe](https://www.wikidata.org/wiki/Q7624104) | clean payments brand label |
-| `mastercard` | `Q489921` - [Mastercard](https://www.wikidata.org/wiki/Q489921) | clean financial brand label |
+| Runtime term | Wikidata item                                                      | Why it is useful                                                      |
+| ------------ | ------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| `openai`     | `Q21708200` - [OpenAI](https://www.wikidata.org/wiki/Q21708200)    | clean organization label for a globally recognizable technology brand |
+| `chatgpt`    | `Q115564437` - [ChatGPT](https://www.wikidata.org/wiki/Q115564437) | clean product label for a globally recognizable digital product       |
+| `paypal`     | `Q483959` - [PayPal](https://www.wikidata.org/wiki/Q483959)        | clean payments brand label                                            |
+| `google`     | `Q95` - [Google](https://www.wikidata.org/wiki/Q95)                | clean company label used directly as the public brand                 |
+| `github`     | `Q364` - [GitHub](https://www.wikidata.org/wiki/Q364)              | clean product or service label used directly as the public brand      |
+| `stripe`     | `Q7624104` - [Stripe](https://www.wikidata.org/wiki/Q7624104)      | clean payments brand label                                            |
+| `mastercard` | `Q489921` - [Mastercard](https://www.wikidata.org/wiki/Q489921)    | clean financial brand label                                           |
 
 ### Useful but ambiguity-prone candidates
 
 These pages can still provide useful brand coverage, but they need stricter extraction rules because the surface form is also a common noun, place name, or person name in broader language use.
 
-| Runtime term | Wikidata item | Ambiguity note |
-| --- | --- | --- |
-| `visa` | `Q328840` - [Visa Inc.](https://www.wikidata.org/wiki/Q328840) | the brand surface `visa` collides with the common immigration term |
-| `amazon` | `Q3884` - [Amazon](https://www.wikidata.org/wiki/Q3884) | the brand surface collides with the region and river naming space |
-| `apple` | `Q312` - [Apple Inc.](https://www.wikidata.org/wiki/Q312) | the brand surface collides with the common fruit noun |
+| Runtime term | Wikidata item                                                                                                                  | Ambiguity note                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `visa`       | `Q328840` - [Visa Inc.](https://www.wikidata.org/wiki/Q328840)                                                                 | the brand surface `visa` collides with the common immigration term                                                                     |
+| `amazon`     | `Q3884` - [Amazon](https://www.wikidata.org/wiki/Q3884)                                                                        | the brand surface collides with the region and river naming space                                                                      |
+| `apple`      | `Q312` - [Apple Inc.](https://www.wikidata.org/wiki/Q312) and `Q111046003` - [Apple](https://www.wikidata.org/wiki/Q111046003) | the brand surface collides with the common fruit noun, so the supplement must prefer trademark or company pages over common-noun pages |
 
 ## What the relevant Wikidata pages are
 
@@ -96,6 +113,7 @@ Recommended guardrails:
 - allow overlap with the USPTO-derived subset
 - start from exact English labels plus only clearly brand-safe aliases
 - prefer items whose public label is already the brand term
+- when a company page label contains a legal suffix such as `Inc.` or `Ltd.`, derive the runtime term without that suffix
 - do not blindly import all aliases from an item
 - add an ambiguity filter for terms such as `apple`, `amazon`, and `visa`
 - keep the output as a separate derived artifact, for example `custom/sources/derived-wikidata-brand-risk.json`

@@ -84,6 +84,7 @@
 - `docs/SOURCE_EXTENSION_POLICY.md`
 - `docs/STATUSQUO.md`
 - `docs/WIKIDATA_BRAND_EVALUATION.md`
+- `docs/generated/wikidata-brand-gap-report.json`
 - `docs/BASELINE_TEST_RUN.md`
 - `docs/NPM_RELEASE.md`
 - `docs/RELEASE_NOTES_TEMPLATE.md`
@@ -117,6 +118,7 @@
 - The Wikidata supplement track explicitly allows overlap with the USPTO-derived subset.
 - A direct Wikidata evaluation confirmed that clean candidate item pages exist for currently uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
 - The same Wikidata evaluation also showed that some valuable brand pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so a future supplement must be filtered rather than imported blindly.
+- The repo now contains a reproducible Wikidata uncovered-brand evaluation script and generated report, and the evaluator derives runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
 - If implemented, the Wikidata supplement should use a build-step SPARQL extractor that emits versioned derived source artifacts, not a runtime SDK dependency or a first-pass full-dump pipeline.
 - Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.
 - The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.
