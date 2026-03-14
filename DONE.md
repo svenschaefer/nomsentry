@@ -55,6 +55,13 @@
   - removed the previous `.gitignore` fallback warning from `npm pack --dry-run`
   - made the published package surface explicit and reviewable through `npm run pack:check`
 
+- Expanded direct source-schema edge-case coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js).
+  - empty source-set validation
+  - malformed compact tuple rejection
+  - missing `ruleDefaults` values for compact rules
+  - malformed composite-rule scopes
+  - stored-artifact metadata pruning through `serializeSource()`
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

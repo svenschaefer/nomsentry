@@ -30,7 +30,7 @@ import {
   splitUsptoTrademarkSource
 } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
-import { compactSource } from "../src/schema/source-format.js";
+import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
 import { compactSourcesDirectory, resolveCompactFilename } from "../scripts/compact-sources.js";
 
@@ -532,6 +532,112 @@ assert.throws(
       { id: "compact-test/b", term: "beta", notes: "n2" }
     ],
     "compact sources should expand and validate to the canonical rule model"
+  );
+}
+
+assert.deepEqual(
+  validateSource({ id: "empty-source", rules: [] }),
+  { id: "empty-source", rules: [] },
+  "validateSource should accept explicit empty rule arrays"
+);
+
+assert.throws(
+  () => expandSource({
+    id: "invalid-compact-source",
+    ruleDefaults: {
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token"
+    },
+    rules: [["id-only"]]
+  }),
+  /source\.rules\[0\] must be an object or a compact rule tuple/,
+  "expandSource should reject malformed compact rule tuples"
+);
+
+assert.throws(
+  () => validateSource({
+    id: "missing-rule-defaults-values",
+    ruleDefaults: {
+      scopes: ["tenantName"],
+      match: "token"
+    },
+    rules: [["alpha", "alpha"]]
+  }),
+  /source\.rules\[0\]\.category must be a non-empty string/,
+  "validateSource should fail when compact rules expand without required defaults"
+);
+
+assert.throws(
+  () => validateSource({
+    id: "invalid-compact-override",
+    ruleDefaults: {
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token"
+      },
+      rules: [["alpha", "alpha", "bad-override"]]
+  }),
+  /source\.rules\[0\]\.match must be a non-empty string/,
+  "validateSource should fail compact tuples with non-object overrides once required fields are missing"
+);
+
+assert.throws(
+  () => validateSource({
+    id: "invalid-composite-scope-source",
+    compositeRules: [
+      {
+        id: "invalid-composite-scope-source/rule",
+        term: "security+support",
+        category: "compositeRisk",
+        scopes: "tenantSlug",
+        allOf: ["security", "support"]
+      }
+    ]
+  }),
+  /source\.compositeRules\[0\]\.scopes must be an array/,
+  "validateSource should reject malformed composite-rule scopes"
+);
+
+{
+  const serialized = serializeSource({
+    id: "serialize-prune-test",
+    metadata: {
+      source: "fixture",
+      language: "en",
+      severity: "high",
+      tags: ["external-import"],
+      notes: "keep-me"
+    },
+    rules: [
+      {
+        id: "serialize-prune-test/rule",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token",
+        metadata: {
+          source: "fixture",
+          tags: ["drop-me"],
+          notes: "drop-me"
+        }
+      }
+    ]
+  });
+  const parsed = JSON.parse(serialized);
+  assert.deepEqual(
+    parsed.metadata,
+    {
+      source: "fixture",
+      language: "en",
+      notes: "keep-me"
+    },
+    "serializeSource should retain only source-level metadata used by stored artifacts"
+  );
+  assert.equal(
+    Object.prototype.hasOwnProperty.call(parsed.rules[0][2] ?? {}, "metadata"),
+    false,
+    "serializeSource should prune rule-level metadata from compact stored artifacts"
   );
 }
 

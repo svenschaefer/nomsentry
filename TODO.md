@@ -103,7 +103,7 @@
 
 - Add regression tests for source schema edge cases.
   - Why:
-    - The schema tests cover several cases already, but not enough around empty source sets, invalid compact tuples, invalid `ruleDefaults`, and malformed composite rules in compact sources.
+    - The schema tests now cover several compact-source and validation edge cases, but there is still no dedicated coverage for stricter compact-override typing and some malformed composite-source combinations.
   - Target:
     - direct tests for `compactSource()`, `expandSource()`, `serializeSource()`, and `validateSource()`
 
