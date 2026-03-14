@@ -53,6 +53,7 @@
   - invisible-character invariants
   - separator-variant invariants
   - deterministic generated corpora for case-mixed, NFD, fullwidth, separator-heavy, and supported-confusable variants
+  - generated confusable-heavy variants combined with separators, invisibles, and mixed normalization forms
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Lint and formatting gates are now in place for human-maintained repository files through:
   - `npm run lint:check`
@@ -71,6 +72,8 @@
   - runtime-builder argument validation
   - freshness-check argument and policy validation
   - staged rename rollback restoration for `compact-sources`
+  - additional upstream transport and parse-failure coverage for maintained import fetchers
+  - atomic write cleanup coverage for `writeTextFileAtomic()` after write and rename failures
 - Direct schema edge-case coverage now includes:
   - shared compact default extraction
   - metadata/default merging

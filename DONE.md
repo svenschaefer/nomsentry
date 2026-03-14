@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Expanded normalization property coverage and artifact-failure cleanup coverage further.
+  - added more generated confusable-heavy normalization variants in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+  - added upstream transport and parse-failure coverage for dsojevic, insult.wiki, and GitLab import fetch paths
+  - added cleanup coverage for `writeTextFileAtomic()` when write or rename fails after temp-file creation
+
 - Added linting and formatting checks for human-maintained files.
   - added [eslint.config.js](/C:/code/nomsentry/eslint.config.js)
   - added [.prettierignore](/C:/code/nomsentry/.prettierignore)

@@ -55,6 +55,11 @@ import {
   writeRuntimeBundle,
 } from "../scripts/build-runtime-sources.js";
 import {
+  fetchAvailableLanguages as fetchLdnoobwLanguages,
+  fetchWordList as fetchLdnoobwWordList,
+} from "../scripts/import-ldnoobw.js";
+import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
+import {
   buildProvenanceManifest,
   writeProvenanceManifest,
 } from "../scripts/build-provenance-manifest.js";
@@ -72,11 +77,6 @@ import {
   compactSourcesDirectory,
   resolveCompactFilename,
 } from "../scripts/compact-sources.js";
-import {
-  fetchAvailableLanguages as fetchLdnoobwLanguages,
-  fetchWordList as fetchLdnoobwWordList,
-} from "../scripts/import-ldnoobw.js";
-import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
 
 const syntheticPolicySource = {
   id: "synthetic-policy-source",
@@ -938,6 +938,18 @@ await assert.rejects(
   "dsojevic fetches should surface upstream HTTP failures",
 );
 
+await assert.rejects(
+  () =>
+    fetchDsojevicLanguage("en", async () => ({
+      ok: true,
+      json: async () => {
+        throw new Error("invalid json payload");
+      },
+    })),
+  /invalid json payload/,
+  "dsojevic fetches should surface upstream JSON parse failures",
+);
+
 {
   const payload = [{ id: "simple", match: "dumb", severity: 1 }];
   const fetched = await fetchDsojevicLanguage("en", async () => ({
@@ -959,6 +971,15 @@ await assert.rejects(
 
 await assert.rejects(
   () =>
+    fetchInsultWikiTerms("de", async () => {
+      throw new Error("socket hang up");
+    }),
+  /socket hang up/,
+  "insult.wiki fetches should surface upstream transport failures",
+);
+
+await assert.rejects(
+  () =>
     fetchInsultWikiTerms("en", async () => ({
       ok: true,
       text: async () => "<html><body>No list</body></html>",
@@ -976,6 +997,16 @@ await assert.rejects(
     })),
   /GitLab reserved names request failed: 403 Forbidden/,
   "gitlab reserved-name fetches should surface upstream HTTP failures",
+);
+
+await assert.rejects(
+  () =>
+    fetchGitLabReservedNames(async () => ({
+      ok: true,
+      text: async () => "## Reserved project names\n\nNo bullets here\n",
+    })),
+  /Could not extract any GitLab reserved names/,
+  "gitlab reserved-name fetches should fail when upstream markup produces no usable terms",
 );
 
 {
@@ -1878,6 +1909,86 @@ assert.throws(
 }
 
 {
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-atomic-write-failure-"),
+  );
+  const targetFile = path.join(tmpDir, "artifact.json");
+  const originalWriteFileSync = fs.writeFileSync;
+  const originalRmSync = fs.rmSync;
+  let tempPath;
+
+  fs.writeFileSync = (filePath, ...args) => {
+    tempPath = String(filePath);
+    originalWriteFileSync.call(fs, filePath, args[0], args[1]);
+    throw new Error("simulated write failure");
+  };
+
+  try {
+    assert.throws(
+      () => writeTextFileAtomic(targetFile, '{"ok":true}\n'),
+      /simulated write failure/,
+      "atomic text writes should surface write failures",
+    );
+  } finally {
+    fs.writeFileSync = originalWriteFileSync;
+    fs.rmSync = originalRmSync;
+  }
+
+  assert.equal(
+    fs.existsSync(tempPath),
+    false,
+    "atomic text writes should clean up temp files after write failures",
+  );
+  assert.equal(
+    fs.existsSync(targetFile),
+    false,
+    "atomic text writes should not leave a target file behind after write failures",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-atomic-rename-failure-"),
+  );
+  const targetFile = path.join(tmpDir, "artifact.json");
+  const originalWriteFileSync = fs.writeFileSync;
+  const originalRenameSync = fs.renameSync;
+  let tempPath;
+
+  fs.writeFileSync = (filePath, ...args) => {
+    tempPath = String(filePath);
+    return originalWriteFileSync.call(fs, filePath, args[0], args[1]);
+  };
+  fs.renameSync = () => {
+    throw new Error("simulated rename failure");
+  };
+
+  try {
+    assert.throws(
+      () => writeTextFileAtomic(targetFile, '{"ok":true}\n'),
+      /simulated rename failure/,
+      "atomic text writes should surface rename failures",
+    );
+  } finally {
+    fs.writeFileSync = originalWriteFileSync;
+    fs.renameSync = originalRenameSync;
+  }
+
+  assert.equal(
+    fs.existsSync(tempPath),
+    false,
+    "atomic text writes should clean up temp files after rename failures",
+  );
+  assert.equal(
+    fs.existsSync(targetFile),
+    false,
+    "atomic text writes should not create the target file when rename fails",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
   const severityEngine = createEngine({
     sources: [
       {
@@ -2739,6 +2850,71 @@ for (const testCase of [
         normalized.slug,
         expected.slug,
         `generated normalization variant ${JSON.stringify(variant)} should preserve slug output for ${base}`,
+      );
+    }
+  }
+}
+
+{
+  const invisibleChars = ["\u200B", "\u200C", "\u2060"];
+  const separators = ["-", "_", ".", "/"];
+  const variants = [
+    {
+      base: "support",
+      confusable: "ѕuppоrt",
+      expectedProjection: "support",
+    },
+    {
+      base: "openai",
+      confusable: "оpеnаi",
+      expectedProjection: "openai",
+    },
+    {
+      base: "security",
+      confusable: "sесurіty",
+      expectedProjection: "security",
+    },
+  ];
+
+  for (const { base, confusable, expectedProjection } of variants) {
+    const chars = Array.from(confusable);
+
+    for (const separator of separators) {
+      const separated = chars.join(separator);
+      const withInvisibles = chars
+        .map((ch, index) =>
+          index === chars.length - 1
+            ? ch
+            : `${ch}${invisibleChars[index % invisibleChars.length]}${separator}`,
+        )
+        .join("");
+      const nfdCaseMixed = Array.from(withInvisibles.normalize("NFD"))
+        .map((ch, index) => {
+          if (!/[a-z]/i.test(ch)) return ch;
+          return index % 2 === 0 ? ch.toUpperCase() : ch.toLowerCase();
+        })
+        .join("");
+
+      for (const candidate of [separated, withInvisibles]) {
+        const normalized = normalizeValue(candidate);
+        assert.equal(
+          normalized.compact,
+          expectedProjection,
+          `generated confusable-heavy variant ${JSON.stringify(candidate)} should preserve compact output for ${base}`,
+        );
+      }
+
+      const normalizedNfdCaseMixed = normalizeValue(nfdCaseMixed);
+      const expectedVariantSlug = normalizeValue(withInvisibles).slug;
+      assert.equal(
+        normalizedNfdCaseMixed.compact,
+        expectedProjection,
+        `generated confusable-heavy variant ${JSON.stringify(nfdCaseMixed)} should preserve compact output for ${base}`,
+      );
+      assert.equal(
+        normalizedNfdCaseMixed.slug,
+        expectedVariantSlug,
+        `generated confusable-heavy variant ${JSON.stringify(nfdCaseMixed)} should preserve slug output for ${base}`,
       );
     }
   }
