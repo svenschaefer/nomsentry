@@ -2,6 +2,8 @@
 
 Deterministic identifier policy and deception detection engine.
 
+Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/C:/code/nomsentry/THIRD_PARTY_NOTICES.md).
+
 ## v0.3 highlights
 
 - normalization pipeline
