@@ -67,6 +67,11 @@
   - installs dependencies with `npm ci`
   - executes the existing local gate through `npm run ci:check`
 
+- Expanded networked importer failure-path coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js).
+  - LDNOOBW upstream HTTP failures and payload normalization
+  - dsojevic upstream HTTP failures and JSON payload handling
+  - insult.wiki upstream HTTP failures and malformed upstream markup
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

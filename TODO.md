@@ -97,9 +97,10 @@
 
 - Add coverage for import-script failure modes.
   - Why:
-    - The import entrypoints now have basic bad-argument coverage, but network failures, malformed upstream payloads, and partial-write paths are still lightly tested.
+    - The import suite now covers bad arguments and some network or malformed-payload failures, but partial-write paths and broader upstream failure permutations are still lightly tested.
   - Target:
-    - tests for upstream fetch failures and malformed HTML/CSV
+    - expand upstream fetch-failure coverage across the remaining import entrypoints
+    - add coverage for partial-write paths during artifact generation
 
 - Add regression tests for source schema edge cases.
   - Why:

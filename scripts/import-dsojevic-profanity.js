@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
@@ -33,9 +34,9 @@ export function parseArgs(argv) {
   return options;
 }
 
-async function fetchLanguage(language) {
+export async function fetchLanguage(language, fetchImpl = fetch) {
   const url = `${BASE_URL}/${language}.json`;
-  const response = await fetch(url, { headers: { "User-Agent": "nomsentry" } });
+  const response = await fetchImpl(url, { headers: { "User-Agent": "nomsentry" } });
   if (!response.ok) {
     throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
   }
@@ -56,7 +57,9 @@ async function main(argv) {
   }
 }
 
-main(process.argv.slice(2)).catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}

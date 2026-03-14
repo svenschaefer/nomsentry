@@ -20,6 +20,7 @@ import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import {
   buildInsultWikiSource,
   extractInsultWikiTerms,
+  fetchInsultWikiTerms,
   getInsultWikiLanguages
 } from "../src/importers/insult-wiki.js";
 import {
@@ -33,6 +34,11 @@ import { detectScriptRisk } from "../src/core/script-risk.js";
 import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
 import { compactSourcesDirectory, resolveCompactFilename } from "../scripts/compact-sources.js";
+import {
+  fetchAvailableLanguages as fetchLdnoobwLanguages,
+  fetchWordList as fetchLdnoobwWordList
+} from "../scripts/import-ldnoobw.js";
+import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
 
 const syntheticPolicySource = {
   id: "synthetic-policy-source",
@@ -283,6 +289,61 @@ assert.throws(
     "cuss import script should validate explicit empty language lists"
   );
 }
+
+await assert.rejects(
+  () => fetchLdnoobwLanguages(async () => ({ ok: false, status: 503, statusText: "Service Unavailable" })),
+  /Failed to fetch .* 503 Service Unavailable/,
+  "ldnoobw language discovery should surface upstream HTTP failures"
+);
+
+await assert.rejects(
+  () => fetchLdnoobwWordList("en", async () => ({ ok: false, status: 404, statusText: "Not Found" })),
+  /Failed to fetch .*\/en: 404 Not Found/,
+  "ldnoobw word-list fetches should surface upstream HTTP failures"
+);
+
+{
+  const fetched = await fetchLdnoobwWordList("en", async () => ({
+    ok: true,
+    text: async () => "\nshit\nSHIT\n# comment\nbitch\n"
+  }));
+  assert.deepEqual(
+    fetched,
+    {
+      language: "en",
+      sourceUrl: "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/en",
+      terms: ["bitch", "shit"]
+    },
+    "ldnoobw word-list fetches should normalize fetched upstream payloads"
+  );
+}
+
+await assert.rejects(
+  () => fetchDsojevicLanguage("en", async () => ({ ok: false, status: 429, statusText: "Too Many Requests" })),
+  /Failed to fetch .*\/en\.json: 429 Too Many Requests/,
+  "dsojevic fetches should surface upstream HTTP failures"
+);
+
+{
+  const payload = [{ id: "simple", match: "dumb", severity: 1 }];
+  const fetched = await fetchDsojevicLanguage("en", async () => ({
+    ok: true,
+    json: async () => payload
+  }));
+  assert.deepEqual(fetched, payload, "dsojevic fetches should return parsed JSON payloads");
+}
+
+await assert.rejects(
+  () => fetchInsultWikiTerms("en", async () => ({ ok: false, status: 502 })),
+  /insult\.wiki request failed for en: 502/,
+  "insult.wiki fetches should surface upstream HTTP failures"
+);
+
+await assert.rejects(
+  () => fetchInsultWikiTerms("en", async () => ({ ok: true, text: async () => "<html><body>No list</body></html>" })),
+  /Could not find insult\.wiki list markup/,
+  "insult.wiki fetches should fail on malformed upstream markup"
+);
 
 {
   const records = parseUsptoCaseFileCsv(

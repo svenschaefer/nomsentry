@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
@@ -35,8 +36,8 @@ export function parseArgs(argv) {
   return options;
 }
 
-async function fetchAvailableLanguages() {
-  const response = await fetch(REPO_API_URL, {
+export async function fetchAvailableLanguages(fetchImpl = fetch) {
+  const response = await fetchImpl(REPO_API_URL, {
     headers: { "User-Agent": "nomsentry" }
   });
 
@@ -51,9 +52,9 @@ async function fetchAvailableLanguages() {
     .sort((left, right) => left.localeCompare(right));
 }
 
-async function fetchWordList(language) {
+export async function fetchWordList(language, fetchImpl = fetch) {
   const sourceUrl = `${RAW_BASE_URL}/${language}`;
-  const response = await fetch(sourceUrl);
+  const response = await fetchImpl(sourceUrl);
   if (!response.ok) {
     throw new Error(`Failed to fetch ${sourceUrl}: ${response.status} ${response.statusText}`);
   }
@@ -65,8 +66,8 @@ async function fetchWordList(language) {
   };
 }
 
-async function main() {
-  const options = parseArgs(process.argv.slice(2));
+async function main(argv) {
+  const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
   const languages = options.languages.includes("all")
     ? await fetchAvailableLanguages()
@@ -86,7 +87,9 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}
