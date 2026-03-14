@@ -146,14 +146,6 @@
 
 ## P2 Engineering hygiene
 
-- Add CI for tests and runtime-bundle build verification.
-  - Why:
-    - The repo currently relies on local execution only.
-  - Target:
-    - run `npm test`
-    - run `npm run build:runtime-sources`
-    - verify no diff after rebuild where appropriate
-
 - Add linting and formatting checks for source and script code.
   - Why:
     - There is no automated static hygiene pass in the repository today.

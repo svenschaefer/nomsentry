@@ -62,6 +62,11 @@
   - malformed composite-rule scopes
   - stored-artifact metadata pruning through `serializeSource()`
 
+- Added repository CI in [ci.yml](/C:/code/nomsentry/.github/workflows/ci.yml).
+  - runs on pushes to `main` and on pull requests
+  - installs dependencies with `npm ci`
+  - executes the existing local gate through `npm run ci:check`
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

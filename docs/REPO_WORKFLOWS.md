@@ -10,6 +10,8 @@
 6. Update `README.md`, `docs/*`, `TODO.md`, `DONE.md`, and `ROADMAP.md` when behavior or project status changed.
 7. Commit with a clear message.
 
+The repository CI workflow runs the same `npm run ci:check` gate on pushes to `main` and on pull requests.
+
 ## Source and artifact flow
 
 When maintained source artifacts change:

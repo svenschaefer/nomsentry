@@ -23,6 +23,8 @@
   - `npm run determinism:check`
   - `npm run ci:check`
   - `npm run release:check`
+- CI status:
+  - GitHub Actions CI is configured to run `npm run ci:check` on pushes to `main` and on pull requests
 
 ## Quality status
 

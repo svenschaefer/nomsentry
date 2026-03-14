@@ -45,7 +45,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 ### v0.6.x
 
 5. Engineering hygiene
-   - add CI beyond local-only validation
    - add linting and formatting checks
    - evaluate JSDoc or TypeScript-based shape checking
    - Dependency:
