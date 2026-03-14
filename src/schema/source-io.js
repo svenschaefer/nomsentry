@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 import { compactSource } from "./source-format.js";
 
 function pruneMetadata(metadata) {
@@ -58,6 +59,24 @@ export function serializeSource(source) {
   return `${JSON.stringify(pruneSource(compactSource(source)))}\n`;
 }
 
+export function writeTextFileAtomic(targetPath, content) {
+  const directory = path.dirname(targetPath);
+  const tempPath = path.join(
+    directory,
+    `.${path.basename(targetPath)}.tmp-${process.pid}-${Date.now()}`
+  );
+
+  fs.mkdirSync(directory, { recursive: true });
+  try {
+    fs.writeFileSync(tempPath, content, "utf8");
+    fs.renameSync(tempPath, targetPath);
+  } finally {
+    if (fs.existsSync(tempPath)) {
+      fs.rmSync(tempPath, { force: true });
+    }
+  }
+}
+
 export function writeSourceFile(path, source) {
-  fs.writeFileSync(path, serializeSource(source), "utf8");
+  writeTextFileAtomic(path, serializeSource(source));
 }

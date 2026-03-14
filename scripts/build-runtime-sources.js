@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
+import { writeTextFileAtomic } from "../src/schema/source-io.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
@@ -93,7 +94,7 @@ export function buildRuntimeBundleFromDirectory(inputDir) {
 
 export function writeRuntimeBundle(outputFile, bundle) {
   fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-  fs.writeFileSync(outputFile, `${JSON.stringify(bundle)}\n`, "utf8");
+  writeTextFileAtomic(outputFile, `${JSON.stringify(bundle)}\n`);
 }
 
 function main(argv) {

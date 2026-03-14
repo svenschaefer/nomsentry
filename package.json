@@ -10,7 +10,9 @@
   "scripts": {
     "test": "node test/run-tests.js",
     "docs:check": "node scripts/check-docs-consistency.js",
-    "determinism:check": "node scripts/check-runtime-bundle-determinism.js",
+    "determinism:check": "npm run determinism:check:sources && npm run determinism:check:runtime",
+    "determinism:check:sources": "node scripts/check-maintained-sources-determinism.js",
+    "determinism:check:runtime": "node scripts/check-runtime-bundle-determinism.js",
     "ci:check": "npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",

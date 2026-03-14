@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
 import { applyAllowOverrides } from "../src/core/overrides.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
@@ -9,6 +11,7 @@ import { loadSourceFromFile, loadSourcesFromDirectory } from "../src/loaders/sou
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
+import { serializeSource, writeTextFileAtomic } from "../src/schema/source-io.js";
 import { buildLdnoobwSource, parseLdnoobwWordList } from "../src/importers/ldnoobw.js";
 import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
 import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
@@ -28,6 +31,8 @@ import {
 } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
 import { compactSource } from "../src/schema/source-format.js";
+import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
+import { compactSourcesDirectory, resolveCompactFilename } from "../scripts/compact-sources.js";
 
 const syntheticPolicySource = {
   id: "synthetic-policy-source",
@@ -476,6 +481,110 @@ assert.throws(
     ],
     "compact sources should expand and validate to the canonical rule model"
   );
+}
+
+{
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-source-io-"));
+  const targetFile = path.join(tmpDir, "atomic.json");
+  const content = serializeSource({
+    id: "atomic-test",
+    rules: [
+      {
+        id: "atomic-test/alpha",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token"
+      }
+    ]
+  });
+  writeTextFileAtomic(targetFile, content);
+  assert.equal(fs.readFileSync(targetFile, "utf8"), content, "atomic writer should persist the full content");
+  assert.deepEqual(
+    fs.readdirSync(tmpDir).filter((entry) => entry.includes(".tmp-")),
+    [],
+    "atomic writer should not leave temporary files behind"
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+assert.equal(
+  resolveCompactFilename({ id: "imported-insult-wiki-de" }),
+  "insult-wiki-de.json",
+  "compact-sources should preserve insult.wiki filenames"
+);
+
+{
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-compact-sources-"));
+  const outputDir = path.join(tmpDir, "sources");
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(path.join(outputDir, "stale.json"), '{"stale":true}\n', "utf8");
+
+  compactSourcesDirectory([
+    {
+      id: "imported-insult-wiki-en",
+      metadata: { source: "insult.wiki" },
+      rules: [
+        {
+          id: "imported-insult-wiki-en/asshole",
+          term: "asshole",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token"
+        }
+      ]
+    }
+  ], outputDir, {
+    stageDir: path.join(tmpDir, "stage"),
+    backupDir: path.join(tmpDir, "backup"),
+    logger: null
+  });
+
+  assert.deepEqual(
+    fs.readdirSync(outputDir).sort(),
+    ["insult-wiki-en.json"],
+    "compact-sources should swap the staged directory into place"
+  );
+  assert.equal(
+    loadSourceFromFile(pathToFileURL(path.join(outputDir, "insult-wiki-en.json"))).rules[0].term,
+    "asshole",
+    "compacted staged sources should remain readable after the swap"
+  );
+  assert.equal(fs.existsSync(path.join(tmpDir, "stage")), false, "compact-sources should clean up the stage directory");
+  assert.equal(fs.existsSync(path.join(tmpDir, "backup")), false, "compact-sources should clean up the backup directory");
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-runtime-bundle-"));
+  const outputFile = path.join(tmpDir, "runtime-sources.json");
+  const bundle = buildRuntimeBundle([
+    {
+      id: "runtime-test-source",
+      rules: [
+        {
+          id: "runtime-test-source/test",
+          term: "test",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton"
+        }
+      ]
+    }
+  ]);
+  writeRuntimeBundle(outputFile, bundle);
+  assert.equal(
+    loadRuntimeBundleFromFile(pathToFileURL(outputFile)).rules[0].term,
+    "test",
+    "runtime bundle writer should persist a loadable bundle atomically"
+  );
+  assert.deepEqual(
+    fs.readdirSync(tmpDir).filter((entry) => entry.includes(".tmp-")),
+    [],
+    "runtime bundle writer should not leave temporary files behind"
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
 }
 
 {

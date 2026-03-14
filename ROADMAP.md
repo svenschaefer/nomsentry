@@ -3,8 +3,7 @@
 ## Current focus
 
 1. Runtime and build hardening
-   - atomic artifact generation
-   - deterministic maintained-source rebuild verification
+   - stronger guardrails and rollback-path coverage for maintenance scripts
 
 2. Runtime performance
    - replace linear rule scans with indexed matching

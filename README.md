@@ -135,3 +135,4 @@ This keeps the official full set available while limiting default runtime `prote
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 
 For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.
+Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies both `custom/sources/` and `dist/runtime-sources.json`.

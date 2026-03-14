@@ -20,6 +20,8 @@
 - `scripts/import-*.js` - source-specific import entrypoints
 - `scripts/derive-uspto-brand-risk.js` - structural derivation of the runtime USPTO brand subset
 - `scripts/build-runtime-sources.js` - compilation of `custom/sources/` into the runtime bundle
+- `scripts/compact-sources.js` - canonical rewrite of `custom/sources/` via stage-and-swap
+- `scripts/check-maintained-sources-determinism.js` - reproducibility check for the maintained source artifacts
 - `scripts/check-runtime-bundle-determinism.js` - reproducibility check for the compiled runtime bundle
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/schema/source-format.js` - compact source tuple format
@@ -47,6 +49,7 @@ Instead it maintains:
 
 `custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json`.
 The runtime loader rejects unsupported bundle versions and malformed table references before evaluation.
+Maintained-source rewrites and runtime-bundle generation use atomic write or stage-and-swap paths to avoid partially-written artifacts on interruption.
 
 The currently maintained source families are:
 

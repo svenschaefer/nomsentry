@@ -2,6 +2,17 @@
 
 ## Completed recently
 
+- Made maintained-source and runtime-bundle writes crash-safer.
+  - [src/schema/source-io.js](/C:/code/nomsentry/src/schema/source-io.js) now writes files atomically through temporary files plus rename.
+  - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now uses the same atomic write path for `dist/runtime-sources.json`.
+  - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now stages rewritten source files in a temporary directory and swaps them into place only after success.
+
+- Added regression coverage for artifact-generation safeguards in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js).
+  - atomic source-file writes
+  - atomic runtime-bundle writes
+  - `compact-sources` stage/swap behavior
+  - stable `insult.wiki` filename mapping during source compaction
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.
@@ -38,3 +49,8 @@
   - wired into `npm run determinism:check`
   - included in `npm run ci:check`
   - reuses the same runtime-bundle builder as the main build path
+
+- Added deterministic maintained-source verification in [scripts/check-maintained-sources-determinism.js](/C:/code/nomsentry/scripts/check-maintained-sources-determinism.js).
+  - verifies the rebuilt `custom/sources/` file set and file contents are byte-stable
+  - wired into `npm run determinism:check`
+  - included in `npm run ci:check`

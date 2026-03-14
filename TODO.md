@@ -27,24 +27,6 @@
     - define expected refresh cadence per source family
     - fail CI or warn when source artifacts exceed allowed age
 
-- Make source and runtime artifact generation atomic and crash-safe.
-  - Why:
-    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) deletes all JSON files in `custom/sources/` before rewriting them.
-    - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) writes the runtime bundle directly to the final path.
-    - A failed or interrupted run can leave the repository or a deployment artifact set in a partially-written state.
-  - Target:
-    - write to temp files/directories first
-    - validate the result
-    - swap into place only after successful completion
-
-- Add deterministic rebuild verification for maintained source artifacts.
-  - Why:
-    - The project relies on versioned generated artifacts, but there is no explicit contract that rebuilds are byte-stable from the same inputs.
-    - Enterprise consumers need confidence that source ordering, compaction, and bundle generation are reproducible.
-  - Target:
-    - verify deterministic output for `custom/sources/` compaction
-    - document or encode the ordering rules used during generation
-
 ## P1 Product and policy quality
 
 - Split the current broad `profanity` category into more precise policy categories.
@@ -100,16 +82,15 @@
 
 - Add regression tests for deterministic maintained source generation.
   - Why:
-    - The current suite does not assert that repeated source compaction and runtime-bundle builds produce stable outputs.
-    - That leaves a quality gap around ordering bugs and accidental nondeterminism in generated files.
+    - Script-level determinism is checked, but the test suite still does not assert deterministic maintained-source rebuilds inline.
+    - That leaves a quality gap around future ordering bugs inside lower-level helpers.
   - Target:
     - test stable ordering of loaded sources
     - test that rebuilding maintained source artifacts from unchanged inputs produces identical serialized output
 
 - Add tests for destructive-script safeguards.
   - Why:
-    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) is intentionally destructive.
-    - There are no tests around interrupted writes, empty input directories, or accidental path misuse.
+    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has basic stage/swap coverage, but not enough around interrupted writes, empty input directories, or accidental path misuse.
   - Target:
     - test path handling and failure behavior for destructive maintenance scripts
     - add explicit guardrails for unexpected directories before deletion
