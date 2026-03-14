@@ -10,6 +10,7 @@ Additional project docs:
 - [Specification](/C:/code/nomsentry/docs/SPEC.md)
 - [Guarantees](/C:/code/nomsentry/docs/GUARANTEES.md)
 - [Repo Workflows](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
+- [Source Extension Policy](/C:/code/nomsentry/docs/SOURCE_EXTENSION_POLICY.md)
 - [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
 - [Wikidata Brand Evaluation](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
 - [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
@@ -52,6 +53,7 @@ npm run derive:uspto-brand-risk
 npm run build:runtime-sources
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
+node bin/nomsentry.js check tenantSlug support --bundle path\\to\\runtime-sources.json
 ```
 
 `npm run benchmark:runtime` prints a small JSON summary for:

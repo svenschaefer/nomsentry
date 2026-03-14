@@ -495,6 +495,26 @@ assert.throws(
   assert.equal(checkResult.status, 0, "cli check should succeed for valid inputs");
   assert.equal(checkResult.stdout.trim(), "reject", "cli check should still use the runtime bundle path");
 
+  const customBundleDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-cli-bundle-"));
+  const customBundlePath = path.join(customBundleDir, "runtime-sources.json");
+  writeRuntimeBundle(customBundlePath, buildRuntimeBundle([{
+    id: "cli-custom-bundle",
+    rules: [
+      {
+        id: "cli-custom-bundle/alpha",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token",
+        normalizationField: "confusableSkeleton"
+      }
+    ]
+  }]));
+  const customBundleResult = runCli("check", "tenantName", "alpha", "--bundle", customBundlePath);
+  assert.equal(customBundleResult.status, 0, "cli should accept an explicit runtime bundle path");
+  assert.equal(customBundleResult.stdout.trim(), "reject", "cli should evaluate against the selected runtime bundle");
+  fs.rmSync(customBundleDir, { recursive: true, force: true });
+
   const explainResult = runCli("explain", "tenantSlug", "support", "--namespace", "internal");
   assert.equal(explainResult.status, 0, "cli explain should succeed for valid inputs");
   const explained = JSON.parse(explainResult.stdout);

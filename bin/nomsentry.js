@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
@@ -20,6 +22,8 @@ function parseArgs(argv) {
     const token = args.shift();
     if (token === "--namespace") {
       options.namespace = args.shift();
+    } else if (token === "--bundle") {
+      options.bundle = path.resolve(process.cwd(), String(args.shift() || ""));
     } else {
       positional.push(token);
     }
@@ -30,13 +34,17 @@ function parseArgs(argv) {
 
 function printUsage() {
   console.log("Usage:");
-  console.log("  nomsentry check <kind> <value> [--namespace <ns>]");
-  console.log("  nomsentry explain <kind> <value> [--namespace <ns>]");
+  console.log("  nomsentry check <kind> <value> [--namespace <ns>] [--bundle <path>]");
+  console.log("  nomsentry explain <kind> <value> [--namespace <ns>] [--bundle <path>]");
 }
 
-function createCliEngine() {
+function createCliEngine(bundlePath) {
+  const runtimeBundle = bundlePath
+    ? loadRuntimeBundleFromFile(pathToFileURL(bundlePath))
+    : loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
+
   return createEngine({
-    sources: [loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url))],
+    sources: [runtimeBundle],
     policies: POLICIES,
     allowOverrides: [
       {
@@ -73,7 +81,7 @@ function main(argv) {
     return EXIT_VALIDATION;
   }
 
-  const engine = createCliEngine();
+  const engine = createCliEngine(options.bundle);
   const result = engine.evaluate({
     kind,
     value,

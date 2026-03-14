@@ -60,7 +60,7 @@
 
 - Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
 - Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
-- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for obfuscated positives, mixed-script fallback reviews, and nearby false positives, but it is still not the full reviewed catalog.
+- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for reserved-route positives, RFC 2142 positives, maintained protected-brand positives, mixed-script fallback reviews, and nearby false positives, but it is still not the full reviewed catalog.
 - Normalization tests now include deterministic generated property coverage for idempotence, invisibles, separator-heavy variants, case-mixed and NFD forms, fullwidth ASCII forms, and supported confusable substitutions, but they still do not constitute full fuzzing.
 - Determinism is now covered both by standalone check scripts and by direct in-suite tests for loader ordering and byte-stable maintained-source recompaction.
 - Direct schema tests now cover compact default extraction, metadata/default merging, malformed compact scope overrides, and malformed composite `allOf` entries.
@@ -77,6 +77,7 @@
 - `docs/SPEC.md`
 - `docs/GUARANTEES.md`
 - `docs/REPO_WORKFLOWS.md`
+- `docs/SOURCE_EXTENSION_POLICY.md`
 - `docs/STATUSQUO.md`
 - `docs/WIKIDATA_BRAND_EVALUATION.md`
 - `docs/BASELINE_TEST_RUN.md`
@@ -112,5 +113,7 @@
 - A direct Wikidata evaluation confirmed that clean candidate item pages exist for currently uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
 - The same Wikidata evaluation also showed that some valuable brand pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so a future supplement must be filtered rather than imported blindly.
 - If implemented, the Wikidata supplement should use a build-step SPARQL extractor that emits versioned derived source artifacts, not a runtime SDK dependency or a first-pass full-dump pipeline.
+- Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.
+- The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.

@@ -2,6 +2,18 @@
 
 ## Completed recently
 
+- Added a documented downstream source-extension policy and a downstream bundle CLI path.
+  - added [docs/SOURCE_EXTENSION_POLICY.md](/C:/code/nomsentry/docs/SOURCE_EXTENSION_POLICY.md)
+  - [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js) now accepts `--bundle <path>` so downstream compiled bundles can be validated without editing the maintained runtime artifact
+  - added CLI regression coverage for the alternate-bundle path in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
+- Expanded the grouped maintained-runtime regression matrix further.
+  - added more GitLab reserved-route and RFC 2142 positives in the maintained baseline fixtures
+  - added maintained `protectedBrand` positives from the current USPTO-derived subset
+  - expanded mixed-script fallback review fixtures for uncovered-brand lookalikes
+  - expanded nearby false-positive coverage for impersonation, reserved-technical, and brand-adjacent negatives
+  - broadened the explicit documented uncovered-brand gap fixture set
+
 - Evaluated Wikidata as a `protectedBrand` supplement source for uncovered brands.
   - added [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
   - confirmed that the current runtime still allows representative globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple`

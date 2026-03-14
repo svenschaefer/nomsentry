@@ -15,6 +15,6 @@
     "label": "mixed-script fallback reviews without maintained lexical source",
     "kind": "tenantSlug",
     "expected": "review",
-    "values": ["раypalx", "gооglex", "offіcial", "trυstx", "helрdesk", "opеnaii"]
+    "values": ["раypalx", "gооglex", "offіcial", "trυstx", "helрdesk", "opеnaii", "amazоnx", "chatgрtx", "gіthubx"]
   }
 ]

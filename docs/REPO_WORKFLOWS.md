@@ -21,6 +21,15 @@ When maintained source artifacts change:
 3. Run `npm run determinism:check`.
 4. Verify the resulting artifacts are intended and documented.
 
+## Downstream extension flow
+
+When a downstream project extends the source set:
+
+1. Keep downstream sources outside the maintained `custom/sources/` tree.
+2. Build a downstream compiled runtime bundle from the maintained and downstream source directories.
+3. Validate the downstream bundle with downstream fixtures.
+4. Use the CLI `--bundle` option when validating against that downstream bundle locally.
+
 ## Rules
 
 - Do not add self-maintained built-in rule lists to the maintained repository source set.

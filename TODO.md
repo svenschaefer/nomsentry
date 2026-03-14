@@ -62,12 +62,6 @@
     - define the intended composite vocabulary explicitly
     - generate composite rules from maintained impersonation or recovery vocabularies, or another documented derived source strategy
 
-- Add a documented policy for downstream source extension.
-  - Why:
-    - The docs state that downstream projects can add their own sources, but there is no documented merge, precedence, or override model for such extensions.
-  - Target:
-    - define how downstream sources interact with maintained sources, compiled bundles, and allow overrides
-
 ## P1 Quality and test coverage
 
 - Expand broad outcome-matrix coverage for true positives, false positives, true negatives, and likely false negatives.

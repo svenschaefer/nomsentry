@@ -12,10 +12,10 @@
     "values": ["official", "billing", "payments", "verified", "account-recovery", "password-reset", "trust", "safety"]
   },
   {
-    "label": "documented short-brand gaps under the current official-only baseline",
+    "label": "documented uncovered-brand gaps under the current official-only baseline",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["openai", "paypal", "google", "github"]
+    "values": ["openai", "chatgpt", "paypal", "google", "github", "stripe", "visa", "mastercard", "amazon", "apple"]
   },
   {
     "label": "documented composite coverage gaps",

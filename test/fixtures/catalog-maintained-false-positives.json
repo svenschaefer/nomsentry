@@ -3,13 +3,13 @@
     "label": "impersonation nearby negatives",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["supporter", "supportive", "securities", "officially", "teamwork", "paymentslab", "officiallyspeaking", "safetyline"]
+    "values": ["supporter", "supportive", "securities", "officially", "teamwork", "paymentslab", "officiallyspeaking", "safetyline", "newsroom", "abuser", "salesforce"]
   },
   {
     "label": "reservedTechnical nearby negatives",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["administratorx", "apis", "publica", "uploadslab", "projectile", "searcher", "billingham-labs"]
+    "values": ["administratorx", "apis", "helpful", "publica", "publicly", "uploadslab", "projectile", "searcher", "userspace", "billingham-labs"]
   },
   {
     "label": "composite nearby negatives",
@@ -27,6 +27,6 @@
     "label": "brand nearby negatives under current policy and source set",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["openair", "chatgpts", "googology", "striped", "visa-free"]
+    "values": ["openair", "chatgpts", "googology", "striped", "visa-free", "mastercardio", "dropboxing", "amazonian"]
   }
 ]

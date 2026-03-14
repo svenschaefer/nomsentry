@@ -50,7 +50,7 @@ Instead it maintains:
 - a machine-readable build manifest in `dist/build-manifest.json`
 - a deterministic source refresh policy in `source-refresh-policy.json`
 
-`custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json`.
+`custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json` by default, and downstream projects can point it at another compiled bundle with `--bundle`.
 The runtime loader rejects unsupported bundle versions and malformed table references before evaluation.
 Maintained-source rewrites and runtime-bundle generation use atomic write or stage-and-swap paths to avoid partially-written artifacts on interruption.
 The runtime build step also emits `dist/build-manifest.json`, which records the maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime-bundle hash tied to that exact source artifact set.
