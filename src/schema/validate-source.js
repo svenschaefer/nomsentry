@@ -48,8 +48,12 @@ function validateRule(rule, pointer) {
   assertArray(rule.scopes, `${pointer}.scopes`);
   assertString(rule.match, `${pointer}.match`);
   assertOptionalString(rule.severity, `${pointer}.severity`);
-  assertOptionalString(rule.normalizationField, `${pointer}.normalizationField`);
-  if (rule.metadata !== undefined) validateMetadata(rule.metadata, `${pointer}.metadata`);
+  assertOptionalString(
+    rule.normalizationField,
+    `${pointer}.normalizationField`,
+  );
+  if (rule.metadata !== undefined)
+    validateMetadata(rule.metadata, `${pointer}.metadata`);
 }
 
 function validateCompositeRule(rule, pointer) {
@@ -58,22 +62,27 @@ function validateCompositeRule(rule, pointer) {
   assertString(rule.category, `${pointer}.category`);
   assertArray(rule.scopes, `${pointer}.scopes`);
   assertArray(rule.allOf, `${pointer}.allOf`);
-  rule.allOf.forEach((term, index) => assertString(term, `${pointer}.allOf[${index}]`));
+  rule.allOf.forEach((term, index) =>
+    assertString(term, `${pointer}.allOf[${index}]`),
+  );
 }
 
 export function validateSource(source) {
   const expanded = expandSource(source);
   assertString(expanded.id, "source.id");
   assertOptionalString(expanded.description, "source.description");
-  if (expanded.metadata !== undefined) validateMetadata(expanded.metadata, "source.metadata");
+  if (expanded.metadata !== undefined)
+    validateMetadata(expanded.metadata, "source.metadata");
   if (expanded.rules !== undefined) {
     assertArray(expanded.rules, "source.rules");
-    expanded.rules.forEach((rule, index) => validateRule(rule, `source.rules[${index}]`));
+    expanded.rules.forEach((rule, index) =>
+      validateRule(rule, `source.rules[${index}]`),
+    );
   }
   if (expanded.compositeRules !== undefined) {
     assertArray(expanded.compositeRules, "source.compositeRules");
     expanded.compositeRules.forEach((rule, index) =>
-      validateCompositeRule(rule, `source.compositeRules[${index}]`)
+      validateCompositeRule(rule, `source.compositeRules[${index}]`),
     );
   }
   return expanded;

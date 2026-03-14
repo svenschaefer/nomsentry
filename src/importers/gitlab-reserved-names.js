@@ -1,13 +1,12 @@
 import { normalizeValue } from "../core/normalize.js";
 import { validateSource } from "../schema/validate-source.js";
 
-export const GITLAB_RESERVED_NAMES_PAGE_URL = "https://docs.gitlab.com/user/reserved_names/";
-export const GITLAB_RESERVED_NAMES_RAW_URL = "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md";
+export const GITLAB_RESERVED_NAMES_PAGE_URL =
+  "https://docs.gitlab.com/user/reserved_names/";
+export const GITLAB_RESERVED_NAMES_RAW_URL =
+  "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md";
 
-const SECTION_HEADINGS = [
-  "Reserved project names",
-  "Reserved group names"
-];
+const SECTION_HEADINGS = ["Reserved project names", "Reserved group names"];
 
 function extractSection(markdown, heading) {
   const lines = String(markdown ?? "").split(/\r?\n/);
@@ -60,7 +59,9 @@ export function extractGitLabReservedNames(markdown) {
 export async function fetchGitLabReservedNamesMarkdown(fetchImpl = fetch) {
   const response = await fetchImpl(GITLAB_RESERVED_NAMES_RAW_URL);
   if (!response.ok) {
-    throw new Error(`GitLab reserved names request failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `GitLab reserved names request failed: ${response.status} ${response.statusText}`,
+    );
   }
 
   return response.text();
@@ -78,7 +79,7 @@ export async function fetchGitLabReservedNames(fetchImpl = fetch) {
 export function buildGitLabReservedNamesSource({
   terms,
   scopes = ["username", "tenantSlug"],
-  category = "reservedTechnical"
+  category = "reservedTechnical",
 }) {
   const normalizedTerms = Array.from(
     new Set(
@@ -88,25 +89,27 @@ export function buildGitLabReservedNamesSource({
           const normalized = normalizeValue(term);
           return normalized.slug || normalized.compact;
         })
-        .filter((term) => term && term.length >= 3)
-    )
+        .filter((term) => term && term.length >= 3),
+    ),
   ).sort((left, right) => left.localeCompare(right));
 
   return validateSource({
     id: "imported-gitlab-reserved-names",
-    description: "Reserved project and group names extracted conservatively from GitLab documentation",
+    description:
+      "Reserved project and group names extracted conservatively from GitLab documentation",
     metadata: {
       source: "GitLab Docs",
       license: "CC-BY-SA-4.0",
       sourceUrl: GITLAB_RESERVED_NAMES_PAGE_URL,
-      notes: "Filtered to route-like reserved identifiers that are plausible generic namespace conflicts."
+      notes:
+        "Filtered to route-like reserved identifiers that are plausible generic namespace conflicts.",
     },
     ruleDefaults: {
       category,
       scopes,
       match: "token",
-      normalizationField: "slug"
+      normalizationField: "slug",
     },
-    rules: normalizedTerms.map((term) => [`gitlab-reserved/${term}`, term])
+    rules: normalizedTerms.map((term) => [`gitlab-reserved/${term}`, term]),
   });
 }

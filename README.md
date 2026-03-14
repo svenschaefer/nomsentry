@@ -6,6 +6,7 @@ Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md
 Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/C:/code/nomsentry/SECURITY.md).
 Persistent project context for repository-wide assumptions is in [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md).
 Additional project docs:
+
 - [Architecture](/C:/code/nomsentry/docs/ARCHITECTURE.md)
 - [Specification](/C:/code/nomsentry/docs/SPEC.md)
 - [Guarantees](/C:/code/nomsentry/docs/GUARANTEES.md)
@@ -35,6 +36,8 @@ Additional project docs:
 
 ```bash
 npm test
+npm run lint:check
+npm run format:check
 npm run benchmark:runtime
 npm run docs:check
 npm run freshness:check
@@ -57,6 +60,7 @@ node bin/nomsentry.js check tenantSlug support --bundle path\\to\\runtime-source
 ```
 
 `npm run benchmark:runtime` prints a small JSON summary for:
+
 - runtime-bundle load time
 - engine creation time
 - per-request evaluation latency across maintained fixture inputs

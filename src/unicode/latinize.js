@@ -1,13 +1,13 @@
 const LATIN_EQUIVALENTS = {
-  "ß": "ss",
-  "æ": "ae",
-  "œ": "oe",
-  "ø": "o",
-  "ð": "d",
-  "þ": "th",
-  "ł": "l",
-  "đ": "d",
-  "ı": "i"
+  ß: "ss",
+  æ: "ae",
+  œ: "oe",
+  ø: "o",
+  ð: "d",
+  þ: "th",
+  ł: "l",
+  đ: "d",
+  ı: "i",
 };
 
 export function foldLatinVariants(str) {

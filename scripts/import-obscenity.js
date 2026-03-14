@@ -6,13 +6,16 @@ import { writeSourceFile } from "../src/schema/source-io.js";
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
-    outputDir: path.resolve(process.cwd(), "custom", "sources")
+    outputDir: path.resolve(process.cwd(), "custom", "sources"),
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else {
       throw new Error(`Unknown option: ${token}`);
     }

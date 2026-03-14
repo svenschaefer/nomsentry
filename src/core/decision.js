@@ -30,7 +30,7 @@ export function decide({ matches, policy }) {
       term: rule.term,
       severity: rule.severity,
       matchType: match.matchType,
-      comparedField: match.comparedField
+      comparedField: match.comparedField,
     });
 
     if (action === "reject") outcome = "reject";
@@ -39,6 +39,6 @@ export function decide({ matches, policy }) {
 
   return {
     outcome,
-    reasons
+    reasons,
   };
 }

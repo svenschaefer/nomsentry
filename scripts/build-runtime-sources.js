@@ -3,24 +3,36 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
-import { buildProvenanceManifest, writeProvenanceManifest } from "./build-provenance-manifest.js";
+import {
+  buildProvenanceManifest,
+  writeProvenanceManifest,
+} from "./build-provenance-manifest.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputDir: path.resolve(process.cwd(), "custom", "sources"),
     outputFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
-    manifestFile: path.resolve(process.cwd(), "dist", "build-manifest.json")
+    manifestFile: path.resolve(process.cwd(), "dist", "build-manifest.json"),
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--input-dir") {
-      options.inputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.inputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--output-file") {
-      options.outputFile = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputFile = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--manifest-file") {
-      options.manifestFile = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.manifestFile = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
@@ -52,18 +64,23 @@ export function buildRuntimeBundle(sources) {
 
   for (const source of sources) {
     for (const rule of source.rules ?? []) {
-      const suffix = String(rule.id).slice(String(rule.id).lastIndexOf("/") + 1);
+      const suffix = String(rule.id).slice(
+        String(rule.id).lastIndexOf("/") + 1,
+      );
       const profile = [
         intern(categoryTable, rule.category),
         intern(matchTable, rule.match),
         intern(scopeTable, rule.scopes),
-        intern(normalizationFieldTable, rule.normalizationField ?? "separatorFolded"),
-        ...(rule.severity ? [intern(severityTable, rule.severity)] : [])
+        intern(
+          normalizationFieldTable,
+          rule.normalizationField ?? "separatorFolded",
+        ),
+        ...(rule.severity ? [intern(severityTable, rule.severity)] : []),
       ];
       const entry = [
         suffix,
         intern(profileTable, profile),
-        ...(suffix === rule.term ? [] : [rule.term])
+        ...(suffix === rule.term ? [] : [rule.term]),
       ];
       rules.push(entry);
     }
@@ -73,7 +90,7 @@ export function buildRuntimeBundle(sources) {
         rule.term,
         rule.category,
         intern(scopeTable, rule.scopes),
-        rule.allOf
+        rule.allOf,
       ]);
     }
   }
@@ -88,12 +105,14 @@ export function buildRuntimeBundle(sources) {
     normalizationFieldTable: normalizationFieldTable.items,
     profileTable: profileTable.items,
     rules,
-    compositeRules
+    compositeRules,
   };
 }
 
 export function buildRuntimeBundleFromDirectory(inputDir) {
-  return buildRuntimeBundle(loadSourcesFromDirectory(pathToFileURL(`${inputDir}${path.sep}`)));
+  return buildRuntimeBundle(
+    loadSourcesFromDirectory(pathToFileURL(`${inputDir}${path.sep}`)),
+  );
 }
 
 export function writeRuntimeBundle(outputFile, bundle) {
@@ -107,13 +126,18 @@ function main(argv) {
   writeRuntimeBundle(options.outputFile, bundle);
   const manifest = buildProvenanceManifest({
     inputDir: options.inputDir,
-    outputFile: options.outputFile
+    outputFile: options.outputFile,
   });
   writeProvenanceManifest(options.manifestFile, manifest);
-  console.log(`Wrote ${options.outputFile} (${bundle.rules.length} rules, ${bundle.compositeRules.length} composite rules)`);
+  console.log(
+    `Wrote ${options.outputFile} (${bundle.rules.length} rules, ${bundle.compositeRules.length} composite rules)`,
+  );
   console.log(`Wrote ${options.manifestFile}`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main(process.argv.slice(2));
 }

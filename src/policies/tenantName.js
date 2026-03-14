@@ -8,7 +8,7 @@ export function tenantName() {
       protectedBrand: "review",
       profanity: "reject",
       scriptRisk: "review",
-      compositeRisk: "review"
-    }
+      compositeRisk: "review",
+    },
   };
 }

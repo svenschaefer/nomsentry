@@ -6,14 +6,16 @@ import { loadSourceFromFile } from "../src/loaders/source-loader.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
 
-const DEFAULT_REFRESH_POLICY_FILE = path.resolve(process.cwd(), "source-refresh-policy.json");
-const DEFAULT_PACKAGE_LOCK_FILE = path.resolve(process.cwd(), "package-lock.json");
+const DEFAULT_REFRESH_POLICY_FILE = path.resolve(
+  process.cwd(),
+  "source-refresh-policy.json",
+);
+const DEFAULT_PACKAGE_LOCK_FILE = path.resolve(
+  process.cwd(),
+  "package-lock.json",
+);
 
-const PACKAGE_SOURCE_NAMES = new Set([
-  "@2toad/profanity",
-  "cuss",
-  "obscenity"
-]);
+const PACKAGE_SOURCE_NAMES = new Set(["@2toad/profanity", "cuss", "obscenity"]);
 
 const TRANSFORM_VERSION_BY_PREFIX = [
   ["imported-2toad-profanity-", "import-2toad-profanity@1"],
@@ -25,8 +27,11 @@ const TRANSFORM_VERSION_BY_PREFIX = [
   ["imported-obscenity-", "import-obscenity@1"],
   ["imported-rfc2142-role-mailboxes", "extract-rfc2142-role-mailboxes@1"],
   ["imported-uspto-trademarks-", "import-uspto-trademarks@1"],
-  ["imported-windows-reserved-device-names", "extract-windows-reserved-device-names@1"],
-  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@1"]
+  [
+    "imported-windows-reserved-device-names",
+    "extract-windows-reserved-device-names@1",
+  ],
+  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@1"],
 ];
 
 function normalizeRelativePath(value) {
@@ -68,7 +73,11 @@ function readPackageVersions(packageLockFile = DEFAULT_PACKAGE_LOCK_FILE) {
 
 function readRefreshPolicy(refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE) {
   const refreshPolicy = readOptionalJson(refreshPolicyFile);
-  if (!refreshPolicy || refreshPolicy.id !== "source-refresh-policy" || !Array.isArray(refreshPolicy.policies)) {
+  if (
+    !refreshPolicy ||
+    refreshPolicy.id !== "source-refresh-policy" ||
+    !Array.isArray(refreshPolicy.policies)
+  ) {
     return null;
   }
   return refreshPolicy;
@@ -76,7 +85,11 @@ function readRefreshPolicy(refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE) {
 
 function findRefreshPolicyEntry(refreshPolicy, sourceName) {
   if (!refreshPolicy || !sourceName) return null;
-  return refreshPolicy.policies.find((entry) => entry?.match?.source === sourceName) ?? null;
+  return (
+    refreshPolicy.policies.find(
+      (entry) => entry?.match?.source === sourceName,
+    ) ?? null
+  );
 }
 
 function inferArtifactType(sourceId) {
@@ -101,7 +114,7 @@ function buildRefreshPolicyMetadata(refreshPolicy, sourceName) {
     source: refreshPolicy.id,
     version: refreshPolicy.version,
     maxAgeDays: matchedPolicy.maxAgeDays,
-    notes: matchedPolicy.notes ?? null
+    notes: matchedPolicy.notes ?? null,
   };
 }
 
@@ -109,15 +122,19 @@ function inferUpstreamVersion(sourceName, packageVersions) {
   if (!sourceName || !packageVersions.has(sourceName)) return null;
   return {
     source: "package-lock.json",
-    value: packageVersions.get(sourceName)
+    value: packageVersions.get(sourceName),
   };
 }
 
-export function buildSourceArtifactEntries(inputDir, {
-  refreshPolicy = readRefreshPolicy(),
-  packageVersions = readPackageVersions()
-} = {}) {
-  return fs.readdirSync(inputDir)
+export function buildSourceArtifactEntries(
+  inputDir,
+  {
+    refreshPolicy = readRefreshPolicy(),
+    packageVersions = readPackageVersions(),
+  } = {},
+) {
+  return fs
+    .readdirSync(inputDir)
     .filter((entry) => entry.endsWith(".json"))
     .sort((left, right) => left.localeCompare(right))
     .map((entry) => {
@@ -137,16 +154,21 @@ export function buildSourceArtifactEntries(inputDir, {
         sourceUrl: source.metadata?.sourceUrl ?? null,
         ruleCount: source.rules?.length ?? 0,
         compositeRuleCount: source.compositeRules?.length ?? 0,
-        sha256: hashText(serialized)
+        sha256: hashText(serialized),
       };
     });
 }
 
 export function buildSourceArtifactSetHash(entries) {
-  return hashText(JSON.stringify(entries.map((entry) => [entry.file, entry.sha256])));
+  return hashText(
+    JSON.stringify(entries.map((entry) => [entry.file, entry.sha256])),
+  );
 }
 
-export function buildRuntimeArtifactEntry(outputFile, runtimeFileLabel = outputFile) {
+export function buildRuntimeArtifactEntry(
+  outputFile,
+  runtimeFileLabel = outputFile,
+) {
   const serialized = readText(outputFile);
   const bundle = loadRuntimeBundleFromFile(pathToFileURL(outputFile));
   return {
@@ -155,7 +177,7 @@ export function buildRuntimeArtifactEntry(outputFile, runtimeFileLabel = outputF
     transformVersion: "build-runtime-sources@1",
     ruleCount: bundle.rules.length,
     compositeRuleCount: bundle.compositeRules.length,
-    sha256: hashText(serialized)
+    sha256: hashText(serialized),
   };
 }
 
@@ -164,32 +186,50 @@ export function buildProvenanceManifest({
   outputFile,
   runtimeFileLabel = outputFile,
   refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE,
-  packageLockFile = DEFAULT_PACKAGE_LOCK_FILE
+  packageLockFile = DEFAULT_PACKAGE_LOCK_FILE,
 }) {
   const refreshPolicy = readRefreshPolicy(refreshPolicyFile);
   const packageVersions = readPackageVersions(packageLockFile);
-  const sourceArtifacts = buildSourceArtifactEntries(inputDir, { refreshPolicy, packageVersions });
+  const sourceArtifacts = buildSourceArtifactEntries(inputDir, {
+    refreshPolicy,
+    packageVersions,
+  });
   const sourceArtifactSetSha256 = buildSourceArtifactSetHash(sourceArtifacts);
-  const runtimeArtifact = buildRuntimeArtifactEntry(outputFile, runtimeFileLabel);
-  const refreshPolicyFileRelative = normalizeRelativePath(path.relative(process.cwd(), refreshPolicyFile));
-  const packageLockFileRelative = normalizeRelativePath(path.relative(process.cwd(), packageLockFile));
+  const runtimeArtifact = buildRuntimeArtifactEntry(
+    outputFile,
+    runtimeFileLabel,
+  );
+  const refreshPolicyFileRelative = normalizeRelativePath(
+    path.relative(process.cwd(), refreshPolicyFile),
+  );
+  const packageLockFileRelative = normalizeRelativePath(
+    path.relative(process.cwd(), packageLockFile),
+  );
 
   return {
     id: "build-provenance-manifest",
     version: 2,
     provenanceInputs: {
-      refreshPolicyFile: fs.existsSync(refreshPolicyFile) ? refreshPolicyFileRelative : null,
-      refreshPolicySha256: fs.existsSync(refreshPolicyFile) ? hashText(readText(refreshPolicyFile)) : null,
+      refreshPolicyFile: fs.existsSync(refreshPolicyFile)
+        ? refreshPolicyFileRelative
+        : null,
+      refreshPolicySha256: fs.existsSync(refreshPolicyFile)
+        ? hashText(readText(refreshPolicyFile))
+        : null,
       refreshPolicyVersion: refreshPolicy?.version ?? null,
-      packageLockFile: fs.existsSync(packageLockFile) ? packageLockFileRelative : null,
-      packageLockSha256: fs.existsSync(packageLockFile) ? hashText(readText(packageLockFile)) : null
+      packageLockFile: fs.existsSync(packageLockFile)
+        ? packageLockFileRelative
+        : null,
+      packageLockSha256: fs.existsSync(packageLockFile)
+        ? hashText(readText(packageLockFile))
+        : null,
     },
     sourceArtifacts,
     sourceArtifactSetSha256,
     runtimeArtifact: {
       ...runtimeArtifact,
-      sourceArtifactSetSha256
-    }
+      sourceArtifactSetSha256,
+    },
   };
 }
 

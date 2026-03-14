@@ -17,15 +17,25 @@ function mergeMetadata(base, override) {
 function getCommonValue(values) {
   if (values.length === 0) return undefined;
   const first = JSON.stringify(values[0]);
-  return values.every((value) => JSON.stringify(value) === first) ? values[0] : undefined;
+  return values.every((value) => JSON.stringify(value) === first)
+    ? values[0]
+    : undefined;
 }
 
 function getRuleDefaults(source) {
-  const rules = Array.isArray(source?.rules) ? source.rules.filter(isPlainObject) : [];
+  const rules = Array.isArray(source?.rules)
+    ? source.rules.filter(isPlainObject)
+    : [];
   if (rules.length === 0) return undefined;
 
   const defaults = {};
-  for (const key of ["category", "scopes", "match", "severity", "normalizationField"]) {
+  for (const key of [
+    "category",
+    "scopes",
+    "match",
+    "severity",
+    "normalizationField",
+  ]) {
     const common = getCommonValue(rules.map((rule) => rule[key]));
     if (common !== undefined) defaults[key] = clone(common);
   }
@@ -48,7 +58,11 @@ function getRuleDefaults(source) {
   }
 
   const prefix = `${source.id}/`;
-  if (rules.every((rule) => typeof rule.id === "string" && rule.id.startsWith(prefix))) {
+  if (
+    rules.every(
+      (rule) => typeof rule.id === "string" && rule.id.startsWith(prefix),
+    )
+  ) {
     defaults.idPrefix = prefix;
   }
 
@@ -57,13 +71,20 @@ function getRuleDefaults(source) {
 
 function compactRule(rule, defaults) {
   const entry = [];
-  const rawId = defaults?.idPrefix && rule.id.startsWith(defaults.idPrefix)
-    ? rule.id.slice(defaults.idPrefix.length)
-    : rule.id;
+  const rawId =
+    defaults?.idPrefix && rule.id.startsWith(defaults.idPrefix)
+      ? rule.id.slice(defaults.idPrefix.length)
+      : rule.id;
   entry.push(rawId, rule.term);
 
   const override = {};
-  for (const key of ["category", "scopes", "match", "severity", "normalizationField"]) {
+  for (const key of [
+    "category",
+    "scopes",
+    "match",
+    "severity",
+    "normalizationField",
+  ]) {
     if (JSON.stringify(rule[key]) !== JSON.stringify(defaults?.[key])) {
       override[key] = clone(rule[key]);
     }
@@ -93,7 +114,10 @@ function compactRule(rule, defaults) {
 }
 
 export function compactSource(source) {
-  if (!Array.isArray(source?.rules) || source.rules.some((rule) => !isPlainObject(rule))) {
+  if (
+    !Array.isArray(source?.rules) ||
+    source.rules.some((rule) => !isPlainObject(rule))
+  ) {
     return source;
   }
 
@@ -106,14 +130,16 @@ export function compactSource(source) {
     metadata: source.metadata,
     ruleDefaults: defaults,
     rules: source.rules.map((rule) => compactRule(rule, defaults)),
-    ...(source.compositeRules ? { compositeRules: source.compositeRules } : {})
+    ...(source.compositeRules ? { compositeRules: source.compositeRules } : {}),
   };
 }
 
 function expandCompactRule(rule, defaults, index) {
   if (isPlainObject(rule)) return clone(rule);
   if (!Array.isArray(rule) || rule.length < 2 || rule.length > 3) {
-    throw new Error(`source.rules[${index}] must be an object or a compact rule tuple`);
+    throw new Error(
+      `source.rules[${index}] must be an object or a compact rule tuple`,
+    );
   }
 
   const [rawId, term, override] = rule;
@@ -127,13 +153,17 @@ function expandCompactRule(rule, defaults, index) {
     scopes: clone(override?.scopes ?? defaults?.scopes),
     match: override?.match ?? defaults?.match,
     severity: override?.severity ?? defaults?.severity,
-    normalizationField: override?.normalizationField ?? defaults?.normalizationField,
-    ...(metadata ? { metadata } : {})
+    normalizationField:
+      override?.normalizationField ?? defaults?.normalizationField,
+    ...(metadata ? { metadata } : {}),
   };
 }
 
 export function expandSource(source) {
-  if (!Array.isArray(source?.rules) || (!source.ruleDefaults && source.rules.every(isPlainObject))) {
+  if (
+    !Array.isArray(source?.rules) ||
+    (!source.ruleDefaults && source.rules.every(isPlainObject))
+  ) {
     return clone(source);
   }
 
@@ -142,7 +172,11 @@ export function expandSource(source) {
     id: source.id,
     description: source.description,
     metadata: clone(source.metadata),
-    rules: source.rules.map((rule, index) => expandCompactRule(rule, defaults, index)),
-    ...(source.compositeRules ? { compositeRules: clone(source.compositeRules) } : {})
+    rules: source.rules.map((rule, index) =>
+      expandCompactRule(rule, defaults, index),
+    ),
+    ...(source.compositeRules
+      ? { compositeRules: clone(source.compositeRules) }
+      : {}),
   };
 }

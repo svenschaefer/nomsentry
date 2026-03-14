@@ -3,20 +3,23 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   buildGitLabReservedNamesSource,
-  fetchGitLabReservedNames
+  fetchGitLabReservedNames,
 } from "../src/importers/gitlab-reserved-names.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
-    outputDir: path.resolve(process.cwd(), "custom", "sources")
+    outputDir: path.resolve(process.cwd(), "custom", "sources"),
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
@@ -29,14 +32,17 @@ async function main(argv) {
   const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
   const source = buildGitLabReservedNamesSource({
-    terms: await fetchGitLabReservedNames()
+    terms: await fetchGitLabReservedNames(),
   });
   const targetFile = path.join(options.outputDir, "gitlab-reserved-names.json");
   writeSourceFile(targetFile, source);
   console.log(`Wrote ${targetFile} (${source.rules.length} rules)`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main(process.argv.slice(2)).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;

@@ -2,6 +2,14 @@
 
 ## Completed recently
 
+- Added linting and formatting checks for human-maintained files.
+  - added [eslint.config.js](/C:/code/nomsentry/eslint.config.js)
+  - added [.prettierignore](/C:/code/nomsentry/.prettierignore)
+  - added [.prettierrc.json](/C:/code/nomsentry/.prettierrc.json)
+  - added `lint:check` and `format:check` in [package.json](/C:/code/nomsentry/package.json)
+  - wired both checks into `ci:check`
+  - fixed the latent syntax bug in [scripts/import-insult-wiki.js](/C:/code/nomsentry/scripts/import-insult-wiki.js) that the new lint gate surfaced
+
 - Added a documented downstream source-extension policy and a downstream bundle CLI path.
   - added [docs/SOURCE_EXTENSION_POLICY.md](/C:/code/nomsentry/docs/SOURCE_EXTENSION_POLICY.md)
   - [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js) now accepts `--bundle <path>` so downstream compiled bundles can be validated without editing the maintained runtime artifact

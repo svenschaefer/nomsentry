@@ -23,16 +23,28 @@ for (const required of [
   "USPTO",
   "RFC 2142",
   "Microsoft Windows reserved device names",
-  "words/profanities"
+  "words/profanities",
 ]) {
   assertIncludes(readme, required, `README token: ${required}`);
   assertIncludes(architecture, required, `ARCHITECTURE token: ${required}`);
 }
 
-assertIncludes(readme, "`RFC 2142` currently feeds `impersonation`", "README RFC 2142 category note");
-assertIncludes(architecture, "`RFC 2142` feeds `impersonation`", "ARCHITECTURE RFC 2142 category note");
+assertIncludes(
+  readme,
+  "`RFC 2142` currently feeds `impersonation`",
+  "README RFC 2142 category note",
+);
+assertIncludes(
+  architecture,
+  "`RFC 2142` feeds `impersonation`",
+  "ARCHITECTURE RFC 2142 category note",
+);
 assertIncludes(spec, "`impersonation`", "SPEC impersonation category section");
-assertIncludes(spec, "official and normative identifier artifacts", "SPEC runtime input phrasing");
+assertIncludes(
+  spec,
+  "official and normative identifier artifacts",
+  "SPEC runtime input phrasing",
+);
 
 for (const required of [
   "LDNOOBW",
@@ -43,7 +55,7 @@ for (const required of [
   "obscenity",
   "USPTO Trademark Bulk Data",
   "RFC 2142",
-  "Microsoft Learn Windows reserved device names"
+  "Microsoft Learn Windows reserved device names",
 ]) {
   assertIncludes(notices, required, `THIRD_PARTY_NOTICES token: ${required}`);
 }

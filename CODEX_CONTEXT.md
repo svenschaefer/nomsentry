@@ -53,6 +53,7 @@
 - Source freshness is checked against git commit dates plus the deterministic refresh policy file.
 - Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - A lightweight runtime benchmark harness exists for bundle load, engine creation, and evaluation latency over maintained fixture inputs.
+- Lint and formatting gates now exist for human-maintained files through ESLint and Prettier, and they are part of `npm run ci:check`.
 - `npm run determinism:check` validates both maintained source determinism and runtime-bundle determinism.
 - `npm run ci:check` is the main local validation gate.
 

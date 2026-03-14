@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   buildUsptoTrademarkSourceFromCsvFile,
-  splitUsptoTrademarkSource
+  splitUsptoTrademarkSource,
 } from "../src/importers/uspto.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
@@ -11,15 +11,21 @@ export function parseArgs(argv) {
   const options = {
     inputFile: "",
     outputDir: path.resolve(process.cwd(), "data", "uspto", "full-sources"),
-    chunkSize: 5000
+    chunkSize: 5000,
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--input-file") {
-      options.inputFile = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.inputFile = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--chunk-size") {
       options.chunkSize = Number.parseInt(String(args.shift() || ""), 10);
     } else {
@@ -28,7 +34,9 @@ export function parseArgs(argv) {
   }
 
   if (!options.inputFile) {
-    throw new Error("Missing required option: --input-file <path-to-uspto-case-file-csv>");
+    throw new Error(
+      "Missing required option: --input-file <path-to-uspto-case-file-csv>",
+    );
   }
   if (!Number.isInteger(options.chunkSize) || options.chunkSize < 1) {
     throw new Error("Invalid option: --chunk-size must be a positive integer");
@@ -41,7 +49,9 @@ async function main(argv) {
   const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
   const source = await buildUsptoTrademarkSourceFromCsvFile(options.inputFile);
-  const chunkFiles = splitUsptoTrademarkSource(source, { chunkSize: options.chunkSize });
+  const chunkFiles = splitUsptoTrademarkSource(source, {
+    chunkSize: options.chunkSize,
+  });
 
   for (const file of fs.readdirSync(options.outputDir)) {
     if (file.startsWith("uspto-trademarks-") && file.endsWith(".json")) {
@@ -54,7 +64,9 @@ async function main(argv) {
     writeSourceFile(targetFile, chunk);
   }
 
-  console.log(`Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`);
+  console.log(
+    `Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`,
+  );
 }
 
 main(process.argv.slice(2)).catch((error) => {

@@ -3,15 +3,19 @@ import { validateSource } from "../schema/validate-source.js";
 
 export function buildObscenityEnglishSource({
   scopes = ["username", "tenantSlug", "tenantName"],
-  category = "profanity"
+  category = "profanity",
 } = {}) {
   const terms = Array.from(
     new Set(
       (englishDataset.containers || [])
         .map((container) => container?.metadata?.originalWord)
-        .map((term) => String(term || "").trim().toLowerCase())
-        .filter(Boolean)
-    )
+        .map((term) =>
+          String(term || "")
+            .trim()
+            .toLowerCase(),
+        )
+        .filter(Boolean),
+    ),
   ).sort((left, right) => left.localeCompare(right));
 
   return validateSource({
@@ -23,7 +27,7 @@ export function buildObscenityEnglishSource({
       severity: "mixed",
       tags: ["external-import", "profanity", "library", "pattern-derived"],
       license: "MIT",
-      notes: "Derived from obscenity englishDataset originalWord metadata."
+      notes: "Derived from obscenity englishDataset originalWord metadata.",
     },
     rules: terms.map((term) => ({
       id: `imported-obscenity-en/${term}`,
@@ -37,8 +41,8 @@ export function buildObscenityEnglishSource({
         language: "en",
         severity: "mixed",
         tags: ["external-import", "profanity", "library", "pattern-derived"],
-        license: "MIT"
-      }
-    }))
+        license: "MIT",
+      },
+    })),
   });
 }

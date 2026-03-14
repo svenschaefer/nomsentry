@@ -29,6 +29,6 @@ export function detectScriptRisk(value) {
 
   return {
     scripts: Array.from(scripts),
-    mixed: scripts.size > 1
+    mixed: scripts.size > 1,
   };
 }

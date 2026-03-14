@@ -54,6 +54,9 @@
   - separator-variant invariants
   - deterministic generated corpora for case-mixed, NFD, fullwidth, separator-heavy, and supported-confusable variants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
+- Lint and formatting gates are now in place for human-maintained repository files through:
+  - `npm run lint:check`
+  - `npm run format:check`
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, a broader GitLab reserved-route set, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants from the reviewed catalog

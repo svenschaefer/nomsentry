@@ -3,7 +3,7 @@ import { normalizeValue } from "../core/normalize.js";
 
 const INSULT_WIKI_PAGES = {
   en: "https://www.insult.wiki/list-of-insults",
-  de: "https://www.insult.wiki/schimpfwort-liste"
+  de: "https://www.insult.wiki/schimpfwort-liste",
 };
 
 const HTML_ENTITY_MAP = {
@@ -12,21 +12,24 @@ const HTML_ENTITY_MAP = {
   gt: ">",
   lt: "<",
   nbsp: " ",
-  quot: "\"",
+  quot: '"',
   Auml: "Ä",
   Ouml: "Ö",
   Uuml: "Ü",
   auml: "ä",
   ouml: "ö",
   uuml: "ü",
-  szlig: "ß"
+  szlig: "ß",
 };
 
 function decodeHtmlEntities(value) {
   return value.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (match, entity) => {
     if (entity[0] === "#") {
       const isHex = entity[1]?.toLowerCase() === "x";
-      const numeric = Number.parseInt(entity.slice(isHex ? 2 : 1), isHex ? 16 : 10);
+      const numeric = Number.parseInt(
+        entity.slice(isHex ? 2 : 1),
+        isHex ? 16 : 10,
+      );
       return Number.isFinite(numeric) ? String.fromCodePoint(numeric) : match;
     }
 
@@ -35,11 +38,15 @@ function decodeHtmlEntities(value) {
 }
 
 function stripMarkup(value) {
-  return decodeHtmlEntities(value.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+  return decodeHtmlEntities(value.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function getInsultWikiLanguages() {
-  return Object.keys(INSULT_WIKI_PAGES).sort((left, right) => left.localeCompare(right));
+  return Object.keys(INSULT_WIKI_PAGES).sort((left, right) =>
+    left.localeCompare(right),
+  );
 }
 
 export function getInsultWikiUrl(language) {
@@ -69,7 +76,9 @@ export function extractInsultWikiTerms(html) {
 export async function fetchInsultWikiTerms(language, fetchImpl = fetch) {
   const response = await fetchImpl(getInsultWikiUrl(language));
   if (!response.ok) {
-    throw new Error(`insult.wiki request failed for ${language}: ${response.status}`);
+    throw new Error(
+      `insult.wiki request failed for ${language}: ${response.status}`,
+    );
   }
 
   return extractInsultWikiTerms(await response.text());
@@ -79,7 +88,7 @@ export function buildInsultWikiSource({
   language,
   terms,
   scopes = ["username", "tenantSlug", "tenantName"],
-  category = "profanity"
+  category = "profanity",
 }) {
   if (!INSULT_WIKI_PAGES[language]) {
     throw new Error(`Unsupported insult.wiki language: ${language}`);
@@ -105,8 +114,8 @@ export function buildInsultWikiSource({
         source: "insult.wiki",
         language,
         license: "CC0-1.0",
-        sourceUrl: INSULT_WIKI_PAGES[language]
-      }
+        sourceUrl: INSULT_WIKI_PAGES[language],
+      },
     });
   }
 
@@ -117,8 +126,8 @@ export function buildInsultWikiSource({
       source: "insult.wiki",
       language,
       license: "CC0-1.0",
-      sourceUrl: INSULT_WIKI_PAGES[language]
+      sourceUrl: INSULT_WIKI_PAGES[language],
     },
-    rules: rules.sort((left, right) => left.term.localeCompare(right.term))
+    rules: rules.sort((left, right) => left.term.localeCompare(right.term)),
   });
 }

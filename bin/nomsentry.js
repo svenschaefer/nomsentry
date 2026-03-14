@@ -34,14 +34,20 @@ function parseArgs(argv) {
 
 function printUsage() {
   console.log("Usage:");
-  console.log("  nomsentry check <kind> <value> [--namespace <ns>] [--bundle <path>]");
-  console.log("  nomsentry explain <kind> <value> [--namespace <ns>] [--bundle <path>]");
+  console.log(
+    "  nomsentry check <kind> <value> [--namespace <ns>] [--bundle <path>]",
+  );
+  console.log(
+    "  nomsentry explain <kind> <value> [--namespace <ns>] [--bundle <path>]",
+  );
 }
 
 function createCliEngine(bundlePath) {
   const runtimeBundle = bundlePath
     ? loadRuntimeBundleFromFile(pathToFileURL(bundlePath))
-    : loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
+    : loadRuntimeBundleFromFile(
+        new URL("../dist/runtime-sources.json", import.meta.url),
+      );
 
   return createEngine({
     sources: [runtimeBundle],
@@ -55,10 +61,10 @@ function createCliEngine(bundlePath) {
         conditions: { namespace: ["internal"] },
         override: {
           action: "allow",
-          suppressCategories: ["impersonation"]
-        }
-      }
-    ]
+          suppressCategories: ["impersonation"],
+        },
+      },
+    ],
   });
 }
 
@@ -86,8 +92,8 @@ function main(argv) {
     kind,
     value,
     context: {
-      namespace: options.namespace
-    }
+      namespace: options.namespace,
+    },
   });
 
   if (command === "check") {

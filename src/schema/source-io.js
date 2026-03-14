@@ -19,7 +19,9 @@ function pruneSource(source) {
   const pruned = {
     id: source.id,
     ...(source.description ? { description: source.description } : {}),
-    ...(pruneMetadata(source.metadata) ? { metadata: pruneMetadata(source.metadata) } : {})
+    ...(pruneMetadata(source.metadata)
+      ? { metadata: pruneMetadata(source.metadata) }
+      : {}),
   };
 
   if (source.ruleDefaults) {
@@ -44,7 +46,9 @@ function pruneSource(source) {
 
       const override = { ...rule[2] };
       delete override.metadata;
-      return Object.keys(override).length > 0 ? [rule[0], rule[1], override] : [rule[0], rule[1]];
+      return Object.keys(override).length > 0
+        ? [rule[0], rule[1], override]
+        : [rule[0], rule[1]];
     });
   }
 
@@ -63,7 +67,7 @@ export function writeTextFileAtomic(targetPath, content) {
   const directory = path.dirname(targetPath);
   const tempPath = path.join(
     directory,
-    `.${path.basename(targetPath)}.tmp-${process.pid}-${Date.now()}`
+    `.${path.basename(targetPath)}.tmp-${process.pid}-${Date.now()}`,
   );
 
   fs.mkdirSync(directory, { recursive: true });

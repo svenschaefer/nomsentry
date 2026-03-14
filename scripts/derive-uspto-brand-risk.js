@@ -13,19 +13,31 @@ function parseArgs(argv) {
     singleWordMinLength: 12,
     multiWordMinTokenLength: 6,
     maxWords: 2,
-    allowDigits: false
+    allowDigits: false,
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--input-dir") {
-      options.inputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.inputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--single-word-min-length") {
-      options.singleWordMinLength = Number.parseInt(String(args.shift() || ""), 10);
+      options.singleWordMinLength = Number.parseInt(
+        String(args.shift() || ""),
+        10,
+      );
     } else if (token === "--multi-word-min-token-length") {
-      options.multiWordMinTokenLength = Number.parseInt(String(args.shift() || ""), 10);
+      options.multiWordMinTokenLength = Number.parseInt(
+        String(args.shift() || ""),
+        10,
+      );
     } else if (token === "--max-words") {
       options.maxWords = Number.parseInt(String(args.shift() || ""), 10);
     } else if (token === "--allow-digits") {
@@ -47,23 +59,27 @@ function mergeSources(sources, id) {
   return {
     ...sources[0],
     id,
-    description: "Merged USPTO live standard-character trademarks and service marks",
-    rules: merged
+    description:
+      "Merged USPTO live standard-character trademarks and service marks",
+    rules: merged,
   };
 }
 
 const options = parseArgs(process.argv.slice(2));
 fs.mkdirSync(options.outputDir, { recursive: true });
 
-const fullSources = loadSourcesFromDirectory(pathToFileURL(`${options.inputDir}${path.sep}`)).filter(
-  (source) => source.id.startsWith("imported-uspto-trademarks-")
+const fullSources = loadSourcesFromDirectory(
+  pathToFileURL(`${options.inputDir}${path.sep}`),
+).filter((source) => source.id.startsWith("imported-uspto-trademarks-"));
+const mergedFullSource = mergeSources(
+  fullSources,
+  "imported-uspto-trademarks-full",
 );
-const mergedFullSource = mergeSources(fullSources, "imported-uspto-trademarks-full");
 const derived = deriveUsptoBrandRiskSource(mergedFullSource, {
   singleWordMinLength: options.singleWordMinLength,
   multiWordMinTokenLength: options.multiWordMinTokenLength,
   maxWords: options.maxWords,
-  allowDigits: options.allowDigits
+  allowDigits: options.allowDigits,
 });
 
 for (const file of fs.readdirSync(options.outputDir)) {
@@ -75,7 +91,10 @@ for (const file of fs.readdirSync(options.outputDir)) {
   }
 }
 
-const targetFile = path.join(options.outputDir, "derived-uspto-brand-risk.json");
+const targetFile = path.join(
+  options.outputDir,
+  "derived-uspto-brand-risk.json",
+);
 writeSourceFile(targetFile, derived);
 
 console.log(`Wrote ${targetFile} (${derived.rules.length} terms)`);

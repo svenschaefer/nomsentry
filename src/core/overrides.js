@@ -7,7 +7,7 @@ function deriveDecision({ reasons, policy, fallback }) {
     else if (action === "review" && outcome !== "reject") outcome = "review";
   }
 
-  return reasons.length === 0 ? "allow" : (outcome || fallback);
+  return reasons.length === 0 ? "allow" : outcome || fallback;
 }
 
 export function applyAllowOverrides({
@@ -17,27 +17,37 @@ export function applyAllowOverrides({
   reasons,
   overrides = [],
   context = {},
-  policy
+  policy,
 }) {
   for (const rule of overrides) {
     if (!(rule.scopes || []).includes(kind)) continue;
     if (rule.match === "exact" && normalized.slug !== rule.term) continue;
-    if (rule.conditions?.namespace && !rule.conditions.namespace.includes(context.namespace)) continue;
+    if (
+      rule.conditions?.namespace &&
+      !rule.conditions.namespace.includes(context.namespace)
+    )
+      continue;
 
     const suppressCategories = new Set(rule.override?.suppressCategories || []);
 
     if (suppressCategories.size > 0) {
-      const remaining = reasons.filter((r) => !suppressCategories.has(r.category));
+      const remaining = reasons.filter(
+        (r) => !suppressCategories.has(r.category),
+      );
       if (remaining.length === reasons.length) continue;
       return {
         overridden: true,
-        decision: deriveDecision({ reasons: remaining, policy, fallback: provisional }),
+        decision: deriveDecision({
+          reasons: remaining,
+          policy,
+          fallback: provisional,
+        }),
         reasons: remaining,
         override: {
           ruleId: rule.id,
           action: "allow",
-          suppressCategories: Array.from(suppressCategories)
-        }
+          suppressCategories: Array.from(suppressCategories),
+        },
       };
     }
 
@@ -48,8 +58,8 @@ export function applyAllowOverrides({
         reasons,
         override: {
           ruleId: rule.id,
-          action: "allow"
-        }
+          action: "allow",
+        },
       };
     }
   }
@@ -58,6 +68,6 @@ export function applyAllowOverrides({
     overridden: false,
     decision: provisional,
     reasons,
-    override: null
+    override: null,
   };
 }

@@ -15,7 +15,7 @@ const CUSS_DATASETS = {
   fr: cussFr,
   it: cussIt,
   pt: cussPt,
-  "pt-pt": cussPtPt
+  "pt-pt": cussPtPt,
 };
 
 function ratingToSeverity(rating) {
@@ -25,14 +25,16 @@ function ratingToSeverity(rating) {
 }
 
 export function getCussLanguages() {
-  return Object.keys(CUSS_DATASETS).sort((left, right) => left.localeCompare(right));
+  return Object.keys(CUSS_DATASETS).sort((left, right) =>
+    left.localeCompare(right),
+  );
 }
 
 export function buildCussSource({
   language,
   scopes = ["username", "tenantSlug", "tenantName"],
   minRating = 1,
-  category = "profanity"
+  category = "profanity",
 }) {
   const dataset = CUSS_DATASETS[language];
   if (!dataset) throw new Error(`Unsupported cuss language: ${language}`);
@@ -60,8 +62,8 @@ export function buildCussSource({
         language,
         tags: ["external-import", "profanity", "library", "rating-based"],
         license: "MIT",
-        notes: `rating:${rating}`
-      }
+        notes: `rating:${rating}`,
+      },
     });
   }
 
@@ -73,8 +75,8 @@ export function buildCussSource({
       language,
       severity: "mixed",
       tags: ["external-import", "profanity", "library", "rating-based"],
-      license: "MIT"
+      license: "MIT",
     },
-    rules: rules.sort((left, right) => left.term.localeCompare(right.term))
+    rules: rules.sort((left, right) => left.term.localeCompare(right.term)),
   });
 }

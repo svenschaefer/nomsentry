@@ -8,7 +8,7 @@ export function tenantSlug() {
       protectedBrand: "review",
       profanity: "reject",
       scriptRisk: "review",
-      compositeRisk: "reject"
-    }
+      compositeRisk: "reject",
+    },
   };
 }

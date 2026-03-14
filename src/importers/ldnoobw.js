@@ -1,7 +1,9 @@
 import { validateSource } from "../schema/validate-source.js";
 
 function normalizeLine(line) {
-  return String(line ?? "").trim().toLowerCase();
+  return String(line ?? "")
+    .trim()
+    .toLowerCase();
 }
 
 export function parseLdnoobwWordList(text) {
@@ -10,8 +12,8 @@ export function parseLdnoobwWordList(text) {
       String(text ?? "")
         .split(/\r?\n/)
         .map(normalizeLine)
-        .filter((line) => line.length > 0 && !line.startsWith("#"))
-    )
+        .filter((line) => line.length > 0 && !line.startsWith("#")),
+    ),
   ).sort((left, right) => left.localeCompare(right));
 }
 
@@ -21,7 +23,7 @@ export function buildLdnoobwSource({
   terms,
   scopes = ["username", "tenantSlug", "tenantName"],
   category = "profanity",
-  sourceUrl
+  sourceUrl,
 }) {
   return validateSource({
     id,
@@ -31,7 +33,7 @@ export function buildLdnoobwSource({
       language,
       severity: "mixed",
       tags: ["external-import", "profanity"],
-      sourceUrl
+      sourceUrl,
     },
     rules: terms.map((term) => ({
       id: `${id}/${term}`,
@@ -45,8 +47,8 @@ export function buildLdnoobwSource({
         language,
         severity: "mixed",
         tags: ["external-import", "profanity"],
-        sourceUrl
-      }
-    }))
+        sourceUrl,
+      },
+    })),
   });
 }

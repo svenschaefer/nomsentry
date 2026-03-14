@@ -5,13 +5,15 @@ export function detectCompositeRisk({ normalized, kind, compositeRules = [] }) {
   const tokens = new Set(
     String(normalized.latinFolded || "")
       .split(/[\s-]+/)
-      .filter(Boolean)
+      .filter(Boolean),
   );
 
   for (const rule of compositeRules) {
     if (!(rule.scopes || []).includes(kind)) continue;
-    const allOf = (rule.normalizedAllOf || (rule.allOf || []).map((term) => normalizeValue(term).latinFolded))
-      .map((term) => String(term).toLowerCase());
+    const allOf = (
+      rule.normalizedAllOf ||
+      (rule.allOf || []).map((term) => normalizeValue(term).latinFolded)
+    ).map((term) => String(term).toLowerCase());
     if (allOf.length === 0) continue;
     if (allOf.every((term) => tokens.has(term))) {
       hits.push(rule);

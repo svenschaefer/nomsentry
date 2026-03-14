@@ -11,16 +11,26 @@ export function resolveCompactFilename(source) {
     .replace(/^[^/]+$/, source.id);
   let filename = `${normalizedId}.json`;
 
-  if (source.id.startsWith("imported-ldnoobw-")) filename = `${source.id.replace("imported-", "")}.json`;
-  else if (source.id.startsWith("imported-2toad-profanity-")) filename = `${source.id.replace("imported-", "")}.json`;
-  else if (source.id.startsWith("imported-cuss-")) filename = `${source.id.replace("imported-", "")}.json`;
-  else if (source.id.startsWith("imported-dsojevic-en")) filename = "dsojevic-profanity-en.json";
-  else if (source.id.startsWith("imported-insult-wiki-")) filename = `${source.id.replace("imported-", "")}.json`;
-  else if (source.id === "imported-gitlab-reserved-names") filename = "gitlab-reserved-names.json";
-  else if (source.id === "imported-obscenity-en") filename = "obscenity-en.json";
-  else if (source.id.startsWith("derived-uspto-brand-risk-")) filename = `${source.id}.json`;
-  else if (source.id === "imported-rfc2142-role-mailboxes") filename = "rfc2142-role-mailboxes.json";
-  else if (source.id === "imported-windows-reserved-device-names") filename = "windows-reserved-device-names.json";
+  if (source.id.startsWith("imported-ldnoobw-"))
+    filename = `${source.id.replace("imported-", "")}.json`;
+  else if (source.id.startsWith("imported-2toad-profanity-"))
+    filename = `${source.id.replace("imported-", "")}.json`;
+  else if (source.id.startsWith("imported-cuss-"))
+    filename = `${source.id.replace("imported-", "")}.json`;
+  else if (source.id.startsWith("imported-dsojevic-en"))
+    filename = "dsojevic-profanity-en.json";
+  else if (source.id.startsWith("imported-insult-wiki-"))
+    filename = `${source.id.replace("imported-", "")}.json`;
+  else if (source.id === "imported-gitlab-reserved-names")
+    filename = "gitlab-reserved-names.json";
+  else if (source.id === "imported-obscenity-en")
+    filename = "obscenity-en.json";
+  else if (source.id.startsWith("derived-uspto-brand-risk-"))
+    filename = `${source.id}.json`;
+  else if (source.id === "imported-rfc2142-role-mailboxes")
+    filename = "rfc2142-role-mailboxes.json";
+  else if (source.id === "imported-windows-reserved-device-names")
+    filename = "windows-reserved-device-names.json";
 
   return filename;
 }
@@ -33,17 +43,25 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
   const fsImpl = options.fsImpl ?? fs;
   const parentDir = path.dirname(outputDir);
   const nonce = `${process.pid}-${Date.now()}`;
-  const stageDir = options.stageDir ?? path.join(parentDir, `.sources-stage-${nonce}`);
-  const backupDir = options.backupDir ?? path.join(parentDir, `.sources-backup-${nonce}`);
-  const logger = Object.prototype.hasOwnProperty.call(options, "logger") ? options.logger : console.log;
+  const stageDir =
+    options.stageDir ?? path.join(parentDir, `.sources-stage-${nonce}`);
+  const backupDir =
+    options.backupDir ?? path.join(parentDir, `.sources-backup-${nonce}`);
+  const logger = Object.prototype.hasOwnProperty.call(options, "logger")
+    ? options.logger
+    : console.log;
 
   if (fsImpl.existsSync(outputDir)) {
-    const unexpectedEntries = fsImpl.readdirSync(outputDir, { withFileTypes: true })
-      .filter((entry) => !entry.isFile() || path.extname(entry.name).toLowerCase() !== ".json")
+    const unexpectedEntries = fsImpl
+      .readdirSync(outputDir, { withFileTypes: true })
+      .filter(
+        (entry) =>
+          !entry.isFile() || path.extname(entry.name).toLowerCase() !== ".json",
+      )
       .map((entry) => entry.name);
     if (unexpectedEntries.length > 0) {
       throw new Error(
-        `Refusing to compact sources into ${outputDir}: unexpected existing entries ${unexpectedEntries.join(", ")}`
+        `Refusing to compact sources into ${outputDir}: unexpected existing entries ${unexpectedEntries.join(", ")}`,
       );
     }
   }
@@ -69,7 +87,11 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
       fsImpl.rmSync(backupDir, { recursive: true, force: true });
     }
   } catch (error) {
-    if (!swapped && fsImpl.existsSync(backupDir) && !fsImpl.existsSync(outputDir)) {
+    if (
+      !swapped &&
+      fsImpl.existsSync(backupDir) &&
+      !fsImpl.existsSync(outputDir)
+    ) {
       fsImpl.renameSync(backupDir, outputDir);
     }
     throw error;
@@ -85,10 +107,15 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
 
 function main() {
   const outputDir = path.resolve(process.cwd(), "custom", "sources");
-  const sources = loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url));
+  const sources = loadSourcesFromDirectory(
+    new URL("../custom/sources/", import.meta.url),
+  );
   compactSourcesDirectory(sources, outputDir);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main();
 }

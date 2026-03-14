@@ -14,7 +14,7 @@ function dedupeMatches(matches) {
       match.rule.category,
       match.rule.normalizedTerm || match.rule.term,
       match.matchType,
-      match.comparedField
+      match.comparedField,
     ].join("|");
 
     if (seen.has(key)) continue;
@@ -25,16 +25,22 @@ function dedupeMatches(matches) {
   return deduped;
 }
 
-export function createEngine({ sources = [], policies = [], allowOverrides = [] } = {}) {
+export function createEngine({
+  sources = [],
+  policies = [],
+  allowOverrides = [],
+} = {}) {
   const rules = sources.flatMap((s) =>
     (s.rules || []).map((rule, index) => {
       const field = rule.normalizationField || "separatorFolded";
       return {
         ...rule,
         _order: index,
-        normalizedTerm: normalizeValue(rule.term)[field] || String(rule.term ?? "").toLowerCase()
+        normalizedTerm:
+          normalizeValue(rule.term)[field] ||
+          String(rule.term ?? "").toLowerCase(),
       };
-    })
+    }),
   );
   rules.forEach((rule, index) => {
     rule._order = index;
@@ -43,8 +49,10 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
   const compositeRules = sources.flatMap((s) =>
     (s.compositeRules || []).map((rule) => ({
       ...rule,
-      normalizedAllOf: (rule.allOf || []).map((term) => normalizeValue(term).latinFolded)
-    }))
+      normalizedAllOf: (rule.allOf || []).map(
+        (term) => normalizeValue(term).latinFolded,
+      ),
+    })),
   );
 
   function resolvePolicy(kind) {
@@ -61,7 +69,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       normalized,
       kind,
       rules,
-      ruleIndex
+      ruleIndex,
     });
 
     const scriptRisk = detectScriptRisk(normalized.raw);
@@ -70,18 +78,22 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
         rule: {
           id: "derived/script-risk",
           term: scriptRisk.scripts.join("+"),
-          category: "scriptRisk"
+          category: "scriptRisk",
         },
         matchType: "derived",
-        comparedField: "raw"
+        comparedField: "raw",
       });
     }
 
-    for (const compositeRule of detectCompositeRisk({ normalized, kind, compositeRules })) {
+    for (const compositeRule of detectCompositeRisk({
+      normalized,
+      kind,
+      compositeRules,
+    })) {
       matches.push({
         rule: compositeRule,
         matchType: "composite",
-        comparedField: "separatorFolded"
+        comparedField: "separatorFolded",
       });
     }
 
@@ -94,7 +106,7 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
       reasons: provisional.reasons,
       policy,
       overrides: allowOverrides,
-      context
+      context,
     });
 
     return {
@@ -107,14 +119,16 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
         term: m.rule.term,
         severity: m.rule.severity,
         matchType: m.matchType,
-        comparedField: m.comparedField
+        comparedField: m.comparedField,
       })),
       provisionalDecision: provisional.outcome,
       decision: override.decision,
       overridden: override.overridden,
       override: override.override,
       reasons: override.reasons,
-      projectionsUsed: Array.from(new Set(dedupedMatches.map((m) => m.comparedField).filter(Boolean)))
+      projectionsUsed: Array.from(
+        new Set(dedupedMatches.map((m) => m.comparedField).filter(Boolean)),
+      ),
     };
   }
 

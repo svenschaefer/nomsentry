@@ -8,7 +8,7 @@ export function parseArgs(argv) {
   const options = {
     languages: ["all"],
     outputDir: path.resolve(process.cwd(), "custom", "sources"),
-    minRating: 1
+    minRating: 1,
   };
 
   while (args.length > 0) {
@@ -19,7 +19,10 @@ export function parseArgs(argv) {
         .map((value) => value.trim())
         .filter(Boolean);
     } else if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--min-rating") {
       options.minRating = Number(args.shift() || "1");
     } else {
@@ -28,7 +31,9 @@ export function parseArgs(argv) {
   }
 
   if (options.languages.length === 0) {
-    throw new Error("Invalid option: --languages must include at least one language or 'all'");
+    throw new Error(
+      "Invalid option: --languages must include at least one language or 'all'",
+    );
   }
   if (!Number.isFinite(options.minRating)) {
     throw new Error("Invalid option: --min-rating must be a finite number");
@@ -40,7 +45,9 @@ export function parseArgs(argv) {
 function main(argv) {
   const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
-  const languages = options.languages.includes("all") ? getCussLanguages() : options.languages;
+  const languages = options.languages.includes("all")
+    ? getCussLanguages()
+    : options.languages;
 
   for (const language of languages) {
     const source = buildCussSource({ language, minRating: options.minRating });

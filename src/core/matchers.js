@@ -22,7 +22,7 @@ function getKindEntry(index, kind) {
   if (!index.byKind.has(kind)) {
     index.byKind.set(kind, {
       fields: new Map(),
-      compact: new Map()
+      compact: new Map(),
     });
   }
   return index.byKind.get(kind);
@@ -33,7 +33,7 @@ function getFieldEntry(kindEntry, field) {
     kindEntry.fields.set(field, {
       exact: new Map(),
       token: new Map(),
-      contains: []
+      contains: [],
     });
   }
   return kindEntry.fields.get(field);
@@ -63,7 +63,7 @@ function collectTokenCandidates(value) {
 
 export function buildRuleIndex(rules) {
   const index = {
-    byKind: new Map()
+    byKind: new Map(),
   };
 
   for (const rule of rules) {
@@ -86,8 +86,7 @@ export function buildRuleIndex(rules) {
         for (const key of tokenIndexKeys(term)) {
           pushIndexedRule(fieldEntry.token, key, rule);
         }
-      }
-      else if (rule.match === "contains") fieldEntry.contains.push(rule);
+      } else if (rule.match === "contains") fieldEntry.contains.push(rule);
     }
   }
 
@@ -107,7 +106,7 @@ function matchIndexedRules({ normalized, kind, ruleIndex }) {
       matches.push({
         rule,
         matchType: "exact",
-        comparedField: field
+        comparedField: field,
       });
     }
 
@@ -116,7 +115,7 @@ function matchIndexedRules({ normalized, kind, ruleIndex }) {
         matches.push({
           rule,
           matchType: "token",
-          comparedField: field
+          comparedField: field,
         });
       }
     }
@@ -127,7 +126,7 @@ function matchIndexedRules({ normalized, kind, ruleIndex }) {
       matches.push({
         rule,
         matchType: "contains",
-        comparedField: field
+        comparedField: field,
       });
     }
   }
@@ -136,11 +135,13 @@ function matchIndexedRules({ normalized, kind, ruleIndex }) {
     matches.push({
       rule,
       matchType: "compact",
-      comparedField: "compact"
+      comparedField: "compact",
     });
   }
 
-  matches.sort((left, right) => (left.rule._order ?? 0) - (right.rule._order ?? 0));
+  matches.sort(
+    (left, right) => (left.rule._order ?? 0) - (right.rule._order ?? 0),
+  );
   return matches;
 }
 
@@ -180,7 +181,7 @@ export function matchRules({ normalized, kind, rules, ruleIndex }) {
       matches.push({
         rule,
         matchType,
-        comparedField: field
+        comparedField: field,
       });
     }
   }

@@ -105,12 +105,6 @@
 
 ## P2 Engineering hygiene
 
-- Add linting and formatting checks for source and script code.
-  - Why:
-    - There is no automated static hygiene pass in the repository today.
-  - Target:
-    - adopt a minimal lint/format setup that does not fight the current code style
-
 - Consider adding TypeScript or JSDoc-based type checking for the source and runtime bundle schemas.
   - Why:
     - The core data model is tuple-heavy and compact by design.

@@ -7,7 +7,9 @@ import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { tenantName, tenantSlug, username } from "../src/policies/index.js";
 
 function loadJson(relativePath) {
-  return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), relativePath), "utf8"));
+  return JSON.parse(
+    fs.readFileSync(path.resolve(process.cwd(), relativePath), "utf8"),
+  );
 }
 
 export function parseArgs(argv) {
@@ -15,13 +17,16 @@ export function parseArgs(argv) {
   const options = {
     bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
     iterations: 2000,
-    warmupIterations: 200
+    warmupIterations: 200,
   };
 
   while (args.length > 0) {
     const token = args.shift();
     if (token === "--bundle-file") {
-      options.bundleFile = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.bundleFile = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else if (token === "--iterations") {
       options.iterations = Number(args.shift() || "0");
     } else if (token === "--warmup-iterations") {
@@ -34,8 +39,13 @@ export function parseArgs(argv) {
   if (!Number.isInteger(options.iterations) || options.iterations <= 0) {
     throw new Error("Invalid option: --iterations must be a positive integer");
   }
-  if (!Number.isInteger(options.warmupIterations) || options.warmupIterations < 0) {
-    throw new Error("Invalid option: --warmup-iterations must be a non-negative integer");
+  if (
+    !Number.isInteger(options.warmupIterations) ||
+    options.warmupIterations < 0
+  ) {
+    throw new Error(
+      "Invalid option: --warmup-iterations must be a non-negative integer",
+    );
   }
 
   return options;
@@ -51,10 +61,12 @@ function collectBenchmarkCases() {
     "catalog-maintained-false-positives",
     "catalog-maintained-obfuscated-positives",
     "catalog-maintained-mixed-script",
-    "catalog-documented-current-gaps"
+    "catalog-documented-current-gaps",
   ]
     .flatMap((name) => loadJson(`test/fixtures/${name}.json`))
-    .flatMap((group) => group.values.map((value) => ({ kind: group.kind, value })));
+    .flatMap((group) =>
+      group.values.map((value) => ({ kind: group.kind, value })),
+    );
 
   const deduped = new Map();
   for (const entry of [...fromBasicFixtures, ...fromCatalogFixtures]) {
@@ -67,7 +79,10 @@ function collectBenchmarkCases() {
 
 function percentile(sorted, ratio) {
   if (sorted.length === 0) return 0;
-  const index = Math.min(sorted.length - 1, Math.max(0, Math.floor(sorted.length * ratio)));
+  const index = Math.min(
+    sorted.length - 1,
+    Math.max(0, Math.floor(sorted.length * ratio)),
+  );
   return sorted[index];
 }
 
@@ -79,7 +94,7 @@ export function benchmarkRuntime({ bundleFile, iterations, warmupIterations }) {
   const engineCreateStart = performance.now();
   const engine = createEngine({
     sources: [bundle],
-    policies: [username(), tenantSlug(), tenantName()]
+    policies: [username(), tenantSlug(), tenantName()],
   });
   const engineCreateMs = performance.now() - engineCreateStart;
 
@@ -113,7 +128,7 @@ export function benchmarkRuntime({ bundleFile, iterations, warmupIterations }) {
     avgEvalMs: totalEvalMs / iterations,
     p50EvalMs: percentile(timings, 0.5),
     p95EvalMs: percentile(timings, 0.95),
-    p99EvalMs: percentile(timings, 0.99)
+    p99EvalMs: percentile(timings, 0.99),
   };
 }
 
@@ -123,7 +138,10 @@ function main(argv) {
   console.log(JSON.stringify(result, null, 2));
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   try {
     main(process.argv.slice(2));
   } catch (error) {

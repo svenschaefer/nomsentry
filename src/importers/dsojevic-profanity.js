@@ -20,7 +20,7 @@ export function buildDsojevicSource({
   language,
   entries,
   scopes = ["username", "tenantSlug", "tenantName"],
-  category = "profanity"
+  category = "profanity",
 }) {
   const seen = new Set();
   const rules = [];
@@ -45,8 +45,10 @@ export function buildDsojevicSource({
           language,
           tags: ["external-import", "profanity", "repo", ...(entry.tags || [])],
           license: "MIT",
-          notes: entry.exceptions?.length ? "exceptions omitted during import" : undefined
-        }
+          notes: entry.exceptions?.length
+            ? "exceptions omitted during import"
+            : undefined,
+        },
       });
     }
   }
@@ -59,8 +61,8 @@ export function buildDsojevicSource({
       language,
       severity: "mixed",
       tags: ["external-import", "profanity", "repo"],
-      license: "MIT"
+      license: "MIT",
     },
-    rules: rules.sort((left, right) => left.term.localeCompare(right.term))
+    rules: rules.sort((left, right) => left.term.localeCompare(right.term)),
   });
 }

@@ -1,13 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
-import { build2ToadSource, get2ToadLanguages } from "../src/importers/toad-profanity.js";
+import {
+  build2ToadSource,
+  get2ToadLanguages,
+} from "../src/importers/toad-profanity.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     languages: ["all"],
-    outputDir: path.resolve(process.cwd(), "custom", "sources")
+    outputDir: path.resolve(process.cwd(), "custom", "sources"),
   };
 
   while (args.length > 0) {
@@ -18,14 +21,19 @@ export function parseArgs(argv) {
         .map((value) => value.trim())
         .filter(Boolean);
     } else if (token === "--output-dir") {
-      options.outputDir = path.resolve(process.cwd(), String(args.shift() || ""));
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
   }
 
   if (options.languages.length === 0) {
-    throw new Error("Invalid option: --languages must include at least one language or 'all'");
+    throw new Error(
+      "Invalid option: --languages must include at least one language or 'all'",
+    );
   }
 
   return options;
@@ -34,11 +42,16 @@ export function parseArgs(argv) {
 function main(argv) {
   const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
-  const languages = options.languages.includes("all") ? get2ToadLanguages() : options.languages;
+  const languages = options.languages.includes("all")
+    ? get2ToadLanguages()
+    : options.languages;
 
   for (const language of languages) {
     const source = build2ToadSource({ language });
-    const targetFile = path.join(options.outputDir, `2toad-profanity-${language}.json`);
+    const targetFile = path.join(
+      options.outputDir,
+      `2toad-profanity-${language}.json`,
+    );
     writeSourceFile(targetFile, source);
     console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
   }
