@@ -8,14 +8,15 @@ Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md
 
 - normalization pipeline
 - rule schema validation
-- third-party JSON source loading
+- compiled runtime bundle loading
+- offline import pipeline for third-party and normative source artifacts
 - fixture based tests
 - explicit allow overrides
 - `check` and `explain` CLI commands
 - explainable result model
 - composite risk detection
 - script risk detection
-- importable external wordlists
+- importable third-party source artifacts
 
 ## Commands
 
@@ -34,6 +35,19 @@ node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
 ```
 
+## Runtime model
+
+The repository maintains two layers of source artifacts:
+
+- `custom/sources/`
+  - versioned build inputs
+  - imported or extracted third-party source artifacts
+- `dist/runtime-sources.json`
+  - compiled single-file runtime bundle
+  - default input used by the CLI
+
+Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
+
 ## Fixture tests
 
 Fixtures live in:
@@ -44,15 +58,11 @@ test/fixtures/reject.json
 test/fixtures/review.json
 ```
 
-## Source model
+## Maintained source set
 
-The project ships only imported third-party source files in `custom/sources/`. These files are build inputs. The CLI loads the compiled runtime bundle in `dist/runtime-sources.json`.
+The maintained source set is intentionally limited to imported or extracted third-party and normative artifacts. The repository does not maintain its own built-in rule lists.
 
-Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
-
-## External seed lists
-
-Imported snapshots stay versioned in-repo as JSON sources. Current third-party imports include:
+Current maintained source artifacts include:
 
 ```text
 custom/sources/ldnoobw-<language>.json
@@ -61,12 +71,31 @@ custom/sources/obscenity-en.json
 custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
 custom/sources/insult-wiki-<language>.json
+custom/sources/rfc2142-role-mailboxes.json
+custom/sources/windows-reserved-device-names.json
 custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
 ```
 
-Refresh imports with:
+These inputs currently come from four source families:
+
+- official register or standards sources
+  - USPTO Trademark Bulk Data
+  - RFC 2142 role mailbox names
+  - Microsoft Windows reserved device names
+- direct wordlist or lexicon sources
+  - LDNOOBW
+  - insult.wiki
+  - words/cuss
+  - dsojevic/profanity-list
+- library-backed imported datasets
+  - @2toad/profanity
+  - obscenity
+- compiled runtime artifact
+  - `dist/runtime-sources.json`
+
+Refresh maintained source inputs with:
 
 ```bash
 npm run import:ldnoobw
@@ -83,6 +112,8 @@ npm run build:runtime-sources
 `protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.
 
 `words/profanities` is intentionally not imported into the default runtime source set. Its flat list contains many generic high-noise terms, so it is not a good policy input without an additional curation layer.
+
+`RFC 2142` currently feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are used as impersonation-relevant identifiers such as `abuse`, `security`, `postmaster`, and `webmaster`.
 
 For USPTO, the repository now separates:
 
