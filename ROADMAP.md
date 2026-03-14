@@ -26,6 +26,24 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - document downstream source extension policy
    - Dependency:
      - benefits from provenance work but does not require indexed matching
+   - Exit criteria:
+     - `reservedTechnical`
+       - a final maintained scope is documented
+       - either the current baseline is accepted as final or additional filtered maintained sources are added
+       - residual uncovered examples are explicitly documented as non-goals if they remain
+     - `impersonation`
+       - the maintained default either covers the agreed modern account-access and trust-facing vocabulary or the unsupported remainder is explicitly documented as out of scope
+       - the maintained baseline and documented-gap fixtures agree on that boundary
+     - `profanity`
+       - the maintained category split is documented and policy-backed at least for `generalProfanity`, `insult`, `slur`, `sexual`, and `shock`
+       - the remaining broad `profanity` bucket is explicitly characterized, including whether `extremism` remains deferred
+     - `protectedBrand`
+       - the combined USPTO plus Wikidata derived profile is documented with concrete included and excluded examples
+       - the maintained calibration explains how short, numeric, and ambiguity-prone brands are handled
+     - `compositeRisk`
+       - the intended maintained composite vocabulary is documented
+       - either the current support/security-anchor layer is accepted as final or a broader derived layer is shipped
+       - any remaining combinations are explicitly documented as non-goals
 
 3. Quality expansion
    - completed for the currently planned v0.5 quality gates

@@ -2,6 +2,11 @@
 
 ## P1 Product and policy quality
 
+The v0.5 policy phase is complete only when each remaining area has both:
+
+- a shipped maintained runtime behavior
+- a documented final boundary for what is intentionally still out of scope
+
 - Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.
   - Why:
     - A catalog-based runtime evaluation originally showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` evaluated to `allow`.

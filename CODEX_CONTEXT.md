@@ -114,6 +114,9 @@
 
 - policy-category refinement beyond broad `profanity`
 - broader maintained source coverage for impersonation, technical identifiers, brands, and composite risks
+- v0.5 should not be treated as open-ended exploration anymore. The exit bar is:
+  - each remaining policy area must end with shipped maintained behavior
+  - each remaining policy area must also end with an explicit documented scope boundary for what stays out of scope
 
 ## Recent catalog-based gap findings
 
