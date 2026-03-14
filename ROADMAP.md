@@ -25,13 +25,17 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 3. Product policy refinement
    - split coarse `profanity` handling into more precise categories
+   - expand maintained impersonation coverage beyond the RFC 2142-centered baseline
+   - decide whether broader `reservedTechnical` coverage is part of the product contract
    - improve USPTO brand-risk derivation with measured precision and recall analysis
+   - expand composite-risk coverage beyond the current single-rule baseline if that broader contract is intended
    - document downstream source extension policy
    - Dependency:
      - benefits from provenance work but does not require indexed matching
 
 4. Quality expansion
    - add normalization fuzz and property-style tests
+   - turn the reviewed curated identifier catalog into grouped regression fixtures
    - deepen import-failure coverage
    - deepen schema and severity matrix edge-case coverage
    - deepen rollback-path and path-misuse coverage for destructive maintenance scripts

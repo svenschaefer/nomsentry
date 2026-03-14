@@ -29,6 +29,22 @@
 
 ## P1 Product and policy quality
 
+- Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.
+  - Why:
+    - A catalog-based runtime evaluation showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` currently evaluate to `allow`.
+    - The maintained repo source set currently provides only Windows reserved device names for `reservedTechnical`, so the broader technical-identifier expectation is not met.
+  - Target:
+    - decide the intended `reservedTechnical` scope explicitly
+    - if broader coverage is intended, ingest only suitable normative or third-party technical identifier sources
+
+- Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
+  - Why:
+    - A catalog-based runtime evaluation showed that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` currently do not match maintained `impersonation` sources.
+    - The current maintained `impersonation` set is only 15 rules wide and is heavily centered on RFC 2142 mailbox roles.
+  - Target:
+    - define the intended impersonation-role vocabulary
+    - ingest suitable third-party or normative sources for non-RFC trust, recovery, and billing-style impersonation terms
+
 - Split the current broad `profanity` category into more precise policy categories.
   - Why:
     - The repo currently puts profanity, insults, slurs, and extremist references into one top-level category.
@@ -41,9 +57,19 @@
   - Why:
     - The current derivation in [src/importers/uspto.js](/C:/code/nomsentry/src/importers/uspto.js) is intentionally structural only.
     - That is defensible, but not yet enterprise-grade from a precision/recall perspective.
+    - A catalog-based runtime evaluation showed that short global brands such as `openai`, `paypal`, `google`, and `github` currently evaluate to `allow` under the official-only derived subset.
   - Target:
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks
+    - decide whether the official-source-derived heuristics should also retain short globally sensitive marks
+
+- Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
+  - Why:
+    - A catalog-based runtime evaluation showed that combinations such as `account-recovery`, `trust-safety`, and `billing-support` are mostly uncovered unless one component independently matches another category.
+    - The current runtime bundle contains only one composite rule.
+  - Target:
+    - define the intended composite vocabulary explicitly
+    - generate composite rules from maintained impersonation terms or another documented source strategy
 
 - Add a documented policy for downstream source extension.
   - Why:
@@ -93,6 +119,22 @@
   - Target:
     - test rollback behavior under staged-write or rename failures
     - add deeper path-misuse coverage for destructive maintenance scripts
+
+- Add regression coverage from the curated identifier catalog review.
+  - Why:
+    - A broad curated catalog was reviewed across `reservedTechnical`, `impersonation`, `protectedBrand`, `profanity`, `scriptRisk`, and `compositeRisk`.
+    - The current suite still lacks broad grouped fixtures for positive coverage and nearby false positives such as `supporter`, `securityresearch`, `Scunthorpe`, `Cockburn`, and short-brand variants.
+  - Target:
+    - split the reviewed catalog into grouped fixture files
+    - keep separate positive, obfuscated, mixed-script, composite, and false-positive suites
+
+- Add targeted normalization coverage for compact profanity and technical variants that currently fall through.
+  - Why:
+    - A catalog-based runtime evaluation showed that variants such as `fck` and `adm1n` currently evaluate to `allow`.
+    - Some misses are source-coverage gaps, but some are also normalization and compact-variant expectations that should be made explicit.
+  - Target:
+    - decide which compact forms are part of the supported detection contract
+    - add direct regression tests for the accepted compact-form set
 
 ## P2 Engineering hygiene
 
