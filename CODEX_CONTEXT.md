@@ -96,6 +96,7 @@
 - The current maintained `reservedTechnical` coverage is improved by the GitLab reserved-routes import, but it is still narrower than a fully broad platform or namespace-identifier contract.
 - The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
 - The current official-only derived USPTO subset misses many short global brands such as `openai`, `paypal`, `google`, and `github`.
+- The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
 - The USPTO-derived brand-risk work and a possible Wikidata-derived uncovered-brand supplement are separate open tracks and should stay separated in planning.
 - The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
