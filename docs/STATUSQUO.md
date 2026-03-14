@@ -59,6 +59,10 @@
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants from the reviewed catalog
   - maintained mixed-script positives and explicit documented current gaps, including broader fallback review examples
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `billingham-labs`, `officiallyspeaking`, `wholesome`, and `striped`
+- Wikidata uncovered-brand evaluation status:
+  - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
+  - the evaluation confirmed that Wikidata has clean candidate pages for several current uncovered-brand examples
+  - a future Wikidata supplement still needs explicit ambiguity filters for terms such as `visa`, `amazon`, and `apple`
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation
@@ -86,6 +90,7 @@
   - `docs/GUARANTEES.md`
   - `docs/REPO_WORKFLOWS.md`
   - `docs/STATUSQUO.md`
+  - `docs/WIKIDATA_BRAND_EVALUATION.md`
   - `docs/BASELINE_TEST_RUN.md`
   - `docs/NPM_RELEASE.md`
   - `docs/RELEASE_NOTES_TEMPLATE.md`

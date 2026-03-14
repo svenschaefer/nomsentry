@@ -39,14 +39,19 @@
     - document expected behavior for generic English terms and long-tail marks
     - decide whether the official-source-derived heuristics should also retain short globally sensitive marks
 
-- Evaluate a `derived-wikidata-brand-risk.json` supplement for uncovered brands.
+- Implement a conservative `derived-wikidata-brand-risk.json` supplement for uncovered brands.
   - Why:
-    - A catalog-based runtime evaluation showed that short global brands such as `openai`, `paypal`, `google`, and `github` currently evaluate to `allow` under the official-only derived subset.
-    - Current source research suggests that a Wikidata-derived CC0 supplement is the most plausible free seed source for globally recognizable brands that remain uncovered by the official-only subset.
+    - A catalog-based runtime evaluation showed that globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple` currently evaluate to `allow` under the official-only derived subset.
+    - The Wikidata evaluation in [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md) confirmed that clean candidate item pages exist for the uncovered-brand examples.
+    - The same evaluation also showed that some pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so the supplement must be filtered rather than imported blindly.
   - Target:
-    - define the inclusion criteria for a Wikidata-derived uncovered-brand subset
-    - evaluate whether the supplement materially improves coverage without introducing unacceptable false positives
-    - document how a Wikidata-derived subset would coexist with the USPTO-derived subset
+    - implement the supplement as a build-step extractor, not as a runtime dependency
+    - prefer deterministic SPARQL JSON extraction over full dump parsing unless Query Service limits become the blocker
+    - implement a conservative extractor for brand-relevant Wikidata items
+    - allow overlap with the USPTO-derived subset instead of forcing a strict non-overlap rule
+    - define allowed item classes and ambiguity filters explicitly
+    - document how the Wikidata-derived subset coexists with the USPTO-derived subset
+    - add grouped TP and FP coverage for the first accepted Wikidata-derived brand cohort
 
 - Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
   - Why:

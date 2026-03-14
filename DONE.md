@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Evaluated Wikidata as a `protectedBrand` supplement source for uncovered brands.
+  - added [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
+  - confirmed that the current runtime still allows representative globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple`
+  - confirmed that Wikidata has clean candidate item pages for the main uncovered-brand examples
+  - documented the ambiguity risk for pages behind `visa`, `amazon`, and `apple`
+
 - Expanded the deterministic normalization property corpus.
   - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers broader generated normalization variants across case-mixing, NFD forms, fullwidth ASCII, separator-heavy forms, and supported confusable substitutions
   - the added corpus distinguishes `compact`-preserving variants from stricter `slug`-preserving variants so the tests match the actual normalization contract

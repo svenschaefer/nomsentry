@@ -38,7 +38,7 @@
 
 ## Source strategy constraints
 
-- `protectedBrand` should only be fed from ingestible official trademark sources.
+- The current maintained `protectedBrand` runtime is fed only from the derived official USPTO source.
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
@@ -78,6 +78,7 @@
 - `docs/GUARANTEES.md`
 - `docs/REPO_WORKFLOWS.md`
 - `docs/STATUSQUO.md`
+- `docs/WIKIDATA_BRAND_EVALUATION.md`
 - `docs/BASELINE_TEST_RUN.md`
 - `docs/NPM_RELEASE.md`
 - `docs/RELEASE_NOTES_TEMPLATE.md`
@@ -107,5 +108,9 @@
 - Early review suggests `reserved-usernames` and `github-reserved-names` are materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - A direct default-baseline evaluation of `github-reserved-names` confirmed that concern: importing it conservatively but broadly still produced unacceptable false positives such as `seven-labs` because of generic route terms like `labs`.
 - `protectedBrand` can plausibly be improved by supplementing the USPTO-derived subset with a free Wikidata-derived uncovered-brand seed set.
+- The Wikidata supplement track explicitly allows overlap with the USPTO-derived subset.
+- A direct Wikidata evaluation confirmed that clean candidate item pages exist for currently uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
+- The same Wikidata evaluation also showed that some valuable brand pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so a future supplement must be filtered rather than imported blindly.
+- If implemented, the Wikidata supplement should use a build-step SPARQL extractor that emits versioned derived source artifacts, not a runtime SDK dependency or a first-pass full-dump pipeline.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.
