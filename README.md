@@ -34,6 +34,7 @@ Additional project docs:
 ```bash
 npm test
 npm run docs:check
+npm run freshness:check
 npm run determinism:check
 npm run ci:check
 npm run release:check
@@ -63,6 +64,8 @@ The repository maintains two layers of source artifacts:
   - default input used by the CLI
 - `dist/build-manifest.json`
   - machine-readable provenance manifest for maintained source artifacts and the compiled runtime bundle
+- `source-refresh-policy.json`
+  - deterministic refresh-cadence policy used by the staleness check
 
 Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
 
@@ -96,6 +99,7 @@ custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
 dist/build-manifest.json
+source-refresh-policy.json
 ```
 
 These inputs currently come from three maintained source families plus one compiled runtime artifact:
@@ -156,4 +160,5 @@ The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto
 
 For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.
 The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, and the runtime bundle hash for that exact source set.
+The repository also carries `source-refresh-policy.json`, which defines expected refresh cadences per maintained source family. `npm run freshness:check` resolves each maintained source artifact to its last git commit date and fails when an artifact exceeds its configured age limit.
 Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.

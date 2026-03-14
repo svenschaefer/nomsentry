@@ -10,6 +10,7 @@
     "dist/",
     "custom/sources/",
     "docs/",
+    "source-refresh-policy.json",
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"
@@ -20,12 +21,13 @@
   "scripts": {
     "test": "node test/run-tests.js",
     "docs:check": "node scripts/check-docs-consistency.js",
+    "freshness:check": "node scripts/check-source-freshness.js",
     "determinism:check": "npm run determinism:check:sources && npm run determinism:check:runtime",
     "determinism:check:sources": "node scripts/check-maintained-sources-determinism.js",
     "determinism:check:runtime": "node scripts/check-runtime-bundle-determinism.js",
     "pack:check": "npm pack --dry-run",
     "release:check": "npm run ci:check && npm run pack:check",
-    "ci:check": "npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check",
+    "ci:check": "npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check && npm run freshness:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",

@@ -7,6 +7,7 @@
   - imported or extracted third-party and normative artifacts in `custom/sources/`
   - compiled runtime bundle in `dist/runtime-sources.json`
   - machine-readable provenance manifest in `dist/build-manifest.json`
+  - deterministic refresh policy in `source-refresh-policy.json`
 - Major open workstreams:
   - indexed runtime matching
   - upstream provenance enrichment and freshness metadata
@@ -21,6 +22,7 @@
 - Working quality gates:
   - `npm test`
   - `npm run docs:check`
+  - `npm run freshness:check`
   - `npm run determinism:check`
   - `npm run ci:check`
   - `npm run release:check`
@@ -33,6 +35,8 @@
   - maintained source artifacts
   - compiled runtime bundle
   - build provenance manifest
+- Source freshness checks are in place for:
+  - maintained source artifacts based on git commit dates and `source-refresh-policy.json`
 - In-suite determinism coverage now includes:
   - stable source-directory load ordering
   - byte-stable recompaction of unchanged source inputs

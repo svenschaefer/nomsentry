@@ -48,11 +48,13 @@ Instead it maintains:
 - versioned source artifacts in `custom/sources/`
 - a compiled runtime bundle in `dist/runtime-sources.json`
 - a machine-readable build manifest in `dist/build-manifest.json`
+- a deterministic source refresh policy in `source-refresh-policy.json`
 
 `custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json`.
 The runtime loader rejects unsupported bundle versions and malformed table references before evaluation.
 Maintained-source rewrites and runtime-bundle generation use atomic write or stage-and-swap paths to avoid partially-written artifacts on interruption.
 The runtime build step also emits `dist/build-manifest.json`, which records the maintained source artifacts, their hashes, and the runtime-bundle hash tied to that exact source artifact set.
+The freshness gate uses `source-refresh-policy.json` plus git commit dates for the maintained source artifacts to detect stale imports without introducing nondeterministic timestamps into the versioned manifest.
 
 The currently maintained source families are:
 

@@ -14,19 +14,11 @@
 - Expand the build provenance manifest with upstream version and refresh metadata.
   - Why:
     - The build pipeline now emits a deterministic machine-readable manifest for maintained source artifacts and the runtime bundle.
-    - It still does not record upstream version or commit metadata, local transform versions, or source refresh expectations.
+    - It still does not record upstream version or commit metadata, local transform versions, or refresh metadata inside the manifest itself.
     - That remains a governance and auditability gap for enterprise use.
   - Target:
     - extend the manifest with upstream source version or commit data where available
     - record transform-version and refresh-policy metadata in a deterministic way
-
-- Add a source refresh policy and staleness checks.
-  - Why:
-    - The repo currently has import scripts but no freshness policy, no age warning, and no automated check for stale imports.
-    - This matters for trademark sources and profanity datasets that change over time.
-  - Target:
-    - define expected refresh cadence per source family
-    - fail CI or warn when source artifacts exceed allowed age
 
 ## P1 Product and policy quality
 

@@ -39,6 +39,12 @@ import { detectScriptRisk } from "../src/core/script-risk.js";
 import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
 import { buildProvenanceManifest, writeProvenanceManifest } from "../scripts/build-provenance-manifest.js";
+import {
+  assessFreshness,
+  findRefreshPolicy,
+  resolveAsOfDate,
+  validateRefreshPolicy
+} from "../scripts/check-source-freshness.js";
 import { compactSourcesDirectory, resolveCompactFilename } from "../scripts/compact-sources.js";
 import {
   fetchAvailableLanguages as fetchLdnoobwLanguages,
@@ -235,6 +241,74 @@ assert.equal(
     "build manifest should tie the runtime artifact to the exact source artifact set"
   );
 }
+
+{
+  const refreshPolicy = validateRefreshPolicy(
+    JSON.parse(fs.readFileSync(new URL("../source-refresh-policy.json", import.meta.url), "utf8"))
+  );
+  const ldnoobwPolicy = findRefreshPolicy(refreshPolicy, { source: "LDNOOBW" });
+  assert.equal(ldnoobwPolicy?.maxAgeDays, 180, "refresh policy lookup should match on source name");
+  assert.equal(resolveAsOfDate("2026-03-14"), "2026-03-14", "freshness checks should accept ISO date inputs");
+}
+
+assert.throws(
+  () => validateRefreshPolicy({ id: "bad", version: 1, policies: [] }),
+  /source refresh policy must have id 'source-refresh-policy'/,
+  "refresh policy validation should require the stable policy id"
+);
+
+{
+  const results = assessFreshness({
+    manifest: {
+      sourceArtifacts: [
+        { file: "custom/sources/example-a.json", id: "a", source: "LDNOOBW" },
+        { file: "custom/sources/example-b.json", id: "b", source: "RFC 2142" }
+      ]
+    },
+    policy: {
+      id: "source-refresh-policy",
+      version: 1,
+      policies: [
+        { match: { source: "LDNOOBW" }, maxAgeDays: 180 },
+        { match: { source: "RFC 2142" }, maxAgeDays: 3650 }
+      ]
+    },
+    asOfDate: "2026-03-14",
+    getCommitDate(filePath) {
+      if (filePath.endsWith("example-a.json")) return "2026-03-01";
+      return "2020-01-01";
+    }
+  });
+  assert.deepEqual(
+    results.map((entry) => ({ file: entry.file, stale: entry.stale })),
+    [
+      { file: "custom/sources/example-a.json", stale: false },
+      { file: "custom/sources/example-b.json", stale: false }
+    ],
+    "freshness assessment should apply policy-specific age limits"
+  );
+}
+
+assert.throws(
+  () => assessFreshness({
+    manifest: {
+      sourceArtifacts: [
+        { file: "custom/sources/example.json", id: "x", source: "Unknown Source" }
+      ]
+    },
+    policy: {
+      id: "source-refresh-policy",
+      version: 1,
+      policies: [{ match: { source: "LDNOOBW" }, maxAgeDays: 180 }]
+    },
+    asOfDate: "2026-03-14",
+    getCommitDate() {
+      return "2026-03-01";
+    }
+  }),
+  /No refresh policy found/,
+  "freshness assessment should fail fast for unmanaged sources"
+);
 
 {
   const bundle = loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));

@@ -323,6 +323,12 @@ export function deriveUsptoBrandRiskSource(source, {
   return validateSource({
     id,
     description: "Derived USPTO protected-brand risk subset for review-level identifier screening",
+    metadata: {
+      source: "USPTO",
+      language: "en",
+      sourceUrl: "https://www.uspto.gov/trademarks/apply/check-status-view-documents/trademark-bulk-data",
+      notes: "Derived structural review subset from imported USPTO standard-character trademarks and service marks."
+    },
     rules: filteredRules
   });
 }

@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added a source refresh policy and staleness gate.
+  - added [source-refresh-policy.json](/C:/code/nomsentry/source-refresh-policy.json)
+  - added [scripts/check-source-freshness.js](/C:/code/nomsentry/scripts/check-source-freshness.js)
+  - wired `npm run freshness:check` into [package.json](/C:/code/nomsentry/package.json) and [ci:check](/C:/code/nomsentry/package.json)
+  - added direct refresh-policy and staleness-assessment coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
 - Added a machine-readable build provenance manifest.
   - added [scripts/build-provenance-manifest.js](/C:/code/nomsentry/scripts/build-provenance-manifest.js)
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now writes [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json)

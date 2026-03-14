@@ -1,0 +1,76 @@
+{
+  "id": "source-refresh-policy",
+  "version": 1,
+  "policies": [
+    {
+      "match": {
+        "source": "USPTO"
+      },
+      "maxAgeDays": 45,
+      "notes": "Trademark-derived artifacts should be reviewed and refreshed at least every 45 days."
+    },
+    {
+      "match": {
+        "source": "LDNOOBW"
+      },
+      "maxAgeDays": 180,
+      "notes": "Community profanity lists should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "insult.wiki"
+      },
+      "maxAgeDays": 180,
+      "notes": "Public insult lists should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "cuss"
+      },
+      "maxAgeDays": 180,
+      "notes": "Library-backed profanity datasets should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "dsojevic/profanity-list"
+      },
+      "maxAgeDays": 180,
+      "notes": "Structured profanity imports should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "@2toad/profanity"
+      },
+      "maxAgeDays": 180,
+      "notes": "Library-backed profanity datasets should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "obscenity"
+      },
+      "maxAgeDays": 180,
+      "notes": "Library-backed profanity datasets should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "GitLab Docs"
+      },
+      "maxAgeDays": 180,
+      "notes": "Documentation-derived reserved routes should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "RFC 2142"
+      },
+      "maxAgeDays": 3650,
+      "notes": "Stable normative role-mailbox names change rarely."
+    },
+    {
+      "match": {
+        "source": "Microsoft Learn"
+      },
+      "maxAgeDays": 365,
+      "notes": "Normative Windows reserved-name extracts should be reviewed annually."
+    }
+  ]
+}

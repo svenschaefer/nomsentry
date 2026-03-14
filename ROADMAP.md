@@ -15,9 +15,8 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - Dependency:
      - none
 
-2. Build provenance and freshness
+2. Build provenance enrichment
    - extend the new build provenance manifest with upstream version and transform metadata
-   - add source refresh policy and staleness checks
    - Dependency:
      - can proceed independently of indexed matching
 
