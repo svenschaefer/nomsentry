@@ -45,6 +45,11 @@
   - updated [ROADMAP.md](/C:/code/nomsentry/ROADMAP.md) to sequence those gaps into the product-policy and quality tracks
   - updated [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md) with the latest catalog-based coverage findings
 
+- Added grouped category-level regression fixtures for the current maintained runtime baseline.
+  - added [test/fixtures/catalog-maintained-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-positives.json)
+  - added [test/fixtures/catalog-maintained-false-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-false-positives.json)
+  - wired them into [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

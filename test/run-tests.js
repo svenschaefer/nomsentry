@@ -127,6 +127,18 @@ for (const name of ["allow", "reject", "review"]) {
   }
 }
 
+for (const fixtureName of ["catalog-maintained-positives", "catalog-maintained-false-positives"]) {
+  for (const group of loadFixture(fixtureName)) {
+    for (const value of group.values) {
+      const result = engine.evaluate({
+        value,
+        kind: group.kind
+      });
+      assert.equal(result.decision, group.expected, `${fixtureName}/${group.label}: ${value}`);
+    }
+  }
+}
+
 assert.equal(
   loadSourceFromFile(new URL("../custom/sources/ldnoobw-en.json", import.meta.url)).metadata.source,
   "LDNOOBW",

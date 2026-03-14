@@ -29,6 +29,9 @@
 - Local deterministic checks are in place for:
   - maintained source artifacts
   - compiled runtime bundle
+- Grouped category-level baseline fixtures now cover:
+  - maintained positives for Windows reserved names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
+  - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms
 - Known non-flaky baseline:
   - local `npm run ci:check`
 

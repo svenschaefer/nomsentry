@@ -77,3 +77,4 @@
 - The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
 - The current official-only derived USPTO subset misses many short global brands such as `openai`, `paypal`, `google`, and `github`.
 - The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
+- The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.

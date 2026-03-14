@@ -1,0 +1,26 @@
+[
+  {
+    "label": "impersonation nearby negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["supporter", "supportive", "securities", "officially", "teamwork", "paymentslab"]
+  },
+  {
+    "label": "composite nearby negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["securityresearch", "supportersclub", "paymentology", "trustworthy", "privacytools"]
+  },
+  {
+    "label": "profanity nearby negatives",
+    "kind": "tenantName",
+    "expected": "allow",
+    "values": ["shell", "class", "assign", "assistant", "Scunthorpe", "Dickinson", "Cockburn", "Hellmann", "analysis"]
+  },
+  {
+    "label": "brand nearby negatives under current policy and source set",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["openair", "chatgpts", "googology", "striped", "visa-free"]
+  }
+]

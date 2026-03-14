@@ -1,0 +1,26 @@
+[
+  {
+    "label": "windows reserved device names",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["con", "prn", "aux", "nul", "com1", "lpt1"]
+  },
+  {
+    "label": "rfc2142 impersonation roles",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["support", "security", "abuse", "postmaster", "webmaster", "hostmaster", "noc", "info", "marketing", "sales"]
+  },
+  {
+    "label": "maintained profanity positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["shit", "fuckyou", "shithead", "asshole", "scheisse", "arschloch", "hurensohn", "depp"]
+  },
+  {
+    "label": "mixed script review fallback",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["раypalx", "аdminx", "gооglex", "offіcial"]
+  }
+]

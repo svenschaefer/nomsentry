@@ -79,6 +79,14 @@
 
 ## P1 Quality and test coverage
 
+- Expand broad outcome-matrix coverage for true positives, false positives, true negatives, and likely false negatives.
+  - Why:
+    - The current suite is solid on targeted regressions, but it is still not broad enough as a category-level product matrix.
+    - The current coverage is strongest for example-based regressions and weaker for grouped category-level expectations across `reservedTechnical`, `impersonation`, `protectedBrand`, `profanity`, `scriptRisk`, and `compositeRisk`.
+  - Target:
+    - maintain grouped category fixture suites for true positives and false positives
+    - make likely false-negative areas explicit until their underlying source or policy gaps are closed
+
 - Add fuzz and property-style tests for normalization.
   - Why:
     - [src/core/normalize.js](/C:/code/nomsentry/src/core/normalize.js), [src/unicode/confusables.js](/C:/code/nomsentry/src/unicode/confusables.js), and [src/unicode/latinize.js](/C:/code/nomsentry/src/unicode/latinize.js) are central and high-risk.
