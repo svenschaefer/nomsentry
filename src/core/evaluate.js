@@ -1,5 +1,5 @@
 import { normalizeValue } from "./normalize.js";
-import { matchRules } from "./matchers.js";
+import { buildRuleIndex, matchRules } from "./matchers.js";
 import { detectCompositeRisk } from "./composite.js";
 import { detectScriptRisk } from "./script-risk.js";
 import { decide } from "./decision.js";
@@ -27,14 +27,19 @@ function dedupeMatches(matches) {
 
 export function createEngine({ sources = [], policies = [], allowOverrides = [] } = {}) {
   const rules = sources.flatMap((s) =>
-    (s.rules || []).map((rule) => {
+    (s.rules || []).map((rule, index) => {
       const field = rule.normalizationField || "separatorFolded";
       return {
         ...rule,
+        _order: index,
         normalizedTerm: normalizeValue(rule.term)[field] || String(rule.term ?? "").toLowerCase()
       };
     })
   );
+  rules.forEach((rule, index) => {
+    rule._order = index;
+  });
+  const ruleIndex = buildRuleIndex(rules);
   const compositeRules = sources.flatMap((s) =>
     (s.compositeRules || []).map((rule) => ({
       ...rule,
@@ -55,7 +60,8 @@ export function createEngine({ sources = [], policies = [], allowOverrides = [] 
     const matches = matchRules({
       normalized,
       kind,
-      rules
+      rules,
+      ruleIndex
     });
 
     const scriptRisk = detectScriptRisk(normalized.raw);

@@ -9,10 +9,10 @@
   - machine-readable provenance manifest in `dist/build-manifest.json`
   - deterministic refresh policy in `source-refresh-policy.json`
 - Major open workstreams:
-  - indexed runtime matching
   - upstream provenance enrichment and freshness metadata
   - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
   - deeper normalization fuzz coverage
+  - runtime benchmarking
 
 ## Runtime status
 
@@ -35,6 +35,8 @@
   - maintained source artifacts
   - compiled runtime bundle
   - build provenance manifest
+- Runtime matching now uses:
+  - a prebuilt indexed matcher instead of a per-request full rule scan
 - Source freshness checks are in place for:
   - maintained source artifacts based on git commit dates and `source-refresh-policy.json`
 - In-suite determinism coverage now includes:

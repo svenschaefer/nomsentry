@@ -36,6 +36,7 @@ import {
   splitUsptoTrademarkSource
 } from "../src/importers/uspto.js";
 import { detectScriptRisk } from "../src/core/script-risk.js";
+import { buildRuleIndex, matchRules } from "../src/core/matchers.js";
 import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
 import { buildProvenanceManifest, writeProvenanceManifest } from "../scripts/build-provenance-manifest.js";
@@ -335,6 +336,41 @@ assert.throws(
     "freshness checks should surface refresh-policy validation errors"
   );
   fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const indexedRules = [
+    {
+      id: "indexed/openai",
+      term: "openai",
+      normalizedTerm: "openai",
+      category: "protectedBrand",
+      scopes: ["tenantSlug"],
+      match: "token",
+      normalizationField: "confusableSkeleton",
+      _order: 0
+    },
+    {
+      id: "indexed/create-dir",
+      term: "create-dir",
+      normalizedTerm: "create dir",
+      category: "reservedTechnical",
+      scopes: ["tenantSlug"],
+      match: "token",
+      normalizationField: "slug",
+      _order: 1
+    }
+  ];
+  const indexedMatches = matchRules({
+    normalized: normalizeValue("open-ai create-dir"),
+    kind: "tenantSlug",
+    ruleIndex: buildRuleIndex(indexedRules)
+  });
+  assert.deepEqual(
+    indexedMatches.map((match) => match.rule.id),
+    ["indexed/openai", "indexed/create-dir"],
+    "indexed matching should preserve concatenated token and multi-token sequence behavior"
+  );
 }
 
 {

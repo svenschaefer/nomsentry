@@ -2,15 +2,6 @@
 
 ## P0 Enterprise readiness
 
-- Replace the current O(n) per-request rule scan with an indexed matcher for runtime use.
-  - Why:
-    - `createEngine()` in [src/core/evaluate.js](/C:/code/nomsentry/src/core/evaluate.js) materializes all rules into one flat array.
-    - `matchRules()` in [src/core/matchers.js](/C:/code/nomsentry/src/core/matchers.js) then scans every rule for every input.
-    - With the current runtime bundle size this is acceptable for a CLI, but it is not an enterprise-grade serving path.
-  - Target:
-    - pre-index by `scope`, `match`, and normalized token
-    - keep startup compilation separate from request-time matching
-
 - Expand the build provenance manifest with upstream version and refresh metadata.
   - Why:
     - The build pipeline now emits a deterministic machine-readable manifest for maintained source artifacts and the runtime bundle.
@@ -137,6 +128,6 @@
 
 - Add benchmark fixtures for runtime matching and bundle loading.
   - Why:
-    - Performance is now a product concern because the runtime artifact is intentionally large and compiled.
+    - Runtime matching is now indexed, but there is still no maintained benchmark harness to quantify startup cost, bundle load time, and per-request latency.
   - Target:
     - measure engine startup, bundle load time, and per-request matching latency on representative inputs

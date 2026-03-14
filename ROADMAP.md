@@ -10,7 +10,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 ### v0.4.x
 
 1. Runtime performance foundation
-   - replace linear rule scans with indexed matching
    - add benchmark fixtures for bundle load and request latency
    - Dependency:
      - none

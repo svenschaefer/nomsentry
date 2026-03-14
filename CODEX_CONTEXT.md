@@ -50,6 +50,7 @@
 - Runtime bundle writes use atomic write paths.
 - The runtime build step emits a deterministic provenance manifest for maintained source artifacts and the runtime bundle.
 - Source freshness is checked against git commit dates plus the deterministic refresh policy file.
+- Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - `npm run determinism:check` validates both maintained source determinism and runtime-bundle determinism.
 - `npm run ci:check` is the main local validation gate.
 
@@ -80,10 +81,10 @@
 
 ## Current major open areas
 
-- indexed runtime matching instead of linear rule scans
 - upstream version pinning and manifest enrichment beyond the current freshness policy
 - policy-category refinement beyond broad `profanity`
 - deeper normalization fuzzing and maintenance-script failure coverage
+- runtime benchmark fixtures
 
 ## Recent catalog-based gap findings
 

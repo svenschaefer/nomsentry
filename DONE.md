@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Replaced the linear runtime matcher with a prebuilt indexed matcher.
+  - [src/core/matchers.js](/C:/code/nomsentry/src/core/matchers.js) now builds and queries a rule index keyed by scope, normalization field, match type, and token candidates
+  - [src/core/evaluate.js](/C:/code/nomsentry/src/core/evaluate.js) now compiles the index once at engine creation time
+  - added direct regression coverage for indexed concatenated-token and multi-token sequence matching in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
 - Added a source refresh policy and staleness gate.
   - added [source-refresh-policy.json](/C:/code/nomsentry/source-refresh-policy.json)
   - added [scripts/check-source-freshness.js](/C:/code/nomsentry/scripts/check-source-freshness.js)
