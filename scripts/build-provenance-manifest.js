@@ -28,6 +28,8 @@ const TRANSFORM_VERSION_BY_PREFIX = [
   ["imported-rfc2142-role-mailboxes", "extract-rfc2142-role-mailboxes@1"],
   ["imported-uspto-trademarks-", "import-uspto-trademarks@1"],
   ["derived-wikidata-brand-risk", "derive-wikidata-brand-risk@1"],
+  ["derived-impersonation", "derive-impersonation@1"],
+  ["derived-composite-risk", "derive-composite-risk@1"],
   [
     "imported-windows-reserved-device-names",
     "extract-windows-reserved-device-names@1",

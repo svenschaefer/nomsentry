@@ -46,6 +46,8 @@
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
 - `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered reserved-usernames import.
+- `impersonation` currently draws from the RFC 2142 core plus a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
+- `compositeRisk` currently draws from the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer built from the maintained impersonation baseline.
 
 ## Runtime and build guarantees
 
@@ -67,7 +69,7 @@
 
 - Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
 - Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
-- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for reserved-route positives, conservative reserved-usernames technical positives, RFC 2142 positives, maintained protected-brand positives, mixed-script lexical hits and fallback reviews, plus nearby false positives, but it is still not the full reviewed catalog.
+- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for reserved-route positives, conservative reserved-usernames technical positives, RFC 2142 positives, derived impersonation and composite positives, maintained protected-brand positives, mixed-script lexical hits and fallback reviews, plus nearby false positives, but it is still not the full reviewed catalog.
 - The grouped maintained-runtime matrix now includes explicit TP, FP, TN, and documented FN suites for the maintained baseline.
 - The compact-form contract is now explicit: supported compact behavior covers deterministic folding that preserves the original letters, while consonant-dropping shorthand such as `fck`, `pwdrst`, `acctrcvry`, `vrfd`, `srvr`, `admn`, and `arschlch` is not part of the maintained default contract.
 - Normalization tests now include deterministic generated property coverage for idempotence, invisibles, separator-heavy variants, case-mixed and NFD forms, fullwidth ASCII forms, and supported confusable substitutions, but they still do not constitute full fuzzing.
@@ -108,11 +110,11 @@
 ## Recent catalog-based gap findings
 
 - The current maintained `reservedTechnical` coverage is improved by the Windows reserved URI-scheme subset, the GitLab reserved-routes import, and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
-- The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
+- The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
-- The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
+- The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, but broader deceptive combinations such as trust, billing, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
 
 ## Recent source-research findings
@@ -136,3 +138,4 @@
 - The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.
+- The current derived impersonation layer is intentionally conservative and additive. It is not intended to solve modern trust, billing, verification, or recovery vocabulary by itself.

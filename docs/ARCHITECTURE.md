@@ -19,9 +19,13 @@
 - `src/importers/gitlab-reserved-names.js` - conservative extraction of GitLab reserved project and group names into source JSON
 - `src/importers/reserved-usernames.js` - conservative technical subset derivation from the reserved-usernames package dataset
 - `src/importers/windows-reserved-uri-schemes.js` - conservative technical subset derivation from Microsoft Learn reserved URI schemes
+- `src/importers/derived-impersonation.js` - conservative derived impersonation vocabulary from maintained role and account-access sources
+- `src/importers/derived-composite-risk.js` - conservative derived composite-risk vocabulary from maintained impersonation terms
 - `src/importers/wikidata-brand-risk.js` - conservative Wikidata brand evaluation and derived-source construction
 - `src/importers/uspto.js` - USPTO bulk trademark case files into full and derived protectedBrand source JSON
 - `scripts/import-*.js` - source-specific import entrypoints
+- `scripts/derive-impersonation.js` - conservative build-time derivation of the additive impersonation layer
+- `scripts/derive-composite-risk.js` - conservative build-time derivation of the additive composite-risk layer
 - `scripts/derive-uspto-brand-risk.js` - structural derivation of the runtime USPTO brand subset
 - `scripts/derive-wikidata-brand-risk.js` - conservative build-time derivation of the Wikidata brand supplement
 - `scripts/build-runtime-sources.js` - compilation of `custom/sources/` into the runtime bundle
@@ -92,6 +96,10 @@ WIPO is not part of the ingest plan.
 `RFC 2142` feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are modeled as impersonation-relevant identifiers.
 
 `reservedTechnical` is currently covered by Windows reserved device names, a conservative Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. That improves route-collision and system-identifier coverage, but it does not yet settle the broader product-contract question for namespace and platform identifiers.
+
+`impersonation` is currently covered by the RFC 2142 role-mailbox core plus a conservative derived additive layer sourced from maintained GitLab and `reserved-usernames` terms. The derived layer now covers exact-token operator or account-access identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`, but it still does not solve the modern trust, billing, verification, and recovery vocabulary on its own.
+
+`compositeRisk` is currently covered by the RFC 2142 `security+support` rule plus a conservative derived layer that combines maintained impersonation/account-access terms with the maintained `support` and `security` anchors. That closes exact-token combinations such as `admin-support` and `login-security`, but broader trust, billing, and recovery combinations remain open.
 
 USPTO is handled in two layers:
 

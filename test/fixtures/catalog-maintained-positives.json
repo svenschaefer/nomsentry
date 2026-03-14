@@ -86,6 +86,35 @@
     ]
   },
   {
+    "label": "derived impersonation additive roles",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": [
+      "admin",
+      "administrator",
+      "help",
+      "login",
+      "oauth",
+      "profile",
+      "secure",
+      "sysadmin",
+      "webmail"
+    ]
+  },
+  {
+    "label": "derived composite-risk positives",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": [
+      "admin-support",
+      "admin-security",
+      "login-support",
+      "login-security",
+      "oauth-support",
+      "profile-security"
+    ]
+  },
+  {
     "label": "maintained protectedBrand positives",
     "kind": "tenantSlug",
     "expected": "review",

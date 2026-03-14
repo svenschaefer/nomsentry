@@ -55,6 +55,8 @@ npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
 npm run import:windows-reserved-uri-schemes
+npm run derive:impersonation
+npm run derive:composite-risk
 npm run evaluate:wikidata-brands
 npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\\to\\case_file.csv
@@ -116,6 +118,8 @@ custom/sources/reserved-usernames.json
 custom/sources/rfc2142-role-mailboxes.json
 custom/sources/windows-reserved-device-names.json
 custom/sources/windows-reserved-uri-schemes.json
+custom/sources/derived-impersonation.json
+custom/sources/derived-composite-risk.json
 custom/sources/derived-uspto-brand-risk.json
 custom/sources/derived-wikidata-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
@@ -157,6 +161,8 @@ npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
 npm run import:windows-reserved-uri-schemes
+npm run derive:impersonation
+npm run derive:composite-risk
 npm run evaluate:wikidata-brands
 npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\to\case_file.csv
@@ -176,6 +182,10 @@ The USPTO subset remains the official trademark path. The Wikidata supplement is
 `RFC 2142` currently feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are used as impersonation-relevant identifiers such as `abuse`, `security`, `postmaster`, and `webmaster`.
 
 `reservedTechnical` is now sourced from Microsoft Windows reserved device names, a conservative Microsoft Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
+
+`impersonation` is now fed by the RFC 2142 core plus a conservative derived additive layer in `custom/sources/derived-impersonation.json`. That derived layer lifts account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail` from the maintained GitLab and `reserved-usernames` sources without introducing a hand-maintained project wordlist.
+
+`compositeRisk` is now fed by the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer in `custom/sources/derived-composite-risk.json`. That layer covers exact-token combinations such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`, while broader trust, billing, and recovery combinations remain an explicit open product-policy question.
 
 For USPTO, the repository now separates:
 

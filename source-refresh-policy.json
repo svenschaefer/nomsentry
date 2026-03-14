@@ -18,6 +18,20 @@
     },
     {
       "match": {
+        "source": "Derived maintained impersonation vocabulary"
+      },
+      "maxAgeDays": 180,
+      "notes": "Derived impersonation vocabulary should be reviewed when the maintained route and role sources are refreshed."
+    },
+    {
+      "match": {
+        "source": "Derived maintained composite-risk vocabulary"
+      },
+      "maxAgeDays": 180,
+      "notes": "Derived composite-risk rules should be reviewed when the maintained impersonation vocabulary changes."
+    },
+    {
+      "match": {
         "source": "LDNOOBW"
       },
       "maxAgeDays": 180,

@@ -52,6 +52,14 @@ import {
   fetchWindowsReservedUriSchemes,
 } from "../src/importers/windows-reserved-uri-schemes.js";
 import {
+  buildDerivedImpersonationSource,
+  deriveImpersonationTerms,
+} from "../src/importers/derived-impersonation.js";
+import {
+  buildDerivedCompositeRiskSource,
+  deriveCompositeRiskRules,
+} from "../src/importers/derived-composite-risk.js";
+import {
   buildWikidataBrandRiskSource,
   isAcceptedWikidataBrandCandidate,
 } from "../src/importers/wikidata-brand-risk.js";
@@ -97,6 +105,8 @@ import {
   scoreCandidate,
 } from "../scripts/evaluate-wikidata-brand-supplement.js";
 import { parseArgs as parseWikidataDeriveArgs } from "../scripts/derive-wikidata-brand-risk.js";
+import { parseArgs as parseDerivedImpersonationArgs } from "../scripts/derive-impersonation.js";
+import { parseArgs as parseDerivedCompositeArgs } from "../scripts/derive-composite-risk.js";
 import {
   assessFreshness,
   findRefreshPolicy,
@@ -283,6 +293,22 @@ assert.equal(
 
 assert.equal(
   loadSourceFromFile(
+    new URL("../custom/sources/derived-impersonation.json", import.meta.url),
+  ).metadata.source,
+  "Derived maintained impersonation vocabulary",
+  "derived impersonation source metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
+    new URL("../custom/sources/derived-composite-risk.json", import.meta.url),
+  ).metadata.source,
+  "Derived maintained composite-risk vocabulary",
+  "derived composite-risk source metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
     new URL(
       "../custom/sources/derived-wikidata-brand-risk.json",
       import.meta.url,
@@ -400,6 +426,30 @@ assert.equal(
 }
 
 {
+  const derivedImpersonationArgs = parseDerivedImpersonationArgs([
+    "--output-file",
+    "tmp/derived-impersonation.json",
+  ]);
+  assert.equal(
+    path.basename(derivedImpersonationArgs.outputFile),
+    "derived-impersonation.json",
+    "derived impersonation args should parse output files",
+  );
+}
+
+{
+  const derivedCompositeArgs = parseDerivedCompositeArgs([
+    "--output-file",
+    "tmp/derived-composite-risk.json",
+  ]);
+  assert.equal(
+    path.basename(derivedCompositeArgs.outputFile),
+    "derived-composite-risk.json",
+    "derived composite-risk args should parse output files",
+  );
+}
+
+{
   const windowsReservedUriArgs = parseWindowsReservedUriArgs([
     "--output-dir",
     "tmp/windows-uri",
@@ -410,6 +460,18 @@ assert.equal(
     "windows reserved URI import args should parse output directories",
   );
 }
+
+assert.throws(
+  () => parseDerivedImpersonationArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "derived impersonation args should reject unknown options",
+);
+
+assert.throws(
+  () => parseDerivedCompositeArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "derived composite-risk args should reject unknown options",
+);
 
 assert.throws(
   () => parseWikidataBrandArgs(["--wat"]),
@@ -570,6 +632,166 @@ assert.throws(
     candidates[0].id,
     "Q312",
     "wikidata evaluation should rank the brand/company page ahead of the common-noun page",
+  );
+}
+
+{
+  const derivedImpersonation = buildDerivedImpersonationSource({
+    sources: [
+      validateSource({
+        id: "imported-rfc2142-role-mailboxes",
+        rules: [
+          {
+            id: "rfc/support",
+            term: "support",
+            category: "impersonation",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "confusableSkeleton",
+          },
+          {
+            id: "rfc/security",
+            term: "security",
+            category: "impersonation",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "confusableSkeleton",
+          },
+        ],
+      }),
+      validateSource({
+        id: "imported-gitlab-reserved-names",
+        rules: [
+          {
+            id: "gitlab/admin",
+            term: "admin",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+          {
+            id: "gitlab/help",
+            term: "help",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+          {
+            id: "gitlab/profile",
+            term: "profile",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+        ],
+      }),
+      validateSource({
+        id: "imported-reserved-usernames",
+        rules: [
+          {
+            id: "reserved-usernames/admin",
+            term: "admin",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+          {
+            id: "reserved-usernames/webmail",
+            term: "webmail",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+          {
+            id: "reserved-usernames/root",
+            term: "root",
+            category: "reservedTechnical",
+            scopes: ["tenantSlug"],
+            match: "token",
+            normalizationField: "slug",
+          },
+        ],
+      }),
+    ],
+  });
+  assert.deepEqual(
+    derivedImpersonation.rules.map((rule) => rule.term),
+    ["admin", "help", "profile", "webmail"],
+    "derived impersonation builder should keep only conservative additive role and account-access terms",
+  );
+}
+
+{
+  const sources = [
+    validateSource({
+      id: "imported-rfc2142-role-mailboxes",
+      rules: [
+        {
+          id: "rfc/support",
+          term: "support",
+          category: "impersonation",
+          scopes: ["tenantSlug"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+        {
+          id: "rfc/security",
+          term: "security",
+          category: "impersonation",
+          scopes: ["tenantSlug"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+      ],
+      compositeRules: [
+        {
+          id: "rfc/security-support",
+          term: "security+support",
+          category: "compositeRisk",
+          scopes: ["tenantSlug"],
+          allOf: ["security", "support"],
+        },
+      ],
+    }),
+    validateSource({
+      id: "derived-impersonation",
+      rules: [
+        {
+          id: "derived/admin",
+          term: "admin",
+          category: "impersonation",
+          scopes: ["tenantSlug"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+        {
+          id: "derived/help",
+          term: "help",
+          category: "impersonation",
+          scopes: ["tenantSlug"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+      ],
+    }),
+  ];
+
+  assert.deepEqual(
+    deriveCompositeRiskRules(sources).map((rule) => rule.term),
+    ["admin+security", "admin+support", "help+security", "help+support"],
+    "derived composite-risk builder should generate additive exact-token pairs against the maintained support and security anchors",
+  );
+
+  const derivedComposite = buildDerivedCompositeRiskSource({ sources });
+  assert.equal(
+    derivedComposite.compositeRules.length,
+    4,
+    "derived composite-risk source should keep the generated composite rules",
   );
 }
 
@@ -737,6 +959,24 @@ assert.throws(
     true,
     "build manifest should enumerate the Windows reserved URI scheme artifact",
   );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
+        entry.id === "derived-impersonation" &&
+        entry.source === "Derived maintained impersonation vocabulary",
+    ),
+    true,
+    "build manifest should enumerate the derived impersonation artifact",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
+        entry.id === "derived-composite-risk" &&
+        entry.source === "Derived maintained composite-risk vocabulary",
+    ),
+    true,
+    "build manifest should enumerate the derived composite-risk artifact",
+  );
   assert.deepEqual(
     manifest.sourceArtifacts.find(
       (entry) => entry.id === "imported-2toad-profanity-en",
@@ -783,6 +1023,20 @@ assert.throws(
     )?.transformVersion,
     "derive-wikidata-brand-risk@1",
     "build manifest should record deterministic transform versions for the Wikidata supplement",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "derived-impersonation",
+    )?.transformVersion,
+    "derive-impersonation@1",
+    "build manifest should record deterministic transform versions for the derived impersonation layer",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "derived-composite-risk",
+    )?.transformVersion,
+    "derive-composite-risk@1",
+    "build manifest should record deterministic transform versions for the derived composite-risk layer",
   );
   assert.equal(
     manifest.runtimeArtifact.transformVersion,
@@ -3307,6 +3561,30 @@ for (const testCase of [
 }
 
 {
+  assert.deepEqual(
+    deriveImpersonationTerms(
+      loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)),
+    ),
+    [
+      "admin",
+      "administrator",
+      "help",
+      "login",
+      "oauth",
+      "profile",
+      "secure",
+      "ssladmin",
+      "ssladministrator",
+      "sslwebmaster",
+      "sysadmin",
+      "sysadministrator",
+      "webmail",
+    ],
+    "derived impersonation terms should stay byte-stable for the maintained source baseline",
+  );
+}
+
+{
   const terms = extractWindowsReservedUriSchemes(`
     <h2>Reserved URI scheme names</h2>
     <table>
@@ -3397,6 +3675,42 @@ await assert.rejects(
       `variant ${candidate} should normalize like ${canonical}`,
     );
   }
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "admin",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "impersonation"),
+    true,
+    "admin should now surface an impersonation reason in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "login",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "impersonation"),
+    true,
+    "login should now surface an impersonation reason in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "admin-support",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "compositeRisk"),
+    true,
+    "admin-support should now surface derived composite risk in the maintained baseline",
+  );
 }
 
 {

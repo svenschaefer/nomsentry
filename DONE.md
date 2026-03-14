@@ -2,6 +2,16 @@
 
 ## Completed recently
 
+- Added conservative derived impersonation and composite-risk layers from the maintained source baseline.
+  - added [src/importers/derived-impersonation.js](/C:/code/nomsentry/src/importers/derived-impersonation.js)
+  - added [src/importers/derived-composite-risk.js](/C:/code/nomsentry/src/importers/derived-composite-risk.js)
+  - added [scripts/derive-impersonation.js](/C:/code/nomsentry/scripts/derive-impersonation.js)
+  - added [scripts/derive-composite-risk.js](/C:/code/nomsentry/scripts/derive-composite-risk.js)
+  - added [custom/sources/derived-impersonation.json](/C:/code/nomsentry/custom/sources/derived-impersonation.json)
+  - added [custom/sources/derived-composite-risk.json](/C:/code/nomsentry/custom/sources/derived-composite-risk.json)
+  - the maintained default baseline now lifts conservative exact-token account-access identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail` into `impersonation`
+  - the maintained default baseline now derives 26 exact-token composite rules such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`
+
 - Expanded maintained `reservedTechnical` coverage with a conservative Windows reserved URI-scheme subset.
   - added [src/importers/windows-reserved-uri-schemes.js](/C:/code/nomsentry/src/importers/windows-reserved-uri-schemes.js)
   - added [scripts/import-windows-reserved-uri-schemes.js](/C:/code/nomsentry/scripts/import-windows-reserved-uri-schemes.js)

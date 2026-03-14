@@ -45,6 +45,8 @@
     "import:gitlab-reserved": "node scripts/import-gitlab-reserved-names.js",
     "import:reserved-usernames": "node scripts/import-reserved-usernames.js",
     "import:windows-reserved-uri-schemes": "node scripts/import-windows-reserved-uri-schemes.js",
+    "derive:impersonation": "node scripts/derive-impersonation.js",
+    "derive:composite-risk": "node scripts/derive-composite-risk.js",
     "evaluate:wikidata-brands": "node scripts/evaluate-wikidata-brand-supplement.js",
     "derive:wikidata-brand-risk": "node scripts/derive-wikidata-brand-risk.js"
   },

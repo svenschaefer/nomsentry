@@ -33,6 +33,7 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 - profanity and insult lexicons
 - imported library datasets
 - official and normative identifier artifacts
+- derived impersonation and composite-risk artifacts
 - a derived USPTO `protectedBrand` review subset
 
 ## Category intent
@@ -42,10 +43,10 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 - `protectedBrand`
   - review-level trademark risk terms derived from official trademark data
 - `impersonation`
-  - impersonation-relevant role names such as `support`, `security`, `postmaster`, `webmaster`
+  - impersonation-relevant role and account-access names such as `support`, `security`, `postmaster`, `webmaster`, `admin`, `login`, and `oauth`
 - `reservedTechnical`
   - technical reserved identifiers such as Windows device names and reserved URI schemes
 - `compositeRisk`
-  - derived combinations of lower-level signals
+  - derived combinations of lower-level signals such as support/security-anchor combinations with maintained impersonation or account-access terms
 - `scriptRisk`
   - mixed-script risk derived from Unicode/script analysis

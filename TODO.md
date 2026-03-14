@@ -14,12 +14,14 @@
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
-    - A catalog-based runtime evaluation showed that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` currently do not match maintained `impersonation` sources.
-    - The current maintained `impersonation` set is only 15 rules wide and is heavily centered on RFC 2142 mailbox roles.
+    - A conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
+    - A catalog-based runtime evaluation still shows that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` do not match maintained `impersonation` sources.
+    - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern trust, billing, verification, and recovery vocabulary.
     - A follow-up source review did not identify a strong freely redistributable standard source for the modern trust, billing, verification, and recovery vocabulary.
   - Target:
     - define the intended impersonation-role vocabulary
-    - ingest the best available free extensions for the RFC 2142 core
+    - preserve the current conservative derived operator/account-access layer
+    - ingest any additional free extensions that can be justified without turning the default set into a noisy project-maintained list
     - document where a derived project layer is still required because no strong free source exists
 
 - Split the current broad `profanity` category into more precise policy categories.
@@ -43,13 +45,14 @@
     - replace the current blunt structural thresholds with a better-calibrated derived profile
     - decide which short, numeric, and ambiguity-prone brand forms should remain in the maintained default profile
 
-- Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
+- Expand maintained `compositeRisk` coverage beyond the current support/security-anchor derived layer if the product expects broader deception-combination coverage.
   - Why:
-    - A catalog-based runtime evaluation showed that combinations such as `account-recovery`, `trust-safety`, and `billing-support` are mostly uncovered unless one component independently matches another category.
-    - The current runtime bundle contains only one composite rule.
+    - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer, which closes combinations such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`.
+    - A catalog-based runtime evaluation still shows that combinations such as `account-recovery`, `trust-safety`, `billing-support`, `customer-recovery`, and `privacy-team` remain uncovered unless one component independently matches another category.
     - A follow-up source review did not identify a strong free third-party source that directly ships these product-relevant composite combinations.
   - Target:
     - define the intended composite vocabulary explicitly
-    - generate composite rules from maintained impersonation or recovery vocabularies, or another documented derived source strategy
+    - preserve the current conservative derived support/security-anchor layer
+    - decide whether to expand into trust, billing, privacy, verification, and recovery combinations through a further documented derived strategy
 
 ## P2 Engineering hygiene
