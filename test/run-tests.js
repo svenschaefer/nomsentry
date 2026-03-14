@@ -210,6 +210,7 @@ for (const name of ["allow", "reject", "review"]) {
 for (const fixtureName of [
   "catalog-maintained-positives",
   "catalog-maintained-false-positives",
+  "catalog-maintained-true-negatives",
   "catalog-maintained-obfuscated-positives",
   "catalog-maintained-compact-contract",
   "catalog-maintained-mixed-script",
@@ -3393,6 +3394,110 @@ for (const testCase of [
         expectedVariantSlug,
         `generated confusable-heavy variant ${JSON.stringify(nfdCaseMixed)} should preserve slug output for ${base}`,
       );
+    }
+  }
+}
+
+{
+  const leetMap = new Map([
+    ["a", "4"],
+    ["e", "3"],
+    ["i", "1"],
+    ["o", "0"],
+    ["s", "5"],
+    ["t", "7"],
+  ]);
+  const confusableMap = new Map([
+    ["a", "а"],
+    ["c", "с"],
+    ["e", "е"],
+    ["i", "і"],
+    ["o", "о"],
+    ["p", "р"],
+    ["s", "ѕ"],
+    ["x", "х"],
+  ]);
+  const separators = ["-", "_", ".", "/"];
+  const invisibles = ["\u200B", "\u200C", "\u200D", "\u2060"];
+  const bases = ["admin", "support", "oauth", "scheisse", "paypal"];
+
+  function createSeededRandom(seed) {
+    let state = seed >>> 0;
+    return () => {
+      state ^= state << 13;
+      state ^= state >>> 17;
+      state ^= state << 5;
+      return ((state >>> 0) % 1000) / 1000;
+    };
+  }
+
+  function maybeTransformChar(char, random) {
+    let next = char;
+    const lower = char.toLowerCase();
+
+    if (leetMap.has(lower) && random() < 0.25) {
+      next = leetMap.get(lower);
+    } else if (confusableMap.has(lower) && random() < 0.25) {
+      next = confusableMap.get(lower);
+    } else if (/[a-z]/i.test(char) && random() < 0.3) {
+      next = random() < 0.5 ? char.toUpperCase() : char.toLowerCase();
+    }
+
+    if (/[a-z]/i.test(char) && random() < 0.15) {
+      next = Array.from(next)
+        .map((part) =>
+          /[A-Za-z]/.test(part)
+            ? String.fromCharCode(part.charCodeAt(0) + 65248)
+            : part,
+        )
+        .join("");
+    }
+
+    return next;
+  }
+
+  function fuzzVariant(base, seed) {
+    const random = createSeededRandom(seed);
+    const chars = Array.from(base.normalize("NFD"));
+    const parts = [];
+    let insertedSeparator = false;
+
+    for (let index = 0; index < chars.length; index += 1) {
+      const char = chars[index];
+      parts.push(maybeTransformChar(char, random));
+      if (index < chars.length - 1 && random() < 0.4) {
+        parts.push(separators[Math.floor(random() * separators.length)]);
+        insertedSeparator = true;
+      }
+      if (index < chars.length - 1 && random() < 0.35) {
+        parts.push(invisibles[Math.floor(random() * invisibles.length)]);
+      }
+    }
+
+    return {
+      value: parts.join(""),
+      insertedSeparator,
+    };
+  }
+
+  for (const [baseIndex, base] of bases.entries()) {
+    const expected = normalizeValue(base);
+
+    for (let variantIndex = 0; variantIndex < 25; variantIndex += 1) {
+      const variant = fuzzVariant(base, baseIndex * 100 + variantIndex + 1);
+      const normalized = normalizeValue(variant.value);
+      assert.equal(
+        normalized.compact,
+        expected.compact,
+        `seeded normalization fuzz variant ${JSON.stringify(variant.value)} should preserve compact output for ${base}`,
+      );
+      if (!variant.insertedSeparator) {
+        assert.equal(
+          normalized.slug,
+          expected.slug,
+          `seeded normalization fuzz variant ${JSON.stringify(variant.value)} should preserve slug output for ${base} when no separators are injected`,
+        );
+      }
     }
   }
 }

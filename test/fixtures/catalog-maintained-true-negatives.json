@@ -1,0 +1,14 @@
+[
+  {
+    "label": "plain tenantSlug true negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["normal-company", "blue-ocean", "resume-labs", "metricslab", "northwind", "teamspace", "designsystem"]
+  },
+  {
+    "label": "plain tenantName true negatives",
+    "kind": "tenantName",
+    "expected": "allow",
+    "values": ["müller", "sécurité", "résumé", "ordinary name", "anna maria", "hello world"]
+  }
+]

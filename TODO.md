@@ -66,32 +66,6 @@
     - define the intended composite vocabulary explicitly
     - generate composite rules from maintained impersonation or recovery vocabularies, or another documented derived source strategy
 
-## P1 Quality and test coverage
-
-- Expand broad outcome-matrix coverage for true positives, false positives, true negatives, and likely false negatives.
-  - Why:
-    - The current suite is solid on targeted regressions, but it is still not broad enough as a category-level product matrix.
-    - The current coverage is strongest for example-based regressions and weaker for grouped category-level expectations across `reservedTechnical`, `impersonation`, `protectedBrand`, `profanity`, `scriptRisk`, and `compositeRisk`.
-  - Target:
-    - maintain grouped category fixture suites for true positives and false positives
-    - make likely false-negative areas explicit until their underlying source or policy gaps are closed
-
-- Add fuzz and property-style tests for normalization.
-  - Why:
-    - [src/core/normalize.js](/C:/code/nomsentry/src/core/normalize.js), [src/unicode/confusables.js](/C:/code/nomsentry/src/unicode/confusables.js), and [src/unicode/latinize.js](/C:/code/nomsentry/src/unicode/latinize.js) are central and high-risk.
-    - Current tests now include broader deterministic generated invariants, but a fuller fuzz/property harness is still missing.
-  - Target:
-    - fuzz around separators, zero-width characters, mixed normalization forms, and confusable sequences
-    - assert stability and idempotence of normalization
-
-- Add regression coverage from the curated identifier catalog review.
-  - Why:
-    - A broad curated catalog was reviewed across `reservedTechnical`, `impersonation`, `protectedBrand`, `profanity`, `scriptRisk`, and `compositeRisk`.
-    - The current suite still lacks broad grouped fixtures for positive coverage and nearby false positives such as `supporter`, `securityresearch`, `Scunthorpe`, `Cockburn`, and short-brand variants.
-  - Target:
-    - split the reviewed catalog into grouped fixture files
-    - keep separate positive, obfuscated, mixed-script, composite, and false-positive suites
-
 ## P2 Engineering hygiene
 
 - Consider adding TypeScript or JSDoc-based type checking for the source and runtime bundle schemas.

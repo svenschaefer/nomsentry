@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Closed the broader matrix and normalization-fuzz coverage block.
+  - added [test/fixtures/catalog-maintained-true-negatives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-true-negatives.json)
+  - expanded the grouped maintained matrix to cover explicit TP, FP, TN, and documented FN suites
+  - added a seeded fuzz-style normalization corpus in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) across separators, invisibles, case mixing, NFD forms, supported leetspeak, supported confusables, and fullwidth ASCII variants
+
 - Defined and tested the current compact-form normalization contract.
   - added [docs/NORMALIZATION_CONTRACT.md](/C:/code/nomsentry/docs/NORMALIZATION_CONTRACT.md)
   - added [test/fixtures/catalog-maintained-compact-contract.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-compact-contract.json)
