@@ -61,6 +61,7 @@
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants for `oauth`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, and `support`
+  - an explicit compact-form contract matrix that separates supported compact-preserving variants from unsupported consonant-dropping shorthand
   - maintained mixed-script positives and explicit documented current gaps, including broader lexical hits such as `ssh`, `oauth`, `xml`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
 - Wikidata uncovered-brand evaluation status:
@@ -96,6 +97,7 @@
   - `CODEX_CONTEXT.md`
   - `README.md`
   - `docs/ARCHITECTURE.md`
+  - `docs/NORMALIZATION_CONTRACT.md`
   - `docs/SPEC.md`
   - `docs/GUARANTEES.md`
   - `docs/REPO_WORKFLOWS.md`

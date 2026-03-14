@@ -211,6 +211,7 @@ for (const fixtureName of [
   "catalog-maintained-positives",
   "catalog-maintained-false-positives",
   "catalog-maintained-obfuscated-positives",
+  "catalog-maintained-compact-contract",
   "catalog-maintained-mixed-script",
   "catalog-documented-current-gaps",
 ]) {

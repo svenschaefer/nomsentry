@@ -1,0 +1,26 @@
+[
+  {
+    "label": "supported compact-preserving reservedTechnical and impersonation variants",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["adm1n", "supp0rt", "s_u_p_p_o_r_t", "o.a.u.t.h", "оauth"]
+  },
+  {
+    "label": "supported compact-preserving profanity variants",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["sh!t", "sh/i/t", "sche1sse"]
+  },
+  {
+    "label": "unsupported consonant-dropping or shorthand compact forms",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["fck", "pwdrst", "acctrcvry", "vrfd", "srvr", "admn"]
+  },
+  {
+    "label": "unsupported shorthand profanity compact forms",
+    "kind": "tenantName",
+    "expected": "allow",
+    "values": ["fck", "arschlch"]
+  }
+]

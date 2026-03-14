@@ -92,14 +92,6 @@
     - split the reviewed catalog into grouped fixture files
     - keep separate positive, obfuscated, mixed-script, composite, and false-positive suites
 
-- Add targeted normalization coverage for compact profanity and technical variants that currently fall through.
-  - Why:
-    - A catalog-based runtime evaluation showed that variants such as `fck` and `adm1n` currently evaluate to `allow`.
-    - Some misses are source-coverage gaps, but some are also normalization and compact-variant expectations that should be made explicit.
-  - Target:
-    - decide which compact forms are part of the supported detection contract
-    - add direct regression tests for the accepted compact-form set
-
 ## P2 Engineering hygiene
 
 - Consider adding TypeScript or JSDoc-based type checking for the source and runtime bundle schemas.

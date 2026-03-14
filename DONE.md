@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Defined and tested the current compact-form normalization contract.
+  - added [docs/NORMALIZATION_CONTRACT.md](/C:/code/nomsentry/docs/NORMALIZATION_CONTRACT.md)
+  - added [test/fixtures/catalog-maintained-compact-contract.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-compact-contract.json)
+  - the maintained matrix now distinguishes supported compact-preserving variants from unsupported consonant-dropping shorthand such as `fck`, `pwdrst`, `acctrcvry`, `vrfd`, `srvr`, `admn`, and `arschlch`
+
 - Hardened USPTO artifact rewrite paths and closed the remaining import partial-write coverage gap.
   - [scripts/import-uspto-trademarks.js](/C:/code/nomsentry/scripts/import-uspto-trademarks.js) now replaces the chunk set through a staged swap instead of delete-first writes
   - [scripts/derive-uspto-brand-risk.js](/C:/code/nomsentry/scripts/derive-uspto-brand-risk.js) now preserves the current single derived artifact and only cleans up legacy chunked outputs after a successful write

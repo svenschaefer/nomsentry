@@ -12,6 +12,7 @@ Additional project docs:
 - [Guarantees](/C:/code/nomsentry/docs/GUARANTEES.md)
 - [Repo Workflows](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
 - [Source Extension Policy](/C:/code/nomsentry/docs/SOURCE_EXTENSION_POLICY.md)
+- [Normalization Contract](/C:/code/nomsentry/docs/NORMALIZATION_CONTRACT.md)
 - [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
 - [Wikidata Brand Evaluation](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
 - [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
