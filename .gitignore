@@ -1,2 +1,10 @@
 node_modules/
 data/uspto/
+*.log
+.env
+.env.*
+coverage/
+.nyc_output/
+Thumbs.db
+.DS_Store
+temp/

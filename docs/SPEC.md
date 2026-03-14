@@ -30,7 +30,7 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 
 - profanity and insult lexicons
 - imported library datasets
-- official and normative reserved-name artifacts
+- official and normative identifier artifacts
 - a derived USPTO `protectedBrand` review subset
 
 ## Category intent

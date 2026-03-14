@@ -50,7 +50,7 @@ The current maintained source families are:
 - Purpose: official US trademark source for the derived `protectedBrand` review subset
 - Used in: `custom/sources/derived-uspto-brand-risk.json`
 - Source: https://www.uspto.gov/trademarks/apply/check-status-view-documents/trademark-bulk-data
-- License / status: official US government bulk data, publicly accessible
+- License / status: official factual source, publicly accessible; treated here as a limited extracted factual source rather than an open-source licensed dataset
 - Notes: the repository stores only a derived runtime subset by default; local full imports under `data/uspto/` are ignored by git
 
 ### RFC 2142
@@ -58,14 +58,14 @@ The current maintained source families are:
 - Purpose: standard role mailbox names for impersonation detection
 - Used in: `custom/sources/rfc2142-role-mailboxes.json`
 - Source: https://www.rfc-editor.org/rfc/rfc2142
-- License / status: standards document; repository use is limited to extraction of short factual standardized role names
+- License / status: normative standards source; treated here as a limited extracted factual source of short standardized role names rather than an open-source licensed dataset
 
 ### Microsoft Learn Windows reserved device names
 
 - Purpose: reserved technical identifiers
 - Used in: `custom/sources/windows-reserved-device-names.json`
 - Source: https://learn.microsoft.com/windows/win32/fileio/naming-a-file
-- License / status: Microsoft documentation; repository use is limited to extraction of short factual reserved names
+- License / status: normative documentation source; treated here as a limited extracted factual source of short reserved names rather than an open-source licensed dataset
 
 ## Library-backed imported datasets
 

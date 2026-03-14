@@ -3,6 +3,7 @@
 Deterministic identifier policy and deception detection engine.
 
 Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/C:/code/nomsentry/THIRD_PARTY_NOTICES.md).
+Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/C:/code/nomsentry/SECURITY.md).
 
 ## v0.3 highlights
 
@@ -22,6 +23,7 @@ Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md
 
 ```bash
 npm test
+npm run ci:check
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
@@ -78,7 +80,7 @@ data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
 ```
 
-These inputs currently come from four source families:
+These inputs currently come from three maintained source families plus one compiled runtime artifact:
 
 - official register or standards sources
   - USPTO Trademark Bulk Data

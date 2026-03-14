@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node test/run-tests.js",
+    "ci:check": "npm test && npm run build:runtime-sources",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",
@@ -19,6 +20,9 @@
     "import:cuss": "node scripts/import-cuss.js",
     "import:dsojevic": "node scripts/import-dsojevic-profanity.js",
     "import:insult-wiki": "node scripts/import-insult-wiki.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "license": "MIT",
   "dependencies": {
