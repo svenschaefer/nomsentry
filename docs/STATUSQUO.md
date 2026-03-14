@@ -55,9 +55,9 @@
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, GitLab reserved-route names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
-  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms
-  - maintained mixed-script positives and explicit documented current gaps
-  - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms
+  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants from the reviewed catalog
+  - maintained mixed-script positives and explicit documented current gaps, including broader fallback review examples
+  - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `billingham-labs`, `officiallyspeaking`, `wholesome`, and `striped`
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation

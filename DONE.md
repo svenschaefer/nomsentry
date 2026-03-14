@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Expanded the grouped maintained-runtime regression matrix.
+  - [test/fixtures/catalog-maintained-obfuscated-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-obfuscated-positives.json) now covers more separator, leetspeak, and compact obfuscation variants
+  - [test/fixtures/catalog-maintained-mixed-script.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-mixed-script.json) now covers more mixed-script fallback review examples
+  - [test/fixtures/catalog-maintained-false-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-false-positives.json) now covers more nearby negatives from the reviewed catalog
+
 - Expanded destructive-script safeguard coverage for `compact-sources`.
   - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now supports injected filesystem behavior for failure simulation in tests
   - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers rollback after a staged swap failure and verifies restoration of the original source directory
