@@ -22,7 +22,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - expand maintained impersonation coverage beyond the RFC 2142-centered baseline, knowing that free source options are limited for modern trust and recovery vocabulary
    - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows plus GitLab baseline, including `reserved-usernames`, `github-reserved-names`, and optional Windows reserved URI scheme names
    - improve USPTO brand-risk derivation with measured precision and recall analysis
-   - evaluate a Wikidata-derived short-brand supplement alongside the USPTO-derived subset as a separate brand-coverage track
+   - evaluate a Wikidata-derived uncovered-brand supplement alongside the USPTO-derived subset as a separate brand-coverage track
    - expand composite-risk coverage beyond the current single-rule baseline if that broader contract is intended, likely through a derived layer rather than a direct free source import
    - document downstream source extension policy
    - Dependency:

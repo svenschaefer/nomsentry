@@ -39,12 +39,12 @@
     - document expected behavior for generic English terms and long-tail marks
     - decide whether the official-source-derived heuristics should also retain short globally sensitive marks
 
-- Evaluate a `derived-wikidata-brand-risk.json` supplement for short global brands.
+- Evaluate a `derived-wikidata-brand-risk.json` supplement for uncovered brands.
   - Why:
     - A catalog-based runtime evaluation showed that short global brands such as `openai`, `paypal`, `google`, and `github` currently evaluate to `allow` under the official-only derived subset.
-    - Current source research suggests that a Wikidata-derived CC0 supplement is the most plausible free seed source for those short globally recognizable brands.
+    - Current source research suggests that a Wikidata-derived CC0 supplement is the most plausible free seed source for globally recognizable brands that remain uncovered by the official-only subset.
   - Target:
-    - define the inclusion criteria for a Wikidata-derived short-brand subset
+    - define the inclusion criteria for a Wikidata-derived uncovered-brand subset
     - evaluate whether the supplement materially improves coverage without introducing unacceptable false positives
     - document how a Wikidata-derived subset would coexist with the USPTO-derived subset
 
