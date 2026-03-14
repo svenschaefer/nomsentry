@@ -24,6 +24,11 @@ import {
   getInsultWikiLanguages
 } from "../src/importers/insult-wiki.js";
 import {
+  buildGitLabReservedNamesSource,
+  extractGitLabReservedNames,
+  fetchGitLabReservedNames
+} from "../src/importers/gitlab-reserved-names.js";
+import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
   deriveUsptoBrandRiskSource,
@@ -118,6 +123,13 @@ const engine = createEngine({
   ]
 });
 
+const maintainedEngine = createEngine({
+  sources: loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).filter(
+    (source) => !source.id.startsWith("imported-uspto-trademarks-")
+  ),
+  policies: [username(), tenantSlug(), tenantName()]
+});
+
 function loadFixture(name) {
   return JSON.parse(fs.readFileSync(new URL(`./fixtures/${name}.json`, import.meta.url), "utf8"));
 }
@@ -133,10 +145,16 @@ for (const name of ["allow", "reject", "review"]) {
   }
 }
 
-for (const fixtureName of ["catalog-maintained-positives", "catalog-maintained-false-positives"]) {
+for (const fixtureName of [
+  "catalog-maintained-positives",
+  "catalog-maintained-false-positives",
+  "catalog-maintained-obfuscated-positives",
+  "catalog-maintained-mixed-script",
+  "catalog-documented-current-gaps"
+]) {
   for (const group of loadFixture(fixtureName)) {
     for (const value of group.values) {
-      const result = engine.evaluate({
+      const result = maintainedEngine.evaluate({
         value,
         kind: group.kind
       });
@@ -188,6 +206,12 @@ assert.equal(
 );
 
 assert.equal(
+  loadSourceFromFile(new URL("../custom/sources/gitlab-reserved-names.json", import.meta.url)).metadata.source,
+  "GitLab Docs",
+  "gitlab reserved names metadata should load from JSON"
+);
+
+assert.equal(
   loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).some(
     (source) => source.id === "imported-rfc2142-role-mailboxes"
   ),
@@ -201,6 +225,11 @@ assert.equal(
     bundle.rules.some((rule) => rule.term === "abuse" && rule.category === "impersonation"),
     true,
     "runtime bundle should expose flattened rules"
+  );
+  assert.equal(
+    bundle.rules.some((rule) => rule.term === "login" && rule.category === "reservedTechnical"),
+    true,
+    "runtime bundle should expose gitlab reserved-name rules"
   );
   assert.equal(
     bundle.compositeRules.some((rule) => rule.term === "security+support"),
@@ -344,6 +373,58 @@ await assert.rejects(
   /Could not find insult\.wiki list markup/,
   "insult.wiki fetches should fail on malformed upstream markup"
 );
+
+await assert.rejects(
+  () => fetchGitLabReservedNames(async () => ({ ok: false, status: 403, statusText: "Forbidden" })),
+  /GitLab reserved names request failed: 403 Forbidden/,
+  "gitlab reserved-name fetches should surface upstream HTTP failures"
+);
+
+{
+  const markdown = `
+## Reserved project names
+
+- \`create_dir\`
+- \`info/lfs/objects\`
+- \`blob\`
+
+## Reserved group names
+
+- \`.well-known\`
+- \`admin\`
+- \`login\`
+- \`robots.txt\`
+- \`s\`
+- \`health_check\`
+`;
+
+  assert.deepEqual(
+    extractGitLabReservedNames(markdown),
+    ["admin", "blob", "create-dir", "health-check", "login"],
+    "gitlab reserved-name parser should keep only useful route-like reserved identifiers"
+  );
+}
+
+{
+  const fetched = await fetchGitLabReservedNames(async () => ({
+    ok: true,
+    text: async () => `
+## Reserved project names
+
+- \`raw\`
+
+## Reserved group names
+
+- \`api\`
+- \`uploads\`
+`
+  }));
+  assert.deepEqual(
+    fetched,
+    ["api", "raw", "uploads"],
+    "gitlab reserved-name fetches should parse and normalize fetched markdown"
+  );
+}
 
 {
   const records = parseUsptoCaseFileCsv(
@@ -1150,6 +1231,18 @@ for (const testCase of [
   assert.equal(source.metadata.source, "insult.wiki", "insult.wiki importer should stamp source metadata");
   assert.equal(source.rules.some((rule) => rule.term === "depp"), true, "insult.wiki importer should normalize german insults");
   assert.equal(source.rules.some((rule) => rule.term === "abscheisser"), true, "insult.wiki importer should latinize german sharp s");
+}
+
+{
+  const source = buildGitLabReservedNamesSource({
+    terms: ["admin", "create_dir", "login", "admin", "robots.txt", ".well-known"]
+  });
+  assert.equal(source.metadata.source, "GitLab Docs", "gitlab importer should stamp source metadata");
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["admin", "create-dir", "login"],
+    "gitlab importer should normalize and dedupe reserved-name terms conservatively"
+  );
 }
 
 {

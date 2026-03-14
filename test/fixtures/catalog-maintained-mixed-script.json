@@ -1,0 +1,20 @@
+[
+  {
+    "label": "maintained mixed-script lexical hits",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["suppоrt", "securіty", "pоstmaster"]
+  },
+  {
+    "label": "maintained profanity mixed-script hits",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["shіt", "fuсk", "аrschloch"]
+  },
+  {
+    "label": "mixed-script fallback reviews without maintained lexical source",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["раypalx", "gооglex", "offіcial"]
+  }
+]

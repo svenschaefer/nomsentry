@@ -1,0 +1,26 @@
+[
+  {
+    "label": "documented reservedTechnical gaps",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["root", "system", "mail", "status", "webhook"]
+  },
+  {
+    "label": "documented impersonation gaps",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["official", "billing", "payments", "verified", "account-recovery", "password-reset", "trust", "safety"]
+  },
+  {
+    "label": "documented short-brand gaps under the current official-only baseline",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["openai", "paypal", "google", "github"]
+  },
+  {
+    "label": "documented composite coverage gaps",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["trust-safety", "customer-recovery", "privacy-team"]
+  }
+]

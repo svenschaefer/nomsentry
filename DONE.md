@@ -2,6 +2,22 @@
 
 ## Completed recently
 
+- Expanded maintained `reservedTechnical` coverage with a conservative GitLab source import.
+  - added [src/importers/gitlab-reserved-names.js](/C:/code/nomsentry/src/importers/gitlab-reserved-names.js)
+  - added [scripts/import-gitlab-reserved-names.js](/C:/code/nomsentry/scripts/import-gitlab-reserved-names.js)
+  - added [custom/sources/gitlab-reserved-names.json](/C:/code/nomsentry/custom/sources/gitlab-reserved-names.json)
+  - rebuilt [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json)
+
+- Expanded regression coverage for the new GitLab reserved-name path.
+  - parser coverage for conservative Markdown extraction
+  - fetch-failure and fetch-success coverage for the GitLab import path
+  - baseline fixture coverage for maintained reserved-technical positives and nearby false positives
+
+- Expanded the grouped catalog-based quality matrix around the maintained runtime baseline.
+  - added maintained-only grouped fixtures for obfuscated positives and mixed-script positives
+  - added a grouped fixture for documented current coverage gaps so expected misses stay explicit
+  - stopped routing grouped catalog fixtures through the synthetic helper source set
+
 - Made maintained-source and runtime-bundle writes crash-safer.
   - [src/schema/source-io.js](/C:/code/nomsentry/src/schema/source-io.js) now writes files atomically through temporary files plus rename.
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now uses the same atomic write path for `dist/runtime-sources.json`.

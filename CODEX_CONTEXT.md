@@ -23,6 +23,7 @@
   - official register or standards sources
     - USPTO Trademark Bulk Data
     - RFC 2142 role mailbox names
+    - GitLab reserved project and group names
     - Microsoft Windows reserved device names
   - direct wordlist or lexicon sources
     - LDNOOBW
@@ -39,7 +40,7 @@
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
-- Windows reserved device names currently feed `reservedTechnical`.
+- `reservedTechnical` currently draws from Windows reserved device names plus a conservative GitLab reserved-routes import.
 
 ## Runtime and build guarantees
 
@@ -47,6 +48,11 @@
 - Runtime bundle writes use atomic write paths.
 - `npm run determinism:check` validates both maintained source determinism and runtime-bundle determinism.
 - `npm run ci:check` is the main local validation gate.
+
+## Test-model notes
+
+- Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
+- Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
 
 ## Current repo docs
 
@@ -73,7 +79,7 @@
 
 ## Recent catalog-based gap findings
 
-- The current maintained `reservedTechnical` coverage is narrow and mostly limited to Windows device names.
+- The current maintained `reservedTechnical` coverage is improved by the GitLab reserved-routes import, but it is still narrower than a fully broad platform or namespace-identifier contract.
 - The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
 - The current official-only derived USPTO subset misses many short global brands such as `openai`, `paypal`, `google`, and `github`.
 - The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
@@ -83,10 +89,10 @@
 
 - `reservedTechnical` is the easiest current gap to improve with free third-party sources.
 - The most promising currently identified `reservedTechnical` additions are:
-  - GitLab reserved names
   - `reserved-usernames`
   - `github-reserved-names`
   - optionally Windows reserved URI scheme names if the product scope wants URI-scheme coverage
+- Early review suggests `reserved-usernames` and `github-reserved-names` are materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - `protectedBrand` can plausibly be improved by supplementing the USPTO-derived subset with a free Wikidata-derived short-brand seed set.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.

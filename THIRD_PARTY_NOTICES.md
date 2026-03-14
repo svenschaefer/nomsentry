@@ -60,6 +60,14 @@ The current maintained source families are:
 - Source: https://www.rfc-editor.org/rfc/rfc2142
 - License / status: normative standards source; treated here as a limited extracted factual source of short standardized role names rather than an open-source licensed dataset
 
+### GitLab reserved project and group names
+
+- Purpose: reserved technical identifiers for route and namespace collision prevention
+- Used in: `custom/sources/gitlab-reserved-names.json`
+- Source: https://docs.gitlab.com/user/reserved_names/
+- License / status: CC BY-SA 4.0 documentation source; treated here as a limited extracted factual source of reserved route-like identifiers
+- Notes: imported conservatively from the documented reserved project and group names; file-like entries and path fragments are excluded
+
 ### Microsoft Learn Windows reserved device names
 
 - Purpose: reserved technical identifiers

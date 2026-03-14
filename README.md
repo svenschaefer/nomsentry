@@ -43,6 +43,7 @@ npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
 npm run import:insult-wiki
+npm run import:gitlab-reserved
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
@@ -86,6 +87,7 @@ custom/sources/obscenity-en.json
 custom/sources/cuss-<language>.json
 custom/sources/dsojevic-profanity-<language>.json
 custom/sources/insult-wiki-<language>.json
+custom/sources/gitlab-reserved-names.json
 custom/sources/rfc2142-role-mailboxes.json
 custom/sources/windows-reserved-device-names.json
 custom/sources/derived-uspto-brand-risk.json
@@ -98,6 +100,7 @@ These inputs currently come from three maintained source families plus one compi
 - official register or standards sources
   - USPTO Trademark Bulk Data
   - RFC 2142 role mailbox names
+  - GitLab reserved project and group names
   - Microsoft Windows reserved device names
 - direct wordlist or lexicon sources
   - LDNOOBW
@@ -119,6 +122,7 @@ npm run import:obscenity
 npm run import:cuss
 npm run import:dsojevic
 npm run import:insult-wiki
+npm run import:gitlab-reserved
 npm run import:uspto -- --input-file path\to\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
@@ -129,6 +133,8 @@ npm run build:runtime-sources
 `words/profanities` is intentionally not imported into the default runtime source set. Its flat list contains many generic high-noise terms, so it is not a good policy input without an additional curation layer.
 
 `RFC 2142` currently feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are used as impersonation-relevant identifiers such as `abuse`, `security`, `postmaster`, and `webmaster`.
+
+`reservedTechnical` is now sourced from both Microsoft Windows reserved device names and a conservative GitLab reserved-routes import. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
 
 For USPTO, the repository now separates:
 

@@ -16,6 +16,7 @@ export function resolveCompactFilename(source) {
   else if (source.id.startsWith("imported-cuss-")) filename = `${source.id.replace("imported-", "")}.json`;
   else if (source.id.startsWith("imported-dsojevic-en")) filename = "dsojevic-profanity-en.json";
   else if (source.id.startsWith("imported-insult-wiki-")) filename = `${source.id.replace("imported-", "")}.json`;
+  else if (source.id === "imported-gitlab-reserved-names") filename = "gitlab-reserved-names.json";
   else if (source.id === "imported-obscenity-en") filename = "obscenity-en.json";
   else if (source.id.startsWith("derived-uspto-brand-risk-")) filename = `${source.id}.json`;
   else if (source.id === "imported-rfc2142-role-mailboxes") filename = "rfc2142-role-mailboxes.json";

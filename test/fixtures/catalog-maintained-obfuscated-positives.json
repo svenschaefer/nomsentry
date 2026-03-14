@@ -1,0 +1,20 @@
+[
+  {
+    "label": "reservedTechnical obfuscated positives",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["a.p.i", "log-in", "health_check", "u.p.l.o.a.d.s"]
+  },
+  {
+    "label": "impersonation obfuscated positives",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["supp0rt", "secur1ty", "po5tmaster", "webm4ster", "n.o.c"]
+  },
+  {
+    "label": "profanity obfuscated positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["sh1t", "5hit", "fu.ck", "a55hole", "sch3isse"]
+  }
+]

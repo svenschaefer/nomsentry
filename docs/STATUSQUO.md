@@ -33,7 +33,9 @@
   - compiled runtime bundle
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Grouped category-level baseline fixtures now cover:
-  - maintained positives for Windows reserved names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
+  - maintained positives for Windows reserved names, GitLab reserved-route names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
+  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms
+  - maintained mixed-script positives and explicit documented current gaps
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms
 - Known non-flaky baseline:
   - local `npm run ci:check`

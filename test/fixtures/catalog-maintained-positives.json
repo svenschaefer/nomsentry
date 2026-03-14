@@ -6,6 +6,12 @@
     "values": ["con", "prn", "aux", "nul", "com1", "lpt1"]
   },
   {
+    "label": "gitlab reserved route names",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["admin", "api", "login", "projects", "search", "uploads"]
+  },
+  {
     "label": "rfc2142 impersonation roles",
     "kind": "tenantSlug",
     "expected": "reject",

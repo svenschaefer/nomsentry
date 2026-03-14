@@ -6,6 +6,12 @@
     "values": ["supporter", "supportive", "securities", "officially", "teamwork", "paymentslab"]
   },
   {
+    "label": "reservedTechnical nearby negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["administratorx", "apis", "publica", "uploadslab", "projectile", "searcher"]
+  },
+  {
     "label": "composite nearby negatives",
     "kind": "tenantSlug",
     "expected": "allow",
