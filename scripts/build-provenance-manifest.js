@@ -6,6 +6,29 @@ import { loadSourceFromFile } from "../src/loaders/source-loader.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
 
+const DEFAULT_REFRESH_POLICY_FILE = path.resolve(process.cwd(), "source-refresh-policy.json");
+const DEFAULT_PACKAGE_LOCK_FILE = path.resolve(process.cwd(), "package-lock.json");
+
+const PACKAGE_SOURCE_NAMES = new Set([
+  "@2toad/profanity",
+  "cuss",
+  "obscenity"
+]);
+
+const TRANSFORM_VERSION_BY_PREFIX = [
+  ["imported-2toad-profanity-", "import-2toad-profanity@1"],
+  ["imported-cuss-", "import-cuss@1"],
+  ["imported-dsojevic-", "import-dsojevic-profanity@1"],
+  ["imported-gitlab-reserved-names", "import-gitlab-reserved-names@1"],
+  ["imported-insult-wiki-", "import-insult-wiki@1"],
+  ["imported-ldnoobw-", "import-ldnoobw@1"],
+  ["imported-obscenity-", "import-obscenity@1"],
+  ["imported-rfc2142-role-mailboxes", "extract-rfc2142-role-mailboxes@1"],
+  ["imported-uspto-trademarks-", "import-uspto-trademarks@1"],
+  ["imported-windows-reserved-device-names", "extract-windows-reserved-device-names@1"],
+  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@1"]
+];
+
 function normalizeRelativePath(value) {
   return value.replace(/\\/g, "/");
 }
@@ -18,7 +41,82 @@ function readText(filePath) {
   return fs.readFileSync(filePath, "utf8");
 }
 
-export function buildSourceArtifactEntries(inputDir) {
+function readOptionalJson(filePath) {
+  if (!filePath || !fs.existsSync(filePath)) return null;
+  return JSON.parse(readText(filePath));
+}
+
+function readPackageVersions(packageLockFile = DEFAULT_PACKAGE_LOCK_FILE) {
+  const packageLock = readOptionalJson(packageLockFile);
+  const versions = new Map();
+
+  if (!packageLock?.packages || typeof packageLock.packages !== "object") {
+    return versions;
+  }
+
+  for (const [packagePath, details] of Object.entries(packageLock.packages)) {
+    if (!packagePath.startsWith("node_modules/")) continue;
+    const packageName = packagePath.slice("node_modules/".length);
+    if (!PACKAGE_SOURCE_NAMES.has(packageName)) continue;
+    if (typeof details?.version === "string" && details.version.length > 0) {
+      versions.set(packageName, details.version);
+    }
+  }
+
+  return versions;
+}
+
+function readRefreshPolicy(refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE) {
+  const refreshPolicy = readOptionalJson(refreshPolicyFile);
+  if (!refreshPolicy || refreshPolicy.id !== "source-refresh-policy" || !Array.isArray(refreshPolicy.policies)) {
+    return null;
+  }
+  return refreshPolicy;
+}
+
+function findRefreshPolicyEntry(refreshPolicy, sourceName) {
+  if (!refreshPolicy || !sourceName) return null;
+  return refreshPolicy.policies.find((entry) => entry?.match?.source === sourceName) ?? null;
+}
+
+function inferArtifactType(sourceId) {
+  if (sourceId.startsWith("derived-")) return "derived";
+  if (sourceId.startsWith("imported-")) return "imported";
+  return "maintained";
+}
+
+function inferTransformVersion(sourceId) {
+  for (const [prefix, transformVersion] of TRANSFORM_VERSION_BY_PREFIX) {
+    if (sourceId.startsWith(prefix)) {
+      return transformVersion;
+    }
+  }
+  return "unknown@1";
+}
+
+function buildRefreshPolicyMetadata(refreshPolicy, sourceName) {
+  const matchedPolicy = findRefreshPolicyEntry(refreshPolicy, sourceName);
+  if (!matchedPolicy) return null;
+  return {
+    source: refreshPolicy.id,
+    version: refreshPolicy.version,
+    maxAgeDays: matchedPolicy.maxAgeDays,
+    notes: matchedPolicy.notes ?? null
+  };
+}
+
+function inferUpstreamVersion(sourceName, packageVersions) {
+  if (!sourceName || !packageVersions.has(sourceName)) return null;
+  return {
+    source: "package-lock.json",
+    value: packageVersions.get(sourceName)
+  };
+}
+
+export function buildSourceArtifactEntries(inputDir, {
+  refreshPolicy = readRefreshPolicy(),
+  packageVersions = readPackageVersions()
+} = {}) {
   return fs.readdirSync(inputDir)
     .filter((entry) => entry.endsWith(".json"))
     .sort((left, right) => left.localeCompare(right))
@@ -26,10 +124,15 @@ export function buildSourceArtifactEntries(inputDir) {
       const filePath = path.join(inputDir, entry);
       const serialized = readText(filePath);
       const source = loadSourceFromFile(pathToFileURL(filePath));
+      const sourceName = source.metadata?.source ?? null;
       return {
         file: normalizeRelativePath(path.relative(process.cwd(), filePath)),
         id: source.id,
-        source: source.metadata?.source ?? null,
+        source: sourceName,
+        artifactType: inferArtifactType(source.id),
+        transformVersion: inferTransformVersion(source.id),
+        upstreamVersion: inferUpstreamVersion(sourceName, packageVersions),
+        refreshPolicy: buildRefreshPolicyMetadata(refreshPolicy, sourceName),
         license: source.metadata?.license ?? null,
         sourceUrl: source.metadata?.sourceUrl ?? null,
         ruleCount: source.rules?.length ?? 0,
@@ -48,20 +151,39 @@ export function buildRuntimeArtifactEntry(outputFile, runtimeFileLabel = outputF
   const bundle = loadRuntimeBundleFromFile(pathToFileURL(outputFile));
   return {
     file: normalizeRelativePath(path.relative(process.cwd(), runtimeFileLabel)),
+    artifactType: "compiled-runtime",
+    transformVersion: "build-runtime-sources@1",
     ruleCount: bundle.rules.length,
     compositeRuleCount: bundle.compositeRules.length,
     sha256: hashText(serialized)
   };
 }
 
-export function buildProvenanceManifest({ inputDir, outputFile, runtimeFileLabel = outputFile }) {
-  const sourceArtifacts = buildSourceArtifactEntries(inputDir);
+export function buildProvenanceManifest({
+  inputDir,
+  outputFile,
+  runtimeFileLabel = outputFile,
+  refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE,
+  packageLockFile = DEFAULT_PACKAGE_LOCK_FILE
+}) {
+  const refreshPolicy = readRefreshPolicy(refreshPolicyFile);
+  const packageVersions = readPackageVersions(packageLockFile);
+  const sourceArtifacts = buildSourceArtifactEntries(inputDir, { refreshPolicy, packageVersions });
   const sourceArtifactSetSha256 = buildSourceArtifactSetHash(sourceArtifacts);
   const runtimeArtifact = buildRuntimeArtifactEntry(outputFile, runtimeFileLabel);
+  const refreshPolicyFileRelative = normalizeRelativePath(path.relative(process.cwd(), refreshPolicyFile));
+  const packageLockFileRelative = normalizeRelativePath(path.relative(process.cwd(), packageLockFile));
 
   return {
     id: "build-provenance-manifest",
-    version: 1,
+    version: 2,
+    provenanceInputs: {
+      refreshPolicyFile: fs.existsSync(refreshPolicyFile) ? refreshPolicyFileRelative : null,
+      refreshPolicySha256: fs.existsSync(refreshPolicyFile) ? hashText(readText(refreshPolicyFile)) : null,
+      refreshPolicyVersion: refreshPolicy?.version ?? null,
+      packageLockFile: fs.existsSync(packageLockFile) ? packageLockFileRelative : null,
+      packageLockSha256: fs.existsSync(packageLockFile) ? hashText(readText(packageLockFile)) : null
+    },
     sourceArtifacts,
     sourceArtifactSetSha256,
     runtimeArtifact: {

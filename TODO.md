@@ -1,16 +1,5 @@
 # TODO
 
-## P0 Enterprise readiness
-
-- Expand the build provenance manifest with upstream version and refresh metadata.
-  - Why:
-    - The build pipeline now emits a deterministic machine-readable manifest for maintained source artifacts and the runtime bundle.
-    - It still does not record upstream version or commit metadata, local transform versions, or refresh metadata inside the manifest itself.
-    - That remains a governance and auditability gap for enterprise use.
-  - Target:
-    - extend the manifest with upstream source version or commit data where available
-    - record transform-version and refresh-policy metadata in a deterministic way
-
 ## P1 Product and policy quality
 
 - Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.

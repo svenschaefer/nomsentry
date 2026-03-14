@@ -49,6 +49,7 @@
 - Maintained source rewrites use stage-and-swap or atomic write paths.
 - Runtime bundle writes use atomic write paths.
 - The runtime build step emits a deterministic provenance manifest for maintained source artifacts and the runtime bundle.
+- The provenance manifest now includes deterministic transform versions, refresh-policy linkage, and package-lock-backed upstream versions for package-derived maintained sources.
 - Source freshness is checked against git commit dates plus the deterministic refresh policy file.
 - Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - A lightweight runtime benchmark harness exists for bundle load, engine creation, and evaluation latency over maintained fixture inputs.
@@ -82,9 +83,9 @@
 
 ## Current major open areas
 
-- upstream version pinning and manifest enrichment beyond the current freshness policy
 - policy-category refinement beyond broad `profanity`
 - deeper normalization fuzzing and maintenance-script failure coverage
+- broader maintained source coverage for impersonation, technical identifiers, brands, and composite risks
 
 ## Recent catalog-based gap findings
 

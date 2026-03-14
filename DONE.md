@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Enriched the build provenance manifest with deterministic transform and refresh metadata.
+  - [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json) now records deterministic transform versions per maintained artifact
+  - the manifest now carries matched refresh-policy metadata per maintained artifact
+  - package-derived maintained sources now record their exact upstream versions from [package-lock.json](/C:/code/nomsentry/package-lock.json)
+  - the manifest now records the hashes of its deterministic provenance inputs
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now asserts the enriched manifest schema directly
+
 - Added a lightweight runtime benchmark harness.
   - added [scripts/benchmark-runtime.js](/C:/code/nomsentry/scripts/benchmark-runtime.js)
   - added `npm run benchmark:runtime` in [package.json](/C:/code/nomsentry/package.json)

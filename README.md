@@ -165,6 +165,6 @@ This keeps the official full set available while limiting default runtime `prote
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 
 For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.
-The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, and the runtime bundle hash for that exact source set.
+The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime bundle hash for that exact source set.
 The repository also carries `source-refresh-policy.json`, which defines expected refresh cadences per maintained source family. `npm run freshness:check` resolves each maintained source artifact to its last git commit date and fails when an artifact exceeds its configured age limit.
 Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.

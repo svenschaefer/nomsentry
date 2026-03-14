@@ -9,10 +9,11 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ### v0.4.x
 
-1. Build provenance enrichment
-   - extend the new build provenance manifest with upstream version and transform metadata
-   - Dependency:
-      - can proceed independently of indexed matching
+1. Completed
+   - prebuilt indexed matching replaced the former per-request linear scan
+   - runtime benchmarking is in place for bundle load, engine creation, and evaluation latency
+   - the build provenance manifest now records deterministic transform versions, refresh-policy linkage, and package-backed upstream versions where available
+   - source freshness and determinism gates are in place for the maintained runtime path
 
 ### v0.5.x
 

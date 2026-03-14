@@ -258,11 +258,51 @@ assert.throws(
 {
   const manifest = JSON.parse(fs.readFileSync(new URL("../dist/build-manifest.json", import.meta.url), "utf8"));
   assert.equal(manifest.id, "build-provenance-manifest", "build manifest should have a stable id");
-  assert.equal(manifest.version, 1, "build manifest should have a stable version");
+  assert.equal(manifest.version, 2, "build manifest should have a stable version");
+  assert.equal(
+    manifest.provenanceInputs.refreshPolicyFile,
+    "source-refresh-policy.json",
+    "build manifest should record the deterministic refresh-policy input"
+  );
+  assert.equal(
+    typeof manifest.provenanceInputs.refreshPolicySha256,
+    "string",
+    "build manifest should hash the refresh-policy input"
+  );
+  assert.equal(
+    manifest.provenanceInputs.packageLockFile,
+    "package-lock.json",
+    "build manifest should record the package-lock input when it exists"
+  );
   assert.equal(
     manifest.sourceArtifacts.some((entry) => entry.id === "imported-gitlab-reserved-names" && entry.source === "GitLab Docs"),
     true,
     "build manifest should enumerate maintained source artifacts"
+  );
+  assert.deepEqual(
+    manifest.sourceArtifacts.find((entry) => entry.id === "imported-2toad-profanity-en")?.upstreamVersion,
+    { source: "package-lock.json", value: "3.2.0" },
+    "build manifest should pin package-backed dataset versions from package-lock"
+  );
+  assert.deepEqual(
+    manifest.sourceArtifacts.find((entry) => entry.id === "derived-uspto-brand-risk")?.refreshPolicy,
+    {
+      source: "source-refresh-policy",
+      version: 1,
+      maxAgeDays: 45,
+      notes: "Trademark-derived artifacts should be reviewed and refreshed at least every 45 days."
+    },
+    "build manifest should carry the matched refresh policy for maintained artifacts"
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find((entry) => entry.id === "derived-uspto-brand-risk")?.transformVersion,
+    "derive-uspto-brand-risk@1",
+    "build manifest should record deterministic transform versions for derived artifacts"
+  );
+  assert.equal(
+    manifest.runtimeArtifact.transformVersion,
+    "build-runtime-sources@1",
+    "build manifest should record the runtime bundle transform version"
   );
   assert.equal(
     manifest.runtimeArtifact.sourceArtifactSetSha256,
@@ -1298,6 +1338,11 @@ assert.throws(
     JSON.parse(fs.readFileSync(manifestFile, "utf8")).id,
     "build-provenance-manifest",
     "provenance manifest writer should persist a loadable manifest atomically"
+  );
+  assert.equal(
+    JSON.parse(fs.readFileSync(manifestFile, "utf8")).version,
+    2,
+    "provenance manifest writer should persist the current manifest schema version"
   );
   fs.rmSync(tmpDir, { recursive: true, force: true });
 }
