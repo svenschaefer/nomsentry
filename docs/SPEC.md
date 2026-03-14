@@ -1,4 +1,5 @@
 # Nomsentry Specification
+
 Version: 0.3
 
 ## Pipeline
@@ -43,7 +44,7 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 - `impersonation`
   - impersonation-relevant role names such as `support`, `security`, `postmaster`, `webmaster`
 - `reservedTechnical`
-  - technical reserved identifiers such as Windows device names
+  - technical reserved identifiers such as Windows device names and reserved URI schemes
 - `compositeRisk`
   - derived combinations of lower-level signals
 - `scriptRisk`

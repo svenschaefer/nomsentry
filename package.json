@@ -44,6 +44,7 @@
     "import:insult-wiki": "node scripts/import-insult-wiki.js",
     "import:gitlab-reserved": "node scripts/import-gitlab-reserved-names.js",
     "import:reserved-usernames": "node scripts/import-reserved-usernames.js",
+    "import:windows-reserved-uri-schemes": "node scripts/import-windows-reserved-uri-schemes.js",
     "evaluate:wikidata-brands": "node scripts/evaluate-wikidata-brand-supplement.js",
     "derive:wikidata-brand-risk": "node scripts/derive-wikidata-brand-risk.js"
   },

@@ -1,0 +1,53 @@
+import fs from "node:fs";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+import {
+  buildWindowsReservedUriSchemesSource,
+  fetchWindowsReservedUriSchemes,
+} from "../src/importers/windows-reserved-uri-schemes.js";
+import { writeSourceFile } from "../src/schema/source-io.js";
+
+export function parseArgs(argv) {
+  const args = [...argv];
+  const options = {
+    outputDir: path.resolve(process.cwd(), "custom", "sources"),
+  };
+
+  while (args.length > 0) {
+    const token = args.shift();
+    if (token === "--output-dir") {
+      options.outputDir = path.resolve(
+        process.cwd(),
+        String(args.shift() || ""),
+      );
+    } else {
+      throw new Error(`Unknown option: ${token}`);
+    }
+  }
+
+  return options;
+}
+
+async function main(argv) {
+  const options = parseArgs(argv);
+  fs.mkdirSync(options.outputDir, { recursive: true });
+  const source = buildWindowsReservedUriSchemesSource({
+    terms: await fetchWindowsReservedUriSchemes(),
+  });
+  const targetFile = path.join(
+    options.outputDir,
+    "windows-reserved-uri-schemes.json",
+  );
+  writeSourceFile(targetFile, source);
+  console.log(`Wrote ${targetFile} (${source.rules.length} rules)`);
+}
+
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}

@@ -56,6 +56,7 @@ for (const required of [
   "USPTO Trademark Bulk Data",
   "RFC 2142",
   "Microsoft Learn Windows reserved device names",
+  "Microsoft Learn Windows reserved URI schemes",
 ]) {
   assertIncludes(notices, required, `THIRD_PARTY_NOTICES token: ${required}`);
 }

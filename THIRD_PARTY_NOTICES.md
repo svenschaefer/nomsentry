@@ -91,6 +91,14 @@ The current maintained source families are:
 - Source: https://learn.microsoft.com/windows/win32/fileio/naming-a-file
 - License / status: normative documentation source; treated here as a limited extracted factual source of short reserved names rather than an open-source licensed dataset
 
+### Microsoft Learn Windows reserved URI schemes
+
+- Purpose: reserved technical identifiers for protocol-like and system-handler scheme names
+- Used in: `custom/sources/windows-reserved-uri-schemes.json`
+- Source: https://learn.microsoft.com/en-us/windows/apps/develop/launch/reserved-uri-scheme-names
+- License / status: normative documentation source; treated here as a limited extracted factual source of short reserved identifiers rather than an open-source licensed dataset
+- Notes: imported through a conservative filter that keeps technical protocol and handler scheme names while excluding generic consumer-brand and common-noun entries
+
 ## Library-backed imported datasets
 
 ### @2toad/profanity

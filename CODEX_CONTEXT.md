@@ -29,6 +29,7 @@
     - GitLab reserved project and group names
     - reserved-usernames
     - Microsoft Windows reserved device names
+    - Microsoft Windows reserved URI schemes
   - direct wordlist or lexicon sources
     - LDNOOBW
     - insult.wiki
@@ -44,7 +45,7 @@
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
-- `reservedTechnical` currently draws from Windows reserved device names, a conservative GitLab reserved-routes import, and a conservative filtered reserved-usernames import.
+- `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered reserved-usernames import.
 
 ## Runtime and build guarantees
 
@@ -106,7 +107,7 @@
 
 ## Recent catalog-based gap findings
 
-- The current maintained `reservedTechnical` coverage is improved by the GitLab reserved-routes import and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
+- The current maintained `reservedTechnical` coverage is improved by the Windows reserved URI-scheme subset, the GitLab reserved-routes import, and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
 - The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
@@ -121,6 +122,7 @@
   - `github-reserved-names`
   - optionally Windows reserved URI scheme names if the product scope wants URI-scheme coverage
 - Early review suggested `reserved-usernames` and `github-reserved-names` were materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
+- Microsoft Learn reserved URI schemes are now part of the maintained baseline through a conservative exact-match subset that keeps protocol-like and system-handler scheme names while excluding consumer-brand and common-noun entries.
 - `reserved-usernames` is now part of the maintained baseline through a conservative filtered import that keeps only clearly technical and namespace-collision terms.
 - A direct default-baseline evaluation of `github-reserved-names` confirmed that concern: importing it conservatively but broadly still produced unacceptable false positives such as `seven-labs` because of generic route terms like `labs`.
 - `protectedBrand` is now supplemented by a conservative free Wikidata-derived uncovered-brand seed set.

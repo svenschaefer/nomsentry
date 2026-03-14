@@ -32,6 +32,10 @@ const TRANSFORM_VERSION_BY_PREFIX = [
     "imported-windows-reserved-device-names",
     "extract-windows-reserved-device-names@1",
   ],
+  [
+    "imported-windows-reserved-uri-schemes",
+    "import-windows-reserved-uri-schemes@1",
+  ],
   ["derived-uspto-brand-risk", "derive-uspto-brand-risk@1"],
 ];
 

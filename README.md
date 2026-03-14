@@ -54,6 +54,7 @@ npm run import:dsojevic
 npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
+npm run import:windows-reserved-uri-schemes
 npm run evaluate:wikidata-brands
 npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\\to\\case_file.csv
@@ -114,6 +115,7 @@ custom/sources/gitlab-reserved-names.json
 custom/sources/reserved-usernames.json
 custom/sources/rfc2142-role-mailboxes.json
 custom/sources/windows-reserved-device-names.json
+custom/sources/windows-reserved-uri-schemes.json
 custom/sources/derived-uspto-brand-risk.json
 custom/sources/derived-wikidata-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
@@ -131,6 +133,7 @@ These inputs currently come from three maintained source families plus one compi
   - GitLab reserved project and group names
   - reserved-usernames
   - Microsoft Windows reserved device names
+  - Microsoft Windows reserved URI schemes
 - direct wordlist or lexicon sources
   - LDNOOBW
   - insult.wiki
@@ -153,6 +156,7 @@ npm run import:dsojevic
 npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
+npm run import:windows-reserved-uri-schemes
 npm run evaluate:wikidata-brands
 npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\to\case_file.csv
@@ -171,7 +175,7 @@ The USPTO subset remains the official trademark path. The Wikidata supplement is
 
 `RFC 2142` currently feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are used as impersonation-relevant identifiers such as `abuse`, `security`, `postmaster`, and `webmaster`.
 
-`reservedTechnical` is now sourced from Microsoft Windows reserved device names, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
+`reservedTechnical` is now sourced from Microsoft Windows reserved device names, a conservative Microsoft Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. The broader platform and namespace-collision surface is still not complete, so the remaining scope question stays open in [TODO.md](/C:/code/nomsentry/TODO.md).
 
 For USPTO, the repository now separates:
 

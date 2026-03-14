@@ -27,6 +27,8 @@ export function resolveCompactFilename(source) {
     filename = "reserved-usernames.json";
   else if (source.id === "imported-obscenity-en")
     filename = "obscenity-en.json";
+  else if (source.id === "imported-windows-reserved-uri-schemes")
+    filename = "windows-reserved-uri-schemes.json";
   else if (source.id.startsWith("derived-uspto-brand-risk-"))
     filename = `${source.id}.json`;
   else if (source.id === "imported-rfc2142-role-mailboxes")

@@ -18,6 +18,7 @@
 - `src/importers/insult-wiki.js` - insult.wiki HTML list normalization into source JSON
 - `src/importers/gitlab-reserved-names.js` - conservative extraction of GitLab reserved project and group names into source JSON
 - `src/importers/reserved-usernames.js` - conservative technical subset derivation from the reserved-usernames package dataset
+- `src/importers/windows-reserved-uri-schemes.js` - conservative technical subset derivation from Microsoft Learn reserved URI schemes
 - `src/importers/wikidata-brand-risk.js` - conservative Wikidata brand evaluation and derived-source construction
 - `src/importers/uspto.js` - USPTO bulk trademark case files into full and derived protectedBrand source JSON
 - `scripts/import-*.js` - source-specific import entrypoints
@@ -69,6 +70,7 @@ The currently maintained source families are:
   - GitLab reserved names
   - reserved-usernames
   - Microsoft Windows reserved device names
+  - Microsoft Windows reserved URI schemes
 - direct wordlist or lexicon sources
   - LDNOOBW
   - insult.wiki
@@ -89,7 +91,7 @@ WIPO is not part of the ingest plan.
 
 `RFC 2142` feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are modeled as impersonation-relevant identifiers.
 
-`reservedTechnical` is currently covered by Windows reserved device names, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. That improves route-collision and system-identifier coverage, but it does not yet settle the broader product-contract question for namespace and platform identifiers.
+`reservedTechnical` is currently covered by Windows reserved device names, a conservative Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. That improves route-collision and system-identifier coverage, but it does not yet settle the broader product-contract question for namespace and platform identifiers.
 
 USPTO is handled in two layers:
 

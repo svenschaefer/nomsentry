@@ -47,6 +47,11 @@ import {
   loadReservedUsernamesTerms,
 } from "../src/importers/reserved-usernames.js";
 import {
+  buildWindowsReservedUriSchemesSource,
+  extractWindowsReservedUriSchemes,
+  fetchWindowsReservedUriSchemes,
+} from "../src/importers/windows-reserved-uri-schemes.js";
+import {
   buildWikidataBrandRiskSource,
   isAcceptedWikidataBrandCandidate,
 } from "../src/importers/wikidata-brand-risk.js";
@@ -70,6 +75,7 @@ import {
 } from "../scripts/import-ldnoobw.js";
 import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
 import { parseArgs as parseReservedUsernamesArgs } from "../scripts/import-reserved-usernames.js";
+import { parseArgs as parseWindowsReservedUriArgs } from "../scripts/import-windows-reserved-uri-schemes.js";
 import {
   parseArgs as parseUsptoImportArgs,
   replaceUsptoChunkSet,
@@ -311,6 +317,17 @@ assert.equal(
 );
 
 assert.equal(
+  loadSourceFromFile(
+    new URL(
+      "../custom/sources/windows-reserved-uri-schemes.json",
+      import.meta.url,
+    ),
+  ).metadata.source,
+  "Microsoft Learn",
+  "windows reserved URI schemes metadata should load from JSON",
+);
+
+assert.equal(
   loadSourcesFromDirectory(new URL("../custom/sources/", import.meta.url)).some(
     (source) => source.id === "imported-rfc2142-role-mailboxes",
   ),
@@ -382,6 +399,18 @@ assert.equal(
   );
 }
 
+{
+  const windowsReservedUriArgs = parseWindowsReservedUriArgs([
+    "--output-dir",
+    "tmp/windows-uri",
+  ]);
+  assert.equal(
+    path.basename(windowsReservedUriArgs.outputDir),
+    "windows-uri",
+    "windows reserved URI import args should parse output directories",
+  );
+}
+
 assert.throws(
   () => parseWikidataBrandArgs(["--wat"]),
   /Unknown option: --wat/,
@@ -392,6 +421,12 @@ assert.throws(
   () => parseWikidataDeriveArgs(["--wat"]),
   /Unknown option: --wat/,
   "wikidata derive args should reject unknown options",
+);
+
+assert.throws(
+  () => parseWindowsReservedUriArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "windows reserved URI import args should reject unknown options",
 );
 
 {
@@ -692,6 +727,15 @@ assert.throws(
     ),
     true,
     "build manifest should enumerate maintained source artifacts",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
+        entry.id === "imported-windows-reserved-uri-schemes" &&
+        entry.source === "Microsoft Learn",
+    ),
+    true,
+    "build manifest should enumerate the Windows reserved URI scheme artifact",
   );
   assert.deepEqual(
     manifest.sourceArtifacts.find(
@@ -2164,6 +2208,12 @@ assert.equal(
   "compact-sources should preserve reserved-usernames filenames",
 );
 
+assert.equal(
+  resolveCompactFilename({ id: "imported-windows-reserved-uri-schemes" }),
+  "windows-reserved-uri-schemes.json",
+  "compact-sources should preserve windows reserved URI scheme filenames",
+);
+
 {
   const tmpDir = fs.mkdtempSync(
     path.join(os.tmpdir(), "nomsentry-compact-sources-"),
@@ -3255,6 +3305,70 @@ for (const testCase of [
     "reserved-usernames importer should keep only filtered technical terms",
   );
 }
+
+{
+  const terms = extractWindowsReservedUriSchemes(`
+    <h2>Reserved URI scheme names</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>http</td>
+          <td>https</td>
+          <td>ms-settings:privacy-calendar</td>
+          <td>wallet</td>
+        </tr>
+        <tr>
+          <td>microsoft.powershellscript.1</td>
+          <td>explorer.assocprotocol.search-ms</td>
+          <td>file</td>
+          <td>dllfile</td>
+        </tr>
+      </tbody>
+    </table>
+  `);
+  assert.deepEqual(
+    terms,
+    [
+      "dllfile",
+      "explorer-assocprotocol-search-ms",
+      "http",
+      "https",
+      "ms-settings-privacy-calendar",
+    ],
+    "windows reserved URI scheme extractor should keep the conservative technical subset",
+  );
+
+  const source = buildWindowsReservedUriSchemesSource({
+    terms: [
+      "http",
+      "https",
+      "ms-settings:privacy-calendar",
+      "wallet",
+      "dllfile",
+    ],
+  });
+  assert.equal(
+    source.metadata.source,
+    "Microsoft Learn",
+    "windows reserved URI scheme importer should stamp source metadata",
+  );
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["dllfile", "http", "https", "ms-settings-privacy-calendar"],
+    "windows reserved URI scheme importer should keep only the conservative technical subset",
+  );
+}
+
+await assert.rejects(
+  () =>
+    fetchWindowsReservedUriSchemes(async () => ({
+      ok: false,
+      status: 503,
+      statusText: "Service Unavailable",
+    })),
+  /Windows reserved URI schemes request failed: 503 Service Unavailable/,
+  "windows reserved URI scheme fetcher should surface upstream failures",
+);
 
 {
   const variants = [

@@ -63,7 +63,7 @@
   - shared typedefs in `src/types.js`
   - checked JSDoc on `src/schema/source-format.js`, `src/schema/validate-source.js`, and `src/loaders/runtime-bundle.js`
 - Grouped category-level baseline fixtures now cover:
-  - maintained positives for Windows reserved names, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
+  - maintained positives for Windows reserved names, a conservative Windows reserved URI-scheme subset, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - explicit true-negative suites for ordinary tenant slugs and tenant names that should stay `allow`
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants for `oauth`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, and `support`
   - an explicit compact-form contract matrix that separates supported compact-preserving variants from unsupported consonant-dropping shorthand

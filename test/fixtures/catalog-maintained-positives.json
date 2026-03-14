@@ -48,6 +48,23 @@
     ]
   },
   {
+    "label": "windows reserved URI schemes",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": [
+      "http",
+      "https",
+      "mailto",
+      "javascript",
+      "ldap",
+      "tel",
+      "telnet",
+      "ms-settings",
+      "ms-settings-privacy-calendar",
+      "dllfile"
+    ]
+  },
+  {
     "label": "rfc2142 impersonation roles",
     "kind": "tenantSlug",
     "expected": "reject",

@@ -3,18 +3,56 @@
     "label": "reservedTechnical obfuscated positives",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["a.p.i", "log-in", "health_check", "u.p.l.o.a.d.s", "a_d_m_i_n", "a.d.m.i.n", "mail-admin", "o.a.u.t.h", "o_p_e_n_i_d", "s.m.t.p", "s_s_h", "w.p.a.d", "c.a.c.h.e", "d.n.s"]
+    "values": [
+      "a.p.i",
+      "log-in",
+      "health_check",
+      "u.p.l.o.a.d.s",
+      "a_d_m_i_n",
+      "a.d.m.i.n",
+      "mail-admin",
+      "o.a.u.t.h",
+      "o_p_e_n_i_d",
+      "s.m.t.p",
+      "s_s_h",
+      "w.p.a.d",
+      "c.a.c.h.e",
+      "d.n.s",
+      "HTTP",
+      "ms_settings",
+      "mail-to"
+    ]
   },
   {
     "label": "impersonation obfuscated positives",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["supp0rt", "5ecurity", "secur1ty", "po5tmaster", "webm4ster", "n.o.c", "s.u.p.p.o.r.t", "s_u_p_p_o_r_t"]
+    "values": [
+      "supp0rt",
+      "5ecurity",
+      "secur1ty",
+      "po5tmaster",
+      "webm4ster",
+      "n.o.c",
+      "s.u.p.p.o.r.t",
+      "s_u_p_p_o_r_t"
+    ]
   },
   {
     "label": "profanity obfuscated positives",
     "kind": "tenantName",
     "expected": "reject",
-    "values": ["sh1t", "5hit", "fu.ck", "f_u_c_k", "b1tch", "a55hole", "sch3isse", "sche1sse", "4rschloch", "f!ck"]
+    "values": [
+      "sh1t",
+      "5hit",
+      "fu.ck",
+      "f_u_c_k",
+      "b1tch",
+      "a55hole",
+      "sch3isse",
+      "sche1sse",
+      "4rschloch",
+      "f!ck"
+    ]
   }
 ]

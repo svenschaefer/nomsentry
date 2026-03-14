@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Expanded maintained `reservedTechnical` coverage with a conservative Windows reserved URI-scheme subset.
+  - added [src/importers/windows-reserved-uri-schemes.js](/C:/code/nomsentry/src/importers/windows-reserved-uri-schemes.js)
+  - added [scripts/import-windows-reserved-uri-schemes.js](/C:/code/nomsentry/scripts/import-windows-reserved-uri-schemes.js)
+  - added [custom/sources/windows-reserved-uri-schemes.json](/C:/code/nomsentry/custom/sources/windows-reserved-uri-schemes.json)
+  - added maintained positive and nearby-negative coverage for the new Microsoft Learn source in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) and the grouped maintained fixtures
+
 - Implemented the conservative Wikidata-derived uncovered-brand supplement.
   - added [src/importers/wikidata-brand-risk.js](/C:/code/nomsentry/src/importers/wikidata-brand-risk.js)
   - added [scripts/derive-wikidata-brand-risk.js](/C:/code/nomsentry/scripts/derive-wikidata-brand-risk.js)
