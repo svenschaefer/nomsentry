@@ -70,6 +70,10 @@
   - maintained mixed-script positives and explicit documented current gaps, including additive lexical hits such as `admin`, `login`, `profile`, `ssh`, `oauth`, `xml`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
   - together these grouped fixtures now provide explicit TP, FP, TN, and documented FN coverage for the maintained baseline
+- Category-refinement status:
+  - the first explicit split beyond broad `profanity` is now in place
+  - `insult.wiki` now feeds `insult`
+  - the current refinement is intentionally source-based, so some overlapping terms can still surface both `profanity` and `insult` evidence
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`

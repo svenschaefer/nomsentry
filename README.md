@@ -187,6 +187,8 @@ The USPTO subset remains the official trademark path. The Wikidata supplement is
 
 `compositeRisk` is now fed by the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer in `custom/sources/derived-composite-risk.json`. That layer covers exact-token combinations such as `admin-support`, `admin-security`, `login-support`, `login-security`, `oauth-support`, and `profile-security`, while broader trust, billing, and recovery combinations remain an explicit open product-policy question.
 
+The first explicit profanity split is now in place as well: `insult.wiki` feeds `insult` instead of the broad `profanity` bucket. This is intentionally source-based for now, so some overlapping terms can still surface both `profanity` and `insult` evidence until the broader category refinement is completed.
+
 For USPTO, the repository now separates:
 
 - full official import snapshots in local `data/uspto/full-sources/`

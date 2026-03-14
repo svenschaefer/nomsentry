@@ -88,7 +88,7 @@ export function buildInsultWikiSource({
   language,
   terms,
   scopes = ["username", "tenantSlug", "tenantName"],
-  category = "profanity",
+  category = "insult",
 }) {
   if (!INSULT_WIKI_PAGES[language]) {
     throw new Error(`Unsupported insult.wiki language: ${language}`);

@@ -39,7 +39,9 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 ## Category intent
 
 - `profanity`
-  - profanity, abuse, slurs, and insult-oriented terms from third-party lexicons
+  - general profanity and abuse-oriented terms from third-party lexicons
+- `insult`
+  - source-backed insult-oriented terms, currently led by `insult.wiki`
 - `protectedBrand`
   - review-level trademark risk terms derived from official trademark data
 - `impersonation`

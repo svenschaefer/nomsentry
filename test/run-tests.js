@@ -1268,6 +1268,13 @@ assert.throws(
     "runtime bundle should expose gitlab reserved-name rules",
   );
   assert.equal(
+    bundle.rules.some(
+      (rule) => rule.term === "depp" && rule.category === "insult",
+    ),
+    true,
+    "runtime bundle should expose insult-category rules",
+  );
+  assert.equal(
     bundle.compositeRules.some((rule) => rule.term === "security+support"),
     true,
     "runtime bundle should expose flattened composite rules",
@@ -2511,7 +2518,7 @@ assert.equal(
           {
             id: "imported-insult-wiki-en/asshole",
             term: "asshole",
-            category: "profanity",
+            category: "insult",
             scopes: ["tenantName"],
             match: "token",
           },
@@ -2568,7 +2575,7 @@ assert.equal(
       {
         id: "imported-insult-wiki-en/original",
         term: "original",
-        category: "profanity",
+        category: "insult",
         scopes: ["tenantName"],
         match: "token",
       },
@@ -2599,7 +2606,7 @@ assert.equal(
               {
                 id: "imported-insult-wiki-en/replacement",
                 term: "replacement",
-                category: "profanity",
+                category: "insult",
                 scopes: ["tenantName"],
                 match: "token",
               },
@@ -2747,7 +2754,7 @@ assert.throws(
               {
                 id: "imported-insult-wiki-en/asshole",
                 term: "asshole",
-                category: "profanity",
+                category: "insult",
                 scopes: ["tenantName"],
                 match: "token",
               },
@@ -3358,8 +3365,8 @@ for (const testCase of [
 
   assert.deepEqual(
     result.reasons.map((reason) => `${reason.category}:${reason.term}`),
-    ["profanity:shit"],
-    "equivalent terms imported from multiple sources should collapse to one reason",
+    ["profanity:shit", "insult:shit"],
+    "source-based category refinement may retain both profanity and insult evidence for the same normalized term",
   );
 }
 
@@ -3512,6 +3519,11 @@ for (const testCase of [
     source.metadata.source,
     "insult.wiki",
     "insult.wiki importer should stamp source metadata",
+  );
+  assert.equal(
+    source.rules.every((rule) => rule.category === "insult"),
+    true,
+    "insult.wiki importer should map the source to the insult category",
   );
   assert.equal(
     source.rules.some((rule) => rule.term === "depp"),
@@ -3732,6 +3744,18 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "compositeRisk"),
     true,
     "admin-support should now surface derived composite risk in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "depp",
+    kind: "tenantName",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "insult"),
+    true,
+    "insult.wiki hits should now surface the insult category in the maintained baseline",
   );
 }
 

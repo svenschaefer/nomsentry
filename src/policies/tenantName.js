@@ -7,6 +7,7 @@ export function tenantName() {
       impersonation: "review",
       protectedBrand: "review",
       profanity: "reject",
+      insult: "reject",
       scriptRisk: "review",
       compositeRisk: "review",
     },

@@ -44,6 +44,7 @@
 - The current maintained `protectedBrand` runtime is fed from a derived USPTO subset plus a conservative derived Wikidata supplement.
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
+- The first explicit category split beyond broad `profanity` is now in place: `insult.wiki` feeds `insult`.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
 - `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered reserved-usernames import.
 - `impersonation` currently draws from the RFC 2142 core plus a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
@@ -117,6 +118,7 @@
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, but broader deceptive combinations such as trust, billing, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
+- The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `insult` evidence.
 
 ## Recent source-research findings
 

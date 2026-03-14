@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Started the profanity category refinement with an explicit `insult` category.
+  - [src/importers/insult-wiki.js](/C:/code/nomsentry/src/importers/insult-wiki.js) now maps `insult.wiki` to `insult` instead of the broad `profanity` bucket
+  - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `insult` decisions
+  - [custom/sources/insult-wiki-en.json](/C:/code/nomsentry/custom/sources/insult-wiki-en.json) and [custom/sources/insult-wiki-de.json](/C:/code/nomsentry/custom/sources/insult-wiki-de.json) were regenerated
+  - the current refinement is intentionally source-based, so overlapping terms can still surface both `profanity` and `insult` evidence until the broader category split is complete
+
 - Improved the USPTO-derived runtime term normalization by stripping legal-entity suffixes before structural thresholding.
   - [src/importers/uspto.js](/C:/code/nomsentry/src/importers/uspto.js) now collapses terms such as `Harley Davidson Inc.` to `harley davidson` before applying the maintained structural filter
   - [custom/sources/derived-uspto-brand-risk.json](/C:/code/nomsentry/custom/sources/derived-uspto-brand-risk.json) was regenerated with the improved filter-term derivation

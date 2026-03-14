@@ -24,12 +24,15 @@
     - ingest any additional free extensions that can be justified without turning the default set into a noisy project-maintained list
     - document where a derived project layer is still required because no strong free source exists
 
-- Split the current broad `profanity` category into more precise policy categories.
+- Continue splitting the current broad `profanity` handling into more precise policy categories.
   - Why:
-    - The repo currently puts profanity, insults, slurs, and extremist references into one top-level category.
+    - The first explicit refinement is now in place: `insult.wiki` feeds `insult` instead of the broad `profanity` bucket.
+    - The remaining maintained sources still put general profanity, slurs, and extremist references into broad buckets.
+    - The current refinement is still source-based, so some overlapping terms can surface both `profanity` and `insult` evidence.
     - Even with `severity`, the semantic grouping is still too coarse for explainability, customer policy customization, and compliance review.
   - Target:
-    - introduce categories such as `generalProfanity`, `insult`, `slur`, `extremism`
+    - continue toward categories such as `generalProfanity`, `insult`, `slur`, and `extremism`
+    - decide how overlapping source evidence should be represented when the same term appears in multiple finer categories
     - keep source-specific evidence while mapping to clearer runtime policy decisions
 
 - Revisit the default USPTO brand-risk derivation with measured false-positive analysis.
