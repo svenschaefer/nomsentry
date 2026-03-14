@@ -182,6 +182,12 @@
     ]
   },
   {
+    "label": "maintained generalProfanity positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["bullshit", "clusterfuck", "retard", "dingleberry"]
+  },
+  {
     "label": "maintained slur positives",
     "kind": "tenantName",
     "expected": "reject",

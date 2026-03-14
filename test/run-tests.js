@@ -3664,6 +3664,13 @@ for (const testCase of [
     "dsojevic importer should keep literal matches",
   );
   assert.equal(
+    source.rules.some(
+      (rule) => rule.term === "dumb" && rule.category === "generalProfanity",
+    ),
+    true,
+    "dsojevic importer should map general tags to the generalProfanity category",
+  );
+  assert.equal(
     source.rules.some((rule) => rule.term === "dmb"),
     false,
     "dsojevic importer should skip wildcard patterns",
@@ -4216,6 +4223,18 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "shock"),
     true,
     "structured shock-tagged imports should now surface the shock category in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "clusterfuck",
+    kind: "tenantName",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "generalProfanity"),
+    true,
+    "structured general-tagged imports should now surface the generalProfanity category in the maintained baseline",
   );
 }
 
