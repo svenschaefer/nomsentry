@@ -2,6 +2,10 @@
 
 ## Completed recently
 
+- Expanded the deterministic normalization property corpus.
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers broader generated normalization variants across case-mixing, NFD forms, fullwidth ASCII, separator-heavy forms, and supported confusable substitutions
+  - the added corpus distinguishes `compact`-preserving variants from stricter `slug`-preserving variants so the tests match the actual normalization contract
+
 - Expanded the grouped maintained-runtime regression matrix.
   - [test/fixtures/catalog-maintained-obfuscated-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-obfuscated-positives.json) now covers more separator, leetspeak, and compact obfuscation variants
   - [test/fixtures/catalog-maintained-mixed-script.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-mixed-script.json) now covers more mixed-script fallback review examples

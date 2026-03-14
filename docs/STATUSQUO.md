@@ -52,6 +52,7 @@
   - generated idempotence checks
   - invisible-character invariants
   - separator-variant invariants
+  - deterministic generated corpora for case-mixed, NFD, fullwidth, separator-heavy, and supported-confusable variants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, GitLab reserved-route names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks

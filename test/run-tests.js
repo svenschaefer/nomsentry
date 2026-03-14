@@ -1921,6 +1921,115 @@ for (const testCase of [
 }
 
 {
+  const invisibleChars = ["\u200B", "\u200C", "\u200D", "\u2060", "\uFEFF"];
+  const separators = ["-", "_", ".", "/", " "];
+  const asciiBases = ["support", "admin", "openai", "merde"];
+  const unicodeBases = ["scheiße", "sécurité"];
+
+  function toFullwidthAscii(value) {
+    return Array.from(value).map((ch) => {
+      if (/[A-Za-z0-9]/.test(ch)) {
+        return String.fromCharCode(ch.charCodeAt(0) + 65248);
+      }
+      return ch;
+    }).join("");
+  }
+
+  function deterministicCaseMix(value, seed) {
+    return Array.from(value).map((ch, index) => {
+      if (!/[a-z]/i.test(ch)) return ch;
+      return ((seed + index) % 2 === 0) ? ch.toUpperCase() : ch.toLowerCase();
+    }).join("");
+  }
+
+  function injectInvisibles(value, seed) {
+    const chars = Array.from(value);
+    const parts = [];
+    for (let index = 0; index < chars.length; index += 1) {
+      parts.push(chars[index]);
+      if (index < chars.length - 1 && ((seed + index) % 3 === 0)) {
+        parts.push(invisibleChars[(seed + index) % invisibleChars.length]);
+      }
+    }
+    return parts.join("");
+  }
+
+  function interleaveSeparators(value, seed) {
+    const chars = Array.from(value);
+    return chars.map((ch, index) => {
+      if (index === chars.length - 1) return ch;
+      return `${ch}${separators[(seed + index) % separators.length]}`;
+    }).join("");
+  }
+
+  for (const [seed, base] of [...asciiBases, ...unicodeBases].entries()) {
+    const expected = normalizeValue(base);
+    const compactOnlyVariants = new Set([
+      interleaveSeparators(base, seed),
+      injectInvisibles(interleaveSeparators(base, seed), seed + 1)
+    ]);
+    const compactAndSlugVariants = new Set([
+      deterministicCaseMix(base, seed),
+      injectInvisibles(base, seed),
+      deterministicCaseMix(base.normalize("NFD"), seed + 2)
+    ]);
+
+    if (asciiBases.includes(base)) {
+      compactAndSlugVariants.add(toFullwidthAscii(base));
+      compactAndSlugVariants.add(deterministicCaseMix(toFullwidthAscii(base), seed + 3));
+    }
+
+    for (const variant of compactOnlyVariants) {
+      const normalized = normalizeValue(variant);
+      assert.equal(
+        normalized.compact,
+        expected.compact,
+        `generated normalization variant ${JSON.stringify(variant)} should preserve compact output for ${base}`
+      );
+    }
+
+    for (const variant of compactAndSlugVariants) {
+      const normalized = normalizeValue(variant);
+      assert.equal(
+        normalized.compact,
+        expected.compact,
+        `generated normalization variant ${JSON.stringify(variant)} should preserve compact output for ${base}`
+      );
+      assert.equal(
+        normalized.slug,
+        expected.slug,
+        `generated normalization variant ${JSON.stringify(variant)} should preserve slug output for ${base}`
+      );
+    }
+  }
+}
+
+{
+  const supportedConfusableVariants = [
+    ["support", "ѕuppоrt"],
+    ["security", "sесurіty"],
+    ["openai", "оpеnаi"],
+    ["paypal", "раypаl"],
+    ["arschloch", "аrsсhlосh"]
+  ];
+
+  for (const [canonical, variant] of supportedConfusableVariants) {
+    const canonicalNormalized = normalizeValue(canonical);
+    const variantNormalized = normalizeValue(variant);
+    assert.equal(
+      variantNormalized.confusableSkeleton,
+      canonicalNormalized.confusableSkeleton,
+      `supported confusable variant ${variant} should preserve the confusable skeleton for ${canonical}`
+    );
+    assert.equal(
+      variantNormalized.compact,
+      canonicalNormalized.compact,
+      `supported confusable variant ${variant} should preserve compact output for ${canonical}`
+    );
+  }
+}
+
+{
   const unconfigured = createEngine({ sources: [], policies: [] });
   assert.throws(
     () => unconfigured.evaluate({ value: "test", kind: "tenantSlug" }),

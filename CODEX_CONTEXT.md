@@ -61,7 +61,7 @@
 - Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
 - Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
 - The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for obfuscated positives, mixed-script fallback reviews, and nearby false positives, but it is still not the full reviewed catalog.
-- Normalization tests now include basic generated property coverage for idempotence, invisibles, and separator variants, but they still do not constitute full fuzzing.
+- Normalization tests now include deterministic generated property coverage for idempotence, invisibles, separator-heavy variants, case-mixed and NFD forms, fullwidth ASCII forms, and supported confusable substitutions, but they still do not constitute full fuzzing.
 - Determinism is now covered both by standalone check scripts and by direct in-suite tests for loader ordering and byte-stable maintained-source recompaction.
 - Direct schema tests now cover compact default extraction, metadata/default merging, malformed compact scope overrides, and malformed composite `allOf` entries.
 - `severity` tests now cover mixed-category review/reject interactions, same-category severity dominance, and severity retention in final reasons.
