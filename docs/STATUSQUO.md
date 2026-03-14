@@ -62,6 +62,7 @@
   - importer argument validation
   - runtime-builder argument validation
   - freshness-check argument and policy validation
+  - staged rename rollback restoration for `compact-sources`
 - Direct schema edge-case coverage now includes:
   - shared compact default extraction
   - metadata/default merging

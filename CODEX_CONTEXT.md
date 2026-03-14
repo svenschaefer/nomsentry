@@ -103,6 +103,7 @@
   - `github-reserved-names`
   - optionally Windows reserved URI scheme names if the product scope wants URI-scheme coverage
 - Early review suggests `reserved-usernames` and `github-reserved-names` are materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
+- A direct default-baseline evaluation of `github-reserved-names` confirmed that concern: importing it conservatively but broadly still produced unacceptable false positives such as `seven-labs` because of generic route terms like `labs`.
 - `protectedBrand` can plausibly be improved by supplementing the USPTO-derived subset with a free Wikidata-derived short-brand seed set.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.

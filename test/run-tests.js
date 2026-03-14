@@ -1200,6 +1200,76 @@ assert.equal(
 }
 
 {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-compact-rollback-"));
+  const outputDir = path.join(tmpDir, "sources");
+  const stageDir = path.join(tmpDir, "stage");
+  const backupDir = path.join(tmpDir, "backup");
+  fs.mkdirSync(outputDir, { recursive: true });
+
+  const originalFile = path.join(outputDir, "insult-wiki-en.json");
+  const originalContent = serializeSource({
+    id: "imported-insult-wiki-en",
+    metadata: { source: "insult.wiki" },
+    rules: [
+      {
+        id: "imported-insult-wiki-en/original",
+        term: "original",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token"
+      }
+    ]
+  });
+  fs.writeFileSync(originalFile, originalContent, "utf8");
+
+  let renameCount = 0;
+  const fsImpl = {
+    ...fs,
+    renameSync(fromPath, toPath) {
+      renameCount += 1;
+      if (renameCount === 2) {
+        throw new Error("simulated stage swap failure");
+      }
+      return fs.renameSync(fromPath, toPath);
+    }
+  };
+
+  assert.throws(
+    () => compactSourcesDirectory([
+      {
+        id: "imported-insult-wiki-en",
+        metadata: { source: "insult.wiki" },
+        rules: [
+          {
+            id: "imported-insult-wiki-en/replacement",
+            term: "replacement",
+            category: "profanity",
+            scopes: ["tenantName"],
+            match: "token"
+          }
+        ]
+      }
+    ], outputDir, {
+      stageDir,
+      backupDir,
+      logger: null,
+      fsImpl
+    }),
+    /simulated stage swap failure/,
+    "compact-sources should surface stage-swap failures directly"
+  );
+
+  assert.equal(
+    fs.readFileSync(originalFile, "utf8"),
+    originalContent,
+    "compact-sources should restore the original source directory after a stage-swap failure"
+  );
+  assert.equal(fs.existsSync(stageDir), false, "compact-sources should clean up the stage directory after rollback");
+  assert.equal(fs.existsSync(backupDir), false, "compact-sources should clean up the backup directory after rollback");
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-loader-order-"));
   fs.writeFileSync(path.join(tmpDir, "zeta.json"), serializeSource({
     id: "zeta-source",

@@ -30,14 +30,15 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
     throw new Error("Refusing to compact sources: source set is empty");
   }
 
+  const fsImpl = options.fsImpl ?? fs;
   const parentDir = path.dirname(outputDir);
   const nonce = `${process.pid}-${Date.now()}`;
   const stageDir = options.stageDir ?? path.join(parentDir, `.sources-stage-${nonce}`);
   const backupDir = options.backupDir ?? path.join(parentDir, `.sources-backup-${nonce}`);
   const logger = Object.prototype.hasOwnProperty.call(options, "logger") ? options.logger : console.log;
 
-  if (fs.existsSync(outputDir)) {
-    const unexpectedEntries = fs.readdirSync(outputDir, { withFileTypes: true })
+  if (fsImpl.existsSync(outputDir)) {
+    const unexpectedEntries = fsImpl.readdirSync(outputDir, { withFileTypes: true })
       .filter((entry) => !entry.isFile() || path.extname(entry.name).toLowerCase() !== ".json")
       .map((entry) => entry.name);
     if (unexpectedEntries.length > 0) {
@@ -47,7 +48,7 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
     }
   }
 
-  fs.mkdirSync(stageDir, { recursive: true });
+  fsImpl.mkdirSync(stageDir, { recursive: true });
 
   for (const source of sources) {
     const filename = resolveCompactFilename(source);
@@ -59,25 +60,25 @@ export function compactSourcesDirectory(sources, outputDir, options = {}) {
 
   let swapped = false;
   try {
-    if (fs.existsSync(outputDir)) {
-      fs.renameSync(outputDir, backupDir);
+    if (fsImpl.existsSync(outputDir)) {
+      fsImpl.renameSync(outputDir, backupDir);
     }
-    fs.renameSync(stageDir, outputDir);
+    fsImpl.renameSync(stageDir, outputDir);
     swapped = true;
-    if (fs.existsSync(backupDir)) {
-      fs.rmSync(backupDir, { recursive: true, force: true });
+    if (fsImpl.existsSync(backupDir)) {
+      fsImpl.rmSync(backupDir, { recursive: true, force: true });
     }
   } catch (error) {
-    if (!swapped && fs.existsSync(backupDir) && !fs.existsSync(outputDir)) {
-      fs.renameSync(backupDir, outputDir);
+    if (!swapped && fsImpl.existsSync(backupDir) && !fsImpl.existsSync(outputDir)) {
+      fsImpl.renameSync(backupDir, outputDir);
     }
     throw error;
   } finally {
-    if (fs.existsSync(stageDir)) {
-      fs.rmSync(stageDir, { recursive: true, force: true });
+    if (fsImpl.existsSync(stageDir)) {
+      fsImpl.rmSync(stageDir, { recursive: true, force: true });
     }
-    if (swapped && fs.existsSync(backupDir)) {
-      fs.rmSync(backupDir, { recursive: true, force: true });
+    if (swapped && fsImpl.existsSync(backupDir)) {
+      fsImpl.rmSync(backupDir, { recursive: true, force: true });
     }
   }
 }

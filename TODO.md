@@ -6,9 +6,11 @@
   - Why:
     - A catalog-based runtime evaluation showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` currently evaluate to `allow`.
     - The maintained repo source set now includes Windows reserved device names plus a conservative GitLab reserved-routes import, but the broader technical-identifier expectation is still only partially met.
+    - A direct evaluation of `github-reserved-names` against the maintained baseline showed unacceptable noise for the default set, for example `seven-labs` becoming `reject` because of the generic `labs` route term.
   - Target:
     - decide the intended `reservedTechnical` scope explicitly
-    - if broader coverage is intended, evaluate whether to add filtered imports from `reserved-usernames`, `github-reserved-names`, and optionally Windows reserved URI scheme names
+    - if broader coverage is intended, evaluate whether to add filtered imports from `reserved-usernames` and optionally Windows reserved URI scheme names
+    - only revisit `github-reserved-names` with a stricter documented derived filter strategy
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
@@ -78,13 +80,6 @@
   - Target:
     - expand upstream fetch-failure coverage across the remaining import entrypoints
     - add coverage for partial-write paths during artifact generation
-
-- Add tests for destructive-script safeguards.
-  - Why:
-    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has guardrails for empty sources and unexpected files, but rollback-path and interruption behavior are still under-tested.
-  - Target:
-    - test rollback behavior under staged-write or rename failures
-    - add deeper path-misuse coverage for destructive maintenance scripts
 
 - Add regression coverage from the curated identifier catalog review.
   - Why:

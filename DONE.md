@@ -2,6 +2,10 @@
 
 ## Completed recently
 
+- Expanded destructive-script safeguard coverage for `compact-sources`.
+  - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now supports injected filesystem behavior for failure simulation in tests
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers rollback after a staged swap failure and verifies restoration of the original source directory
+
 - Enriched the build provenance manifest with deterministic transform and refresh metadata.
   - [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json) now records deterministic transform versions per maintained artifact
   - the manifest now carries matched refresh-policy metadata per maintained artifact

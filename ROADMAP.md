@@ -33,7 +33,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - turn the reviewed curated identifier catalog into grouped regression fixtures
    - deepen import-failure coverage
    - deepen schema and severity matrix edge-case coverage
-   - deepen rollback-path and path-misuse coverage for destructive maintenance scripts
    - Dependency:
      - should track the product-policy changes so new semantics are covered once
 
