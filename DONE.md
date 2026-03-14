@@ -18,6 +18,10 @@
   - refuses to replace source directories containing unexpected non-JSON entries
   - covered by dedicated regression tests in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
 
+- Hardened import-script error handling across the maintained source pipeline.
+  - the import entrypoints now report concise argument and runtime errors without stack traces
+  - `test/run-tests.js` now covers representative bad-argument paths for USPTO, obscenity, and cuss imports
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

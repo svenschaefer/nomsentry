@@ -63,9 +63,8 @@
 
 - Add coverage for import-script failure modes.
   - Why:
-    - The importers themselves are partially tested, but the CLI scripts are not tested for bad arguments, network failures, malformed upstream payloads, or partial writes.
+    - The import entrypoints now have basic bad-argument coverage, but network failures, malformed upstream payloads, and partial-write paths are still lightly tested.
   - Target:
-    - tests for `scripts/import-*.js` argument validation
     - tests for upstream fetch failures and malformed HTML/CSV
 
 - Add regression tests for source schema edge cases.

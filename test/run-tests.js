@@ -233,6 +233,46 @@ assert.throws(
 }
 
 {
+  const runScript = (scriptName, ...args) =>
+    spawnSync(process.execPath, [fileURLToPath(new URL(`../scripts/${scriptName}`, import.meta.url)), ...args], {
+      encoding: "utf8"
+    });
+
+  const usptoMissingInput = runScript("import-uspto-trademarks.js");
+  assert.equal(usptoMissingInput.status, 1, "uspto import script should fail with a stable non-zero exit");
+  assert.match(
+    usptoMissingInput.stderr,
+    /Missing required option: --input-file/,
+    "uspto import script should report missing input files without a stack trace"
+  );
+  assert.equal(usptoMissingInput.stderr.includes("ReferenceError"), false, "uspto import errors should stay concise");
+
+  const usptoBadChunkSize = runScript("import-uspto-trademarks.js", "--input-file", "missing.csv", "--chunk-size", "0");
+  assert.equal(usptoBadChunkSize.status, 1, "uspto import script should reject invalid chunk sizes");
+  assert.match(
+    usptoBadChunkSize.stderr,
+    /Invalid option: --chunk-size must be a positive integer/,
+    "uspto import script should validate chunk sizes before attempting import"
+  );
+
+  const obscenityUnknownOption = runScript("import-obscenity.js", "--wat");
+  assert.equal(obscenityUnknownOption.status, 1, "obscenity import script should fail for unknown options");
+  assert.match(
+    obscenityUnknownOption.stderr,
+    /Unknown option: --wat/,
+    "obscenity import script should print a direct argument error"
+  );
+
+  const cussEmptyLanguages = runScript("import-cuss.js", "--languages", "");
+  assert.equal(cussEmptyLanguages.status, 1, "cuss import script should reject empty language selections");
+  assert.match(
+    cussEmptyLanguages.stderr,
+    /Invalid option: --languages must include at least one language or 'all'/,
+    "cuss import script should validate explicit empty language lists"
+  );
+}
+
+{
   const records = parseUsptoCaseFileCsv(
     fs.readFileSync(new URL("./fixtures/uspto-case-file-sample.csv", import.meta.url), "utf8")
   ).map((record) => ({ ...record, trade_mark_in: "1" }));

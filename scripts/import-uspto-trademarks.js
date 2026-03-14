@@ -6,7 +6,7 @@ import {
 } from "../src/importers/uspto.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputFile: "",
@@ -37,20 +37,27 @@ function parseArgs(argv) {
   return options;
 }
 
-const options = parseArgs(process.argv.slice(2));
-fs.mkdirSync(options.outputDir, { recursive: true });
-const source = await buildUsptoTrademarkSourceFromCsvFile(options.inputFile);
-const chunkFiles = splitUsptoTrademarkSource(source, { chunkSize: options.chunkSize });
+async function main(argv) {
+  const options = parseArgs(argv);
+  fs.mkdirSync(options.outputDir, { recursive: true });
+  const source = await buildUsptoTrademarkSourceFromCsvFile(options.inputFile);
+  const chunkFiles = splitUsptoTrademarkSource(source, { chunkSize: options.chunkSize });
 
-for (const file of fs.readdirSync(options.outputDir)) {
-  if (file.startsWith("uspto-trademarks-") && file.endsWith(".json")) {
-    fs.unlinkSync(path.join(options.outputDir, file));
+  for (const file of fs.readdirSync(options.outputDir)) {
+    if (file.startsWith("uspto-trademarks-") && file.endsWith(".json")) {
+      fs.unlinkSync(path.join(options.outputDir, file));
+    }
   }
+
+  for (const chunk of chunkFiles) {
+    const targetFile = path.join(options.outputDir, `${chunk.id}.json`);
+    writeSourceFile(targetFile, chunk);
+  }
+
+  console.log(`Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`);
 }
 
-for (const chunk of chunkFiles) {
-  const targetFile = path.join(options.outputDir, `${chunk.id}.json`);
-  writeSourceFile(targetFile, chunk);
-}
-
-console.log(`Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`);
+main(process.argv.slice(2)).catch((error) => {
+  console.error(error.message);
+  process.exitCode = 1;
+});

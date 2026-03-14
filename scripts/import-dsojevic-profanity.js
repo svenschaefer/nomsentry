@@ -5,7 +5,7 @@ import { writeSourceFile } from "../src/schema/source-io.js";
 
 const BASE_URL = "https://raw.githubusercontent.com/dsojevic/profanity-list/main";
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     languages: ["en"],
@@ -26,6 +26,10 @@ function parseArgs(argv) {
     }
   }
 
+  if (options.languages.length === 0) {
+    throw new Error("Invalid option: --languages must include at least one language");
+  }
+
   return options;
 }
 
@@ -39,13 +43,20 @@ async function fetchLanguage(language) {
   return response.json();
 }
 
-const options = parseArgs(process.argv.slice(2));
-fs.mkdirSync(options.outputDir, { recursive: true });
+async function main(argv) {
+  const options = parseArgs(argv);
+  fs.mkdirSync(options.outputDir, { recursive: true });
 
-for (const language of options.languages) {
-  const entries = await fetchLanguage(language);
-  const source = buildDsojevicSource({ language, entries });
-  const targetFile = path.join(options.outputDir, `dsojevic-profanity-${language}.json`);
-  writeSourceFile(targetFile, source);
-  console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
+  for (const language of options.languages) {
+    const entries = await fetchLanguage(language);
+    const source = buildDsojevicSource({ language, entries });
+    const targetFile = path.join(options.outputDir, `dsojevic-profanity-${language}.json`);
+    writeSourceFile(targetFile, source);
+    console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
+  }
 }
+
+main(process.argv.slice(2)).catch((error) => {
+  console.error(error.message);
+  process.exitCode = 1;
+});

@@ -3,7 +3,7 @@ import path from "node:path";
 import { buildObscenityEnglishSource } from "../src/importers/obscenity.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     outputDir: path.resolve(process.cwd(), "custom", "sources")
@@ -21,9 +21,18 @@ function parseArgs(argv) {
   return options;
 }
 
-const options = parseArgs(process.argv.slice(2));
-fs.mkdirSync(options.outputDir, { recursive: true });
-const source = buildObscenityEnglishSource();
-const targetFile = path.join(options.outputDir, "obscenity-en.json");
-writeSourceFile(targetFile, source);
-console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
+function main(argv) {
+  const options = parseArgs(argv);
+  fs.mkdirSync(options.outputDir, { recursive: true });
+  const source = buildObscenityEnglishSource();
+  const targetFile = path.join(options.outputDir, "obscenity-en.json");
+  writeSourceFile(targetFile, source);
+  console.log(`Wrote ${targetFile} (${source.rules.length} terms)`);
+}
+
+try {
+  main(process.argv.slice(2));
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 1;
+}

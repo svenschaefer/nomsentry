@@ -7,7 +7,7 @@ const REPO_API_URL = "https://api.github.com/repos/LDNOOBW/List-of-Dirty-Naughty
 const RAW_BASE_URL = "https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master";
 const IGNORED_FILES = new Set(["LICENSE", "README.md", "USERS.md"]);
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     languages: ["all"],
@@ -26,6 +26,10 @@ function parseArgs(argv) {
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
+  }
+
+  if (options.languages.length === 0) {
+    throw new Error("Invalid option: --languages must include at least one language or 'all'");
   }
 
   return options;
