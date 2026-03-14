@@ -59,7 +59,7 @@
   - `npm run lint:check`
   - `npm run format:check`
 - Grouped category-level baseline fixtures now cover:
-  - maintained positives for Windows reserved names, a broader GitLab reserved-route set, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
+  - maintained positives for Windows reserved names, a broader GitLab reserved-route set, conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants from the reviewed catalog
   - maintained mixed-script positives and explicit documented current gaps, including broader fallback review examples and a wider uncovered-brand gap set
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `mastercardio`, and `dropboxing`

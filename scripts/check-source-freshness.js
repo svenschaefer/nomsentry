@@ -103,18 +103,25 @@ export function findRefreshPolicy(policy, artifact) {
 }
 
 export function getLastCommitDate(filePath) {
-  const output = execFileSync(
-    "git",
-    ["log", "-1", "--format=%cs", "--", filePath],
-    {
-      cwd: process.cwd(),
-      encoding: "utf8",
-    },
-  ).trim();
-  if (!output) {
-    throw new Error(`No git commit date found for ${filePath}`);
+  try {
+    const output = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cs", "--", filePath],
+      {
+        cwd: process.cwd(),
+        encoding: "utf8",
+      },
+    ).trim();
+    if (output) {
+      return output;
+    }
+  } catch {
+    const stats = fs.statSync(path.resolve(process.cwd(), filePath));
+    return stats.mtime.toISOString().slice(0, 10);
   }
-  return output;
+
+  const stats = fs.statSync(path.resolve(process.cwd(), filePath));
+  return stats.mtime.toISOString().slice(0, 10);
 }
 
 export function calculateAgeDays(lastDate, asOfDate) {

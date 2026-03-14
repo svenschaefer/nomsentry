@@ -3,7 +3,7 @@
     "label": "documented reservedTechnical gaps",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["root", "system", "mail", "status", "webhook"]
+    "values": ["webhook"]
   },
   {
     "label": "documented impersonation gaps",

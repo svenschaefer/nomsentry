@@ -68,6 +68,14 @@ The current maintained source families are:
 - License / status: CC BY-SA 4.0 documentation source; treated here as a limited extracted factual source of reserved route-like identifiers
 - Notes: imported conservatively from the documented reserved project and group names; file-like entries and path fragments are excluded
 
+### reserved-usernames
+
+- Purpose: reserved technical identifiers for namespace and system-identifier collisions
+- Used in: `custom/sources/reserved-usernames.json`
+- Source: https://github.com/mvila/reserved-usernames
+- License: MIT
+- Notes: imported through a conservative derived filter that keeps only clearly technical or namespace-collision terms from the broader package dataset
+
 ### Microsoft Learn Windows reserved device names
 
 - Purpose: reserved technical identifiers

@@ -12,6 +12,12 @@
     "values": ["admin", "api", "dashboard", "help", "login", "projects", "public", "search", "uploads", "users"]
   },
   {
+    "label": "reserved-usernames technical names",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["root", "system", "mail", "status", "server", "webmail", "localhost"]
+  },
+  {
     "label": "rfc2142 impersonation roles",
     "kind": "tenantSlug",
     "expected": "reject",

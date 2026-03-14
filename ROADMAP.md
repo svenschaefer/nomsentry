@@ -20,7 +20,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 2. Product policy refinement
    - split coarse `profanity` handling into more precise categories
    - expand maintained impersonation coverage beyond the RFC 2142-centered baseline, knowing that free source options are limited for modern trust and recovery vocabulary
-   - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows plus GitLab baseline, including `reserved-usernames`, `github-reserved-names`, and optional Windows reserved URI scheme names
+   - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows plus GitLab plus reserved-usernames baseline, including optional Windows reserved URI scheme names and, only with stricter filtering, `github-reserved-names`
    - improve USPTO brand-risk derivation with measured precision and recall analysis
    - implement a conservative Wikidata-derived uncovered-brand supplement alongside the USPTO-derived subset as a separate brand-coverage track
    - expand composite-risk coverage beyond the current single-rule baseline if that broader contract is intended, likely through a derived layer rather than a direct free source import

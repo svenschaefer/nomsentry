@@ -60,6 +60,13 @@
     },
     {
       "match": {
+        "source": "reserved-usernames"
+      },
+      "maxAgeDays": 180,
+      "notes": "Filtered reserved-name package imports should be reviewed at least twice per year."
+    },
+    {
+      "match": {
         "source": "RFC 2142"
       },
       "maxAgeDays": 3650,

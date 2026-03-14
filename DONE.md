@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Expanded maintained `reservedTechnical` coverage with a conservative `reserved-usernames` import.
+  - added [src/importers/reserved-usernames.js](/C:/code/nomsentry/src/importers/reserved-usernames.js)
+  - added [scripts/import-reserved-usernames.js](/C:/code/nomsentry/scripts/import-reserved-usernames.js)
+  - added [custom/sources/reserved-usernames.json](/C:/code/nomsentry/custom/sources/reserved-usernames.json)
+  - expanded maintained fixture coverage so `root`, `system`, `mail`, and `status` are now part of the maintained positive baseline
+
 - Expanded normalization property coverage and artifact-failure cleanup coverage further.
   - added more generated confusable-heavy normalization variants in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
   - added upstream transport and parse-failure coverage for dsojevic, insult.wiki, and GitLab import fetch paths

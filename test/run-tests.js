@@ -41,6 +41,12 @@ import {
   fetchGitLabReservedNames,
 } from "../src/importers/gitlab-reserved-names.js";
 import {
+  buildReservedUsernamesSource,
+  filterReservedUsernameTerms,
+  getReservedUsernamesDataPath,
+  loadReservedUsernamesTerms,
+} from "../src/importers/reserved-usernames.js";
+import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
   deriveUsptoBrandRiskSource,
@@ -59,6 +65,7 @@ import {
   fetchWordList as fetchLdnoobwWordList,
 } from "../scripts/import-ldnoobw.js";
 import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
+import { parseArgs as parseReservedUsernamesArgs } from "../scripts/import-reserved-usernames.js";
 import {
   buildProvenanceManifest,
   writeProvenanceManifest,
@@ -70,6 +77,7 @@ import {
 import {
   assessFreshness,
   findRefreshPolicy,
+  getLastCommitDate,
   resolveAsOfDate,
   validateRefreshPolicy,
 } from "../scripts/check-source-freshness.js";
@@ -488,6 +496,27 @@ assert.throws(
   );
 }
 
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-freshness-mtime-"),
+  );
+  const filePath = path.join(tmpDir, "source.json");
+  fs.writeFileSync(filePath, "{}", "utf8");
+  const originalCwd = process.cwd();
+  process.chdir(tmpDir);
+  try {
+    const commitDate = getLastCommitDate("source.json");
+    assert.match(
+      commitDate,
+      /^\d{4}-\d{2}-\d{2}$/,
+      "freshness checks should fall back to file mtime when a file has no git history",
+    );
+  } finally {
+    process.chdir(originalCwd);
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+}
+
 assert.throws(
   () =>
     assessFreshness({
@@ -875,6 +904,21 @@ assert.throws(
     "gitlab import script should report direct argument errors",
   );
 
+  const reservedUsernamesUnknownOption = runScript(
+    "import-reserved-usernames.js",
+    "--wat",
+  );
+  assert.equal(
+    reservedUsernamesUnknownOption.status,
+    1,
+    "reserved-usernames import script should fail for unknown options",
+  );
+  assert.match(
+    reservedUsernamesUnknownOption.stderr,
+    /Unknown option: --wat/,
+    "reserved-usernames import script should report direct argument errors",
+  );
+
   const runtimeUnknownOption = runScript("build-runtime-sources.js", "--wat");
   assert.equal(
     runtimeUnknownOption.status,
@@ -1053,6 +1097,48 @@ await assert.rejects(
     ["api", "raw", "uploads"],
     "gitlab reserved-name fetches should parse and normalize fetched markdown",
   );
+}
+
+{
+  const tempDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-reserved-usernames-data-"),
+  );
+  const nodeModulesDir = path.join(
+    tempDir,
+    "node_modules",
+    "reserved-usernames",
+  );
+  fs.mkdirSync(nodeModulesDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(nodeModulesDir, "data.json"),
+    JSON.stringify(["root", "system", "mail"]),
+    "utf8",
+  );
+
+  assert.equal(
+    getReservedUsernamesDataPath(tempDir),
+    path.join(nodeModulesDir, "data.json"),
+    "reserved-usernames data-path resolution should target the package data file",
+  );
+  assert.deepEqual(
+    loadReservedUsernamesTerms(tempDir),
+    ["root", "system", "mail"],
+    "reserved-usernames loader should parse the package dataset",
+  );
+  assert.deepEqual(
+    parseReservedUsernamesArgs([
+      "--base-dir",
+      tempDir,
+      "--output-dir",
+      "custom-sources",
+    ]),
+    {
+      baseDir: tempDir,
+      outputDir: path.resolve(process.cwd(), "custom-sources"),
+    },
+    "reserved-usernames import args should support overriding the package base dir",
+  );
+  fs.rmSync(tempDir, { recursive: true, force: true });
 }
 
 {
@@ -1575,6 +1661,11 @@ assert.equal(
   resolveCompactFilename({ id: "imported-insult-wiki-de" }),
   "insult-wiki-de.json",
   "compact-sources should preserve insult.wiki filenames",
+);
+assert.equal(
+  resolveCompactFilename({ id: "imported-reserved-usernames" }),
+  "reserved-usernames.json",
+  "compact-sources should preserve reserved-usernames filenames",
 );
 
 {
@@ -2632,6 +2723,40 @@ for (const testCase of [
     source.rules.map((rule) => rule.term),
     ["admin", "create-dir", "login"],
     "gitlab importer should normalize and dedupe reserved-name terms conservatively",
+  );
+}
+
+{
+  assert.deepEqual(
+    filterReservedUsernameTerms([
+      "admin",
+      "root",
+      "system",
+      "mail",
+      "status",
+      "default",
+      "service",
+      "testing",
+      "web",
+      "host",
+      "server",
+    ]),
+    ["admin", "mail", "root", "server", "status", "system"],
+    "reserved-usernames filtering should keep only the conservative technical subset",
+  );
+
+  const source = buildReservedUsernamesSource({
+    terms: ["admin", "root", "system", "mail", "status", "default", "service"],
+  });
+  assert.equal(
+    source.metadata.source,
+    "reserved-usernames",
+    "reserved-usernames importer should stamp source metadata",
+  );
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["admin", "mail", "root", "status", "system"],
+    "reserved-usernames importer should keep only filtered technical terms",
   );
 }
 
