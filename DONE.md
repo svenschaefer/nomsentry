@@ -13,6 +13,12 @@
   - added argument validation coverage for GitLab import, 2toad import, and runtime-bundle build entrypoints
   - added invalid-date and invalid-policy coverage for the freshness check entrypoint
 
+- Expanded direct source-schema edge-case coverage further.
+  - shared default extraction for compact sources is now asserted explicitly
+  - compact metadata/default merging is now asserted explicitly
+  - malformed compact scope overrides are now covered
+  - malformed composite `allOf` entries are now covered
+
 - Added a machine-readable build provenance manifest.
   - added [scripts/build-provenance-manifest.js](/C:/code/nomsentry/scripts/build-provenance-manifest.js)
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now writes [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json)

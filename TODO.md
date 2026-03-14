@@ -99,12 +99,6 @@
     - expand upstream fetch-failure coverage across the remaining import entrypoints
     - add coverage for partial-write paths during artifact generation
 
-- Add regression tests for source schema edge cases.
-  - Why:
-    - The schema tests now cover several compact-source and validation edge cases, but there is still no dedicated coverage for stricter compact-override typing and some malformed composite-source combinations.
-  - Target:
-    - direct tests for `compactSource()`, `expandSource()`, `serializeSource()`, and `validateSource()`
-
 - Add tests for policy matrix edge cases with `severity`.
   - Why:
     - `severity` fallback behavior is now partially covered, but mixed-category escalation and broader matrix interactions are still lightly tested.

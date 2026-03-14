@@ -54,6 +54,11 @@
   - importer argument validation
   - runtime-builder argument validation
   - freshness-check argument and policy validation
+- Direct schema edge-case coverage now includes:
+  - shared compact default extraction
+  - metadata/default merging
+  - malformed compact scope overrides
+  - malformed composite `allOf` entries
 - Known non-flaky baseline:
   - local `npm run ci:check`
 

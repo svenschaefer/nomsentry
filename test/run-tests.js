@@ -819,6 +819,73 @@ assert.throws(
   );
 }
 
+{
+  const compact = compactSource({
+    id: "compact-defaults-test",
+    rules: [
+      {
+        id: "compact-defaults-test/a",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token",
+        normalizationField: "confusableSkeleton",
+        metadata: { source: "fixture", language: "en" }
+      },
+      {
+        id: "compact-defaults-test/b",
+        term: "beta",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token",
+        normalizationField: "confusableSkeleton",
+        metadata: { source: "fixture", language: "en" }
+      }
+    ]
+  });
+  assert.deepEqual(
+    compact.ruleDefaults,
+    {
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton",
+      metadata: { source: "fixture", language: "en" },
+      idPrefix: "compact-defaults-test/"
+    },
+    "compactSource should extract shared rule defaults, metadata, and id prefixes"
+  );
+}
+
+{
+  const expanded = expandSource({
+    id: "expand-merge-test",
+    ruleDefaults: {
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token",
+      normalizationField: "confusableSkeleton",
+      metadata: { source: "fixture", language: "en" },
+      idPrefix: "expand-merge-test/"
+    },
+    rules: [["alpha", "alpha", { metadata: { notes: "keep-note" } }]]
+  });
+  assert.deepEqual(
+    expanded.rules[0],
+    {
+      id: "expand-merge-test/alpha",
+      term: "alpha",
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token",
+      severity: undefined,
+      normalizationField: "confusableSkeleton",
+      metadata: { source: "fixture", language: "en", notes: "keep-note" }
+    },
+    "expandSource should merge metadata defaults with override notes"
+  );
+}
+
 assert.deepEqual(
   validateSource({ id: "empty-source", rules: [] }),
   { id: "empty-source", rules: [] },
@@ -868,6 +935,20 @@ assert.throws(
 
 assert.throws(
   () => validateSource({
+    id: "invalid-compact-scopes-override",
+    ruleDefaults: {
+      category: "profanity",
+      scopes: ["tenantName"],
+      match: "token"
+    },
+    rules: [["alpha", "alpha", { scopes: "tenantName" }]]
+  }),
+  /source\.rules\[0\]\.scopes must be an array/,
+  "validateSource should reject compact tuple overrides with malformed scopes"
+);
+
+assert.throws(
+  () => validateSource({
     id: "invalid-composite-scope-source",
     compositeRules: [
       {
@@ -881,6 +962,23 @@ assert.throws(
   }),
   /source\.compositeRules\[0\]\.scopes must be an array/,
   "validateSource should reject malformed composite-rule scopes"
+);
+
+assert.throws(
+  () => validateSource({
+    id: "invalid-composite-allof-source",
+    compositeRules: [
+      {
+        id: "invalid-composite-allof-source/rule",
+        term: "security+support",
+        category: "compositeRisk",
+        scopes: ["tenantSlug"],
+        allOf: ["security", 7]
+      }
+    ]
+  }),
+  /source\.compositeRules\[0\]\.allOf\[1\] must be a non-empty string/,
+  "validateSource should reject malformed composite allOf terms"
 );
 
 {
