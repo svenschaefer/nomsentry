@@ -59,10 +59,10 @@
   - `npm run lint:check`
   - `npm run format:check`
 - Grouped category-level baseline fixtures now cover:
-  - maintained positives for Windows reserved names, a broader GitLab reserved-route set, conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
-  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants from the reviewed catalog
-  - maintained mixed-script positives and explicit documented current gaps, including broader fallback review examples and a wider uncovered-brand gap set
-  - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `mastercardio`, and `dropboxing`
+  - maintained positives for Windows reserved names, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
+  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additional separator and leetspeak variants for `oauth`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, and `support`
+  - maintained mixed-script positives and explicit documented current gaps, including broader lexical hits such as `ssh`, `oauth`, `xml`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
+  - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`

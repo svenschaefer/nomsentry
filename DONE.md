@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Expanded the maintained TP/FP/TN matrix further around the reviewed identifier catalog.
+  - broadened maintained `reservedTechnical` positives for the filtered `reserved-usernames` baseline, including `auth`, `cache`, `dns`, `smtp`, `ssh`, `wpad`, `xml`, `oauth`, `openid`, `logout`, and `profile`
+  - broadened nearby `reservedTechnical` negatives such as `hosted`, `webview`, `wikipedia`, `mailer`, `mailbox`, `oauthify`, `xmlish`, `statuspage`, `hostmastery`, and `serverless`
+  - broadened maintained obfuscated positives for reserved-technical and impersonation terms, including dotted or underscored variants of `oauth`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, and `support`
+  - broadened maintained mixed-script lexical positives for `ssh`, `oauth`, `xml`, `webmaster`, and `server`
+
 - Added a reproducible Wikidata uncovered-brand evaluation path.
   - added [scripts/evaluate-wikidata-brand-supplement.js](/C:/code/nomsentry/scripts/evaluate-wikidata-brand-supplement.js)
   - added [docs/generated/wikidata-brand-gap-report.json](/C:/code/nomsentry/docs/generated/wikidata-brand-gap-report.json)

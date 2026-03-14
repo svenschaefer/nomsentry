@@ -62,7 +62,7 @@
 
 - Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
 - Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
-- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for reserved-route positives, RFC 2142 positives, maintained protected-brand positives, mixed-script fallback reviews, and nearby false positives, but it is still not the full reviewed catalog.
+- The grouped maintained-runtime matrix now covers a broader slice of the reviewed catalog for reserved-route positives, conservative reserved-usernames technical positives, RFC 2142 positives, maintained protected-brand positives, mixed-script lexical hits and fallback reviews, plus nearby false positives, but it is still not the full reviewed catalog.
 - Normalization tests now include deterministic generated property coverage for idempotence, invisibles, separator-heavy variants, case-mixed and NFD forms, fullwidth ASCII forms, and supported confusable substitutions, but they still do not constitute full fuzzing.
 - Normalization tests now also cover generated confusable-heavy variants combined with separators, invisibles, and mixed normalization forms, but they still do not constitute full fuzzing.
 - Determinism is now covered both by standalone check scripts and by direct in-suite tests for loader ordering and byte-stable maintained-source recompaction.

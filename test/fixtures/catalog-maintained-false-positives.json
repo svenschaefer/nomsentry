@@ -9,7 +9,7 @@
     "label": "reservedTechnical nearby negatives",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["administratorx", "apis", "default", "helpful", "publica", "publicly", "serviceable", "uploadslab", "projectile", "searcher", "userspace", "billingham-labs"]
+    "values": ["administratorx", "apis", "default", "helpful", "publica", "publicly", "serviceable", "uploadslab", "projectile", "searcher", "userspace", "billingham-labs", "hosted", "webview", "wikipedia", "mailer", "mailbox", "oauthify", "xmlish", "statuspage", "hostmastery", "serverless"]
   },
   {
     "label": "composite nearby negatives",
