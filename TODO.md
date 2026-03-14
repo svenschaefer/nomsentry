@@ -75,9 +75,9 @@
 
 - Add tests for policy matrix edge cases with `severity`.
   - Why:
-    - There is one positive `severity` test, but not enough around missing severities, unknown severities, partial severity maps, or mixed-category interactions.
+    - `severity` fallback behavior is now partially covered, but mixed-category escalation and broader matrix interactions are still lightly tested.
   - Target:
-    - assert stable fallback behavior for incomplete decision matrices
+    - add deeper mixed-category and multi-rule matrix coverage
 
 - Add regression tests for deterministic maintained source generation.
   - Why:

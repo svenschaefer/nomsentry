@@ -715,6 +715,102 @@ assert.throws(
   );
 }
 
+{
+  const severityFallbackEngine = createEngine({
+    sources: [{
+      id: "severity-fallback-source",
+      rules: [
+        {
+          id: "severity-fallback-source/mild",
+          term: "mild",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton"
+        },
+        {
+          id: "severity-fallback-source/odd",
+          term: "odd",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "unknown",
+          normalizationField: "confusableSkeleton"
+        },
+        {
+          id: "severity-fallback-source/hardbrand",
+          term: "hardbrand",
+          category: "protectedBrand",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton"
+        }
+      ]
+    }],
+    policies: [{
+      id: "severity-fallback-policy",
+      appliesTo: ["tenantName"],
+      decisionMatrix: {
+        profanity: {
+          high: "reject",
+          default: "review"
+        },
+        protectedBrand: "review"
+      }
+    }]
+  });
+
+  assert.equal(
+    severityFallbackEngine.evaluate({ value: "mild", kind: "tenantName" }).decision,
+    "review",
+    "missing severities should fall back to the category default"
+  );
+  assert.equal(
+    severityFallbackEngine.evaluate({ value: "odd", kind: "tenantName" }).decision,
+    "review",
+    "unknown severities should fall back to the category default"
+  );
+  assert.equal(
+    severityFallbackEngine.evaluate({ value: "odd hardbrand", kind: "tenantName" }).decision,
+    "review",
+    "mixed categories with review-only actions should remain review"
+  );
+}
+
+{
+  const severityNoDefaultEngine = createEngine({
+    sources: [{
+      id: "severity-nodefault-source",
+      rules: [
+        {
+          id: "severity-nodefault-source/rare",
+          term: "rare",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "medium",
+          normalizationField: "confusableSkeleton"
+        }
+      ]
+    }],
+    policies: [{
+      id: "severity-nodefault-policy",
+      appliesTo: ["tenantName"],
+      decisionMatrix: {
+        profanity: {
+          high: "reject"
+        }
+      }
+    }]
+  });
+
+  assert.equal(
+    severityNoDefaultEngine.evaluate({ value: "rare", kind: "tenantName" }).decision,
+    "review",
+    "partial severity matrices without a default should fall back to review"
+  );
+}
+
 for (const testCase of [
   { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },
