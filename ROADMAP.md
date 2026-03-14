@@ -38,6 +38,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 4. Engineering hygiene
    - completed:
      - linting and formatting checks
-   - evaluate JSDoc or TypeScript-based shape checking
+     - lightweight JSDoc and TypeScript-based type checking for compact source and runtime-bundle schema surfaces
    - Dependency:
      - can proceed incrementally after the higher-risk runtime and policy work

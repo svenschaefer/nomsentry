@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added lightweight JSDoc and TypeScript-based shape checking for schema-heavy runtime surfaces.
+  - added [tsconfig.typecheck.json](/C:/code/nomsentry/tsconfig.typecheck.json)
+  - added `npm run typecheck` in [package.json](/C:/code/nomsentry/package.json) and wired it into `ci:check`
+  - added [src/types.js](/C:/code/nomsentry/src/types.js) for shared compact source and runtime-bundle typedefs
+  - enabled checked JSDoc coverage for [src/schema/source-format.js](/C:/code/nomsentry/src/schema/source-format.js), [src/schema/validate-source.js](/C:/code/nomsentry/src/schema/validate-source.js), and [src/loaders/runtime-bundle.js](/C:/code/nomsentry/src/loaders/runtime-bundle.js)
+
 - Closed the broader matrix and normalization-fuzz coverage block.
   - added [test/fixtures/catalog-maintained-true-negatives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-true-negatives.json)
   - expanded the grouped maintained matrix to cover explicit TP, FP, TN, and documented FN suites

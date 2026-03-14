@@ -39,6 +39,7 @@ Additional project docs:
 npm test
 npm run lint:check
 npm run format:check
+npm run typecheck
 npm run benchmark:runtime
 npm run docs:check
 npm run freshness:check

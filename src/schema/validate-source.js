@@ -1,3 +1,10 @@
+// @ts-check
+
+/** @typedef {import("../types.js").Source} Source */
+/** @typedef {import("../types.js").SourceMetadata} SourceMetadata */
+/** @typedef {import("../types.js").SourceRule} SourceRule */
+/** @typedef {import("../types.js").CompositeRule} CompositeRule */
+
 import { expandSource } from "./source-format.js";
 
 function assertString(value, name) {
@@ -30,6 +37,10 @@ function assertOptionalArrayOfStrings(value, name) {
   value.forEach((entry, index) => assertString(entry, `${name}[${index}]`));
 }
 
+/**
+ * @param {SourceMetadata} metadata
+ * @param {string} pointer
+ */
 function validateMetadata(metadata, pointer) {
   assertObject(metadata, pointer);
   assertOptionalString(metadata.source, `${pointer}.source`);
@@ -41,6 +52,10 @@ function validateMetadata(metadata, pointer) {
   assertOptionalString(metadata.sourceUrl, `${pointer}.sourceUrl`);
 }
 
+/**
+ * @param {SourceRule} rule
+ * @param {string} pointer
+ */
 function validateRule(rule, pointer) {
   assertString(rule.id, `${pointer}.id`);
   assertString(rule.term, `${pointer}.term`);
@@ -56,6 +71,10 @@ function validateRule(rule, pointer) {
     validateMetadata(rule.metadata, `${pointer}.metadata`);
 }
 
+/**
+ * @param {CompositeRule} rule
+ * @param {string} pointer
+ */
 function validateCompositeRule(rule, pointer) {
   assertString(rule.id, `${pointer}.id`);
   assertString(rule.term, `${pointer}.term`);
@@ -67,6 +86,10 @@ function validateCompositeRule(rule, pointer) {
   );
 }
 
+/**
+ * @param {Source} source
+ * @returns {Source}
+ */
 export function validateSource(source) {
   const expanded = expandSource(source);
   assertString(expanded.id, "source.id");

@@ -28,6 +28,7 @@
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/schema/source-format.js` - compact source tuple format
 - `src/schema/source-io.js` - compact source serialization and pruning
+- `src/types.js` - shared typedefs for compact sources and runtime bundles
 - `src/policies/*` - policy mapping
 
 ## Data flow

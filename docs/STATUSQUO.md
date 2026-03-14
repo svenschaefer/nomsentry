@@ -59,6 +59,10 @@
 - Lint and formatting gates are now in place for human-maintained repository files through:
   - `npm run lint:check`
   - `npm run format:check`
+- Lightweight type-shape checking is now in place for compact source and runtime-bundle schema surfaces through:
+  - `npm run typecheck`
+  - shared typedefs in `src/types.js`
+  - checked JSDoc on `src/schema/source-format.js`, `src/schema/validate-source.js`, and `src/loaders/runtime-bundle.js`
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, a broader RFC 2142 impersonation set, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - explicit true-negative suites for ordinary tenant slugs and tenant names that should stay `allow`

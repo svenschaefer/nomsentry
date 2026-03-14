@@ -1,11 +1,19 @@
+// @ts-check
+
+/** @typedef {import("../types.js").RuntimeBundle} RuntimeBundle */
+
 import fs from "node:fs";
 
 const SUPPORTED_RUNTIME_BUNDLE_VERSION = 1;
 
+/** @param {string | URL} path */
 function readJson(path) {
-  return JSON.parse(fs.readFileSync(path, "utf8"));
+  return /** @type {RuntimeBundle} */ (
+    JSON.parse(fs.readFileSync(path, "utf8"))
+  );
 }
 
+/** @param {RuntimeBundle} bundle */
 export function expandRuntimeBundle(bundle) {
   if (bundle?.version !== SUPPORTED_RUNTIME_BUNDLE_VERSION) {
     throw new Error(
@@ -109,6 +117,7 @@ export function expandRuntimeBundle(bundle) {
   };
 }
 
+/** @param {string | URL} path */
 export function loadRuntimeBundleFromFile(path) {
   return expandRuntimeBundle(readJson(path));
 }

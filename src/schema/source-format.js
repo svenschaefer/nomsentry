@@ -1,3 +1,10 @@
+// @ts-check
+
+/** @typedef {import("../types.js").Source} Source */
+/** @typedef {import("../types.js").SourceMetadata} SourceMetadata */
+/** @typedef {import("../types.js").SourceRule} SourceRule */
+/** @typedef {import("../types.js").RuleDefaults} RuleDefaults */
+
 function clone(value) {
   return value === undefined ? undefined : JSON.parse(JSON.stringify(value));
 }
@@ -6,7 +13,12 @@ function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+/**
+ * @param {SourceMetadata | undefined} base
+ * @param {SourceMetadata | undefined} override
+ */
 function mergeMetadata(base, override) {
+  /** @type {SourceMetadata} */
   const merged = { ...(base ?? {}) };
   for (const [key, value] of Object.entries(override ?? {})) {
     if (value !== undefined) merged[key] = value;
@@ -22,12 +34,15 @@ function getCommonValue(values) {
     : undefined;
 }
 
+/** @param {Source} source */
 function getRuleDefaults(source) {
+  /** @type {SourceRule[]} */
   const rules = Array.isArray(source?.rules)
-    ? source.rules.filter(isPlainObject)
+    ? /** @type {SourceRule[]} */ (source.rules.filter(isPlainObject))
     : [];
   if (rules.length === 0) return undefined;
 
+  /** @type {RuleDefaults} */
   const defaults = {};
   for (const key of [
     "category",
@@ -36,10 +51,12 @@ function getRuleDefaults(source) {
     "severity",
     "normalizationField",
   ]) {
-    const common = getCommonValue(rules.map((rule) => rule[key]));
-    if (common !== undefined) defaults[key] = clone(common);
+    const propertyKey = /** @type {keyof SourceRule} */ (key);
+    const common = getCommonValue(rules.map((rule) => rule[propertyKey]));
+    if (common !== undefined) defaults[propertyKey] = clone(common);
   }
 
+  /** @type {SourceMetadata} */
   const metadata = {};
   const metadataKeys = new Set();
   for (const rule of rules) {
@@ -49,8 +66,11 @@ function getRuleDefaults(source) {
   }
 
   for (const key of metadataKeys) {
-    const common = getCommonValue(rules.map((rule) => rule.metadata?.[key]));
-    if (common !== undefined) metadata[key] = clone(common);
+    const metadataKey = /** @type {keyof SourceMetadata} */ (key);
+    const common = getCommonValue(
+      rules.map((rule) => rule.metadata?.[metadataKey]),
+    );
+    if (common !== undefined) metadata[metadataKey] = clone(common);
   }
 
   if (Object.keys(metadata).length > 0) {
@@ -69,6 +89,10 @@ function getRuleDefaults(source) {
   return Object.keys(defaults).length === 0 ? undefined : defaults;
 }
 
+/**
+ * @param {SourceRule} rule
+ * @param {RuleDefaults | undefined} defaults
+ */
 function compactRule(rule, defaults) {
   const entry = [];
   const rawId =
@@ -77,6 +101,7 @@ function compactRule(rule, defaults) {
       : rule.id;
   entry.push(rawId, rule.term);
 
+  /** @type {Partial<SourceRule> & { metadata?: SourceMetadata }} */
   const override = {};
   for (const key of [
     "category",
@@ -85,20 +110,31 @@ function compactRule(rule, defaults) {
     "severity",
     "normalizationField",
   ]) {
-    if (JSON.stringify(rule[key]) !== JSON.stringify(defaults?.[key])) {
-      override[key] = clone(rule[key]);
+    const propertyKey = /** @type {keyof SourceRule} */ (key);
+    if (
+      JSON.stringify(rule[propertyKey]) !==
+      JSON.stringify(defaults?.[propertyKey])
+    ) {
+      override[propertyKey] = clone(rule[propertyKey]);
     }
   }
 
+  /** @type {SourceMetadata} */
   const metadata = {};
+  const metadataRecord =
+    /** @type {Record<string, string | string[] | undefined>} */ (metadata);
   for (const [key, value] of Object.entries(rule.metadata ?? {})) {
+    const metadataKey = /** @type {keyof SourceMetadata} */ (key);
     if (key === "notes") {
-      metadata[key] = value;
+      metadataRecord[metadataKey] = value;
       continue;
     }
 
-    if (JSON.stringify(value) !== JSON.stringify(defaults?.metadata?.[key])) {
-      metadata[key] = clone(value);
+    if (
+      JSON.stringify(value) !==
+      JSON.stringify(defaults?.metadata?.[metadataKey])
+    ) {
+      metadataRecord[metadataKey] = clone(value);
     }
   }
 
@@ -113,6 +149,7 @@ function compactRule(rule, defaults) {
   return entry;
 }
 
+/** @param {Source} source */
 export function compactSource(source) {
   if (
     !Array.isArray(source?.rules) ||
@@ -129,11 +166,19 @@ export function compactSource(source) {
     description: source.description,
     metadata: source.metadata,
     ruleDefaults: defaults,
-    rules: source.rules.map((rule) => compactRule(rule, defaults)),
+    rules: /** @type {SourceRule[]} */ (source.rules).map((rule) =>
+      compactRule(rule, defaults),
+    ),
     ...(source.compositeRules ? { compositeRules: source.compositeRules } : {}),
   };
 }
 
+/**
+ * @param {SourceRule | [string, string, (Partial<SourceRule> & { metadata?: SourceMetadata })?]} rule
+ * @param {RuleDefaults | undefined} defaults
+ * @param {number} index
+ * @returns {SourceRule}
+ */
 function expandCompactRule(rule, defaults, index) {
   if (isPlainObject(rule)) return clone(rule);
   if (!Array.isArray(rule) || rule.length < 2 || rule.length > 3) {
@@ -159,6 +204,7 @@ function expandCompactRule(rule, defaults, index) {
   };
 }
 
+/** @param {Source} source */
 export function expandSource(source) {
   if (
     !Array.isArray(source?.rules) ||

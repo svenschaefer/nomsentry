@@ -57,6 +57,7 @@
 - Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - A lightweight runtime benchmark harness exists for bundle load, engine creation, and evaluation latency over maintained fixture inputs.
 - Lint and formatting gates now exist for human-maintained files through ESLint and Prettier, and they are part of `npm run ci:check`.
+- A lightweight type-checking gate now exists through `npm run typecheck`, focused on compact source and runtime-bundle schema surfaces.
 - `npm run determinism:check` validates both maintained source determinism and runtime-bundle determinism.
 - `npm run ci:check` is the main local validation gate.
 
@@ -95,6 +96,7 @@
 - `docs/BASELINE_TEST_RUN.md`
 - `docs/NPM_RELEASE.md`
 - `docs/RELEASE_NOTES_TEMPLATE.md`
+- `tsconfig.typecheck.json`
 
 ## Current major open areas
 

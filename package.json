@@ -22,6 +22,7 @@
     "test": "node test/run-tests.js",
     "lint:check": "eslint .",
     "format:check": "prettier --check \"*.{json,md,yml,yaml}\" \"bin/**/*.js\" \"scripts/**/*.js\" \"src/**/*.js\" \"test/**/*.js\" \".github/workflows/**/*.yml\"",
+    "typecheck": "tsc -p tsconfig.typecheck.json",
     "benchmark:runtime": "node scripts/benchmark-runtime.js",
     "docs:check": "node scripts/check-docs-consistency.js",
     "freshness:check": "node scripts/check-source-freshness.js",
@@ -30,7 +31,7 @@
     "determinism:check:runtime": "node scripts/check-runtime-bundle-determinism.js",
     "pack:check": "npm pack --dry-run",
     "release:check": "npm run ci:check && npm run pack:check",
-    "ci:check": "npm run lint:check && npm run format:check && npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check && npm run freshness:check",
+    "ci:check": "npm run lint:check && npm run format:check && npm run typecheck && npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check && npm run freshness:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",
@@ -57,9 +58,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/node": "^24.6.1",
     "eslint": "^10.0.3",
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "reserved-usernames": "^1.1.6"
+    "reserved-usernames": "^1.1.6",
+    "typescript": "^5.9.3"
   }
 }

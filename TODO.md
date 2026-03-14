@@ -67,8 +67,3 @@
     - generate composite rules from maintained impersonation or recovery vocabularies, or another documented derived source strategy
 
 ## P2 Engineering hygiene
-
-- Consider adding TypeScript or JSDoc-based type checking for the source and runtime bundle schemas.
-  - Why:
-    - The core data model is tuple-heavy and compact by design.
-    - That makes static shape validation more valuable than in a simpler object model.
