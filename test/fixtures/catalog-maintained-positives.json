@@ -183,6 +183,12 @@
     "values": ["beaner", "batty-boy"]
   },
   {
+    "label": "maintained sexual positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["anal", "bdsm", "blowjob", "cumshot"]
+  },
+  {
     "label": "mixed script review fallback",
     "kind": "tenantSlug",
     "expected": "review",

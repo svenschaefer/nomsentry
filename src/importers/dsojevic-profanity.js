@@ -22,6 +22,9 @@ function categoryForEntry(entry, fallbackCategory) {
       ? entry.tags.map((tag) => String(tag).toLowerCase())
       : [],
   );
+  if (tags.has("sexual")) {
+    return "sexual";
+  }
   if (tags.has("racial") || tags.has("religious") || tags.has("lgbtq")) {
     return "slur";
   }

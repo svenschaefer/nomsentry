@@ -14,7 +14,7 @@
 - `src/importers/toad-profanity.js` - @2toad/profanity normalization into source JSON
 - `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
 - `src/importers/cuss.js` - cuss normalization into source JSON
-- `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source-refined profanity and slur JSON
+- `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source-refined profanity, slur, and sexual JSON
 - `src/importers/insult-wiki.js` - insult.wiki HTML list normalization into source JSON
 - `src/importers/gitlab-reserved-names.js` - conservative extraction of GitLab reserved project and group names into source JSON
 - `src/importers/github-reserved-usernames.js` - conservative extraction of the additive GitHub Enterprise reserved-username impersonation subset into source JSON

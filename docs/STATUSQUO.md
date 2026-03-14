@@ -74,7 +74,8 @@
   - the first explicit split beyond broad `profanity` is now in place
   - `insult.wiki` now feeds `insult`
   - `dsojevic/profanity-list` now maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`
-  - the current refinement is intentionally source-based, so some overlapping terms can still surface both `profanity` and `insult` evidence or both `profanity` and `slur` evidence
+  - `dsojevic/profanity-list` now also maps `sexual` tagged entries to `sexual`
+  - the current refinement is intentionally source-based, so some overlapping terms can still surface both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, or both `profanity` and `sexual` evidence
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`

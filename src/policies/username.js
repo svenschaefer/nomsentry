@@ -9,6 +9,7 @@ export function username() {
       profanity: "reject",
       insult: "reject",
       slur: "reject",
+      sexual: "reject",
       scriptRisk: "review",
       compositeRisk: "review",
     },

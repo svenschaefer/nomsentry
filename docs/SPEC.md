@@ -30,7 +30,7 @@ That bundle is versioned and validated for structural compatibility before runti
 
 That bundle is built from versioned source artifacts in `custom/sources/`, which currently include:
 
-- profanity, insult, and slur lexicons
+- profanity, insult, slur, and sexual lexicons
 - imported library datasets
 - official and normative identifier artifacts
 - derived impersonation and composite-risk artifacts
@@ -44,6 +44,8 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
   - source-backed insult-oriented terms, currently led by `insult.wiki`
 - `slur`
   - source-backed targeted-group abuse terms, currently led by tagged `dsojevic/profanity-list` entries
+- `sexual`
+  - source-backed sexual-content terms, currently led by tagged `dsojevic/profanity-list` entries
 - `protectedBrand`
   - review-level trademark risk terms derived from official trademark data
 - `impersonation`

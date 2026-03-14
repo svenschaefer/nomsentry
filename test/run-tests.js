@@ -3643,6 +3643,7 @@ for (const testCase of [
     entries: [
       { id: "simple", match: "dumb|d*mb", tags: ["general"], severity: 2 },
       { id: "racial", match: "beaner", tags: ["racial"], severity: 3 },
+      { id: "sexual", match: "bdsm|anal", tags: ["sexual"], severity: 2 },
       {
         id: "shock",
         match: "2 girls 1 cup|2g1c",
@@ -3678,6 +3679,13 @@ for (const testCase of [
     ),
     true,
     "dsojevic importer should map targeted-group tags to the slur category",
+  );
+  assert.equal(
+    source.rules.some(
+      (rule) => rule.term === "bdsm" && rule.category === "sexual",
+    ),
+    true,
+    "dsojevic importer should map sexual tags to the sexual category",
   );
 }
 
@@ -4131,6 +4139,18 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "slur"),
     true,
     "structured slur-tagged imports should now surface the slur category in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "bdsm",
+    kind: "tenantName",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "sexual"),
+    true,
+    "structured sexual-tagged imports should now surface the sexual category in the maintained baseline",
   );
 }
 
