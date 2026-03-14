@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added a lightweight runtime benchmark harness.
+  - added [scripts/benchmark-runtime.js](/C:/code/nomsentry/scripts/benchmark-runtime.js)
+  - added `npm run benchmark:runtime` in [package.json](/C:/code/nomsentry/package.json)
+  - benchmark coverage includes runtime-bundle load time, engine creation time, and evaluation latency over maintained fixture inputs
+  - added direct benchmark argument and summary coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
 - Replaced the linear runtime matcher with a prebuilt indexed matcher.
   - [src/core/matchers.js](/C:/code/nomsentry/src/core/matchers.js) now builds and queries a rule index keyed by scope, normalization field, match type, and token candidates
   - [src/core/evaluate.js](/C:/code/nomsentry/src/core/evaluate.js) now compiles the index once at engine creation time

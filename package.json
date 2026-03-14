@@ -20,6 +20,7 @@
   },
   "scripts": {
     "test": "node test/run-tests.js",
+    "benchmark:runtime": "node scripts/benchmark-runtime.js",
     "docs:check": "node scripts/check-docs-consistency.js",
     "freshness:check": "node scripts/check-source-freshness.js",
     "determinism:check": "npm run determinism:check:sources && npm run determinism:check:runtime",

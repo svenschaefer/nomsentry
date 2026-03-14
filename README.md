@@ -33,6 +33,7 @@ Additional project docs:
 
 ```bash
 npm test
+npm run benchmark:runtime
 npm run docs:check
 npm run freshness:check
 npm run determinism:check
@@ -51,6 +52,11 @@ npm run build:runtime-sources
 node bin/nomsentry.js check tenantName sh!t
 node bin/nomsentry.js explain tenantName mierda
 ```
+
+`npm run benchmark:runtime` prints a small JSON summary for:
+- runtime-bundle load time
+- engine creation time
+- per-request evaluation latency across maintained fixture inputs
 
 ## Runtime model
 

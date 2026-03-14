@@ -40,6 +40,7 @@ import { buildRuleIndex, matchRules } from "../src/core/matchers.js";
 import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
 import { buildProvenanceManifest, writeProvenanceManifest } from "../scripts/build-provenance-manifest.js";
+import { benchmarkRuntime, parseArgs as parseRuntimeBenchmarkArgs } from "../scripts/benchmark-runtime.js";
 import {
   assessFreshness,
   findRefreshPolicy,
@@ -226,6 +227,33 @@ assert.equal(
   true,
   "directory loader should include official role-mailbox source"
 );
+
+{
+  const benchmarkArgs = parseRuntimeBenchmarkArgs(["--iterations", "25", "--warmup-iterations", "5"]);
+  assert.equal(benchmarkArgs.iterations, 25, "runtime benchmark args should parse iterations");
+  assert.equal(benchmarkArgs.warmupIterations, 5, "runtime benchmark args should parse warmup iterations");
+}
+
+assert.throws(
+  () => parseRuntimeBenchmarkArgs(["--iterations", "0"]),
+  /Invalid option: --iterations must be a positive integer/,
+  "runtime benchmark args should reject non-positive iteration counts"
+);
+
+{
+  const summary = benchmarkRuntime({
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    iterations: 20,
+    warmupIterations: 2
+  });
+  assert.equal(summary.id, "runtime-benchmark", "runtime benchmark should return a stable result id");
+  assert.equal(summary.version, 1, "runtime benchmark should return a stable result version");
+  assert.equal(summary.iterations, 20, "runtime benchmark should report the requested iteration count");
+  assert.equal(summary.benchmarkCases > 0, true, "runtime benchmark should use maintained fixture cases");
+  assert.equal(summary.bundleLoadMs >= 0, true, "runtime benchmark should measure bundle load time");
+  assert.equal(summary.engineCreateMs >= 0, true, "runtime benchmark should measure engine creation time");
+  assert.equal(summary.avgEvalMs >= 0, true, "runtime benchmark should measure evaluation latency");
+}
 
 {
   const manifest = JSON.parse(fs.readFileSync(new URL("../dist/build-manifest.json", import.meta.url), "utf8"));

@@ -12,7 +12,6 @@
   - upstream provenance enrichment and freshness metadata
   - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
   - deeper normalization fuzz coverage
-  - runtime benchmarking
 
 ## Runtime status
 
@@ -21,6 +20,7 @@
   - `node bin/nomsentry.js explain <kind> <value>`
 - Working quality gates:
   - `npm test`
+  - `npm run benchmark:runtime`
   - `npm run docs:check`
   - `npm run freshness:check`
   - `npm run determinism:check`
@@ -37,6 +37,9 @@
   - build provenance manifest
 - Runtime matching now uses:
   - a prebuilt indexed matcher instead of a per-request full rule scan
+- Runtime benchmarking is available through:
+  - `npm run benchmark:runtime`
+  - current measurements cover bundle load time, engine creation time, and evaluation latency across maintained fixture inputs
 - Source freshness checks are in place for:
   - maintained source artifacts based on git commit dates and `source-refresh-policy.json`
 - In-suite determinism coverage now includes:

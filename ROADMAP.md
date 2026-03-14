@@ -9,19 +9,14 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ### v0.4.x
 
-1. Runtime performance foundation
-   - add benchmark fixtures for bundle load and request latency
-   - Dependency:
-     - none
-
-2. Build provenance enrichment
+1. Build provenance enrichment
    - extend the new build provenance manifest with upstream version and transform metadata
    - Dependency:
-     - can proceed independently of indexed matching
+      - can proceed independently of indexed matching
 
 ### v0.5.x
 
-3. Product policy refinement
+2. Product policy refinement
    - split coarse `profanity` handling into more precise categories
    - expand maintained impersonation coverage beyond the RFC 2142-centered baseline, knowing that free source options are limited for modern trust and recovery vocabulary
    - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows plus GitLab baseline, including `reserved-usernames`, `github-reserved-names`, and optional Windows reserved URI scheme names
@@ -32,7 +27,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - Dependency:
      - benefits from provenance work but does not require indexed matching
 
-4. Quality expansion
+3. Quality expansion
    - add normalization fuzz and property-style tests
    - turn the reviewed curated identifier catalog into grouped regression fixtures
    - deepen import-failure coverage
@@ -43,7 +38,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ### v0.6.x
 
-5. Engineering hygiene
+4. Engineering hygiene
    - add linting and formatting checks
    - evaluate JSDoc or TypeScript-based shape checking
    - Dependency:

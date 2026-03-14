@@ -125,9 +125,3 @@
   - Why:
     - The core data model is tuple-heavy and compact by design.
     - That makes static shape validation more valuable than in a simpler object model.
-
-- Add benchmark fixtures for runtime matching and bundle loading.
-  - Why:
-    - Runtime matching is now indexed, but there is still no maintained benchmark harness to quantify startup cost, bundle load time, and per-request latency.
-  - Target:
-    - measure engine startup, bundle load time, and per-request matching latency on representative inputs
