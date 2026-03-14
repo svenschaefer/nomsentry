@@ -9,6 +9,7 @@
 - Major open workstreams:
   - indexed runtime matching
   - source provenance and freshness metadata
+  - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
   - deeper normalization fuzz coverage
 
 ## Runtime status

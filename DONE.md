@@ -40,6 +40,11 @@
   - added [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md)
   - added `pack:check` and `release:check` to [package.json](/C:/code/nomsentry/package.json)
 
+- Recorded the curated catalog gap analysis in the persistent planning docs.
+  - updated [TODO.md](/C:/code/nomsentry/TODO.md) with runtime-coverage gaps for `reservedTechnical`, `impersonation`, `protectedBrand`, `compositeRisk`, and compact-form normalization
+  - updated [ROADMAP.md](/C:/code/nomsentry/ROADMAP.md) to sequence those gaps into the product-policy and quality tracks
+  - updated [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md) with the latest catalog-based coverage findings
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.
