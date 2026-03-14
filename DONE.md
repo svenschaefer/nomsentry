@@ -13,6 +13,11 @@
   - `compact-sources` stage/swap behavior
   - stable `insult.wiki` filename mapping during source compaction
 
+- Added destructive-script guardrails to [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js).
+  - refuses empty source sets
+  - refuses to replace source directories containing unexpected non-JSON entries
+  - covered by dedicated regression tests in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

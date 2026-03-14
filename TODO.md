@@ -90,10 +90,10 @@
 
 - Add tests for destructive-script safeguards.
   - Why:
-    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has basic stage/swap coverage, but not enough around interrupted writes, empty input directories, or accidental path misuse.
+    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has guardrails for empty sources and unexpected files, but rollback-path and interruption behavior are still under-tested.
   - Target:
-    - test path handling and failure behavior for destructive maintenance scripts
-    - add explicit guardrails for unexpected directories before deletion
+    - test rollback behavior under staged-write or rename failures
+    - add deeper path-misuse coverage for destructive maintenance scripts
 
 ## P2 Engineering hygiene
 

@@ -3,7 +3,7 @@
 ## Current focus
 
 1. Runtime and build hardening
-   - stronger guardrails and rollback-path coverage for maintenance scripts
+   - deeper rollback-path coverage for maintenance scripts
 
 2. Runtime performance
    - replace linear rule scans with indexed matching

@@ -555,6 +555,45 @@ assert.equal(
   fs.rmSync(tmpDir, { recursive: true, force: true });
 }
 
+assert.throws(
+  () => compactSourcesDirectory([], path.join(os.tmpdir(), "nomsentry-empty-sources"), { logger: null }),
+  /source set is empty/,
+  "compact-sources should reject empty source sets"
+);
+
+{
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-compact-guard-"));
+  const outputDir = path.join(tmpDir, "sources");
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(path.join(outputDir, "README.txt"), "do not replace\n", "utf8");
+
+  assert.throws(
+    () => compactSourcesDirectory([
+      {
+        id: "imported-insult-wiki-en",
+        rules: [
+          {
+            id: "imported-insult-wiki-en/asshole",
+            term: "asshole",
+            category: "profanity",
+            scopes: ["tenantName"],
+            match: "token"
+          }
+        ]
+      }
+    ], outputDir, { logger: null }),
+    /unexpected existing entries README\.txt/,
+    "compact-sources should refuse to replace directories that contain unexpected files"
+  );
+
+  assert.equal(
+    fs.readFileSync(path.join(outputDir, "README.txt"), "utf8"),
+    "do not replace\n",
+    "compact-sources guardrail should leave foreign files untouched after refusal"
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
 {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-runtime-bundle-"));
   const outputFile = path.join(tmpDir, "runtime-sources.json");

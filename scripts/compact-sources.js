@@ -25,11 +25,26 @@ export function resolveCompactFilename(source) {
 }
 
 export function compactSourcesDirectory(sources, outputDir, options = {}) {
+  if (!Array.isArray(sources) || sources.length === 0) {
+    throw new Error("Refusing to compact sources: source set is empty");
+  }
+
   const parentDir = path.dirname(outputDir);
   const nonce = `${process.pid}-${Date.now()}`;
   const stageDir = options.stageDir ?? path.join(parentDir, `.sources-stage-${nonce}`);
   const backupDir = options.backupDir ?? path.join(parentDir, `.sources-backup-${nonce}`);
   const logger = Object.prototype.hasOwnProperty.call(options, "logger") ? options.logger : console.log;
+
+  if (fs.existsSync(outputDir)) {
+    const unexpectedEntries = fs.readdirSync(outputDir, { withFileTypes: true })
+      .filter((entry) => !entry.isFile() || path.extname(entry.name).toLowerCase() !== ".json")
+      .map((entry) => entry.name);
+    if (unexpectedEntries.length > 0) {
+      throw new Error(
+        `Refusing to compact sources into ${outputDir}: unexpected existing entries ${unexpectedEntries.join(", ")}`
+      );
+    }
+  }
 
   fs.mkdirSync(stageDir, { recursive: true });
 
