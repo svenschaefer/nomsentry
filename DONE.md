@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Extended the profanity-category refinement with a source-backed `slur` category.
+  - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `racial`, `religious`, and `lgbtq` tagged entries from `dsojevic/profanity-list` to `slur`
+  - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `slur` decisions
+  - [custom/sources/dsojevic-profanity-en.json](/C:/code/nomsentry/custom/sources/dsojevic-profanity-en.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
+  - the current refinement remains intentionally source-based, so overlapping terms can still surface both `profanity` and `slur` evidence until the broader category split is complete
+
 - Added conservative official GitHub Enterprise and ICANN reserved-name sources.
   - added [src/importers/github-reserved-usernames.js](/C:/code/nomsentry/src/importers/github-reserved-usernames.js)
   - added [scripts/import-github-reserved-usernames.js](/C:/code/nomsentry/scripts/import-github-reserved-usernames.js)

@@ -3577,6 +3577,7 @@ for (const testCase of [
     language: "en",
     entries: [
       { id: "simple", match: "dumb|d*mb", tags: ["general"], severity: 2 },
+      { id: "racial", match: "beaner", tags: ["racial"], severity: 3 },
       {
         id: "shock",
         match: "2 girls 1 cup|2g1c",
@@ -3605,6 +3606,13 @@ for (const testCase of [
     source.rules.some((rule) => rule.id.includes("/shock/")),
     true,
     "dsojevic importer should keep literal multi-word matches",
+  );
+  assert.equal(
+    source.rules.some(
+      (rule) => rule.term === "beaner" && rule.category === "slur",
+    ),
+    true,
+    "dsojevic importer should map targeted-group tags to the slur category",
   );
 }
 
@@ -3979,6 +3987,18 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "insult"),
     true,
     "insult.wiki hits should now surface the insult category in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "beaner",
+    kind: "tenantName",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "slur"),
+    true,
+    "structured slur-tagged imports should now surface the slur category in the maintained baseline",
   );
 }
 

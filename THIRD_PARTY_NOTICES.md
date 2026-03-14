@@ -39,7 +39,7 @@ The current maintained source families are:
 
 ### dsojevic/profanity-list
 
-- Purpose: structured profanity terms with severity metadata
+- Purpose: structured profanity and slur terms with severity metadata
 - Used in: `custom/sources/dsojevic-profanity-en.json`
 - Source: https://github.com/dsojevic/profanity-list
 - License: MIT

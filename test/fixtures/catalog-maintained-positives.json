@@ -168,6 +168,12 @@
     ]
   },
   {
+    "label": "maintained slur positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["beaner", "batty-boy"]
+  },
+  {
     "label": "mixed script review fallback",
     "kind": "tenantSlug",
     "expected": "review",

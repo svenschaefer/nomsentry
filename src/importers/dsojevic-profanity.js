@@ -16,6 +16,18 @@ function extractLiteralMatches(entry) {
     .filter((candidate) => !candidate.includes("*"));
 }
 
+function categoryForEntry(entry, fallbackCategory) {
+  const tags = new Set(
+    Array.isArray(entry.tags)
+      ? entry.tags.map((tag) => String(tag).toLowerCase())
+      : [],
+  );
+  if (tags.has("racial") || tags.has("religious") || tags.has("lgbtq")) {
+    return "slur";
+  }
+  return fallbackCategory;
+}
+
 export function buildDsojevicSource({
   language,
   entries,
@@ -26,6 +38,7 @@ export function buildDsojevicSource({
   const rules = [];
 
   for (const entry of entries) {
+    const entryCategory = categoryForEntry(entry, category);
     for (const candidate of extractLiteralMatches(entry)) {
       const normalized = normalizeValue(candidate);
       if (!normalized.latinFolded || normalized.compact.length < 2) continue;
@@ -35,7 +48,7 @@ export function buildDsojevicSource({
       rules.push({
         id: `imported-dsojevic-${language}/${entry.id}/${normalized.slug || normalized.compact}`,
         term: normalized.latinFolded,
-        category,
+        category: entryCategory,
         scopes,
         match: "token",
         severity: severityToLabel(entry.severity),
@@ -60,7 +73,7 @@ export function buildDsojevicSource({
       source: "dsojevic/profanity-list",
       language,
       severity: "mixed",
-      tags: ["external-import", "profanity", "repo"],
+      tags: ["external-import", "profanity", "repo", "source-refined"],
       license: "MIT",
     },
     rules: rules.sort((left, right) => left.term.localeCompare(right.term)),

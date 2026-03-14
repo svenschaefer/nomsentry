@@ -8,6 +8,7 @@ export function tenantSlug() {
       protectedBrand: "review",
       profanity: "reject",
       insult: "reject",
+      slur: "reject",
       scriptRisk: "review",
       compositeRisk: "reject",
     },

@@ -47,6 +47,7 @@
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - The first explicit category split beyond broad `profanity` is now in place: `insult.wiki` feeds `insult`.
+- The next explicit source-backed refinement is now in place as well: `dsojevic/profanity-list` maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
 - `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered reserved-usernames import.
 - `impersonation` currently draws from the RFC 2142 core, an additive GitHub Enterprise reserved-username import for `staff`, and a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
@@ -121,7 +122,7 @@
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, but broader deceptive combinations such as trust, billing, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
-- The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `insult` evidence.
+- The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `insult` evidence or both `profanity` and `slur` evidence.
 
 ## Recent source-research findings
 
