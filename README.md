@@ -198,6 +198,8 @@ The default derived USPTO profile is structural and conservative:
 - multi-word marks: maximum 2 words, each token minimum 6 characters
 - terms containing digits are dropped
 
+Trailing legal-entity suffixes such as `Inc.` or `LLC` are stripped before those structural thresholds are applied, so runtime-facing terms collapse to the brand-facing identifier when that still fits the maintained default profile.
+
 This keeps the official full set available while limiting default runtime `protectedBrand` noise.
 
 The current Wikidata supplement is intentionally conservative. It closes representative uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, while still leaving ambiguity-prone terms such as `apple`, `amazon`, and `visa` out of the maintained default profile.

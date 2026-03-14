@@ -77,6 +77,10 @@
   - the current accepted cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`
   - the evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
   - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
+- USPTO derived-brand status:
+  - the maintained derived USPTO profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding
+  - this improves brand-facing runtime terms such as `Harley Davidson Inc.` -> `harley davidson`
+  - the profile is still intentionally conservative and still needs broader calibration around short, numeric, and ambiguity-prone brands
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation

@@ -66,6 +66,7 @@ import {
 import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
+  deriveUsptoFilterTerm,
   deriveUsptoBrandRiskSource,
   parseUsptoCaseFileCsv,
   splitUsptoTrademarkSource,
@@ -1946,6 +1947,19 @@ await assert.rejects(
 }
 
 {
+  assert.equal(
+    deriveUsptoFilterTerm("Harley Davidson Inc."),
+    "harley davidson",
+    "USPTO filter-term derivation should strip trailing legal suffixes",
+  );
+  assert.equal(
+    deriveUsptoFilterTerm("Babcock Wilcox Company LLC"),
+    "babcock wilcox",
+    "USPTO filter-term derivation should strip repeated trailing legal suffixes",
+  );
+}
+
+{
   const source = buildUsptoTrademarkSource(
     [
       {
@@ -2032,6 +2046,14 @@ await assert.rejects(
         cfh_status_cd: "800",
         trade_mark_in: "1",
       },
+      {
+        serial_no: "6",
+        registration_no: "6",
+        mark_id_char: "Harley Davidson Inc.",
+        mark_draw_cd: "4000",
+        cfh_status_cd: "800",
+        trade_mark_in: "1",
+      },
     ],
     { id: "imported-uspto-trademarks" },
   );
@@ -2043,8 +2065,8 @@ await assert.rejects(
   });
   assert.deepEqual(
     derived.rules.map((rule) => rule.term).sort(),
-    ["silver rocket", "superbrandname"],
-    "uspto derived risk subset should keep only structurally stronger review candidates",
+    ["harley davidson", "silver rocket", "superbrandname"],
+    "uspto derived risk subset should keep structurally stronger review candidates and strip trailing legal suffixes before thresholding",
   );
 }
 

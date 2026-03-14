@@ -35,6 +35,7 @@
 - Revisit the default USPTO brand-risk derivation with measured false-positive analysis.
   - Why:
     - The current derivation in [src/importers/uspto.js](/C:/code/nomsentry/src/importers/uspto.js) is intentionally structural only.
+    - The maintained profile now strips trailing legal-entity suffixes before thresholding, which improves cases such as `Harley Davidson Inc.` -> `harley davidson`, but the broader calibration problem remains.
     - That is defensible as a first-pass noise filter, but not yet enterprise-grade from a precision/recall perspective.
     - The current thresholds are still too blunt: one-word marks require at least 12 characters, multi-word marks allow at most 2 tokens with at least 6 characters each, and digit-bearing terms are dropped entirely.
     - Those rules reduce noise, but they also exclude many relevant short or otherwise legitimate brand identifiers and are not a clean long-term calibration.

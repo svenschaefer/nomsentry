@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Improved the USPTO-derived runtime term normalization by stripping legal-entity suffixes before structural thresholding.
+  - [src/importers/uspto.js](/C:/code/nomsentry/src/importers/uspto.js) now collapses terms such as `Harley Davidson Inc.` to `harley davidson` before applying the maintained structural filter
+  - [custom/sources/derived-uspto-brand-risk.json](/C:/code/nomsentry/custom/sources/derived-uspto-brand-risk.json) was regenerated with the improved filter-term derivation
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers repeated suffix stripping and the resulting derived inclusion behavior
+
 - Added conservative derived impersonation and composite-risk layers from the maintained source baseline.
   - added [src/importers/derived-impersonation.js](/C:/code/nomsentry/src/importers/derived-impersonation.js)
   - added [src/importers/derived-composite-risk.js](/C:/code/nomsentry/src/importers/derived-composite-risk.js)

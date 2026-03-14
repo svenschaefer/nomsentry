@@ -3,6 +3,27 @@ import readline from "node:readline";
 import { validateSource } from "../schema/validate-source.js";
 import { normalizeValue } from "../core/normalize.js";
 
+const LEGAL_SUFFIX_TOKENS = new Set([
+  "ag",
+  "bv",
+  "co",
+  "company",
+  "corp",
+  "corporation",
+  "gmbh",
+  "inc",
+  "incorporated",
+  "limited",
+  "llc",
+  "llp",
+  "lp",
+  "ltd",
+  "nv",
+  "plc",
+  "sa",
+  "sarl",
+]);
+
 export function parseCsvLine(line) {
   const cells = [];
   let current = "";
@@ -333,10 +354,11 @@ export function deriveUsptoBrandRiskSource(
   } = {},
 ) {
   const rules = Array.isArray(source?.rules) ? source.rules : [];
+  const seenTerms = new Set();
 
   const filteredRules = rules
     .filter((rule) => {
-      const term = String(rule.term ?? "").trim();
+      const term = deriveUsptoFilterTerm(rule.term);
       if (!term) return false;
       if (!allowDigits && /\d/.test(term)) return false;
 
@@ -349,14 +371,22 @@ export function deriveUsptoBrandRiskSource(
 
       return tokens.every((token) => token.length >= multiWordMinTokenLength);
     })
-    .map((rule) => ({
-      id: `${id}/${rule.id.split("/").pop()}`,
-      term: rule.term,
-      category: rule.category,
-      scopes: rule.scopes,
-      match: rule.match,
-      normalizationField: rule.normalizationField,
-    }));
+    .map((rule) => {
+      const term = deriveUsptoFilterTerm(rule.term);
+      return {
+        id: `${id}/${rule.id.split("/").pop()}`,
+        term,
+        category: rule.category,
+        scopes: rule.scopes,
+        match: rule.match,
+        normalizationField: rule.normalizationField,
+      };
+    })
+    .filter((rule) => {
+      if (seenTerms.has(rule.term)) return false;
+      seenTerms.add(rule.term);
+      return true;
+    });
 
   return validateSource({
     id,
@@ -368,8 +398,28 @@ export function deriveUsptoBrandRiskSource(
       sourceUrl:
         "https://www.uspto.gov/trademarks/apply/check-status-view-documents/trademark-bulk-data",
       notes:
-        "Derived structural review subset from imported USPTO standard-character trademarks and service marks.",
+        "Derived structural review subset from imported USPTO standard-character trademarks and service marks. Trailing legal-entity suffixes are stripped to the filter-facing brand term before structural thresholding.",
     },
     rules: filteredRules,
   });
+}
+
+export function deriveUsptoFilterTerm(rawTerm) {
+  const normalized = normalizeValue(rawTerm).latinFolded;
+  const tokens = String(normalized ?? "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  if (tokens.length <= 1) return tokens.join(" ");
+
+  const stripped = [...tokens];
+  while (
+    stripped.length > 1 &&
+    LEGAL_SUFFIX_TOKENS.has(stripped[stripped.length - 1])
+  ) {
+    stripped.pop();
+  }
+
+  return stripped.join(" ");
 }

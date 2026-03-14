@@ -106,6 +106,8 @@ USPTO is handled in two layers:
 - full official imports live outside the default runtime path in local `data/uspto/full-sources/`
 - a derived review-level subset is generated into `custom/sources/derived-uspto-brand-risk.json`
 
+The derived USPTO filter now strips trailing legal-entity suffixes such as `Inc.` or `LLC` before the structural thresholds are applied, so the runtime-facing term tracks the brand-facing identifier when the remaining form still fits the maintained conservative profile.
+
 Wikidata is handled as a separate derived layer:
 
 - an evaluation report can be refreshed into `docs/generated/wikidata-brand-gap-report.json`

@@ -113,6 +113,7 @@
 - The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
+- The maintained USPTO-derived profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding, which improves brand-facing filter terms without yet solving the broader short-brand calibration problem.
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, but broader deceptive combinations such as trust, billing, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
