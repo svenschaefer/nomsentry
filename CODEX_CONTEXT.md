@@ -78,3 +78,15 @@
 - The current official-only derived USPTO subset misses many short global brands such as `openai`, `paypal`, `google`, and `github`.
 - The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
+
+## Recent source-research findings
+
+- `reservedTechnical` is the easiest current gap to improve with free third-party sources.
+- The most promising currently identified `reservedTechnical` additions are:
+  - GitLab reserved names
+  - `reserved-usernames`
+  - `github-reserved-names`
+  - optionally Windows reserved URI scheme names if the product scope wants URI-scheme coverage
+- `protectedBrand` can plausibly be improved by supplementing the USPTO-derived subset with a free Wikidata-derived short-brand seed set.
+- `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
+- `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.

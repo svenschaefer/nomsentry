@@ -35,15 +35,17 @@
     - The maintained repo source set currently provides only Windows reserved device names for `reservedTechnical`, so the broader technical-identifier expectation is not met.
   - Target:
     - decide the intended `reservedTechnical` scope explicitly
-    - if broader coverage is intended, ingest only suitable normative or third-party technical identifier sources
+    - if broader coverage is intended, evaluate and ingest suitable normative or third-party technical identifier sources such as GitLab reserved names, `reserved-usernames`, `github-reserved-names`, and optionally Windows reserved URI scheme names
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
     - A catalog-based runtime evaluation showed that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` currently do not match maintained `impersonation` sources.
     - The current maintained `impersonation` set is only 15 rules wide and is heavily centered on RFC 2142 mailbox roles.
+    - A follow-up source review did not identify a strong freely redistributable standard source for the modern trust, billing, verification, and recovery vocabulary.
   - Target:
     - define the intended impersonation-role vocabulary
-    - ingest suitable third-party or normative sources for non-RFC trust, recovery, and billing-style impersonation terms
+    - ingest the best available free extensions for the RFC 2142 core
+    - document where a derived project layer is still required because no strong free source exists
 
 - Split the current broad `profanity` category into more precise policy categories.
   - Why:
@@ -62,14 +64,16 @@
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks
     - decide whether the official-source-derived heuristics should also retain short globally sensitive marks
+    - evaluate a `derived-wikidata-brand-risk.json` supplement as a free CC0 seed for short global brands alongside the USPTO-derived subset
 
 - Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
   - Why:
     - A catalog-based runtime evaluation showed that combinations such as `account-recovery`, `trust-safety`, and `billing-support` are mostly uncovered unless one component independently matches another category.
     - The current runtime bundle contains only one composite rule.
+    - A follow-up source review did not identify a strong free third-party source that directly ships these product-relevant composite combinations.
   - Target:
     - define the intended composite vocabulary explicitly
-    - generate composite rules from maintained impersonation terms or another documented source strategy
+    - generate composite rules from maintained impersonation or recovery vocabularies, or another documented derived source strategy
 
 - Add a documented policy for downstream source extension.
   - Why:
