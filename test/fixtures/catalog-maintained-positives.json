@@ -122,7 +122,10 @@
       "oauth",
       "official",
       "password",
+      "payment",
       "profile",
+      "reset",
+      "reset-password",
       "secure",
       "sysadmin",
       "webmail"
@@ -140,8 +143,10 @@
       "login-security",
       "official-support",
       "oauth-support",
+      "payment-support",
       "password-security",
-      "profile-security"
+      "profile-security",
+      "reset-security"
     ]
   },
   {

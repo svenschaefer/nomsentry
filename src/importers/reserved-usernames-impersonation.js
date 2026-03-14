@@ -3,7 +3,7 @@ import { validateSource } from "../schema/validate-source.js";
 import { RESERVED_USERNAMES_SOURCE_URL } from "./reserved-usernames.js";
 
 const IMPERSONATION_TERM_PATTERN =
-  /^(account|accounts|billing|official|password)$/;
+  /^(account|accounts|billing|official|password|payment|reset|reset-password|resetpassword)$/;
 
 export function filterReservedUsernameImpersonationTerms(terms) {
   return Array.from(

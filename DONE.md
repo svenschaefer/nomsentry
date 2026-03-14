@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Broadened the conservative `reserved-usernames` impersonation subset with `payment` and `reset` forms.
+  - [src/importers/reserved-usernames-impersonation.js](/C:/code/nomsentry/src/importers/reserved-usernames-impersonation.js) now keeps additive exact-token terms `payment`, `reset`, and `reset-password`
+  - [custom/sources/reserved-usernames-impersonation.json](/C:/code/nomsentry/custom/sources/reserved-usernames-impersonation.json) was regenerated
+  - [custom/sources/derived-composite-risk.json](/C:/code/nomsentry/custom/sources/derived-composite-risk.json) was regenerated and now also covers additive combinations such as `payment-support` and `reset-security`
+  - grouped maintained positive coverage was updated to reflect the narrower remaining impersonation gap
+
 - Extended the profanity-category refinement with a source-backed `shock` category.
   - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `shock` tagged entries from `dsojevic/profanity-list` to `shock`
   - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `shock` decisions

@@ -3896,10 +3896,22 @@ await assert.rejects(
       "billing",
       "official",
       "password",
+      "payment",
+      "reset",
+      "reset-password",
       "payments",
       "verify",
     ]),
-    ["account", "accounts", "billing", "official", "password"],
+    [
+      "account",
+      "accounts",
+      "billing",
+      "official",
+      "password",
+      "payment",
+      "reset",
+      "reset-password",
+    ],
     "reserved-usernames impersonation filtering should keep only the conservative account-access subset",
   );
 
@@ -3923,6 +3935,9 @@ await assert.rejects(
       "billing",
       "official",
       "password",
+      "payment",
+      "reset",
+      "reset-password",
       "payments",
     ],
   });
@@ -3933,7 +3948,16 @@ await assert.rejects(
   );
   assert.deepEqual(
     impersonationSource.rules.map((rule) => rule.term),
-    ["account", "accounts", "billing", "official", "password"],
+    [
+      "account",
+      "accounts",
+      "billing",
+      "official",
+      "password",
+      "payment",
+      "reset",
+      "reset-password",
+    ],
     "reserved-usernames impersonation importer should keep only filtered impersonation terms",
   );
 }
@@ -4102,6 +4126,16 @@ await assert.rejects(
     "reserved-usernames impersonation imports should now surface official as impersonation in the maintained baseline",
   );
 
+  const payment = maintainedEngine.evaluate({
+    value: "payment",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    payment.reasons.some((reason) => reason.category === "impersonation"),
+    true,
+    "reserved-usernames impersonation imports should now surface payment as impersonation in the maintained baseline",
+  );
+
   const accountRecovery = maintainedEngine.evaluate({
     value: "account-recovery",
     kind: "tenantSlug",
@@ -4122,6 +4156,18 @@ await assert.rejects(
     ),
     true,
     "billing-support should now surface derived composite risk in the maintained baseline",
+  );
+
+  const paymentSupport = maintainedEngine.evaluate({
+    value: "payment-support",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    paymentSupport.reasons.some(
+      (reason) => reason.category === "compositeRisk",
+    ),
+    true,
+    "payment-support should now surface derived composite risk in the maintained baseline",
   );
 }
 
