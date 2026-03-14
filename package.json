@@ -13,6 +13,8 @@
     "determinism:check": "npm run determinism:check:sources && npm run determinism:check:runtime",
     "determinism:check:sources": "node scripts/check-maintained-sources-determinism.js",
     "determinism:check:runtime": "node scripts/check-runtime-bundle-determinism.js",
+    "pack:check": "npm pack --dry-run",
+    "release:check": "npm run ci:check && npm run pack:check",
     "ci:check": "npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",

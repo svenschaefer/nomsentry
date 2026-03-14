@@ -21,6 +21,7 @@
   - `npm run docs:check`
   - `npm run determinism:check`
   - `npm run ci:check`
+  - `npm run release:check`
 
 ## Quality status
 
@@ -33,9 +34,13 @@
 ## Documentation status
 
 - Core docs currently maintained:
+  - `CODEX_CONTEXT.md`
   - `README.md`
   - `docs/ARCHITECTURE.md`
   - `docs/SPEC.md`
   - `docs/GUARANTEES.md`
   - `docs/REPO_WORKFLOWS.md`
   - `docs/STATUSQUO.md`
+  - `docs/BASELINE_TEST_RUN.md`
+  - `docs/NPM_RELEASE.md`
+  - `docs/RELEASE_NOTES_TEMPLATE.md`

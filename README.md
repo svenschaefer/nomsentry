@@ -4,6 +4,7 @@ Deterministic identifier policy and deception detection engine.
 
 Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/C:/code/nomsentry/THIRD_PARTY_NOTICES.md).
 Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/C:/code/nomsentry/SECURITY.md).
+Persistent project context for repository-wide assumptions is in [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md).
 Additional project docs:
 - [Architecture](/C:/code/nomsentry/docs/ARCHITECTURE.md)
 - [Specification](/C:/code/nomsentry/docs/SPEC.md)
@@ -11,6 +12,8 @@ Additional project docs:
 - [Repo Workflows](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
 - [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
 - [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
+- [npm Release Process](/C:/code/nomsentry/docs/NPM_RELEASE.md)
+- [Release Notes Template](/C:/code/nomsentry/docs/RELEASE_NOTES_TEMPLATE.md)
 
 ## v0.3 highlights
 
@@ -33,6 +36,7 @@ npm test
 npm run docs:check
 npm run determinism:check
 npm run ci:check
+npm run release:check
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity

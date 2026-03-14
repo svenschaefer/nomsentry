@@ -110,6 +110,14 @@
   - Target:
     - adopt a minimal lint/format setup that does not fight the current code style
 
+- Define the npm package boundary explicitly.
+  - Why:
+    - `npm pack --dry-run` currently falls back to `.gitignore` because there is no `.npmignore` or explicit `files` allowlist.
+    - That makes the published artifact surface less intentional than it should be.
+  - Target:
+    - add `.npmignore` or a `package.json` `files` allowlist
+    - make the published package contents explicit and reviewable
+
 - Consider adding TypeScript or JSDoc-based type checking for the source and runtime bundle schemas.
   - Why:
     - The core data model is tuple-heavy and compact by design.

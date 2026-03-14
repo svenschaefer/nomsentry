@@ -17,6 +17,12 @@ npm ci
 npm run ci:check
 ```
 
+For release-facing changes, also run:
+
+```bash
+npm run release:check
+```
+
 ## Expectations
 
 - Keep changes scoped and reviewable.
@@ -25,3 +31,4 @@ npm run ci:check
 - Preserve deterministic behavior unless the change explicitly redefines a documented contract.
 - Do not add self-maintained source lists to the maintained repository source set.
 - Keep third-party and normative source provenance explicit.
+- Keep [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md) current when project-wide assumptions or maintained source strategy change.

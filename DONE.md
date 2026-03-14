@@ -34,6 +34,12 @@
   - added [docs/BASELINE_TEST_RUN.md](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
   - linked the new docs from [README.md](/C:/code/nomsentry/README.md)
 
+- Added release-oriented documentation and persistent project context.
+  - added [docs/NPM_RELEASE.md](/C:/code/nomsentry/docs/NPM_RELEASE.md)
+  - added [docs/RELEASE_NOTES_TEMPLATE.md](/C:/code/nomsentry/docs/RELEASE_NOTES_TEMPLATE.md)
+  - added [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md)
+  - added `pack:check` and `release:check` to [package.json](/C:/code/nomsentry/package.json)
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.
