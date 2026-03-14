@@ -3,12 +3,14 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
+import { buildProvenanceManifest, writeProvenanceManifest } from "./build-provenance-manifest.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputDir: path.resolve(process.cwd(), "custom", "sources"),
-    outputFile: path.resolve(process.cwd(), "dist", "runtime-sources.json")
+    outputFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    manifestFile: path.resolve(process.cwd(), "dist", "build-manifest.json")
   };
 
   while (args.length > 0) {
@@ -17,6 +19,8 @@ export function parseArgs(argv) {
       options.inputDir = path.resolve(process.cwd(), String(args.shift() || ""));
     } else if (token === "--output-file") {
       options.outputFile = path.resolve(process.cwd(), String(args.shift() || ""));
+    } else if (token === "--manifest-file") {
+      options.manifestFile = path.resolve(process.cwd(), String(args.shift() || ""));
     } else {
       throw new Error(`Unknown option: ${token}`);
     }
@@ -101,7 +105,13 @@ function main(argv) {
   const options = parseArgs(argv);
   const bundle = buildRuntimeBundleFromDirectory(options.inputDir);
   writeRuntimeBundle(options.outputFile, bundle);
+  const manifest = buildProvenanceManifest({
+    inputDir: options.inputDir,
+    outputFile: options.outputFile
+  });
+  writeProvenanceManifest(options.manifestFile, manifest);
   console.log(`Wrote ${options.outputFile} (${bundle.rules.length} rules, ${bundle.compositeRules.length} composite rules)`);
+  console.log(`Wrote ${options.manifestFile}`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

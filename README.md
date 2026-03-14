@@ -61,6 +61,8 @@ The repository maintains two layers of source artifacts:
 - `dist/runtime-sources.json`
   - compiled single-file runtime bundle
   - default input used by the CLI
+- `dist/build-manifest.json`
+  - machine-readable provenance manifest for maintained source artifacts and the compiled runtime bundle
 
 Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
 
@@ -93,6 +95,7 @@ custom/sources/windows-reserved-device-names.json
 custom/sources/derived-uspto-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
+dist/build-manifest.json
 ```
 
 These inputs currently come from three maintained source families plus one compiled runtime artifact:
@@ -152,4 +155,5 @@ This keeps the official full set available while limiting default runtime `prote
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 
 For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.
-Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies both `custom/sources/` and `dist/runtime-sources.json`.
+The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, and the runtime bundle hash for that exact source set.
+Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.

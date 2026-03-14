@@ -18,6 +18,7 @@ const notices = read("THIRD_PARTY_NOTICES.md");
 
 for (const required of [
   "dist/runtime-sources.json",
+  "dist/build-manifest.json",
   "custom/sources/",
   "USPTO",
   "RFC 2142",

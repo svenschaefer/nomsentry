@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added a machine-readable build provenance manifest.
+  - added [scripts/build-provenance-manifest.js](/C:/code/nomsentry/scripts/build-provenance-manifest.js)
+  - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now writes [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json)
+  - [scripts/check-runtime-bundle-determinism.js](/C:/code/nomsentry/scripts/check-runtime-bundle-determinism.js) now verifies the manifest alongside the runtime bundle
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now checks the manifest structure and atomic write path
+
 - Expanded maintained `reservedTechnical` coverage with a conservative GitLab source import.
   - added [src/importers/gitlab-reserved-names.js](/C:/code/nomsentry/src/importers/gitlab-reserved-names.js)
   - added [scripts/import-gitlab-reserved-names.js](/C:/code/nomsentry/scripts/import-gitlab-reserved-names.js)

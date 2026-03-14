@@ -38,6 +38,7 @@ import {
 import { detectScriptRisk } from "../src/core/script-risk.js";
 import { compactSource, expandSource } from "../src/schema/source-format.js";
 import { buildRuntimeBundle, writeRuntimeBundle } from "../scripts/build-runtime-sources.js";
+import { buildProvenanceManifest, writeProvenanceManifest } from "../scripts/build-provenance-manifest.js";
 import { compactSourcesDirectory, resolveCompactFilename } from "../scripts/compact-sources.js";
 import {
   fetchAvailableLanguages as fetchLdnoobwLanguages,
@@ -218,6 +219,22 @@ assert.equal(
   true,
   "directory loader should include official role-mailbox source"
 );
+
+{
+  const manifest = JSON.parse(fs.readFileSync(new URL("../dist/build-manifest.json", import.meta.url), "utf8"));
+  assert.equal(manifest.id, "build-provenance-manifest", "build manifest should have a stable id");
+  assert.equal(manifest.version, 1, "build manifest should have a stable version");
+  assert.equal(
+    manifest.sourceArtifacts.some((entry) => entry.id === "imported-gitlab-reserved-names" && entry.source === "GitLab Docs"),
+    true,
+    "build manifest should enumerate maintained source artifacts"
+  );
+  assert.equal(
+    manifest.runtimeArtifact.sourceArtifactSetSha256,
+    manifest.sourceArtifactSetSha256,
+    "build manifest should tie the runtime artifact to the exact source artifact set"
+  );
+}
 
 {
   const bundle = loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
@@ -897,6 +914,7 @@ assert.throws(
 {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-runtime-bundle-"));
   const outputFile = path.join(tmpDir, "runtime-sources.json");
+  const manifestFile = path.join(tmpDir, "build-manifest.json");
   const bundle = buildRuntimeBundle([
     {
       id: "runtime-test-source",
@@ -913,6 +931,10 @@ assert.throws(
     }
   ]);
   writeRuntimeBundle(outputFile, bundle);
+  writeProvenanceManifest(manifestFile, buildProvenanceManifest({
+    inputDir: fileURLToPath(new URL("../custom/sources/", import.meta.url)),
+    outputFile
+  }));
   assert.equal(
     loadRuntimeBundleFromFile(pathToFileURL(outputFile)).rules[0].term,
     "test",
@@ -922,6 +944,11 @@ assert.throws(
     fs.readdirSync(tmpDir).filter((entry) => entry.includes(".tmp-")),
     [],
     "runtime bundle writer should not leave temporary files behind"
+  );
+  assert.equal(
+    JSON.parse(fs.readFileSync(manifestFile, "utf8")).id,
+    "build-provenance-manifest",
+    "provenance manifest writer should persist a loadable manifest atomically"
   );
   fs.rmSync(tmpDir, { recursive: true, force: true });
 }

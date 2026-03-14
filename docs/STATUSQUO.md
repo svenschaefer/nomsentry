@@ -6,9 +6,10 @@
 - Maintained source strategy:
   - imported or extracted third-party and normative artifacts in `custom/sources/`
   - compiled runtime bundle in `dist/runtime-sources.json`
+  - machine-readable provenance manifest in `dist/build-manifest.json`
 - Major open workstreams:
   - indexed runtime matching
-  - source provenance and freshness metadata
+  - upstream provenance enrichment and freshness metadata
   - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
   - deeper normalization fuzz coverage
 
@@ -31,6 +32,7 @@
 - Local deterministic checks are in place for:
   - maintained source artifacts
   - compiled runtime bundle
+  - build provenance manifest
 - Normalization coverage now includes:
   - generated idempotence checks
   - invisible-character invariants

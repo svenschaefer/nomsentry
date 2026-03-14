@@ -12,6 +12,7 @@
 
 - Maintained source artifacts live in `custom/sources/`.
 - The compiled runtime artifact lives in `dist/runtime-sources.json`.
+- The machine-readable provenance manifest lives in `dist/build-manifest.json`.
 - Local full USPTO imports live under `data/uspto/full-sources/` and are intentionally ignored by git.
 - The CLI should validate against the compiled runtime bundle, not scan `custom/sources/` directly.
 
@@ -46,6 +47,7 @@
 
 - Maintained source rewrites use stage-and-swap or atomic write paths.
 - Runtime bundle writes use atomic write paths.
+- The runtime build step emits a deterministic provenance manifest for maintained source artifacts and the runtime bundle.
 - `npm run determinism:check` validates both maintained source determinism and runtime-bundle determinism.
 - `npm run ci:check` is the main local validation gate.
 
@@ -74,7 +76,7 @@
 ## Current major open areas
 
 - indexed runtime matching instead of linear rule scans
-- source provenance and freshness metadata
+- upstream version pinning and freshness policy on top of the new provenance manifest
 - policy-category refinement beyond broad `profanity`
 - deeper normalization fuzzing and maintenance-script failure coverage
 

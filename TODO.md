@@ -11,13 +11,14 @@
     - pre-index by `scope`, `match`, and normalized token
     - keep startup compilation separate from request-time matching
 
-- Add source provenance and reproducibility metadata to the build pipeline.
+- Expand the build provenance manifest with upstream version and refresh metadata.
   - Why:
-    - We version imported artifacts, but there is no machine-readable manifest that records import timestamp, upstream version/commit, input URL, local transform version, and runtime bundle build hash.
-    - This is a governance and auditability gap for enterprise use.
+    - The build pipeline now emits a deterministic machine-readable manifest for maintained source artifacts and the runtime bundle.
+    - It still does not record upstream version or commit metadata, local transform versions, or source refresh expectations.
+    - That remains a governance and auditability gap for enterprise use.
   - Target:
-    - add a build manifest for `custom/sources/` and `dist/runtime-sources.json`
-    - include upstream source version and generated-at timestamp
+    - extend the manifest with upstream source version or commit data where available
+    - record transform-version and refresh-policy metadata in a deterministic way
 
 - Add a source refresh policy and staleness checks.
   - Why:
