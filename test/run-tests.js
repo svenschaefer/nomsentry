@@ -311,6 +311,33 @@ assert.throws(
 );
 
 {
+  const runScript = (scriptName, ...args) =>
+    spawnSync(process.execPath, [fileURLToPath(new URL(`../scripts/${scriptName}`, import.meta.url)), ...args], {
+      encoding: "utf8"
+    });
+
+  const freshnessBadDate = runScript("check-source-freshness.js", "--as-of", "20260314");
+  assert.equal(freshnessBadDate.status, 1, "freshness checks should reject malformed as-of dates");
+  assert.match(
+    freshnessBadDate.stderr,
+    /Invalid --as-of date: 20260314/,
+    "freshness checks should surface direct argument validation errors"
+  );
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-freshness-policy-"));
+  const badPolicyFile = path.join(tmpDir, "bad-policy.json");
+  fs.writeFileSync(badPolicyFile, JSON.stringify({ id: "bad", version: 1, policies: [] }), "utf8");
+  const freshnessBadPolicy = runScript("check-source-freshness.js", "--policy-file", badPolicyFile);
+  assert.equal(freshnessBadPolicy.status, 1, "freshness checks should reject invalid policy files");
+  assert.match(
+    freshnessBadPolicy.stderr,
+    /source refresh policy must have id 'source-refresh-policy'/,
+    "freshness checks should surface refresh-policy validation errors"
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
   const bundle = loadRuntimeBundleFromFile(new URL("../dist/runtime-sources.json", import.meta.url));
   assert.equal(
     bundle.rules.some((rule) => rule.term === "abuse" && rule.category === "impersonation"),
@@ -407,6 +434,30 @@ assert.throws(
     cussEmptyLanguages.stderr,
     /Invalid option: --languages must include at least one language or 'all'/,
     "cuss import script should validate explicit empty language lists"
+  );
+
+  const twoToadEmptyLanguages = runScript("import-2toad-profanity.js", "--languages", "");
+  assert.equal(twoToadEmptyLanguages.status, 1, "2toad import script should reject empty language selections");
+  assert.match(
+    twoToadEmptyLanguages.stderr,
+    /Invalid option: --languages must include at least one language or 'all'/,
+    "2toad import script should validate explicit empty language lists"
+  );
+
+  const gitlabUnknownOption = runScript("import-gitlab-reserved-names.js", "--wat");
+  assert.equal(gitlabUnknownOption.status, 1, "gitlab import script should fail for unknown options");
+  assert.match(
+    gitlabUnknownOption.stderr,
+    /Unknown option: --wat/,
+    "gitlab import script should report direct argument errors"
+  );
+
+  const runtimeUnknownOption = runScript("build-runtime-sources.js", "--wat");
+  assert.equal(runtimeUnknownOption.status, 1, "runtime builder should fail for unknown options");
+  assert.match(
+    runtimeUnknownOption.stderr,
+    /Unknown option: --wat/,
+    "runtime builder should reject unknown options directly"
   );
 }
 

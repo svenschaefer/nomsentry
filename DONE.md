@@ -7,6 +7,11 @@
   - added [scripts/check-source-freshness.js](/C:/code/nomsentry/scripts/check-source-freshness.js)
   - wired `npm run freshness:check` into [package.json](/C:/code/nomsentry/package.json) and [ci:check](/C:/code/nomsentry/package.json)
   - added direct refresh-policy and staleness-assessment coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
+  - freshness checks now evaluate the current `custom/sources/` state by default instead of relying on a prebuilt manifest
+
+- Expanded maintenance-script failure coverage.
+  - added argument validation coverage for GitLab import, 2toad import, and runtime-bundle build entrypoints
+  - added invalid-date and invalid-policy coverage for the freshness check entrypoint
 
 - Added a machine-readable build provenance manifest.
   - added [scripts/build-provenance-manifest.js](/C:/code/nomsentry/scripts/build-provenance-manifest.js)

@@ -50,6 +50,10 @@
   - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms
   - maintained mixed-script positives and explicit documented current gaps
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms
+- Maintenance-script failure coverage now includes:
+  - importer argument validation
+  - runtime-builder argument validation
+  - freshness-check argument and policy validation
 - Known non-flaky baseline:
   - local `npm run ci:check`
 
