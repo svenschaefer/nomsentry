@@ -43,6 +43,8 @@
     "import:dsojevic": "node scripts/import-dsojevic-profanity.js",
     "import:insult-wiki": "node scripts/import-insult-wiki.js",
     "import:gitlab-reserved": "node scripts/import-gitlab-reserved-names.js",
+    "import:github-reserved-usernames": "node scripts/import-github-reserved-usernames.js",
+    "import:icann-reserved-names": "node scripts/import-icann-reserved-names.js",
     "import:reserved-usernames": "node scripts/import-reserved-usernames.js",
     "import:windows-reserved-uri-schemes": "node scripts/import-windows-reserved-uri-schemes.js",
     "derive:impersonation": "node scripts/derive-impersonation.js",

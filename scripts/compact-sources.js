@@ -23,6 +23,10 @@ export function resolveCompactFilename(source) {
     filename = `${source.id.replace("imported-", "")}.json`;
   else if (source.id === "imported-gitlab-reserved-names")
     filename = "gitlab-reserved-names.json";
+  else if (source.id === "imported-github-reserved-usernames")
+    filename = "github-reserved-usernames.json";
+  else if (source.id === "imported-icann-reserved-names")
+    filename = "icann-reserved-names.json";
   else if (source.id === "imported-reserved-usernames")
     filename = "reserved-usernames.json";
   else if (source.id === "imported-obscenity-en")

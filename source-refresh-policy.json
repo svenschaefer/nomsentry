@@ -81,6 +81,20 @@
     },
     {
       "match": {
+        "source": "GitHub Docs"
+      },
+      "maxAgeDays": 180,
+      "notes": "Documentation-derived reserved usernames should be reviewed at least twice per year."
+    },
+    {
+      "match": {
+        "source": "ICANN"
+      },
+      "maxAgeDays": 365,
+      "notes": "Normative ICANN reserved-name extracts should be reviewed annually."
+    },
+    {
+      "match": {
         "source": "reserved-usernames"
       },
       "maxAgeDays": 180,

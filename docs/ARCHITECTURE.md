@@ -17,6 +17,8 @@
 - `src/importers/dsojevic-profanity.js` - dsojevic/profanity-list normalization into source JSON
 - `src/importers/insult-wiki.js` - insult.wiki HTML list normalization into source JSON
 - `src/importers/gitlab-reserved-names.js` - conservative extraction of GitLab reserved project and group names into source JSON
+- `src/importers/github-reserved-usernames.js` - conservative extraction of the additive GitHub Enterprise reserved-username impersonation subset into source JSON
+- `src/importers/icann-reserved-names.js` - conservative extraction of the additive ICANN .com reserved-name technical subset into source JSON
 - `src/importers/reserved-usernames.js` - conservative technical subset derivation from the reserved-usernames package dataset
 - `src/importers/windows-reserved-uri-schemes.js` - conservative technical subset derivation from Microsoft Learn reserved URI schemes
 - `src/importers/derived-impersonation.js` - conservative derived impersonation vocabulary from maintained role and account-access sources
@@ -72,6 +74,8 @@ The currently maintained source families are:
   - Wikidata
   - RFC 2142
   - GitLab reserved names
+  - GitHub Enterprise reserved usernames
+  - ICANN .com reserved names
   - reserved-usernames
   - Microsoft Windows reserved device names
   - Microsoft Windows reserved URI schemes
@@ -95,9 +99,9 @@ WIPO is not part of the ingest plan.
 
 `RFC 2142` feeds `impersonation`, not `reservedTechnical`, because the imported role mailbox names are modeled as impersonation-relevant identifiers.
 
-`reservedTechnical` is currently covered by Windows reserved device names, a conservative Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import. That improves route-collision and system-identifier coverage, but it does not yet settle the broader product-contract question for namespace and platform identifiers.
+`reservedTechnical` is currently covered by Windows reserved device names, a conservative Windows reserved URI scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import. That improves route-collision and system-identifier coverage, but it does not yet settle the broader product-contract question for namespace and platform identifiers.
 
-`impersonation` is currently covered by the RFC 2142 role-mailbox core plus a conservative derived additive layer sourced from maintained GitLab and `reserved-usernames` terms. The derived layer now covers exact-token operator or account-access identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`, but it still does not solve the modern trust, billing, verification, and recovery vocabulary on its own.
+`impersonation` is currently covered by the RFC 2142 role-mailbox core, a conservative additive GitHub Enterprise reserved-username import for `staff`, and a conservative derived additive layer sourced from maintained GitLab and `reserved-usernames` terms. The derived layer now covers exact-token operator or account-access identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`, but it still does not solve the modern trust, billing, verification, and recovery vocabulary on its own.
 
 `compositeRisk` is currently covered by the RFC 2142 `security+support` rule plus a conservative derived layer that combines maintained impersonation/account-access terms with the maintained `support` and `security` anchors. That closes exact-token combinations such as `admin-support` and `login-security`, but broader trust, billing, and recovery combinations remain open.
 

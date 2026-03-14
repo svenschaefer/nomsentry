@@ -36,10 +36,20 @@ import {
   getInsultWikiLanguages,
 } from "../src/importers/insult-wiki.js";
 import {
+  buildGitHubReservedUsernamesSource,
+  extractGitHubReservedUsernames,
+  fetchGitHubReservedUsernames,
+} from "../src/importers/github-reserved-usernames.js";
+import {
   buildGitLabReservedNamesSource,
   extractGitLabReservedNames,
   fetchGitLabReservedNames,
 } from "../src/importers/gitlab-reserved-names.js";
+import {
+  buildIcannReservedNamesSource,
+  extractIcannReservedNames,
+  fetchIcannReservedNames,
+} from "../src/importers/icann-reserved-names.js";
 import {
   buildReservedUsernamesSource,
   filterReservedUsernameTerms,
@@ -83,6 +93,8 @@ import {
   fetchWordList as fetchLdnoobwWordList,
 } from "../scripts/import-ldnoobw.js";
 import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
+import { parseArgs as parseGitHubReservedArgs } from "../scripts/import-github-reserved-usernames.js";
+import { parseArgs as parseIcannReservedArgs } from "../scripts/import-icann-reserved-names.js";
 import { parseArgs as parseReservedUsernamesArgs } from "../scripts/import-reserved-usernames.js";
 import { parseArgs as parseWindowsReservedUriArgs } from "../scripts/import-windows-reserved-uri-schemes.js";
 import {
@@ -337,6 +349,25 @@ assert.equal(
 
 assert.equal(
   loadSourceFromFile(
+    new URL(
+      "../custom/sources/github-reserved-usernames.json",
+      import.meta.url,
+    ),
+  ).metadata.source,
+  "GitHub Docs",
+  "github reserved usernames metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
+    new URL("../custom/sources/icann-reserved-names.json", import.meta.url),
+  ).metadata.source,
+  "ICANN",
+  "ICANN reserved names metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
     new URL("../custom/sources/gitlab-reserved-names.json", import.meta.url),
   ).metadata.source,
   "GitLab Docs",
@@ -427,6 +458,30 @@ assert.equal(
 }
 
 {
+  const githubReservedArgs = parseGitHubReservedArgs([
+    "--output-dir",
+    "tmp/github-reserved",
+  ]);
+  assert.equal(
+    path.basename(githubReservedArgs.outputDir),
+    "github-reserved",
+    "github reserved usernames args should parse output directories",
+  );
+}
+
+{
+  const icannReservedArgs = parseIcannReservedArgs([
+    "--output-dir",
+    "tmp/icann-reserved",
+  ]);
+  assert.equal(
+    path.basename(icannReservedArgs.outputDir),
+    "icann-reserved",
+    "ICANN reserved names args should parse output directories",
+  );
+}
+
+{
   const derivedImpersonationArgs = parseDerivedImpersonationArgs([
     "--output-file",
     "tmp/derived-impersonation.json",
@@ -461,6 +516,18 @@ assert.equal(
     "windows reserved URI import args should parse output directories",
   );
 }
+
+assert.throws(
+  () => parseGitHubReservedArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "github reserved usernames args should reject unknown options",
+);
+
+assert.throws(
+  () => parseIcannReservedArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "ICANN reserved names args should reject unknown options",
+);
 
 assert.throws(
   () => parseDerivedImpersonationArgs(["--wat"]),
@@ -945,6 +1012,24 @@ assert.throws(
   assert.equal(
     manifest.sourceArtifacts.some(
       (entry) =>
+        entry.id === "imported-github-reserved-usernames" &&
+        entry.source === "GitHub Docs",
+    ),
+    true,
+    "build manifest should enumerate the GitHub reserved usernames artifact",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
+        entry.id === "imported-icann-reserved-names" &&
+        entry.source === "ICANN",
+    ),
+    true,
+    "build manifest should enumerate the ICANN reserved names artifact",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.some(
+      (entry) =>
         entry.id === "imported-gitlab-reserved-names" &&
         entry.source === "GitLab Docs",
     ),
@@ -1017,6 +1102,20 @@ assert.throws(
     )?.transformVersion,
     "derive-uspto-brand-risk@1",
     "build manifest should record deterministic transform versions for derived artifacts",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "imported-github-reserved-usernames",
+    )?.transformVersion,
+    "import-github-reserved-usernames@1",
+    "build manifest should record deterministic transform versions for GitHub reserved usernames",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "imported-icann-reserved-names",
+    )?.transformVersion,
+    "import-icann-reserved-names@1",
+    "build manifest should record deterministic transform versions for ICANN reserved names",
   );
   assert.equal(
     manifest.sourceArtifacts.find(
@@ -2492,6 +2591,18 @@ assert.equal(
 );
 
 assert.equal(
+  resolveCompactFilename({ id: "imported-github-reserved-usernames" }),
+  "github-reserved-usernames.json",
+  "compact-sources should preserve GitHub reserved usernames filenames",
+);
+
+assert.equal(
+  resolveCompactFilename({ id: "imported-icann-reserved-names" }),
+  "icann-reserved-names.json",
+  "compact-sources should preserve ICANN reserved names filenames",
+);
+
+assert.equal(
   resolveCompactFilename({ id: "imported-windows-reserved-uri-schemes" }),
   "windows-reserved-uri-schemes.json",
   "compact-sources should preserve windows reserved URI scheme filenames",
@@ -3536,6 +3647,118 @@ for (const testCase of [
     "insult.wiki importer should latinize german sharp s",
   );
 }
+
+{
+  const terms = extractGitHubReservedUsernames(`
+    <p>the following words are reserved:</p>
+    <ul>
+      <li><code>admin</code></li>
+      <li><code>enterprise</code></li>
+      <li><code>login</code></li>
+      <li><code>staff</code></li>
+      <li><code>support</code></li>
+    </ul>
+  `);
+  assert.deepEqual(
+    terms,
+    ["admin", "enterprise", "login", "staff", "support"],
+    "GitHub reserved usernames extractor should parse the official reserved list",
+  );
+
+  const source = buildGitHubReservedUsernamesSource({
+    terms,
+  });
+  assert.equal(
+    source.metadata.source,
+    "GitHub Docs",
+    "GitHub reserved usernames importer should stamp source metadata",
+  );
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["staff"],
+    "GitHub reserved usernames importer should keep only the conservative additive impersonation term set",
+  );
+}
+
+await assert.rejects(
+  () =>
+    fetchGitHubReservedUsernames(async () => ({
+      ok: false,
+      status: 503,
+      statusText: "Service Unavailable",
+    })),
+  /GitHub reserved usernames request failed: 503 Service Unavailable/,
+  "GitHub reserved usernames fetcher should surface upstream failures",
+);
+
+{
+  const terms = extractIcannReservedNames(`
+    <p><strong>A. Labels Reserved at All Levels. </strong>IANA-related names: </p>
+    <ul>
+      <li> afrinic </li>
+      <li> example </li>
+      <li> gtld-servers </li>
+      <li> iana </li>
+      <li> iana-servers </li>
+      <li> rfc-editor </li>
+      <li> root-servers </li>
+    </ul>
+    <p><strong>D. Second-Level Reservations for Registry Operations.</strong></p>
+    <ul>
+      <li> nic </li>
+      <li> whois </li>
+      <li> www </li>
+    </ul>
+  `);
+  assert.deepEqual(
+    terms,
+    [
+      "example",
+      "gtld-servers",
+      "iana",
+      "iana-servers",
+      "nic",
+      "rfc-editor",
+      "root-servers",
+      "whois",
+    ],
+    "ICANN reserved names extractor should keep the conservative additive subset",
+  );
+
+  const source = buildIcannReservedNamesSource({
+    terms,
+  });
+  assert.equal(
+    source.metadata.source,
+    "ICANN",
+    "ICANN reserved names importer should stamp source metadata",
+  );
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    [
+      "example",
+      "gtld-servers",
+      "iana",
+      "iana-servers",
+      "nic",
+      "rfc-editor",
+      "root-servers",
+      "whois",
+    ],
+    "ICANN reserved names importer should keep only the conservative additive technical subset",
+  );
+}
+
+await assert.rejects(
+  () =>
+    fetchIcannReservedNames(async () => ({
+      ok: false,
+      status: 503,
+      statusText: "Service Unavailable",
+    })),
+  /ICANN reserved names request failed: 503 Service Unavailable/,
+  "ICANN reserved names fetcher should surface upstream failures",
+);
 
 {
   const source = buildGitLabReservedNamesSource({

@@ -63,11 +63,11 @@
   - shared typedefs in `src/types.js`
   - checked JSDoc on `src/schema/source-format.js`, `src/schema/validate-source.js`, and `src/loaders/runtime-bundle.js`
 - Grouped category-level baseline fixtures now cover:
-  - maintained positives for Windows reserved names, a conservative Windows reserved URI-scheme subset, a broader GitLab reserved-route set, broader conservative reserved-usernames technical terms, the RFC 2142 impersonation core, the new conservative derived impersonation layer, the new conservative derived composite-risk layer, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
+  - maintained positives for Windows reserved names, a conservative Windows reserved URI-scheme subset, a broader GitLab reserved-route set, a conservative ICANN reserved-name subset, broader conservative reserved-usernames technical terms, the RFC 2142 impersonation core, the additive GitHub Enterprise `staff` import, the new conservative derived impersonation layer, the new conservative derived composite-risk layer, current maintained `protectedBrand` review hits, profanity hits, and mixed-script review fallbacks
   - explicit true-negative suites for ordinary tenant slugs and tenant names that should stay `allow`
-  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additive separator and leetspeak variants for `admin`, `login`, `oauth`, `profile`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, and `support`
+  - maintained obfuscated positives for reserved-technical, impersonation, and profanity terms, including additive separator and leetspeak variants for `admin`, `login`, `oauth`, `profile`, `openid`, `smtp`, `ssh`, `wpad`, `cache`, `dns`, `staff`, `nic`, `whois`, and `support`
   - an explicit compact-form contract matrix that separates supported compact-preserving variants from unsupported consonant-dropping shorthand
-  - maintained mixed-script positives and explicit documented current gaps, including additive lexical hits such as `admin`, `login`, `profile`, `ssh`, `oauth`, `xml`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
+  - maintained mixed-script positives and explicit documented current gaps, including additive lexical hits such as `admin`, `login`, `profile`, `ssh`, `oauth`, `xml`, `staff`, `nic`, `whois`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
   - together these grouped fixtures now provide explicit TP, FP, TN, and documented FN coverage for the maintained baseline
 - Category-refinement status:

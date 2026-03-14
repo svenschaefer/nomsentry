@@ -5,7 +5,7 @@
 - Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.
   - Why:
     - A catalog-based runtime evaluation originally showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` evaluated to `allow`.
-    - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, and `status` but still leaves the broader technical-identifier expectation only partially met.
+    - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, `status`, `nic`, and `whois` but still leaves the broader technical-identifier expectation only partially met.
     - A direct evaluation of `github-reserved-names` against the maintained baseline showed unacceptable noise for the default set, for example `seven-labs` becoming `reject` because of the generic `labs` route term.
   - Target:
     - decide the intended `reservedTechnical` scope explicitly
@@ -14,7 +14,7 @@
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
-    - A conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
+    - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
     - A catalog-based runtime evaluation still shows that `official`, `billing`, `payments`, `verified`, `trust`, `safety`, `account-recovery`, and `password-reset` do not match maintained `impersonation` sources.
     - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern trust, billing, verification, and recovery vocabulary.
     - A follow-up source review did not identify a strong freely redistributable standard source for the modern trust, billing, verification, and recovery vocabulary.

@@ -76,6 +76,22 @@ The current maintained source families are:
 - License / status: CC BY-SA 4.0 documentation source; treated here as a limited extracted factual source of reserved route-like identifiers
 - Notes: imported conservatively from the documented reserved project and group names; file-like entries and path fragments are excluded
 
+### GitHub Enterprise reserved usernames
+
+- Purpose: additive impersonation identifiers from documented reserved usernames
+- Used in: `custom/sources/github-reserved-usernames.json`
+- Source: https://docs.github.com/en/enterprise-server%403.19/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/about-reserved-usernames-for-github-enterprise-server
+- License / status: documentation source; treated here as a limited extracted factual source of short reserved usernames
+- Notes: imported conservatively and currently reduced to the additive impersonation term `staff`; duplicate and generic terms such as `admin`, `login`, and `support` are intentionally not re-imported into the maintained default set
+
+### ICANN .com reserved names
+
+- Purpose: additive technical reserved identifiers for registry and naming infrastructure collisions
+- Used in: `custom/sources/icann-reserved-names.json`
+- Source: https://www.icann.org/en/registry-agreements/com/com-registry-agreement--schedule-of-reserved-names-1-3-2006-en
+- License / status: normative source; treated here as a limited extracted factual source of short reserved names rather than an open-source licensed dataset
+- Notes: imported through a conservative filter that keeps infrastructure-like reserved identifiers such as `example`, `iana`, `nic`, `whois`, and related registry-operation names while excluding brand-like or governance-body names
+
 ### reserved-usernames
 
 - Purpose: reserved technical identifiers for namespace and system-identifier collisions

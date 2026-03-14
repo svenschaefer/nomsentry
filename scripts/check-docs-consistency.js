@@ -55,6 +55,8 @@ for (const required of [
   "obscenity",
   "USPTO Trademark Bulk Data",
   "RFC 2142",
+  "GitHub Enterprise reserved usernames",
+  "ICANN .com reserved names",
   "Microsoft Learn Windows reserved device names",
   "Microsoft Learn Windows reserved URI schemes",
 ]) {

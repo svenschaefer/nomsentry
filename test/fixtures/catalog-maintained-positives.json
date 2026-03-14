@@ -65,6 +65,21 @@
     ]
   },
   {
+    "label": "ICANN reserved technical names",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": [
+      "example",
+      "gtld-servers",
+      "iana",
+      "iana-servers",
+      "nic",
+      "rfc-editor",
+      "root-servers",
+      "whois"
+    ]
+  },
+  {
     "label": "rfc2142 impersonation roles",
     "kind": "tenantSlug",
     "expected": "reject",
@@ -84,6 +99,12 @@
       "www",
       "ftp"
     ]
+  },
+  {
+    "label": "github reserved usernames additive impersonation",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["staff"]
   },
   {
     "label": "derived impersonation additive roles",

@@ -27,6 +27,8 @@
     - Wikidata
     - RFC 2142 role mailbox names
     - GitLab reserved project and group names
+    - GitHub Enterprise reserved usernames
+    - ICANN .com reserved names
     - reserved-usernames
     - Microsoft Windows reserved device names
     - Microsoft Windows reserved URI schemes
@@ -46,8 +48,8 @@
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - The first explicit category split beyond broad `profanity` is now in place: `insult.wiki` feeds `insult`.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
-- `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, and a conservative filtered reserved-usernames import.
-- `impersonation` currently draws from the RFC 2142 core plus a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
+- `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered reserved-usernames import.
+- `impersonation` currently draws from the RFC 2142 core, an additive GitHub Enterprise reserved-username import for `staff`, and a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
 - `compositeRisk` currently draws from the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer built from the maintained impersonation baseline.
 
 ## Runtime and build guarantees
@@ -111,7 +113,8 @@
 ## Recent catalog-based gap findings
 
 - The current maintained `reservedTechnical` coverage is improved by the Windows reserved URI-scheme subset, the GitLab reserved-routes import, and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
-- The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
+- The current maintained `reservedTechnical` coverage is also improved by a conservative ICANN .com reserved-name subset that adds `example`, `iana`, `nic`, `rfc-editor`, `root-servers`, and `whois` style technical namespace identifiers.
+- The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now adds the GitHub Enterprise reserved username `staff` and derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
 - The maintained USPTO-derived profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding, which improves brand-facing filter terms without yet solving the broader short-brand calibration problem.
@@ -129,6 +132,8 @@
 - Early review suggested `reserved-usernames` and `github-reserved-names` were materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - Microsoft Learn reserved URI schemes are now part of the maintained baseline through a conservative exact-match subset that keeps protocol-like and system-handler scheme names while excluding consumer-brand and common-noun entries.
 - `reserved-usernames` is now part of the maintained baseline through a conservative filtered import that keeps only clearly technical and namespace-collision terms.
+- GitHub Enterprise reserved usernames are now part of the maintained baseline through a conservative additive import that keeps only the impersonation-relevant term `staff`.
+- ICANN .com reserved names are now part of the maintained baseline through a conservative technical subset that keeps clearly namespace- and registry-oriented identifiers.
 - A direct default-baseline evaluation of `github-reserved-names` confirmed that concern: importing it conservatively but broadly still produced unacceptable false positives such as `seven-labs` because of generic route terms like `labs`.
 - `protectedBrand` is now supplemented by a conservative free Wikidata-derived uncovered-brand seed set.
 - The Wikidata supplement track explicitly allows overlap with the USPTO-derived subset.

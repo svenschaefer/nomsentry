@@ -49,7 +49,10 @@
       "serverless",
       "wallet",
       "office",
-      "maps"
+      "maps",
+      "exampled",
+      "nicole",
+      "whoiswho"
     ]
   },
   {
@@ -98,5 +101,11 @@
       "dropboxing",
       "amazonian"
     ]
+  },
+  {
+    "label": "github reserved usernames nearby negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["staffing", "staffer", "staffroom"]
   }
 ]

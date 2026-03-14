@@ -2,6 +2,17 @@
 
 ## Completed recently
 
+- Added conservative official GitHub Enterprise and ICANN reserved-name sources.
+  - added [src/importers/github-reserved-usernames.js](/C:/code/nomsentry/src/importers/github-reserved-usernames.js)
+  - added [scripts/import-github-reserved-usernames.js](/C:/code/nomsentry/scripts/import-github-reserved-usernames.js)
+  - added [custom/sources/github-reserved-usernames.json](/C:/code/nomsentry/custom/sources/github-reserved-usernames.json)
+  - the maintained default impersonation baseline now includes the additive GitHub Enterprise reserved username `staff`
+  - added [src/importers/icann-reserved-names.js](/C:/code/nomsentry/src/importers/icann-reserved-names.js)
+  - added [scripts/import-icann-reserved-names.js](/C:/code/nomsentry/scripts/import-icann-reserved-names.js)
+  - added [custom/sources/icann-reserved-names.json](/C:/code/nomsentry/custom/sources/icann-reserved-names.json)
+  - the maintained default reserved-technical baseline now includes the conservative ICANN .com subset `example`, `gtld-servers`, `iana`, `iana-servers`, `nic`, `rfc-editor`, `root-servers`, and `whois`
+  - expanded maintained positive, nearby-negative, obfuscated-positive, and mixed-script fixture coverage for both new sources
+
 - Started the profanity category refinement with an explicit `insult` category.
   - [src/importers/insult-wiki.js](/C:/code/nomsentry/src/importers/insult-wiki.js) now maps `insult.wiki` to `insult` instead of the broad `profanity` bucket
   - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `insult` decisions

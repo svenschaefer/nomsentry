@@ -3,7 +3,7 @@
     "label": "maintained mixed-script lexical hits",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["suppоrt", "securіty", "pоstmaster", "ѕsh", "оauth", "хml", "wеbmaster", "sеrvеr", "аdmin", "lоgin", "prоfile"]
+    "values": ["suppоrt", "securіty", "pоstmaster", "ѕsh", "оauth", "хml", "wеbmaster", "sеrvеr", "аdmin", "lоgin", "prоfile", "stаff", "nіc", "whоis"]
   },
   {
     "label": "maintained profanity mixed-script hits",
