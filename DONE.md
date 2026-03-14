@@ -18,6 +18,11 @@
   - added a grouped fixture for documented current coverage gaps so expected misses stay explicit
   - stopped routing grouped catalog fixtures through the synthetic helper source set
 
+- Added basic generated normalization property coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js).
+  - idempotence checks for `latinFolded`, `compact`, and `slug`
+  - generated invisible-character invariants
+  - generated separator-variant invariants
+
 - Made maintained-source and runtime-bundle writes crash-safer.
   - [src/schema/source-io.js](/C:/code/nomsentry/src/schema/source-io.js) now writes files atomically through temporary files plus rename.
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now uses the same atomic write path for `dist/runtime-sources.json`.

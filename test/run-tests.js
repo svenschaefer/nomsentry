@@ -1283,6 +1283,77 @@ for (const testCase of [
 }
 
 {
+  const samples = [
+    "Admin",
+    "ad\u200Bmin",
+    "supp0rt",
+    "ѕupport",
+    "scheiße",
+    "schéisse",
+    "Ａdmin",
+    "n!gga",
+    "gооgle"
+  ];
+
+  for (const value of samples) {
+    const once = normalizeValue(value);
+    const twice = normalizeValue(once.latinFolded);
+    assert.equal(
+      twice.latinFolded,
+      once.latinFolded,
+      `normalization should be idempotent on latinFolded output for ${value}`
+    );
+    assert.equal(
+      twice.compact,
+      once.compact,
+      `normalization should keep compact projections stable for ${value}`
+    );
+    assert.equal(
+      twice.slug,
+      once.slug,
+      `normalization should keep slug projections stable for ${value}`
+    );
+  }
+}
+
+{
+  const base = normalizeValue("support");
+  for (const invisible of ["\u200B", "\u200C", "\u200D", "\u2060", "\uFEFF"]) {
+    const variant = normalizeValue(`sup${invisible}port`);
+    assert.equal(
+      variant.compact,
+      base.compact,
+      `invisible character ${JSON.stringify(invisible)} should not affect compact support normalization`
+    );
+    assert.equal(
+      variant.slug,
+      base.slug,
+      `invisible character ${JSON.stringify(invisible)} should not affect slug support normalization`
+    );
+  }
+}
+
+{
+  const bases = ["admin", "support", "api"];
+  const separators = ["-", "_", ".", "/", " "];
+
+  for (const base of bases) {
+    const expectedCompact = normalizeValue(base).compact;
+    const letters = base.split("");
+
+    for (const separator of separators) {
+      const variant = letters.join(separator);
+      const normalized = normalizeValue(variant);
+      assert.equal(
+        normalized.compact,
+        expectedCompact,
+        `separator-joined variant ${variant} should preserve compact normalization`
+      );
+    }
+  }
+}
+
+{
   const unconfigured = createEngine({ sources: [], policies: [] });
   assert.throws(
     () => unconfigured.evaluate({ value: "test", kind: "tenantSlug" }),

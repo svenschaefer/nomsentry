@@ -94,7 +94,7 @@
 - Add fuzz and property-style tests for normalization.
   - Why:
     - [src/core/normalize.js](/C:/code/nomsentry/src/core/normalize.js), [src/unicode/confusables.js](/C:/code/nomsentry/src/unicode/confusables.js), and [src/unicode/latinize.js](/C:/code/nomsentry/src/unicode/latinize.js) are central and high-risk.
-    - Current tests are good regression examples but still example-based.
+    - Current tests now include basic generated invariants, but broader fuzz coverage is still missing.
   - Target:
     - fuzz around separators, zero-width characters, mixed normalization forms, and confusable sequences
     - assert stability and idempotence of normalization

@@ -31,6 +31,10 @@
 - Local deterministic checks are in place for:
   - maintained source artifacts
   - compiled runtime bundle
+- Normalization coverage now includes:
+  - generated idempotence checks
+  - invisible-character invariants
+  - separator-variant invariants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, GitLab reserved-route names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
