@@ -27,6 +27,13 @@
   - unknown severity falls back to category default
   - partial severity maps without `default` fall back to review
 
+- Adopted selected documentation patterns from the local Node.js project template.
+  - added [docs/GUARANTEES.md](/C:/code/nomsentry/docs/GUARANTEES.md)
+  - added [docs/REPO_WORKFLOWS.md](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
+  - added [docs/STATUSQUO.md](/C:/code/nomsentry/docs/STATUSQUO.md)
+  - added [docs/BASELINE_TEST_RUN.md](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
+  - linked the new docs from [README.md](/C:/code/nomsentry/README.md)
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.

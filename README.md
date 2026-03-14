@@ -4,6 +4,13 @@ Deterministic identifier policy and deception detection engine.
 
 Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/C:/code/nomsentry/THIRD_PARTY_NOTICES.md).
 Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/C:/code/nomsentry/SECURITY.md).
+Additional project docs:
+- [Architecture](/C:/code/nomsentry/docs/ARCHITECTURE.md)
+- [Specification](/C:/code/nomsentry/docs/SPEC.md)
+- [Guarantees](/C:/code/nomsentry/docs/GUARANTEES.md)
+- [Repo Workflows](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
+- [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
+- [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
 
 ## v0.3 highlights
 
