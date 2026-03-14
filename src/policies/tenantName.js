@@ -10,6 +10,7 @@ export function tenantName() {
       insult: "reject",
       slur: "reject",
       sexual: "reject",
+      shock: "reject",
       scriptRisk: "review",
       compositeRisk: "review",
     },

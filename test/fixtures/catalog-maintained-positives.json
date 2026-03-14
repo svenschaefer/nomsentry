@@ -189,6 +189,12 @@
     "values": ["anal", "bdsm", "blowjob", "cumshot"]
   },
   {
+    "label": "maintained shock positives",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["2girlsicup", "bluewaffle", "tubgirl"]
+  },
+  {
     "label": "mixed script review fallback",
     "kind": "tenantSlug",
     "expected": "review",

@@ -3675,6 +3675,13 @@ for (const testCase of [
   );
   assert.equal(
     source.rules.some(
+      (rule) => rule.id.includes("/shock/") && rule.category === "shock",
+    ),
+    true,
+    "dsojevic importer should map shock tags to the shock category",
+  );
+  assert.equal(
+    source.rules.some(
       (rule) => rule.term === "beaner" && rule.category === "slur",
     ),
     true,
@@ -4151,6 +4158,18 @@ await assert.rejects(
     result.reasons.some((reason) => reason.category === "sexual"),
     true,
     "structured sexual-tagged imports should now surface the sexual category in the maintained baseline",
+  );
+}
+
+{
+  const result = maintainedEngine.evaluate({
+    value: "bluewaffle",
+    kind: "tenantName",
+  });
+  assert.equal(
+    result.reasons.some((reason) => reason.category === "shock"),
+    true,
+    "structured shock-tagged imports should now surface the shock category in the maintained baseline",
   );
 }
 

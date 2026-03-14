@@ -25,6 +25,9 @@ function categoryForEntry(entry, fallbackCategory) {
   if (tags.has("sexual")) {
     return "sexual";
   }
+  if (tags.has("shock")) {
+    return "shock";
+  }
   if (tags.has("racial") || tags.has("religious") || tags.has("lgbtq")) {
     return "slur";
   }

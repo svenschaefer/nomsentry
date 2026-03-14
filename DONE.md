@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Extended the profanity-category refinement with a source-backed `shock` category.
+  - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `shock` tagged entries from `dsojevic/profanity-list` to `shock`
+  - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `shock` decisions
+  - [custom/sources/dsojevic-profanity-en.json](/C:/code/nomsentry/custom/sources/dsojevic-profanity-en.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
+  - the current refinement remains intentionally source-based, so overlapping terms can still surface both `profanity` and `shock` evidence until the broader category split is complete
+
 - Extended the profanity-category refinement with a source-backed `sexual` category.
   - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `sexual` tagged entries from `dsojevic/profanity-list` to `sexual`
   - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `sexual` decisions

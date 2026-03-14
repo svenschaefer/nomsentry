@@ -49,6 +49,7 @@
 - The first explicit category split beyond broad `profanity` is now in place: `insult.wiki` feeds `insult`.
 - The next explicit source-backed refinement is now in place as well: `dsojevic/profanity-list` maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`.
 - The next source-backed refinement after that is now in place as well: `dsojevic/profanity-list` maps `sexual` tagged entries to `sexual`.
+- The next source-backed refinement after that is now in place as well: `dsojevic/profanity-list` maps `shock` tagged entries to `shock`.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
 - `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered reserved-usernames import.
 - The filtered `reserved-usernames` subset now also includes `settings` as a maintained technical namespace-collision term.
@@ -124,7 +125,7 @@
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support` and `official-support`, but broader deceptive combinations such as trust, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
-- The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, or both `profanity` and `sexual` evidence.
+- The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence.
 
 ## Recent source-research findings
 

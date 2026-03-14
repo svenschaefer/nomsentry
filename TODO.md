@@ -26,9 +26,9 @@
 
 - Continue splitting the current broad `profanity` handling into more precise policy categories.
   - Why:
-    - The first explicit refinements are now in place: `insult.wiki` feeds `insult`, and `dsojevic/profanity-list` maps `racial`, `religious`, and `lgbtq` tagged entries to `slur` plus `sexual` tagged entries to `sexual`.
-    - The remaining maintained sources still put general profanity, shock terms, and extremist references into broad buckets.
-    - The current refinement is still source-based, so some overlapping terms can surface both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, or both `profanity` and `sexual` evidence.
+    - The first explicit refinements are now in place: `insult.wiki` feeds `insult`, and `dsojevic/profanity-list` maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`, `sexual` tagged entries to `sexual`, and `shock` tagged entries to `shock`.
+    - The remaining maintained sources still put general profanity and extremist references into broad buckets.
+    - The current refinement is still source-based, so some overlapping terms can surface both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence.
     - Even with `severity`, the semantic grouping is still too coarse for explainability, customer policy customization, and compliance review.
   - Target:
     - continue toward categories such as `generalProfanity`, `insult`, `slur`, `sexual`, `shock`, and `extremism`
