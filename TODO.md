@@ -119,14 +119,6 @@
   - Target:
     - add deeper mixed-category and multi-rule matrix coverage
 
-- Add regression tests for deterministic maintained source generation.
-  - Why:
-    - Script-level determinism is checked, but the test suite still does not assert deterministic maintained-source rebuilds inline.
-    - That leaves a quality gap around future ordering bugs inside lower-level helpers.
-  - Target:
-    - test stable ordering of loaded sources
-    - test that rebuilding maintained source artifacts from unchanged inputs produces identical serialized output
-
 - Add tests for destructive-script safeguards.
   - Why:
     - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has guardrails for empty sources and unexpected files, but rollback-path and interruption behavior are still under-tested.

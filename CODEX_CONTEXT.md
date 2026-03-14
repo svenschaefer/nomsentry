@@ -56,6 +56,7 @@
 - Grouped catalog fixtures should use the maintained source baseline, not the synthetic helper source set.
 - Synthetic helper sources are still valid for focused engine and policy tests, but they must not be used to overstate maintained runtime coverage.
 - Normalization tests now include basic generated property coverage for idempotence, invisibles, and separator variants, but they still do not constitute full fuzzing.
+- Determinism is now covered both by standalone check scripts and by direct in-suite tests for loader ordering and byte-stable maintained-source recompaction.
 
 ## Current repo docs
 

@@ -33,6 +33,9 @@
   - maintained source artifacts
   - compiled runtime bundle
   - build provenance manifest
+- In-suite determinism coverage now includes:
+  - stable source-directory load ordering
+  - byte-stable recompaction of unchanged source inputs
 - Normalization coverage now includes:
   - generated idempotence checks
   - invisible-character invariants

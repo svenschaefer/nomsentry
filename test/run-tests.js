@@ -872,6 +872,68 @@ assert.equal(
   fs.rmSync(tmpDir, { recursive: true, force: true });
 }
 
+{
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-loader-order-"));
+  fs.writeFileSync(path.join(tmpDir, "zeta.json"), serializeSource({
+    id: "zeta-source",
+    rules: [
+      {
+        id: "zeta-source/omega",
+        term: "omega",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token"
+      }
+    ]
+  }), "utf8");
+  fs.writeFileSync(path.join(tmpDir, "alpha.json"), serializeSource({
+    id: "alpha-source",
+    rules: [
+      {
+        id: "alpha-source/alpha",
+        term: "alpha",
+        category: "profanity",
+        scopes: ["tenantName"],
+        match: "token"
+      }
+    ]
+  }), "utf8");
+
+  const loaded = loadSourcesFromDirectory(pathToFileURL(`${tmpDir}${path.sep}`));
+  assert.deepEqual(
+    loaded.map((source) => source.id),
+    ["alpha-source", "zeta-source"],
+    "directory loading should be deterministic regardless of filesystem ordering"
+  );
+
+  const outputDirA = path.join(tmpDir, "out-a");
+  const outputDirB = path.join(tmpDir, "out-b");
+  compactSourcesDirectory(loaded, outputDirA, {
+    stageDir: path.join(tmpDir, "stage-a"),
+    backupDir: path.join(tmpDir, "backup-a"),
+    logger: null
+  });
+  compactSourcesDirectory(loaded, outputDirB, {
+    stageDir: path.join(tmpDir, "stage-b"),
+    backupDir: path.join(tmpDir, "backup-b"),
+    logger: null
+  });
+
+  const filesA = fs.readdirSync(outputDirA).sort();
+  const filesB = fs.readdirSync(outputDirB).sort();
+  assert.deepEqual(filesA, filesB, "recompacted maintained sources should have the same file set");
+
+  for (const file of filesA) {
+    assert.equal(
+      fs.readFileSync(path.join(outputDirA, file), "utf8"),
+      fs.readFileSync(path.join(outputDirB, file), "utf8"),
+      `recompacted maintained sources should be byte-stable for ${file}`
+    );
+  }
+
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
 assert.throws(
   () => compactSourcesDirectory([], path.join(os.tmpdir(), "nomsentry-empty-sources"), { logger: null }),
   /source set is empty/,

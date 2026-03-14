@@ -29,6 +29,10 @@
   - generated invisible-character invariants
   - generated separator-variant invariants
 
+- Added in-suite determinism coverage for maintained source generation.
+  - directory loading order is now tested explicitly
+  - repeated compaction of unchanged source inputs is now tested for byte-stable output
+
 - Made maintained-source and runtime-bundle writes crash-safer.
   - [src/schema/source-io.js](/C:/code/nomsentry/src/schema/source-io.js) now writes files atomically through temporary files plus rename.
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now uses the same atomic write path for `dist/runtime-sources.json`.
