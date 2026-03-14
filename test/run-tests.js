@@ -1383,6 +1383,82 @@ assert.throws(
   );
 }
 
+{
+  const severityMatrixEngine = createEngine({
+    sources: [{
+      id: "severity-matrix-source",
+      rules: [
+        {
+          id: "severity-matrix-source/mild",
+          term: "mild",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "low",
+          normalizationField: "confusableSkeleton"
+        },
+        {
+          id: "severity-matrix-source/severe",
+          term: "severe",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          severity: "high",
+          normalizationField: "confusableSkeleton"
+        },
+        {
+          id: "severity-matrix-source/brandx",
+          term: "brandx",
+          category: "protectedBrand",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton"
+        }
+      ]
+    }],
+    policies: [{
+      id: "severity-matrix-policy",
+      appliesTo: ["tenantName"],
+      decisionMatrix: {
+        profanity: {
+          low: "review",
+          high: "reject",
+          default: "review"
+        },
+        protectedBrand: "review"
+      }
+    }]
+  });
+
+  assert.equal(
+    severityMatrixEngine.evaluate({ value: "mild brandx", kind: "tenantName" }).decision,
+    "review",
+    "review-level severity combined with review-only categories should remain review"
+  );
+  assert.equal(
+    severityMatrixEngine.evaluate({ value: "severe brandx", kind: "tenantName" }).decision,
+    "reject",
+    "high-severity rules should dominate mixed-category review matches"
+  );
+  assert.equal(
+    severityMatrixEngine.evaluate({ value: "mild severe", kind: "tenantName" }).decision,
+    "reject",
+    "a high-severity rule should dominate lower-severity rules in the same category"
+  );
+  assert.deepEqual(
+    severityMatrixEngine.evaluate({ value: "mild severe brandx", kind: "tenantName" }).reasons.map((reason) => ({
+      category: reason.category,
+      severity: reason.severity
+    })),
+    [
+      { category: "profanity", severity: "low" },
+      { category: "profanity", severity: "high" },
+      { category: "protectedBrand", severity: undefined }
+    ],
+    "severity-aware evaluation should preserve per-rule severity evidence in reasons"
+  );
+}
+
 for (const testCase of [
   { value: "adm1n", kind: "tenantSlug", expected: "reject", label: "leet admin" },
   { value: "supp0rt", kind: "tenantSlug", expected: "reject", label: "leet support" },

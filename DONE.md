@@ -19,6 +19,11 @@
   - malformed compact scope overrides are now covered
   - malformed composite `allOf` entries are now covered
 
+- Expanded `severity` policy-matrix coverage further.
+  - mixed-category review-plus-reject interactions are now covered
+  - same-category low/high severity dominance is now covered
+  - severity evidence retention in final reasons is now covered
+
 - Added a machine-readable build provenance manifest.
   - added [scripts/build-provenance-manifest.js](/C:/code/nomsentry/scripts/build-provenance-manifest.js)
   - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) now writes [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json)

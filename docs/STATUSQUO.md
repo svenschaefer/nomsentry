@@ -59,6 +59,10 @@
   - metadata/default merging
   - malformed compact scope overrides
   - malformed composite `allOf` entries
+- `severity` matrix coverage now includes:
+  - mixed-category review versus reject interactions
+  - low/high severity dominance within one category
+  - severity retention in explainability reasons
 - Known non-flaky baseline:
   - local `npm run ci:check`
 

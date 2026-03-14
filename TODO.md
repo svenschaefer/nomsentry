@@ -99,12 +99,6 @@
     - expand upstream fetch-failure coverage across the remaining import entrypoints
     - add coverage for partial-write paths during artifact generation
 
-- Add tests for policy matrix edge cases with `severity`.
-  - Why:
-    - `severity` fallback behavior is now partially covered, but mixed-category escalation and broader matrix interactions are still lightly tested.
-  - Target:
-    - add deeper mixed-category and multi-rule matrix coverage
-
 - Add tests for destructive-script safeguards.
   - Why:
     - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) now has guardrails for empty sources and unexpected files, but rollback-path and interruption behavior are still under-tested.
