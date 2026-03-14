@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
 import { applyAllowOverrides } from "../src/core/overrides.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
@@ -182,6 +184,47 @@ assert.equal(
     true,
     "runtime bundle should expose flattened composite rules"
   );
+}
+
+assert.throws(
+  () => loadRuntimeBundleFromFile(new URL("./fixtures/runtime-bundle-invalid-version.json", import.meta.url)),
+  /Unsupported runtime bundle version/,
+  "runtime bundle loader should reject unsupported bundle versions"
+);
+
+assert.throws(
+  () => loadRuntimeBundleFromFile(new URL("./fixtures/runtime-bundle-invalid-profile-index.json", import.meta.url)),
+  /references missing categoryTable\[9\]/,
+  "runtime bundle loader should reject broken profile table indexes"
+);
+
+{
+  const cliPath = fileURLToPath(new URL("../bin/nomsentry.js", import.meta.url));
+  const runCli = (...args) =>
+    spawnSync(process.execPath, [cliPath, ...args], {
+      encoding: "utf8"
+    });
+
+  const usageResult = runCli();
+  assert.equal(usageResult.status, 64, "cli should return a stable usage exit code");
+  assert.match(usageResult.stdout, /Usage:/, "cli should print usage when arguments are missing");
+
+  const commandResult = runCli("wat", "tenantName", "value");
+  assert.equal(commandResult.status, 65, "cli should return a stable validation exit code for unknown commands");
+  assert.match(commandResult.stderr, /Unknown command: wat/, "cli should reject unknown commands before evaluation");
+
+  const kindResult = runCli("check", "tenantWhatever", "value");
+  assert.equal(kindResult.status, 65, "cli should return a stable validation exit code for unknown kinds");
+  assert.match(kindResult.stderr, /Unknown kind: tenantWhatever/, "cli should reject unknown kinds before evaluation");
+
+  const checkResult = runCli("check", "tenantName", "depp");
+  assert.equal(checkResult.status, 0, "cli check should succeed for valid inputs");
+  assert.equal(checkResult.stdout.trim(), "reject", "cli check should still use the runtime bundle path");
+
+  const explainResult = runCli("explain", "tenantSlug", "support", "--namespace", "internal");
+  assert.equal(explainResult.status, 0, "cli explain should succeed for valid inputs");
+  const explained = JSON.parse(explainResult.stdout);
+  assert.equal(explained.decision, "allow", "cli explain should preserve namespace-based overrides");
 }
 
 {

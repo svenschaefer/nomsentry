@@ -23,6 +23,8 @@ Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md
 
 ```bash
 npm test
+npm run docs:check
+npm run determinism:check
 npm run ci:check
 npm run import:ldnoobw
 npm run import:2toad

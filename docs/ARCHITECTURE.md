@@ -9,7 +9,7 @@
 - `src/core/decision.js` - provisional decision logic
 - `src/core/overrides.js` - final allow overrides
 - `src/loaders/source-loader.js` - JSON source loading + validation
-- `src/loaders/runtime-bundle.js` - compiled runtime bundle loading
+- `src/loaders/runtime-bundle.js` - compiled runtime bundle loading + bundle compatibility validation
 - `src/importers/ldnoobw.js` - external wordlist normalization into source JSON
 - `src/importers/toad-profanity.js` - @2toad/profanity normalization into source JSON
 - `src/importers/obscenity.js` - obscenity dataset normalization into source JSON
@@ -20,6 +20,7 @@
 - `scripts/import-*.js` - source-specific import entrypoints
 - `scripts/derive-uspto-brand-risk.js` - structural derivation of the runtime USPTO brand subset
 - `scripts/build-runtime-sources.js` - compilation of `custom/sources/` into the runtime bundle
+- `scripts/check-runtime-bundle-determinism.js` - reproducibility check for the compiled runtime bundle
 - `src/schema/validate-source.js` - source/rule schema validation
 - `src/schema/source-format.js` - compact source tuple format
 - `src/schema/source-io.js` - compact source serialization and pruning
@@ -45,6 +46,7 @@ Instead it maintains:
 - a compiled runtime bundle in `dist/runtime-sources.json`
 
 `custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json`.
+The runtime loader rejects unsupported bundle versions and malformed table references before evaluation.
 
 The currently maintained source families are:
 

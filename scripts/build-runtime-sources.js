@@ -3,7 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputDir: path.resolve(process.cwd(), "custom", "sources"),
@@ -34,7 +34,7 @@ function intern(values, value) {
   return index;
 }
 
-function buildRuntimeBundle(sources) {
+export function buildRuntimeBundle(sources) {
   const scopeTable = { items: [], indexByKey: new Map() };
   const matchTable = { items: [], indexByKey: new Map() };
   const categoryTable = { items: [], indexByKey: new Map() };
@@ -87,9 +87,22 @@ function buildRuntimeBundle(sources) {
   };
 }
 
-const options = parseArgs(process.argv.slice(2));
-fs.mkdirSync(path.dirname(options.outputFile), { recursive: true });
-const sources = loadSourcesFromDirectory(pathToFileURL(`${options.inputDir}${path.sep}`));
-const bundle = buildRuntimeBundle(sources);
-fs.writeFileSync(options.outputFile, `${JSON.stringify(bundle)}\n`, "utf8");
-console.log(`Wrote ${options.outputFile} (${bundle.rules.length} rules, ${bundle.compositeRules.length} composite rules)`);
+export function buildRuntimeBundleFromDirectory(inputDir) {
+  return buildRuntimeBundle(loadSourcesFromDirectory(pathToFileURL(`${inputDir}${path.sep}`)));
+}
+
+export function writeRuntimeBundle(outputFile, bundle) {
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  fs.writeFileSync(outputFile, `${JSON.stringify(bundle)}\n`, "utf8");
+}
+
+function main(argv) {
+  const options = parseArgs(argv);
+  const bundle = buildRuntimeBundleFromDirectory(options.inputDir);
+  writeRuntimeBundle(options.outputFile, bundle);
+  console.log(`Wrote ${options.outputFile} (${bundle.rules.length} rules, ${bundle.compositeRules.length} composite rules)`);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main(process.argv.slice(2));
+}

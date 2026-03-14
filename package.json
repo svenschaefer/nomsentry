@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "node test/run-tests.js",
-    "ci:check": "npm test && npm run build:runtime-sources",
+    "docs:check": "node scripts/check-docs-consistency.js",
+    "determinism:check": "node scripts/check-runtime-bundle-determinism.js",
+    "ci:check": "npm test && npm run docs:check && npm run build:runtime-sources && npm run determinism:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",

@@ -27,13 +27,23 @@
     - define expected refresh cadence per source family
     - fail CI or warn when source artifacts exceed allowed age
 
-- Harden the CLI command flow so invalid commands fail before engine evaluation.
+- Make source and runtime artifact generation atomic and crash-safe.
   - Why:
-    - [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js) evaluates the engine before checking whether the command is `check` or `explain`.
-    - Invalid commands can therefore surface unrelated engine errors instead of `Unknown command`.
+    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) deletes all JSON files in `custom/sources/` before rewriting them.
+    - [scripts/build-runtime-sources.js](/C:/code/nomsentry/scripts/build-runtime-sources.js) writes the runtime bundle directly to the final path.
+    - A failed or interrupted run can leave the repository or a deployment artifact set in a partially-written state.
   - Target:
-    - validate command and kind before evaluation
-    - return stable exit codes for usage, validation, and runtime failures
+    - write to temp files/directories first
+    - validate the result
+    - swap into place only after successful completion
+
+- Add deterministic rebuild verification for maintained source artifacts.
+  - Why:
+    - The project relies on versioned generated artifacts, but there is no explicit contract that rebuilds are byte-stable from the same inputs.
+    - Enterprise consumers need confidence that source ordering, compaction, and bundle generation are reproducible.
+  - Target:
+    - verify deterministic output for `custom/sources/` compaction
+    - document or encode the ordering rules used during generation
 
 ## P1 Product and policy quality
 
@@ -53,14 +63,6 @@
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks
 
-- Add runtime bundle compatibility checks.
-  - Why:
-    - [src/loaders/runtime-bundle.js](/C:/code/nomsentry/src/loaders/runtime-bundle.js) validates tuple shape, but not semantic compatibility between bundle version and loader expectations.
-    - There is also no manifest-level guarantee that the bundle was built from the current source schema.
-  - Target:
-    - explicit runtime bundle schema versioning
-    - fail-fast on unsupported bundle versions
-
 - Add a documented policy for downstream source extension.
   - Why:
     - The docs state that downstream projects can add their own sources, but there is no documented merge, precedence, or override model for such extensions.
@@ -68,18 +70,6 @@
     - define how downstream sources interact with maintained sources, compiled bundles, and allow overrides
 
 ## P1 Quality and test coverage
-
-- Add unit tests for negative and malformed runtime bundle cases.
-  - Why:
-    - Existing tests cover the happy path for `dist/runtime-sources.json`, but not corrupted profile indexes, missing tables, invalid tuple lengths, or unsupported bundle versions.
-  - Target:
-    - direct tests for `expandRuntimeBundle()` error handling
-
-- Add dedicated CLI tests.
-  - Why:
-    - The suite currently exercises the engine directly and does a few manual CLI smoke checks, but there is no systematic coverage of CLI usage errors, unknown commands, unknown kinds, or exit codes.
-  - Target:
-    - test `check`, `explain`, usage output, unknown command handling, and namespace override behavior
 
 - Add fuzz and property-style tests for normalization.
   - Why:
@@ -107,6 +97,22 @@
     - There is one positive `severity` test, but not enough around missing severities, unknown severities, partial severity maps, or mixed-category interactions.
   - Target:
     - assert stable fallback behavior for incomplete decision matrices
+
+- Add regression tests for deterministic maintained source generation.
+  - Why:
+    - The current suite does not assert that repeated source compaction and runtime-bundle builds produce stable outputs.
+    - That leaves a quality gap around ordering bugs and accidental nondeterminism in generated files.
+  - Target:
+    - test stable ordering of loaded sources
+    - test that rebuilding maintained source artifacts from unchanged inputs produces identical serialized output
+
+- Add tests for destructive-script safeguards.
+  - Why:
+    - [scripts/compact-sources.js](/C:/code/nomsentry/scripts/compact-sources.js) is intentionally destructive.
+    - There are no tests around interrupted writes, empty input directories, or accidental path misuse.
+  - Target:
+    - test path handling and failure behavior for destructive maintenance scripts
+    - add explicit guardrails for unexpected directories before deletion
 
 ## P2 Engineering hygiene
 
