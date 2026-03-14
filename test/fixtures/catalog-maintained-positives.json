@@ -9,31 +9,96 @@
     "label": "gitlab reserved route names",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["admin", "api", "dashboard", "help", "login", "projects", "public", "search", "uploads", "users"]
+    "values": [
+      "admin",
+      "api",
+      "dashboard",
+      "help",
+      "login",
+      "projects",
+      "public",
+      "search",
+      "uploads",
+      "users"
+    ]
   },
   {
     "label": "reserved-usernames technical names",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["root", "system", "mail", "status", "server", "webmail", "localhost", "auth", "cache", "dns", "smtp", "ssh", "wpad", "xml", "oauth", "openid", "logout", "profile"]
+    "values": [
+      "root",
+      "system",
+      "mail",
+      "status",
+      "server",
+      "webmail",
+      "localhost",
+      "auth",
+      "cache",
+      "dns",
+      "smtp",
+      "ssh",
+      "wpad",
+      "xml",
+      "oauth",
+      "openid",
+      "logout",
+      "profile"
+    ]
   },
   {
     "label": "rfc2142 impersonation roles",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["support", "security", "abuse", "postmaster", "webmaster", "hostmaster", "noc", "info", "marketing", "sales", "news", "usenet", "www", "ftp"]
+    "values": [
+      "support",
+      "security",
+      "abuse",
+      "postmaster",
+      "webmaster",
+      "hostmaster",
+      "noc",
+      "info",
+      "marketing",
+      "sales",
+      "news",
+      "usenet",
+      "www",
+      "ftp"
+    ]
   },
   {
     "label": "maintained protectedBrand positives",
     "kind": "tenantSlug",
     "expected": "review",
-    "values": ["harley-davidson", "national-geographic", "scientific-american"]
+    "values": [
+      "harley-davidson",
+      "national-geographic",
+      "scientific-american",
+      "openai",
+      "chatgpt",
+      "paypal",
+      "google",
+      "github",
+      "stripe",
+      "mastercard"
+    ]
   },
   {
     "label": "maintained profanity positives",
     "kind": "tenantName",
     "expected": "reject",
-    "values": ["shit", "fuckyou", "shithead", "asshole", "scheisse", "arschloch", "hurensohn", "depp"]
+    "values": [
+      "shit",
+      "fuckyou",
+      "shithead",
+      "asshole",
+      "scheisse",
+      "arschloch",
+      "hurensohn",
+      "depp"
+    ]
   },
   {
     "label": "mixed script review fallback",

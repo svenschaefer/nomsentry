@@ -36,26 +36,12 @@
     - That is defensible as a first-pass noise filter, but not yet enterprise-grade from a precision/recall perspective.
     - The current thresholds are still too blunt: one-word marks require at least 12 characters, multi-word marks allow at most 2 tokens with at least 6 characters each, and digit-bearing terms are dropped entirely.
     - Those rules reduce noise, but they also exclude many relevant short or otherwise legitimate brand identifiers and are not a clean long-term calibration.
+    - The repository now also carries a conservative [custom/sources/derived-wikidata-brand-risk.json](/C:/code/nomsentry/custom/sources/derived-wikidata-brand-risk.json) supplement, which closes `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, but intentionally still excludes ambiguity-prone terms such as `apple`, `amazon`, and `visa`.
   - Target:
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks
     - replace the current blunt structural thresholds with a better-calibrated derived profile
-    - decide which short, numeric, and ambiguous brand forms should remain in the maintained default profile
-
-- Implement a conservative `derived-wikidata-brand-risk.json` supplement for uncovered brands.
-  - Why:
-    - A catalog-based runtime evaluation showed that globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple` currently evaluate to `allow` under the official-only derived subset.
-    - The Wikidata evaluation in [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md) and [docs/generated/wikidata-brand-gap-report.json](/C:/code/nomsentry/docs/generated/wikidata-brand-gap-report.json) confirmed that clean candidate item pages exist for the uncovered-brand examples.
-    - The same evaluation also showed that some pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so the supplement must be filtered rather than imported blindly.
-  - Target:
-    - implement the supplement as a build-step extractor, not as a runtime dependency
-    - prefer deterministic SPARQL JSON extraction over full dump parsing unless Query Service limits become the blocker
-    - implement a conservative extractor for brand-relevant Wikidata items
-    - allow overlap with the USPTO-derived subset instead of forcing a strict non-overlap rule
-    - derive runtime-facing brand terms without legal suffixes such as `Inc.` or `Ltd.`
-    - define allowed item classes and ambiguity filters explicitly
-    - document how the Wikidata-derived subset coexists with the USPTO-derived subset
-    - add grouped TP and FP coverage for the first accepted Wikidata-derived brand cohort
+    - decide which short, numeric, and ambiguity-prone brand forms should remain in the maintained default profile
 
 - Expand maintained `compositeRisk` coverage beyond the current single `security+support` rule if the product expects broader deception-combination coverage.
   - Why:

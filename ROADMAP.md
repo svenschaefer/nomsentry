@@ -21,17 +21,16 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - split coarse `profanity` handling into more precise categories
    - expand maintained impersonation coverage beyond the RFC 2142-centered baseline, knowing that free source options are limited for modern trust and recovery vocabulary
    - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows plus GitLab plus reserved-usernames baseline, including optional Windows reserved URI scheme names and, only with stricter filtering, `github-reserved-names`
-   - improve USPTO brand-risk derivation with measured precision and recall analysis
-   - implement a conservative Wikidata-derived uncovered-brand supplement alongside the USPTO-derived subset as a separate brand-coverage track
+   - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, especially around short, numeric, and ambiguity-prone brand forms
    - expand composite-risk coverage beyond the current single-rule baseline if that broader contract is intended, likely through a derived layer rather than a direct free source import
    - document downstream source extension policy
    - Dependency:
      - benefits from provenance work but does not require indexed matching
 
 3. Quality expansion
-   - deepen schema and severity matrix edge-case coverage
+   - completed for the currently planned v0.5 quality gates
    - Dependency:
-     - should track the product-policy changes so new semantics are covered once
+     - any future quality additions should continue to track the product-policy changes so new semantics are covered once
 
 ### v0.6.x
 

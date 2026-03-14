@@ -47,6 +47,10 @@ import {
   loadReservedUsernamesTerms,
 } from "../src/importers/reserved-usernames.js";
 import {
+  buildWikidataBrandRiskSource,
+  isAcceptedWikidataBrandCandidate,
+} from "../src/importers/wikidata-brand-risk.js";
+import {
   buildUsptoTrademarkSource,
   buildUsptoTrademarkSourceFromCsvFile,
   deriveUsptoBrandRiskSource,
@@ -86,6 +90,7 @@ import {
   parseArgs as parseWikidataBrandArgs,
   scoreCandidate,
 } from "../scripts/evaluate-wikidata-brand-supplement.js";
+import { parseArgs as parseWikidataDeriveArgs } from "../scripts/derive-wikidata-brand-risk.js";
 import {
   assessFreshness,
   findRefreshPolicy,
@@ -272,6 +277,17 @@ assert.equal(
 
 assert.equal(
   loadSourceFromFile(
+    new URL(
+      "../custom/sources/derived-wikidata-brand-risk.json",
+      import.meta.url,
+    ),
+  ).metadata.source,
+  "Wikidata",
+  "wikidata derived source metadata should load from JSON",
+);
+
+assert.equal(
+  loadSourceFromFile(
     new URL("../custom/sources/insult-wiki-en.json", import.meta.url),
   ).metadata.source,
   "insult.wiki",
@@ -340,10 +356,42 @@ assert.equal(
   );
 }
 
+{
+  const wikidataDeriveArgs = parseWikidataDeriveArgs([
+    "--terms",
+    "openai,google",
+    "--output-file",
+    "tmp/derived-wikidata-brand-risk.json",
+    "--report-file",
+    "tmp/wikidata-report.json",
+  ]);
+  assert.deepEqual(
+    wikidataDeriveArgs.terms,
+    ["openai", "google"],
+    "wikidata derive args should parse explicit brand terms",
+  );
+  assert.equal(
+    path.basename(wikidataDeriveArgs.outputFile),
+    "derived-wikidata-brand-risk.json",
+    "wikidata derive args should parse output files",
+  );
+  assert.equal(
+    path.basename(wikidataDeriveArgs.reportFile),
+    "wikidata-report.json",
+    "wikidata derive args should parse report files",
+  );
+}
+
 assert.throws(
   () => parseWikidataBrandArgs(["--wat"]),
   /Unknown option: --wat/,
   "wikidata evaluation args should reject unknown options",
+);
+
+assert.throws(
+  () => parseWikidataDeriveArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "wikidata derive args should reject unknown options",
 );
 
 {
@@ -352,13 +400,13 @@ assert.throws(
       process.cwd(),
       "test",
       "fixtures",
-      "catalog-documented-current-gaps.json",
+      "wikidata-brand-seed-terms.json",
     ),
   );
   assert.equal(
     fixtureTerms.includes("openai") && fixtureTerms.includes("paypal"),
     true,
-    "wikidata evaluation should load the documented uncovered-brand fixture terms",
+    "wikidata evaluation should load the Wikidata seed cohort terms",
   );
 }
 
@@ -428,6 +476,16 @@ assert.throws(
     true,
     "wikidata scoring should down-rank obvious common-noun collisions",
   );
+  assert.equal(
+    isAcceptedWikidataBrandCandidate("openai", exactBrandCandidate),
+    true,
+    "wikidata supplement should accept clean exact brand candidates",
+  );
+  assert.equal(
+    isAcceptedWikidataBrandCandidate("apple", legalSuffixCandidate),
+    false,
+    "wikidata supplement should reject ambiguity-blocked brand terms by default",
+  );
 }
 
 {
@@ -477,6 +535,71 @@ assert.throws(
     candidates[0].id,
     "Q312",
     "wikidata evaluation should rank the brand/company page ahead of the common-noun page",
+  );
+}
+
+{
+  const source = buildWikidataBrandRiskSource({
+    id: "wikidata-brand-gap-evaluation",
+    version: 1,
+    generatedAt: "2026-03-14T00:00:00.000Z",
+    terms: [
+      {
+        term: "openai",
+        recommended: {
+          id: "Q21708200",
+          derivedTerm: "openai",
+          recommendedTerm: "openai",
+          exactLabelMatch: true,
+          aliasMatch: false,
+          legalSuffixMatch: false,
+          positiveDescription: true,
+          relevantClass: true,
+          negativeDescription: false,
+          score: 140,
+        },
+      },
+      {
+        term: "apple",
+        recommended: {
+          id: "Q312",
+          derivedTerm: "apple",
+          recommendedTerm: "apple",
+          exactLabelMatch: false,
+          aliasMatch: true,
+          legalSuffixMatch: true,
+          positiveDescription: true,
+          relevantClass: true,
+          negativeDescription: false,
+          score: 170,
+        },
+      },
+      {
+        term: "mastercard",
+        recommended: {
+          id: "Q489921",
+          derivedTerm: "mastercard",
+          recommendedTerm: "mastercard",
+          exactLabelMatch: true,
+          aliasMatch: false,
+          legalSuffixMatch: false,
+          positiveDescription: true,
+          relevantClass: true,
+          negativeDescription: false,
+          score: 140,
+        },
+      },
+    ],
+  });
+  assert.deepEqual(
+    source.rules.map((rule) => rule.term),
+    ["mastercard", "openai"],
+    "wikidata supplement should keep the accepted cohort and exclude ambiguity-blocked terms",
+  );
+  assert.equal(
+    source.metadata.source,
+    "Wikidata",
+    "wikidata supplement should stamp Wikidata source metadata",
   );
 }
 
@@ -590,12 +713,32 @@ assert.throws(
     },
     "build manifest should carry the matched refresh policy for maintained artifacts",
   );
+  assert.deepEqual(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "derived-wikidata-brand-risk",
+    )?.refreshPolicy,
+    {
+      source: "source-refresh-policy",
+      version: 1,
+      maxAgeDays: 45,
+      notes:
+        "Derived Wikidata brand supplements should be reviewed and refreshed at least every 45 days.",
+    },
+    "build manifest should carry refresh policy metadata for the Wikidata supplement",
+  );
   assert.equal(
     manifest.sourceArtifacts.find(
       (entry) => entry.id === "derived-uspto-brand-risk",
     )?.transformVersion,
     "derive-uspto-brand-risk@1",
     "build manifest should record deterministic transform versions for derived artifacts",
+  );
+  assert.equal(
+    manifest.sourceArtifacts.find(
+      (entry) => entry.id === "derived-wikidata-brand-risk",
+    )?.transformVersion,
+    "derive-wikidata-brand-risk@1",
+    "build manifest should record deterministic transform versions for the Wikidata supplement",
   );
   assert.equal(
     manifest.runtimeArtifact.transformVersion,

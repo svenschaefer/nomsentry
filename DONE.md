@@ -2,6 +2,14 @@
 
 ## Completed recently
 
+- Implemented the conservative Wikidata-derived uncovered-brand supplement.
+  - added [src/importers/wikidata-brand-risk.js](/C:/code/nomsentry/src/importers/wikidata-brand-risk.js)
+  - added [scripts/derive-wikidata-brand-risk.js](/C:/code/nomsentry/scripts/derive-wikidata-brand-risk.js)
+  - added [custom/sources/derived-wikidata-brand-risk.json](/C:/code/nomsentry/custom/sources/derived-wikidata-brand-risk.json)
+  - added `npm run derive:wikidata-brand-risk` in [package.json](/C:/code/nomsentry/package.json)
+  - the maintained default brand profile now includes `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard` from the conservative Wikidata-derived layer
+  - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
+
 - Added lightweight JSDoc and TypeScript-based shape checking for schema-heavy runtime surfaces.
   - added [tsconfig.typecheck.json](/C:/code/nomsentry/tsconfig.typecheck.json)
   - added `npm run typecheck` in [package.json](/C:/code/nomsentry/package.json) and wired it into `ci:check`
@@ -69,7 +77,7 @@
 
 - Evaluated Wikidata as a `protectedBrand` supplement source for uncovered brands.
   - added [docs/WIKIDATA_BRAND_EVALUATION.md](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
-  - confirmed that the current runtime still allows representative globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple`
+  - the original gap evaluation confirmed that the official-only derived USPTO runtime still allowed representative globally recognizable brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, `visa`, `mastercard`, `amazon`, and `apple`
   - confirmed that Wikidata has clean candidate item pages for the main uncovered-brand examples
   - documented the ambiguity risk for pages behind `visa`, `amazon`, and `apple`
 

@@ -1,22 +1,44 @@
-# Wikidata Brand Supplement Evaluation
+# Wikidata Brand Evaluation
 
-## Scope
+## Purpose
 
-This evaluation checks whether Wikidata can provide `protectedBrand` coverage for globally recognizable brands that are still not covered by the current derived USPTO subset.
+This document records the current Wikidata role in `protectedBrand`.
 
-The question is not whether Wikidata should replace USPTO.
-The question is whether a conservative Wikidata-derived supplement can close clear runtime gaps while coexisting with the existing USPTO-derived subset.
+Wikidata does not replace the USPTO-derived subset.
+It supplements it conservatively for uncovered globally recognizable brands that the current structural USPTO profile still misses.
 
-Overlap with the USPTO-derived subset is acceptable.
+## Current repo state
 
-The current repo now includes a reproducible evaluation script:
+The repo now contains both:
 
-- `npm run evaluate:wikidata-brands`
-- generated report: `docs/generated/wikidata-brand-gap-report.json`
+- a reproducible evaluation path:
+  - `npm run evaluate:wikidata-brands`
+  - generated report: `docs/generated/wikidata-brand-gap-report.json`
+- a maintained derived source:
+  - `npm run derive:wikidata-brand-risk`
+  - artifact: `custom/sources/derived-wikidata-brand-risk.json`
 
-## Current runtime gap
+The current accepted Wikidata-derived cohort is:
 
-The current runtime still evaluates these representative brand terms to `allow`:
+- `openai`
+- `chatgpt`
+- `paypal`
+- `google`
+- `github`
+- `stripe`
+- `mastercard`
+
+The current ambiguity-prone exclusions are:
+
+- `apple`
+- `amazon`
+- `visa`
+
+Those excluded terms remain intentionally outside the maintained default profile until the broader brand-calibration work is settled.
+
+## Why the supplement exists
+
+The original official-only runtime gap showed that the structural USPTO-derived subset still allowed representative globally recognizable brands such as:
 
 - `openai`
 - `chatgpt`
@@ -29,138 +51,66 @@ The current runtime still evaluates these representative brand terms to `allow`:
 - `amazon`
 - `apple`
 
-This is expected under the current structural USPTO derivation, which is intentionally conservative and drops many short globally recognizable brands.
+That gap came from the current USPTO derivation being intentionally structural and conservative, not from a failure of the runtime engine itself.
 
-## Method
+## Source mechanics
 
-The evaluation used:
+The current Wikidata path uses:
 
-- the current local runtime through `node bin/nomsentry.js explain tenantSlug <brand>`
 - the official Wikidata entity search API
 - the official Wikidata entity payload API
-- the official Wikidata item pages
+- build-time extraction only
 
-The goal was to identify whether the uncovered runtime terms have clean, machine-usable Wikidata items that could seed a future derived supplement.
+The repo does not use Wikidata at runtime.
 
-The evaluator now scores candidates from the official API and records:
+The evaluator and derived-source builder:
 
-- candidate page
-- label and description
-- aliases
-- `instance of` identifiers
-- a recommended runtime term
+- score exact label, alias, and legal-suffix matches
+- look at English labels, descriptions, aliases, and `instance of` classes
+- derive runtime-facing brand terms without legal suffixes such as `Inc.` or `Ltd.`
+- require positive brand-facing evidence
+- explicitly exclude ambiguity-prone terms from the maintained default cohort
 
-For company-style pages, the recommended runtime term strips common legal suffixes.
-That means pages such as `Visa Inc.` or `Apple Inc.` are still treated as candidates for the runtime term `visa` or `apple`.
+Overlap with the USPTO-derived subset is allowed.
 
-## Result
+## Current acceptance posture
 
-Wikidata has clean candidate items for the current uncovered-brand examples.
+The current maintained supplement is intentionally conservative.
 
-### Strong supplement candidates
+Accepted by default:
 
-These pages are good candidates for a future derived supplement because the item label is the intended brand-facing identifier and the item is not primarily a generic noun or place name.
+- clean brand-facing labels such as `OpenAI`, `ChatGPT`, `Google`, `GitHub`, `Stripe`, and `Mastercard`
+- company or service pages whose public brand term is exposed directly, including legal-suffix pages when the suffix can be stripped safely
 
-| Runtime term | Wikidata item                                                      | Why it is useful                                                      |
-| ------------ | ------------------------------------------------------------------ | --------------------------------------------------------------------- |
-| `openai`     | `Q21708200` - [OpenAI](https://www.wikidata.org/wiki/Q21708200)    | clean organization label for a globally recognizable technology brand |
-| `chatgpt`    | `Q115564437` - [ChatGPT](https://www.wikidata.org/wiki/Q115564437) | clean product label for a globally recognizable digital product       |
-| `paypal`     | `Q483959` - [PayPal](https://www.wikidata.org/wiki/Q483959)        | clean payments brand label                                            |
-| `google`     | `Q95` - [Google](https://www.wikidata.org/wiki/Q95)                | clean company label used directly as the public brand                 |
-| `github`     | `Q364` - [GitHub](https://www.wikidata.org/wiki/Q364)              | clean product or service label used directly as the public brand      |
-| `stripe`     | `Q7624104` - [Stripe](https://www.wikidata.org/wiki/Q7624104)      | clean payments brand label                                            |
-| `mastercard` | `Q489921` - [Mastercard](https://www.wikidata.org/wiki/Q489921)    | clean financial brand label                                           |
+Rejected from the maintained default cohort for now:
 
-### Useful but ambiguity-prone candidates
+- terms whose surface form is strongly ambiguous in ordinary language, such as:
+  - `apple`
+  - `amazon`
+  - `visa`
 
-These pages can still provide useful brand coverage, but they need stricter extraction rules because the surface form is also a common noun, place name, or person name in broader language use.
+This means the current Wikidata layer is not trying to maximize recall.
+It is trying to close obvious missed brands without importing broad common-noun collisions into the maintained default runtime.
 
-| Runtime term | Wikidata item                                                                                                                  | Ambiguity note                                                                                                                         |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `visa`       | `Q328840` - [Visa Inc.](https://www.wikidata.org/wiki/Q328840)                                                                 | the brand surface `visa` collides with the common immigration term                                                                     |
-| `amazon`     | `Q3884` - [Amazon](https://www.wikidata.org/wiki/Q3884)                                                                        | the brand surface collides with the region and river naming space                                                                      |
-| `apple`      | `Q312` - [Apple Inc.](https://www.wikidata.org/wiki/Q312) and `Q111046003` - [Apple](https://www.wikidata.org/wiki/Q111046003) | the brand surface collides with the common fruit noun, so the supplement must prefer trademark or company pages over common-noun pages |
+## Practical implication
 
-## What the relevant Wikidata pages are
+The combined default `protectedBrand` strategy is now:
 
-The uncovered-brand examples are not limited to one entity class.
-The useful pages come from at least these practical classes:
+- `custom/sources/derived-uspto-brand-risk.json`
+- `custom/sources/derived-wikidata-brand-risk.json`
 
-- company or organization pages
-  - OpenAI
-  - Google
-  - Stripe
-  - Visa Inc.
-  - Mastercard
-  - Amazon
-  - Apple Inc.
-- service or platform pages
-  - PayPal
-  - GitHub
-- product or software pages
-  - ChatGPT
+This improves default runtime coverage for several globally recognizable brands while keeping the remaining ambiguity problem explicit.
 
-That means a future supplement should not be restricted to one narrow class such as only `brand`.
-It should evaluate a conservative mix of company, organization, platform, service, product, and software items whose public labels act as brand identifiers.
+The next open brand work is therefore no longer "should Wikidata be used?".
+It is the broader calibration question:
 
-## Recommended extraction posture
-
-The evaluation result is positive, but it also shows that the supplement should be conservative.
-
-Recommended guardrails:
-
-- treat Wikidata as a supplement, not a replacement, for the USPTO-derived subset
-- allow overlap with the USPTO-derived subset
-- start from exact English labels plus only clearly brand-safe aliases
-- prefer items whose public label is already the brand term
-- when a company page label contains a legal suffix such as `Inc.` or `Ltd.`, derive the runtime term without that suffix
-- do not blindly import all aliases from an item
-- add an ambiguity filter for terms such as `apple`, `amazon`, and `visa`
-- keep the output as a separate derived artifact, for example `custom/sources/derived-wikidata-brand-risk.json`
-
-## Recommended extraction mechanics
-
-For this repository, Wikidata should be integrated through a build-step extractor rather than a runtime SDK.
-
-Recommended approach:
-
-- define one or more deterministic SPARQL queries
-- fetch JSON results from the Wikidata Query Service during the source-build step
-- normalize and filter the returned labels or aliases into a derived source artifact
-- compile that derived source artifact into `dist/runtime-sources.json` through the existing runtime-bundle build
-
-Why this fits the repo:
-
-- the repo already treats maintained source generation as a build-time pipeline, not as a runtime network dependency
-- the official Wikidata Query Service supports direct SPARQL submission and JSON results
-- the official dump path is much larger and is intended for very large traversals or self-hosted query setups rather than a conservative derived supplement
-
-The practical implication is:
-
-- no runtime Wikidata dependency
-- no need for a special client SDK just to fetch and parse SPARQL JSON
-- deterministic source artifacts can remain versioned in `custom/sources/`
-
-If a future implementation hits Query Service size or stability limits, dump-based filtering can be reconsidered, but it should not be the default first path for this repository.
-
-## Practical implication for the repo
-
-The evaluation shows that a future Wikidata-derived supplement is justified.
-
-It would likely improve coverage for globally recognizable brands that are currently still missed by the official-only structural USPTO subset, especially brands such as:
-
-- `openai`
-- `chatgpt`
-- `paypal`
-- `google`
-- `github`
-- `stripe`
-- `mastercard`
-
-It should, however, be implemented as a filtered derived layer with explicit ambiguity handling rather than as a blind import of every matching Wikidata label.
+- how to improve the USPTO-derived profile
+- how to treat short brands
+- how to treat numeric brands
+- how to treat ambiguity-prone brands such as `apple`, `amazon`, and `visa`
 
 ## Licensing
 
-Wikidata data is available under CC0, which makes it suitable as a freely reusable input for a derived supplement:
+Wikidata data is available under CC0:
 
 - [Wikidata:Licensing](https://www.wikidata.org/wiki/Wikidata:Licensing)

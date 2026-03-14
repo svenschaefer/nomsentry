@@ -11,6 +11,13 @@
     },
     {
       "match": {
+        "source": "Wikidata"
+      },
+      "maxAgeDays": 45,
+      "notes": "Derived Wikidata brand supplements should be reviewed and refreshed at least every 45 days."
+    },
+    {
+      "match": {
         "source": "LDNOOBW"
       },
       "maxAgeDays": 180,

@@ -55,6 +55,7 @@ npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
 npm run evaluate:wikidata-brands
+npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
@@ -114,6 +115,7 @@ custom/sources/reserved-usernames.json
 custom/sources/rfc2142-role-mailboxes.json
 custom/sources/windows-reserved-device-names.json
 custom/sources/derived-uspto-brand-risk.json
+custom/sources/derived-wikidata-brand-risk.json
 data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
 dist/build-manifest.json
@@ -122,8 +124,9 @@ source-refresh-policy.json
 
 These inputs currently come from three maintained source families plus one compiled runtime artifact:
 
-- official register or standards sources
+- structured authority, normative, or knowledge sources
   - USPTO Trademark Bulk Data
+  - Wikidata
   - RFC 2142 role mailbox names
   - GitLab reserved project and group names
   - reserved-usernames
@@ -151,12 +154,18 @@ npm run import:insult-wiki
 npm run import:gitlab-reserved
 npm run import:reserved-usernames
 npm run evaluate:wikidata-brands
+npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\to\case_file.csv
 npm run derive:uspto-brand-risk
 npm run build:runtime-sources
 ```
 
-`protectedBrand` should be fed only from ingestible official trademark sources. The first implemented path is USPTO bulk data. WIPO is intentionally not part of the ingest strategy.
+`protectedBrand` is currently fed from two maintained derived sources:
+
+- `custom/sources/derived-uspto-brand-risk.json`
+- `custom/sources/derived-wikidata-brand-risk.json`
+
+The USPTO subset remains the official trademark path. The Wikidata supplement is a conservative build-time uncovered-brand layer that allows overlap with the USPTO subset. WIPO is intentionally not part of the ingest strategy.
 
 `words/profanities` is intentionally not imported into the default runtime source set. Its flat list contains many generic high-noise terms, so it is not a good policy input without an additional curation layer.
 
@@ -176,6 +185,8 @@ The default derived USPTO profile is structural and conservative:
 - terms containing digits are dropped
 
 This keeps the official full set available while limiting default runtime `protectedBrand` noise.
+
+The current Wikidata supplement is intentionally conservative. It closes representative uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, while still leaving ambiguity-prone terms such as `apple`, `amazon`, and `visa` out of the maintained default profile.
 
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 

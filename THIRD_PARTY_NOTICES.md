@@ -5,7 +5,7 @@ The project itself is licensed under the MIT license in [LICENSE](/C:/code/nomse
 
 The current maintained source families are:
 
-- official register or standards sources
+- structured authority, normative, or knowledge sources
 - direct wordlist or lexicon sources
 - library-backed imported datasets
 
@@ -52,6 +52,14 @@ The current maintained source families are:
 - Source: https://www.uspto.gov/trademarks/apply/check-status-view-documents/trademark-bulk-data
 - License / status: official factual source, publicly accessible; treated here as a limited extracted factual source rather than an open-source licensed dataset
 - Notes: the repository stores only a derived runtime subset by default; local full imports under `data/uspto/` are ignored by git
+
+### Wikidata
+
+- Purpose: conservative uncovered-brand supplement for `protectedBrand`
+- Used in: `custom/sources/derived-wikidata-brand-risk.json`
+- Source: https://www.wikidata.org/wiki/Wikidata:Licensing
+- License: CC0 1.0
+- Notes: derived at build time from official Wikidata entity APIs with explicit ambiguity exclusions for `apple`, `amazon`, and `visa`
 
 ### RFC 2142
 

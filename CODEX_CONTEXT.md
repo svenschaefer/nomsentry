@@ -22,8 +22,9 @@
 - No self-maintained built-in rule packs in the repository default source set
 - Maintained sources are limited to imported or extracted third-party and normative artifacts
 - Current maintained source families:
-  - official register or standards sources
+  - structured authority, normative, or knowledge sources
     - USPTO Trademark Bulk Data
+    - Wikidata
     - RFC 2142 role mailbox names
     - GitLab reserved project and group names
     - reserved-usernames
@@ -39,7 +40,7 @@
 
 ## Source strategy constraints
 
-- The current maintained `protectedBrand` runtime is fed only from the derived official USPTO source.
+- The current maintained `protectedBrand` runtime is fed from a derived USPTO subset plus a conservative derived Wikidata supplement.
 - WIPO is intentionally not part of the ingest strategy.
 - `words/profanities` is intentionally excluded from the default maintained source set because of high-noise generic terms.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
@@ -101,16 +102,15 @@
 ## Current major open areas
 
 - policy-category refinement beyond broad `profanity`
-- deeper normalization fuzzing and maintenance-script failure coverage
 - broader maintained source coverage for impersonation, technical identifiers, brands, and composite risks
 
 ## Recent catalog-based gap findings
 
 - The current maintained `reservedTechnical` coverage is improved by the GitLab reserved-routes import and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
 - The current maintained `impersonation` coverage is narrow and mostly centered on RFC 2142 mailbox roles.
-- The current official-only derived USPTO subset misses many short global brands such as `openai`, `paypal`, `google`, and `github`.
+- The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
-- The USPTO-derived brand-risk work and a possible Wikidata-derived uncovered-brand supplement are separate open tracks and should stay separated in planning.
+- The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
 - The current runtime bundle contains only one composite rule, so broader deceptive combinations are mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
 
@@ -123,12 +123,13 @@
 - Early review suggested `reserved-usernames` and `github-reserved-names` were materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - `reserved-usernames` is now part of the maintained baseline through a conservative filtered import that keeps only clearly technical and namespace-collision terms.
 - A direct default-baseline evaluation of `github-reserved-names` confirmed that concern: importing it conservatively but broadly still produced unacceptable false positives such as `seven-labs` because of generic route terms like `labs`.
-- `protectedBrand` can plausibly be improved by supplementing the USPTO-derived subset with a free Wikidata-derived uncovered-brand seed set.
+- `protectedBrand` is now supplemented by a conservative free Wikidata-derived uncovered-brand seed set.
 - The Wikidata supplement track explicitly allows overlap with the USPTO-derived subset.
-- A direct Wikidata evaluation confirmed that clean candidate item pages exist for currently uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
-- The same Wikidata evaluation also showed that some valuable brand pages are ambiguity-prone, especially `visa`, `amazon`, and `apple`, so a future supplement must be filtered rather than imported blindly.
-- The repo now contains a reproducible Wikidata uncovered-brand evaluation script and generated report, and the evaluator derives runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
-- If implemented, the Wikidata supplement should use a build-step SPARQL extractor that emits versioned derived source artifacts, not a runtime SDK dependency or a first-pass full-dump pipeline.
+- The repo now contains a reproducible Wikidata uncovered-brand evaluation script, a derived source builder, a generated report, and a versioned `custom/sources/derived-wikidata-brand-risk.json` artifact.
+- The evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
+- The current accepted Wikidata cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
+- The current Wikidata supplement still excludes ambiguity-prone terms such as `visa`, `amazon`, and `apple`, so those remain an explicit calibration question rather than an unnoticed gap.
+- The current implementation uses official Wikidata entity APIs at build time, not a runtime dependency.
 - Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.
 - The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.
 - `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.

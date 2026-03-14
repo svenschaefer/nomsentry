@@ -10,7 +10,6 @@
   - deterministic refresh policy in `source-refresh-policy.json`
 - Major open workstreams:
   - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
-  - deeper normalization fuzz coverage
 
 ## Runtime status
 
@@ -74,9 +73,10 @@
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`
-  - the evaluation confirmed that Wikidata has clean candidate pages for several current uncovered-brand examples
-  - the evaluator derives runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
-  - a future Wikidata supplement still needs explicit ambiguity filters for terms such as `visa`, `amazon`, and `apple`
+  - a conservative derived source now exists in `custom/sources/derived-wikidata-brand-risk.json`
+  - the current accepted cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`
+  - the evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
+  - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation

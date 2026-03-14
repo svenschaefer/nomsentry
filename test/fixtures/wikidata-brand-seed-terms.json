@@ -1,0 +1,19 @@
+[
+  {
+    "label": "wikidata uncovered-brand seed cohort",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": [
+      "openai",
+      "chatgpt",
+      "paypal",
+      "google",
+      "github",
+      "stripe",
+      "visa",
+      "mastercard",
+      "amazon",
+      "apple"
+    ]
+  }
+]

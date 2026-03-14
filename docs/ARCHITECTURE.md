@@ -18,9 +18,11 @@
 - `src/importers/insult-wiki.js` - insult.wiki HTML list normalization into source JSON
 - `src/importers/gitlab-reserved-names.js` - conservative extraction of GitLab reserved project and group names into source JSON
 - `src/importers/reserved-usernames.js` - conservative technical subset derivation from the reserved-usernames package dataset
+- `src/importers/wikidata-brand-risk.js` - conservative Wikidata brand evaluation and derived-source construction
 - `src/importers/uspto.js` - USPTO bulk trademark case files into full and derived protectedBrand source JSON
 - `scripts/import-*.js` - source-specific import entrypoints
 - `scripts/derive-uspto-brand-risk.js` - structural derivation of the runtime USPTO brand subset
+- `scripts/derive-wikidata-brand-risk.js` - conservative build-time derivation of the Wikidata brand supplement
 - `scripts/build-runtime-sources.js` - compilation of `custom/sources/` into the runtime bundle
 - `scripts/compact-sources.js` - canonical rewrite of `custom/sources/` via stage-and-swap
 - `scripts/check-maintained-sources-determinism.js` - reproducibility check for the maintained source artifacts
@@ -60,8 +62,9 @@ The freshness gate uses `source-refresh-policy.json` plus git commit dates for t
 
 The currently maintained source families are:
 
-- official register or standards sources
+- structured authority, normative, or knowledge sources
   - USPTO
+  - Wikidata
   - RFC 2142
   - GitLab reserved names
   - reserved-usernames
@@ -75,7 +78,12 @@ The currently maintained source families are:
   - @2toad/profanity
   - obscenity
 
-For `protectedBrand`, the strategy is restricted to ingestible official trademark sources. The first implemented source is USPTO bulk data. WIPO is not part of the ingest plan.
+For `protectedBrand`, the maintained default runtime now combines:
+
+- a derived USPTO review subset from ingestible official trademark bulk data
+- a conservative derived Wikidata supplement for uncovered brands
+
+WIPO is not part of the ingest plan.
 
 `words/profanities` is deliberately excluded from the default maintained source set because the flat list includes many generic low-signal terms that would create avoidable false positives without an additional curation layer.
 
@@ -88,4 +96,9 @@ USPTO is handled in two layers:
 - full official imports live outside the default runtime path in local `data/uspto/full-sources/`
 - a derived review-level subset is generated into `custom/sources/derived-uspto-brand-risk.json`
 
-The derivation step is intentionally structural rather than editorial. The repository does not maintain its own brand allow/block list.
+Wikidata is handled as a separate derived layer:
+
+- an evaluation report can be refreshed into `docs/generated/wikidata-brand-gap-report.json`
+- a conservative derived supplement is generated into `custom/sources/derived-wikidata-brand-risk.json`
+
+The derived-brand path is still intentionally conservative rather than editorial. The repository does not maintain its own hand-written brand allow/block list, but it now does carry explicit ambiguity exclusions in the Wikidata-derived layer for terms such as `apple`, `amazon`, and `visa`.
