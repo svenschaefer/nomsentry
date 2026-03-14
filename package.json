@@ -4,6 +4,16 @@
   "description": "Deterministic identifier policy and deception detection engine",
   "type": "module",
   "main": "src/index.js",
+  "files": [
+    "bin/",
+    "src/",
+    "dist/",
+    "custom/sources/",
+    "docs/",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
   "bin": {
     "nomsentry": "./bin/nomsentry.js"
   },

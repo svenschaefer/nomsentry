@@ -29,6 +29,7 @@
 - Local deterministic checks are in place for:
   - maintained source artifacts
   - compiled runtime bundle
+- The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Grouped category-level baseline fixtures now cover:
   - maintained positives for Windows reserved names, RFC 2142 impersonation terms, profanity hits, and mixed-script review fallbacks
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms

@@ -67,6 +67,8 @@ Before publishing, verify that the tarball contains the expected public artifact
 - `dist/runtime-sources.json`
 - current documentation files that should ship with the package
 
+The package boundary is explicitly controlled through the `package.json` `files` allowlist.
+
 ## Rules
 
 - Do not publish from a dirty worktree.

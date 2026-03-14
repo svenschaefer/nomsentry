@@ -50,6 +50,11 @@
   - added [test/fixtures/catalog-maintained-false-positives.json](/C:/code/nomsentry/test/fixtures/catalog-maintained-false-positives.json)
   - wired them into [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js)
 
+- Defined the npm package boundary explicitly in [package.json](/C:/code/nomsentry/package.json).
+  - added a `files` allowlist for the published tarball
+  - removed the previous `.gitignore` fallback warning from `npm pack --dry-run`
+  - made the published package surface explicit and reviewable through `npm run pack:check`
+
 - Hardened the CLI command flow in [bin/nomsentry.js](/C:/code/nomsentry/bin/nomsentry.js).
   - Unknown commands are rejected before engine evaluation.
   - Unknown kinds are rejected before engine evaluation.
