@@ -7,7 +7,7 @@ export const RESERVED_USERNAMES_SOURCE_URL =
   "https://github.com/mvila/reserved-usernames";
 
 const TECHNICAL_TERM_PATTERN =
-  /^(adm|admin|administrator|api|auth|authentication|backup|cache|cgi|config|configuration|db|dns|ftp|hostmaster|hostname|http|https|imap|localhost|login|logout|mail|mailer-daemon|mx|ns([1-9]|10)?|null|oauth|openid|passwd|ping|pop3?|root|search|secure|security|server(-info|-status)?|smtp|ssh|ssl(admin|administrator|webmaster)?|stat|stats|status|sys(admin|administrator)?|system|telnet|tls|tmp|tokenserver|uploads|uptime|vpn|webmail|webmaster|wpad|www|xml|xmpp)$/;
+  /^(adm|admin|administrator|api|auth|authentication|backup|cache|cgi|config|configuration|db|dns|ftp|hostmaster|hostname|http|https|imap|localhost|login|logout|mail|mailer-daemon|mx|ns([1-9]|10)?|null|oauth|openid|passwd|ping|pop3?|root|search|secure|security|server(-info|-status)?|settings|smtp|ssh|ssl(admin|administrator|webmaster)?|stat|stats|status|sys(admin|administrator)?|system|telnet|tls|tmp|tokenserver|uploads|uptime|vpn|webmail|webmaster|wpad|www|xml|xmpp)$/;
 
 export function getReservedUsernamesDataPath(baseDir = process.cwd()) {
   return path.resolve(

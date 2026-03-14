@@ -50,6 +50,7 @@
 - The next explicit source-backed refinement is now in place as well: `dsojevic/profanity-list` maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`.
 - RFC 2142 currently feeds `impersonation`, not `reservedTechnical`.
 - `reservedTechnical` currently draws from Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered reserved-usernames import.
+- The filtered `reserved-usernames` subset now also includes `settings` as a maintained technical namespace-collision term.
 - `impersonation` currently draws from the RFC 2142 core, an additive GitHub Enterprise reserved-username import for `staff`, and a conservative derived additive layer sourced from maintained GitLab and reserved-usernames terms.
 - `compositeRisk` currently draws from the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor layer built from the maintained impersonation baseline.
 

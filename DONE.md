@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Broadened the conservative `reserved-usernames` technical subset with `settings`.
+  - [src/importers/reserved-usernames.js](/C:/code/nomsentry/src/importers/reserved-usernames.js) now treats `settings` as part of the maintained technical namespace-collision profile
+  - [custom/sources/reserved-usernames.json](/C:/code/nomsentry/custom/sources/reserved-usernames.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
+  - grouped maintained positive and nearby-negative fixture coverage now includes `settings` and `settingslab`
+
 - Extended the profanity-category refinement with a source-backed `slur` category.
   - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `racial`, `religious`, and `lgbtq` tagged entries from `dsojevic/profanity-list` to `slur`
   - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `slur` decisions

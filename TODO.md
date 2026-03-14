@@ -5,7 +5,7 @@
 - Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.
   - Why:
     - A catalog-based runtime evaluation originally showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` evaluated to `allow`.
-    - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, `status`, `nic`, and `whois` but still leaves the broader technical-identifier expectation only partially met.
+    - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, `status`, `settings`, `nic`, and `whois` but still leaves the broader technical-identifier expectation only partially met.
     - A direct evaluation of `github-reserved-names` against the maintained baseline showed unacceptable noise for the default set, for example `seven-labs` becoming `reject` because of the generic `labs` route term.
   - Target:
     - decide the intended `reservedTechnical` scope explicitly
