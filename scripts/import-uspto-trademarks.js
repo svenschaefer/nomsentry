@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
   buildUsptoTrademarkSourceFromCsvFile,
   splitUsptoTrademarkSource,
@@ -45,6 +46,79 @@ export function parseArgs(argv) {
   return options;
 }
 
+export function replaceUsptoChunkSet({
+  outputDir,
+  chunkFiles,
+  writeSource = writeSourceFile,
+  fsImpl = fs,
+  pathImpl = path,
+}) {
+  const stageDir = pathImpl.join(
+    outputDir,
+    `.stage-${process.pid}-${Date.now()}`,
+  );
+  const backupDir = pathImpl.join(
+    outputDir,
+    `.backup-${process.pid}-${Date.now()}`,
+  );
+  const existingFiles = fsImpl
+    .readdirSync(outputDir)
+    .filter(
+      (file) => file.startsWith("uspto-trademarks-") && file.endsWith(".json"),
+    );
+  const stagedFiles = [];
+  const movedFiles = [];
+
+  fsImpl.mkdirSync(stageDir, { recursive: true });
+  fsImpl.mkdirSync(backupDir, { recursive: true });
+
+  try {
+    for (const chunk of chunkFiles) {
+      const filename = `${chunk.id}.json`;
+      writeSource(pathImpl.join(stageDir, filename), chunk);
+      stagedFiles.push(filename);
+    }
+
+    for (const file of existingFiles) {
+      fsImpl.renameSync(
+        pathImpl.join(outputDir, file),
+        pathImpl.join(backupDir, file),
+      );
+    }
+
+    for (const file of stagedFiles) {
+      fsImpl.renameSync(
+        pathImpl.join(stageDir, file),
+        pathImpl.join(outputDir, file),
+      );
+      movedFiles.push(file);
+    }
+  } catch (error) {
+    for (const file of movedFiles) {
+      const targetFile = pathImpl.join(outputDir, file);
+      if (fsImpl.existsSync(targetFile)) {
+        fsImpl.rmSync(targetFile, { force: true });
+      }
+    }
+
+    for (const file of existingFiles) {
+      const backupFile = pathImpl.join(backupDir, file);
+      if (fsImpl.existsSync(backupFile)) {
+        fsImpl.renameSync(backupFile, pathImpl.join(outputDir, file));
+      }
+    }
+
+    throw error;
+  } finally {
+    if (fsImpl.existsSync(stageDir)) {
+      fsImpl.rmSync(stageDir, { recursive: true, force: true });
+    }
+    if (fsImpl.existsSync(backupDir)) {
+      fsImpl.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
+}
+
 async function main(argv) {
   const options = parseArgs(argv);
   fs.mkdirSync(options.outputDir, { recursive: true });
@@ -52,24 +126,19 @@ async function main(argv) {
   const chunkFiles = splitUsptoTrademarkSource(source, {
     chunkSize: options.chunkSize,
   });
-
-  for (const file of fs.readdirSync(options.outputDir)) {
-    if (file.startsWith("uspto-trademarks-") && file.endsWith(".json")) {
-      fs.unlinkSync(path.join(options.outputDir, file));
-    }
-  }
-
-  for (const chunk of chunkFiles) {
-    const targetFile = path.join(options.outputDir, `${chunk.id}.json`);
-    writeSourceFile(targetFile, chunk);
-  }
+  replaceUsptoChunkSet({ outputDir: options.outputDir, chunkFiles });
 
   console.log(
     `Wrote ${chunkFiles.length} files (${source.rules.length} terms total)`,
   );
 }
 
-main(process.argv.slice(2)).catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}

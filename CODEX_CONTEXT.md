@@ -48,6 +48,8 @@
 ## Runtime and build guarantees
 
 - Maintained source rewrites use stage-and-swap or atomic write paths.
+- The current USPTO full-import rewrite path now replaces chunk files through a staged swap with rollback instead of delete-first writes.
+- The current derived USPTO rewrite path preserves the single-file artifact and only removes legacy chunked outputs after a successful write.
 - Runtime bundle writes use atomic write paths.
 - The runtime build step emits a deterministic provenance manifest for maintained source artifacts and the runtime bundle.
 - The provenance manifest now includes deterministic transform versions, refresh-policy linkage, and package-lock-backed upstream versions for package-derived maintained sources.
@@ -69,6 +71,7 @@
 - Direct schema tests now cover compact default extraction, metadata/default merging, malformed compact scope overrides, and malformed composite `allOf` entries.
 - `severity` tests now cover mixed-category review/reject interactions, same-category severity dominance, and severity retention in final reasons.
 - Artifact-generation tests now cover cleanup after atomic write failures during both the write and rename phases.
+- Import-script failure coverage now also includes staged USPTO chunk replacement rollback, preservation of existing chunk content on swap failure, and legacy derived USPTO chunk cleanup without deleting the current single-file artifact.
 
 ## Current repo docs
 

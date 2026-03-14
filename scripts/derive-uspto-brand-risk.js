@@ -65,36 +65,57 @@ function mergeSources(sources, id) {
   };
 }
 
-const options = parseArgs(process.argv.slice(2));
-fs.mkdirSync(options.outputDir, { recursive: true });
-
-const fullSources = loadSourcesFromDirectory(
-  pathToFileURL(`${options.inputDir}${path.sep}`),
-).filter((source) => source.id.startsWith("imported-uspto-trademarks-"));
-const mergedFullSource = mergeSources(
-  fullSources,
-  "imported-uspto-trademarks-full",
-);
-const derived = deriveUsptoBrandRiskSource(mergedFullSource, {
-  singleWordMinLength: options.singleWordMinLength,
-  multiWordMinTokenLength: options.multiWordMinTokenLength,
-  maxWords: options.maxWords,
-  allowDigits: options.allowDigits,
-});
-
-for (const file of fs.readdirSync(options.outputDir)) {
-  if (
-    (file.startsWith("derived-uspto-brand-risk-") && file.endsWith(".json")) ||
-    file === "derived-uspto-brand-risk.json"
-  ) {
-    fs.unlinkSync(path.join(options.outputDir, file));
+export function removeLegacyDerivedUsptoFiles(
+  outputDir,
+  fsImpl = fs,
+  pathImpl = path,
+) {
+  for (const file of fsImpl.readdirSync(outputDir)) {
+    if (
+      file.startsWith("derived-uspto-brand-risk-") &&
+      file.endsWith(".json")
+    ) {
+      fsImpl.rmSync(pathImpl.join(outputDir, file), { force: true });
+    }
   }
 }
 
-const targetFile = path.join(
-  options.outputDir,
-  "derived-uspto-brand-risk.json",
-);
-writeSourceFile(targetFile, derived);
+function main(argv) {
+  const options = parseArgs(argv);
+  fs.mkdirSync(options.outputDir, { recursive: true });
 
-console.log(`Wrote ${targetFile} (${derived.rules.length} terms)`);
+  const fullSources = loadSourcesFromDirectory(
+    pathToFileURL(`${options.inputDir}${path.sep}`),
+  ).filter((source) => source.id.startsWith("imported-uspto-trademarks-"));
+  const mergedFullSource = mergeSources(
+    fullSources,
+    "imported-uspto-trademarks-full",
+  );
+  const derived = deriveUsptoBrandRiskSource(mergedFullSource, {
+    singleWordMinLength: options.singleWordMinLength,
+    multiWordMinTokenLength: options.multiWordMinTokenLength,
+    maxWords: options.maxWords,
+    allowDigits: options.allowDigits,
+  });
+
+  const targetFile = path.join(
+    options.outputDir,
+    "derived-uspto-brand-risk.json",
+  );
+  writeSourceFile(targetFile, derived);
+  removeLegacyDerivedUsptoFiles(options.outputDir);
+
+  console.log(`Wrote ${targetFile} (${derived.rules.length} terms)`);
+}
+
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  try {
+    main(process.argv.slice(2));
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}

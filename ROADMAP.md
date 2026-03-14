@@ -31,7 +31,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 3. Quality expansion
    - add normalization fuzz and property-style tests
    - turn the reviewed curated identifier catalog into grouped regression fixtures
-   - deepen import-failure coverage
    - deepen schema and severity matrix edge-case coverage
    - Dependency:
      - should track the product-policy changes so new semantics are covered once

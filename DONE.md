@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Hardened USPTO artifact rewrite paths and closed the remaining import partial-write coverage gap.
+  - [scripts/import-uspto-trademarks.js](/C:/code/nomsentry/scripts/import-uspto-trademarks.js) now replaces the chunk set through a staged swap instead of delete-first writes
+  - [scripts/derive-uspto-brand-risk.js](/C:/code/nomsentry/scripts/derive-uspto-brand-risk.js) now preserves the current single derived artifact and only cleans up legacy chunked outputs after a successful write
+  - both USPTO scripts now use proper CLI entrypoint guards so their helpers can be imported safely in tests
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now covers successful staged replacement, rollback after staged-swap failure, and legacy derived-chunk cleanup behavior
+
 - Expanded the maintained TP/FP/TN matrix further around the reviewed identifier catalog.
   - broadened maintained `reservedTechnical` positives for the filtered `reserved-usernames` baseline, including `auth`, `cache`, `dns`, `smtp`, `ssh`, `wpad`, `xml`, `oauth`, `openid`, `logout`, and `profile`
   - broadened nearby `reservedTechnical` negatives such as `hosted`, `webview`, `wikipedia`, `mailer`, `mailbox`, `oauthify`, `xmlish`, `statuspage`, `hostmastery`, and `serverless`

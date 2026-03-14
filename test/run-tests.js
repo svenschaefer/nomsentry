@@ -67,9 +67,14 @@ import {
 import { fetchLanguage as fetchDsojevicLanguage } from "../scripts/import-dsojevic-profanity.js";
 import { parseArgs as parseReservedUsernamesArgs } from "../scripts/import-reserved-usernames.js";
 import {
+  parseArgs as parseUsptoImportArgs,
+  replaceUsptoChunkSet,
+} from "../scripts/import-uspto-trademarks.js";
+import {
   buildProvenanceManifest,
   writeProvenanceManifest,
 } from "../scripts/build-provenance-manifest.js";
+import { removeLegacyDerivedUsptoFiles } from "../scripts/derive-uspto-brand-risk.js";
 import {
   benchmarkRuntime,
   parseArgs as parseRuntimeBenchmarkArgs,
@@ -1308,6 +1313,25 @@ await assert.rejects(
 }
 
 {
+  assert.deepEqual(
+    parseUsptoImportArgs([
+      "--input-file",
+      "fixtures/uspto.csv",
+      "--output-dir",
+      "tmp-uspto",
+      "--chunk-size",
+      "25",
+    ]),
+    {
+      inputFile: path.resolve(process.cwd(), "fixtures/uspto.csv"),
+      outputDir: path.resolve(process.cwd(), "tmp-uspto"),
+      chunkSize: 25,
+    },
+    "uspto import args should parse explicit input, output, and chunk-size overrides",
+  );
+}
+
+{
   const records = parseUsptoCaseFileCsv(
     fs.readFileSync(
       new URL("./fixtures/uspto-case-file-sample.csv", import.meta.url),
@@ -1351,6 +1375,131 @@ await assert.rejects(
     ["github"],
     "uspto file importer should stream and produce the same filtered result",
   );
+}
+
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-uspto-swap-"),
+  );
+  const outputDir = path.join(tmpDir, "full-sources");
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(outputDir, "uspto-trademarks-old-a.json"),
+    "old-a",
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(outputDir, "uspto-trademarks-old-b.json"),
+    "old-b",
+    "utf8",
+  );
+  fs.writeFileSync(path.join(outputDir, "notes.txt"), "keep", "utf8");
+
+  replaceUsptoChunkSet({
+    outputDir,
+    chunkFiles: [
+      { id: "uspto-trademarks-0001", rules: [] },
+      { id: "uspto-trademarks-0002", rules: [] },
+    ],
+    writeSource(targetFile, chunk) {
+      fs.writeFileSync(targetFile, chunk.id, "utf8");
+    },
+  });
+
+  assert.deepEqual(
+    fs.readdirSync(outputDir).sort(),
+    ["notes.txt", "uspto-trademarks-0001.json", "uspto-trademarks-0002.json"],
+    "uspto chunk replacement should swap only the maintained chunk set and keep unrelated files",
+  );
+  assert.equal(
+    fs.readFileSync(path.join(outputDir, "uspto-trademarks-0001.json"), "utf8"),
+    "uspto-trademarks-0001",
+    "uspto chunk replacement should write the staged replacement set",
+  );
+  assert.equal(
+    fs
+      .readdirSync(outputDir)
+      .some(
+        (entry) => entry.startsWith(".stage-") || entry.startsWith(".backup-"),
+      ),
+    false,
+    "uspto chunk replacement should clean staging and backup directories after success",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-uspto-rollback-"),
+  );
+  const outputDir = path.join(tmpDir, "full-sources");
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(outputDir, "uspto-trademarks-old-a.json"),
+    "old-a",
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(outputDir, "uspto-trademarks-old-b.json"),
+    "old-b",
+    "utf8",
+  );
+
+  let renameCount = 0;
+  const fsImpl = {
+    ...fs,
+    renameSync(fromPath, toPath) {
+      renameCount += 1;
+      if (
+        renameCount === 3 &&
+        String(fromPath).includes(".stage-") &&
+        String(toPath).includes("uspto-trademarks-0001.json")
+      ) {
+        throw new Error("simulated staged rename failure");
+      }
+      return fs.renameSync(fromPath, toPath);
+    },
+  };
+
+  assert.throws(
+    () =>
+      replaceUsptoChunkSet({
+        outputDir,
+        chunkFiles: [
+          { id: "uspto-trademarks-0001", rules: [] },
+          { id: "uspto-trademarks-0002", rules: [] },
+        ],
+        writeSource(targetFile, chunk) {
+          fs.writeFileSync(targetFile, chunk.id, "utf8");
+        },
+        fsImpl,
+      }),
+    /simulated staged rename failure/,
+    "uspto chunk replacement should surface staged swap failures",
+  );
+  assert.deepEqual(
+    fs.readdirSync(outputDir).sort(),
+    ["uspto-trademarks-old-a.json", "uspto-trademarks-old-b.json"],
+    "uspto chunk replacement should restore the original chunk set after a staged swap failure",
+  );
+  assert.equal(
+    fs.readFileSync(
+      path.join(outputDir, "uspto-trademarks-old-a.json"),
+      "utf8",
+    ),
+    "old-a",
+    "uspto chunk replacement should preserve preexisting chunk content on failure",
+  );
+  assert.equal(
+    fs
+      .readdirSync(outputDir)
+      .some(
+        (entry) => entry.startsWith(".stage-") || entry.startsWith(".backup-"),
+      ),
+    false,
+    "uspto chunk replacement should clean staging and backup directories after rollback",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
 }
 
 {
@@ -1454,6 +1603,42 @@ await assert.rejects(
     ["silver rocket", "superbrandname"],
     "uspto derived risk subset should keep only structurally stronger review candidates",
   );
+}
+
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-uspto-legacy-"),
+  );
+  fs.writeFileSync(
+    path.join(tmpDir, "derived-uspto-brand-risk.json"),
+    "keep",
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(tmpDir, "derived-uspto-brand-risk-001.json"),
+    "legacy-1",
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(tmpDir, "derived-uspto-brand-risk-002.json"),
+    "legacy-2",
+    "utf8",
+  );
+  fs.writeFileSync(path.join(tmpDir, "notes.txt"), "keep", "utf8");
+
+  removeLegacyDerivedUsptoFiles(tmpDir);
+
+  assert.deepEqual(
+    fs.readdirSync(tmpDir).sort(),
+    ["derived-uspto-brand-risk.json", "notes.txt"],
+    "legacy derived USPTO chunk cleanup should remove only superseded chunk files",
+  );
+  assert.equal(
+    fs.readFileSync(path.join(tmpDir, "derived-uspto-brand-risk.json"), "utf8"),
+    "keep",
+    "legacy derived USPTO cleanup should preserve the current single-file artifact",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
 }
 
 assert.deepEqual(

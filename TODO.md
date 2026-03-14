@@ -84,13 +84,6 @@
     - fuzz around separators, zero-width characters, mixed normalization forms, and confusable sequences
     - assert stability and idempotence of normalization
 
-- Add coverage for import-script failure modes.
-  - Why:
-    - The import suite now covers bad arguments and some network or malformed-payload failures, but partial-write paths and broader upstream failure permutations are still lightly tested.
-  - Target:
-    - expand upstream fetch-failure coverage across the remaining import entrypoints
-    - add coverage for partial-write paths during artifact generation
-
 - Add regression coverage from the curated identifier catalog review.
   - Why:
     - A broad curated catalog was reviewed across `reservedTechnical`, `impersonation`, `protectedBrand`, `profanity`, `scriptRisk`, and `compositeRisk`.

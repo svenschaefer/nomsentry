@@ -75,6 +75,8 @@
   - freshness-check argument and policy validation
   - staged rename rollback restoration for `compact-sources`
   - additional upstream transport and parse-failure coverage for maintained import fetchers
+  - staged USPTO chunk-set replacement with rollback on swap failure
+  - preservation of the current single-file derived USPTO artifact while cleaning up only legacy chunked outputs
   - atomic write cleanup coverage for `writeTextFileAtomic()` after write and rename failures
 - Direct schema edge-case coverage now includes:
   - shared compact default extraction
