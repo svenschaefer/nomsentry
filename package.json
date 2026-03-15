@@ -9,9 +9,6 @@
     "src/",
     "dist/",
     "custom/sources/README.md",
-    "docs/*.md",
-    "source-refresh-policy.json",
-    "source-integrity-lock.json",
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"

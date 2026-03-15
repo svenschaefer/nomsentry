@@ -15,7 +15,7 @@
 - The machine-readable provenance manifest lives in `dist/build-manifest.json`.
 - The deterministic source refresh policy lives in `source-refresh-policy.json`.
 - The checked-in non-package source-integrity lock lives in `source-integrity-lock.json`.
-- The npm package boundary is runtime-focused: published artifacts include `dist/` plus code/docs and `custom/sources/README.md`, but not maintained `custom/sources/*.json` artifacts.
+- The npm package boundary is runtime-focused: published artifacts include `dist/` plus code and top-level notices (`README.md`, `THIRD_PARTY_NOTICES.md`) and `custom/sources/README.md`, but not maintained `custom/sources/*.json`, `docs/*.md`, `source-refresh-policy.json`, or `source-integrity-lock.json`.
 - Local full USPTO imports live under `data/uspto/full-sources/` and are intentionally ignored by git.
 - The CLI should validate against the compiled runtime bundle, not scan `custom/sources/` directly.
 

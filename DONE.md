@@ -6,6 +6,8 @@
   - replaced `custom/sources/` in the npm `files` allowlist with [custom/sources/README.md](/C:/code/nomsentry/custom/sources/README.md) in [package.json](/C:/code/nomsentry/package.json)
   - the published tarball now keeps the `custom/sources` path discoverable without shipping maintained `custom/sources/*.json` artifacts
   - runtime artifacts continue to ship from `dist/`, while maintained source generation remains available through repository scripts
+  - removed `docs/*.md`, `source-refresh-policy.json`, and `source-integrity-lock.json` from the npm package payload
+  - package documentation in the tarball is now intentionally limited to `README.md` and `THIRD_PARTY_NOTICES.md`
   - validated via `npm run pack:check` and `npm run pack:smoke`
 
 - Added release artifact attestation baseline checks and provenance-ready publish workflow.

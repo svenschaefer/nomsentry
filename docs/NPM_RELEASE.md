@@ -78,7 +78,8 @@ Before publishing, verify that the tarball contains the expected public artifact
 - `dist/runtime-sources.json`
 - `dist/build-manifest.json`
 - `custom/sources/README.md` (directory discoverability without shipping maintained source JSON artifacts)
-- current documentation files that should ship with the package
+- `README.md`
+- `THIRD_PARTY_NOTICES.md`
 
 The package boundary is explicitly controlled through the `package.json` `files` allowlist.
 
