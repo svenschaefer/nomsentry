@@ -1,7 +1,9 @@
+export const DEFAULT_KIND = "default";
+
 export function defaultPolicy() {
   return {
     id: "default-policy",
-    appliesTo: ["username", "tenantSlug", "tenantName"],
+    appliesTo: [DEFAULT_KIND],
     decisionMatrix: {
       reservedTechnical: "reject",
       impersonation: "reject",

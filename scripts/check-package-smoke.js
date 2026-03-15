@@ -62,6 +62,7 @@ import { pathToFileURL } from "node:url";
 import {
   createEngine,
   builtinPolicies,
+  defaultKind,
   defaultPolicy,
   loadRuntimeBundle,
   validateSource,
@@ -69,6 +70,7 @@ import {
 
 const policyNames = Object.keys(builtinPolicies).sort();
 assert.deepEqual(policyNames, [
+  "DEFAULT_KIND",
   "defaultPolicy",
   "tenantName",
   "tenantSlug",
@@ -76,7 +78,8 @@ assert.deepEqual(policyNames, [
 ]);
 assert.equal(typeof defaultPolicy, "object");
 assert.equal(Array.isArray(defaultPolicy.appliesTo), true);
-assert.equal(defaultPolicy.appliesTo.includes("tenantSlug"), true);
+assert.equal(defaultPolicy.appliesTo.includes(defaultKind), true);
+assert.equal(defaultKind, "default");
 assert.equal(typeof createEngine, "function");
 assert.equal(typeof loadRuntimeBundle, "function");
 assert.equal(typeof validateSource, "function");
@@ -87,7 +90,7 @@ const engine = createEngine({
   policies: [defaultPolicy],
 });
 
-const result = engine.evaluate({ kind: "tenantName", value: "depp" });
+const result = engine.evaluate({ value: "depp" });
 assert.equal(result.decision, "reject");
 console.log("Package smoke check passed");
 `.trim();

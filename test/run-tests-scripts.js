@@ -258,6 +258,13 @@ const maintainedEngine = createEngine({
   policies: [username(), tenantSlug(), tenantName()],
 });
 
+const defaultEngine = createEngine({
+  sources: loadSourcesFromDirectory(
+    new URL("../custom/sources/", import.meta.url),
+  ).filter((source) => !source.id.startsWith("imported-uspto-trademarks-")),
+  policies: [publicApi.defaultPolicy],
+});
+
 function loadFixture(name) {
   return JSON.parse(
     fs.readFileSync(
@@ -609,14 +616,140 @@ assert.throws(
   );
   assert.equal(typeof publicApi.defaultPolicy, "object");
   assert.equal(
-    publicApi.defaultPolicy.appliesTo.includes("tenantSlug"),
+    publicApi.defaultPolicy.appliesTo.includes(publicApi.defaultKind),
     true,
-    "default policy should apply to tenantSlug",
+    "default policy should apply to defaultKind",
+  );
+  assert.equal(publicApi.defaultKind, "default");
+  const defaultDecision = defaultEngine.evaluate({ value: "support" });
+  assert.equal(
+    defaultDecision.kind,
+    "default",
+    "default evaluation should resolve to default kind when omitted",
+  );
+  assert.equal(
+    defaultDecision.decision,
+    "reject",
+    "default policy should produce strict decisions without explicit kind",
   );
   assert.equal(
     typeof publicApi.loadRuntimeBundle,
     "function",
     "public API should expose loadRuntimeBundle",
+  );
+}
+
+{
+  const singleScopeEngine = createEngine({
+    sources: [
+      {
+        id: "single-scope-source",
+        version: 1,
+        rules: [
+          {
+            id: "single-scope-rule",
+            term: "support",
+            category: "impersonation",
+            scopes: ["singleScope"],
+            match: "token",
+            normalizationField: "separatorFolded",
+          },
+        ],
+      },
+    ],
+    policies: [
+      {
+        id: "single-scope-policy",
+        appliesTo: ["singleScope"],
+        decisionMatrix: { impersonation: "reject" },
+      },
+    ],
+  });
+
+  const singleScopeResult = singleScopeEngine.evaluate({ value: "support" });
+  assert.equal(
+    singleScopeResult.decision,
+    "reject",
+    "single non-default policy should evaluate without explicit kind",
+  );
+
+  const emptyScopePolicyEngine = createEngine({
+    sources: [],
+    policies: [
+      {
+        id: "empty-scope-policy",
+        appliesTo: [],
+        decisionMatrix: {},
+      },
+    ],
+  });
+  const emptyScopePolicyResult = emptyScopePolicyEngine.evaluate({
+    value: "safe-value",
+  });
+  assert.equal(
+    emptyScopePolicyResult.decision,
+    "allow",
+    "single empty-scope policy should fall back to empty evaluation kind set",
+  );
+
+  const multiPolicyFallbackEngine = createEngine({
+    sources: [
+      {
+        id: "multi-policy-fallback-source",
+        version: 1,
+        rules: [
+          {
+            id: "multi-policy-fallback-rule",
+            term: "support",
+            category: "impersonation",
+            scopes: ["fallbackScope"],
+            match: "token",
+            normalizationField: "separatorFolded",
+          },
+        ],
+      },
+    ],
+    policies: [
+      {
+        id: "empty-a",
+        appliesTo: [],
+        decisionMatrix: {},
+      },
+      {
+        id: "fallback-scope-policy",
+        appliesTo: ["fallbackScope"],
+        decisionMatrix: { impersonation: "reject" },
+      },
+    ],
+  });
+  const multiPolicyFallbackResult = multiPolicyFallbackEngine.evaluate({
+    value: "support",
+  });
+  assert.equal(
+    multiPolicyFallbackResult.decision,
+    "reject",
+    "multi-policy fallback should resolve the first policy with appliesTo when kind is omitted",
+  );
+
+  assert.throws(
+    () =>
+      createEngine({
+        sources: [],
+        policies: [
+          {
+            id: "empty-a",
+            appliesTo: [],
+            decisionMatrix: {},
+          },
+          {
+            id: "empty-b",
+            appliesTo: [],
+            decisionMatrix: {},
+          },
+        ],
+      }).evaluate({ value: "anything" }),
+    /No policy configured for kind: undefined/,
+    "multiple non-default policies without appliesTo entries should fail when kind is omitted",
   );
 }
 

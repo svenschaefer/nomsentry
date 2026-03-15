@@ -1,7 +1,17 @@
 {
   "name": "nomsentry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Deterministic identifier policy and deception detection engine",
+  "keywords": [
+    "identifier-validation",
+    "username-validation",
+    "tenant-slug",
+    "profanity-filter",
+    "impersonation-detection",
+    "brand-risk",
+    "policy-engine",
+    "moderation"
+  ],
   "type": "module",
   "main": "src/index.js",
   "files": [

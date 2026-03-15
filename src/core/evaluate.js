@@ -55,22 +55,59 @@ export function createEngine({
     })),
   );
 
+  const ruleKinds = Array.from(
+    new Set(rules.flatMap((rule) => rule.scopes || []).filter(Boolean)),
+  );
+  const compositeKinds = Array.from(
+    new Set(
+      compositeRules.flatMap((rule) => rule.scopes || []).filter(Boolean),
+    ),
+  );
+
   function resolvePolicy(kind) {
-    const policy = policies.find((p) => (p.appliesTo || []).includes(kind));
+    if (kind) {
+      const policy = policies.find((p) => (p.appliesTo || []).includes(kind));
+      if (policy) return policy;
+      throw new Error(`No policy configured for kind: ${kind}`);
+    }
+
+    const defaultPolicy = policies.find((p) =>
+      (p.appliesTo || []).includes("default"),
+    );
+    if (defaultPolicy) return defaultPolicy;
+
+    if (policies.length === 1) return policies[0];
+
+    const policy = policies.find((p) => (p.appliesTo || []).length > 0);
     if (!policy) throw new Error(`No policy configured for kind: ${kind}`);
     return policy;
+  }
+
+  function resolveEvaluationKinds(kind, policy) {
+    if (kind && kind !== "default") return [kind];
+    if (!(policy.appliesTo || []).includes("default")) {
+      const fallback = kind || policy.appliesTo?.[0];
+      return fallback ? [fallback] : [];
+    }
+
+    const kinds = Array.from(new Set([...ruleKinds, ...compositeKinds]));
+    return kinds;
   }
 
   function evaluate({ value, kind, context = {} }) {
     const normalized = normalizeValue(value);
     const policy = resolvePolicy(kind);
+    const evaluationKinds = resolveEvaluationKinds(kind, policy);
+    const resolvedKind = kind || "default";
 
-    const matches = matchRules({
-      normalized,
-      kind,
-      rules,
-      ruleIndex,
-    });
+    const matches = evaluationKinds.flatMap((evaluationKind) =>
+      matchRules({
+        normalized,
+        kind: evaluationKind,
+        rules,
+        ruleIndex,
+      }),
+    );
 
     const scriptRisk = detectScriptRisk(normalized.raw);
     if (scriptRisk.mixed) {
@@ -85,16 +122,18 @@ export function createEngine({
       });
     }
 
-    for (const compositeRule of detectCompositeRisk({
-      normalized,
-      kind,
-      compositeRules,
-    })) {
-      matches.push({
-        rule: compositeRule,
-        matchType: "composite",
-        comparedField: "separatorFolded",
-      });
+    for (const evaluationKind of evaluationKinds) {
+      for (const compositeRule of detectCompositeRisk({
+        normalized,
+        kind: evaluationKind,
+        compositeRules,
+      })) {
+        matches.push({
+          rule: compositeRule,
+          matchType: "composite",
+          comparedField: "separatorFolded",
+        });
+      }
     }
 
     const dedupedMatches = dedupeMatches(matches);
@@ -111,7 +150,7 @@ export function createEngine({
 
     return {
       input: value,
-      kind,
+      kind: resolvedKind,
       normalized,
       matchedRules: dedupedMatches.map((m) => ({
         ruleId: m.rule.id,

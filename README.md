@@ -26,7 +26,12 @@ npx nomsentry explain tenantName "example value"
 ## Library quick start
 
 ```js
-import { createEngine, loadRuntimeBundle, defaultPolicy } from "nomsentry";
+import {
+  createEngine,
+  loadRuntimeBundle,
+  defaultKind,
+  defaultPolicy,
+} from "nomsentry";
 
 const bundle = loadRuntimeBundle();
 const engine = createEngine({
@@ -34,16 +39,22 @@ const engine = createEngine({
   policies: [defaultPolicy],
 });
 
-const result = engine.evaluate({ kind: "tenantSlug", value: "support" });
+const result = engine.evaluate({ value: "support" });
 console.log(result.decision);
 ```
 
-`defaultPolicy` is one strict baseline policy applied to `username`, `tenantSlug`, and `tenantName`.
+`defaultPolicy` is one strict baseline policy for the single `defaultKind`.
 Meaning:
 
 - technical/reserved, impersonation, profanity-like, and composite risk hits -> `reject`
 - protected brand hits -> `review`
 - mixed-script/script risk -> `review`
+
+`defaultKind` is exported for explicit calls when needed:
+
+```js
+engine.evaluate({ kind: defaultKind, value: "support" });
+```
 
 Use `check` for a final decision and `explain` when you need matched reasons for logs or moderation tooling.
 

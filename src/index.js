@@ -2,6 +2,7 @@ import { createEngine } from "./core/evaluate.js";
 import * as builtinPolicies from "./policies/index.js";
 import { loadRuntimeBundleFromFile } from "./loaders/runtime-bundle.js";
 
+const defaultKind = builtinPolicies.DEFAULT_KIND;
 const defaultPolicy = Object.freeze(builtinPolicies.defaultPolicy());
 
 function loadRuntimeBundle() {
@@ -12,6 +13,7 @@ function loadRuntimeBundle() {
 
 export { createEngine };
 export { builtinPolicies };
+export { defaultKind };
 export { defaultPolicy };
 export { loadRuntimeBundle };
 export { loadSourceFromFile } from "./loaders/source-loader.js";
