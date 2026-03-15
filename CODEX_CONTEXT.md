@@ -112,7 +112,7 @@
 
 ## Current major open areas
 
-- broader maintained source coverage for impersonation, brands, and composite risks
+- broader maintained source coverage for brands
 - v0.5 should not be treated as open-ended exploration anymore. The exit bar is:
   - each remaining policy area must end with shipped maintained behavior
   - each remaining policy area must also end with an explicit documented scope boundary for what stays out of scope
@@ -127,7 +127,9 @@
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
 - The maintained USPTO-derived profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding, which improves brand-facing filter terms without yet solving the broader short-brand calibration problem.
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
-- The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support`, `official-support`, `payment-support`, and `reset-security`, but broader deceptive combinations such as trust, privacy, verification, and recovery pairs are still mostly uncovered.
+- The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support`, `official-support`, `payment-support`, and `reset-security`.
+- Broader marketing and trust-signaling nouns such as `verified`, `trust`, and `safety` are now explicit v0.5 non-goals for the maintained default `impersonation` profile because no strong freely redistributable default source was identified for them.
+- Broader deceptive combinations such as trust, privacy, verification, and recovery pairs are now explicit v0.5 non-goals for the maintained default `compositeRisk` profile.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
 - The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `generalProfanity` evidence, both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence.
 - The v0.5 profanity split boundary is now considered complete for this phase: `generalProfanity`, `insult`, `slur`, `sexual`, and `shock` are maintained and policy-backed, while a separate `extremism` category is intentionally deferred because the current freely redistributable structured sources do not provide a clean maintained split axis.
@@ -152,6 +154,6 @@
 - The current implementation uses official Wikidata entity APIs at build time, not a runtime dependency.
 - Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.
 - The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.
-- `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms.
+- `impersonation` does not currently have a strong freely redistributable modern standard source for many trust, billing, verification, and recovery terms, which is why the remaining marketing and trust-signaling nouns are now documented as explicit v0.5 non-goals.
 - `compositeRisk` appears least likely to be solved by direct third-party imports alone and will probably require a documented derived layer.
 - The current derived impersonation layer is intentionally conservative and additive. It is not intended to solve modern trust, billing, verification, or recovery vocabulary by itself.

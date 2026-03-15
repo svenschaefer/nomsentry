@@ -2,6 +2,10 @@
 
 ## Completed recently
 
+- Closed the v0.5 `impersonation` and `compositeRisk` scope at the current conservative maintained baseline.
+  - `impersonation` now explicitly accepts the current account-access and operator-facing default profile while leaving `verified`, `trust`, and `safety` as documented v0.5 non-goals
+  - `compositeRisk` now explicitly accepts the current support/security-anchor default profile while leaving broader combinations such as `trust-safety`, `customer-recovery`, and `privacy-team` as documented v0.5 non-goals
+
 - Closed the v0.5 `reservedTechnical` scope at the current conservative maintained baseline.
   - the accepted default baseline is now explicitly documented as Windows device names plus Windows URI schemes plus GitLab reserved routes plus ICANN reserved names plus filtered `reserved-usernames`
   - broader generic nouns such as `webhook`, `gateway`, `proxy`, `internal`, `private`, `public`, `service`, and `client` are now explicitly documented as non-goals for the maintained default profile

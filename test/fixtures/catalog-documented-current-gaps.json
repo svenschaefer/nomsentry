@@ -6,7 +6,7 @@
     "values": ["webhook"]
   },
   {
-    "label": "documented impersonation gaps",
+    "label": "documented impersonation non-goals",
     "kind": "tenantSlug",
     "expected": "allow",
     "values": ["verified", "trust", "safety"]
@@ -18,7 +18,7 @@
     "values": ["visa", "amazon", "apple"]
   },
   {
-    "label": "documented composite coverage gaps",
+    "label": "documented compositeRisk non-goals",
     "kind": "tenantSlug",
     "expected": "allow",
     "values": ["trust-safety", "customer-recovery", "privacy-team"]
