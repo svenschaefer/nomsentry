@@ -1,0 +1,58 @@
+[
+  {
+    "label": "mixed-script impersonation hit",
+    "kind": "tenantSlug",
+    "value": "suppоrt",
+    "expectedDecision": "reject",
+    "expectedCategories": ["impersonation", "scriptRisk"]
+  },
+  {
+    "label": "mixed-script protected brand hit",
+    "kind": "tenantSlug",
+    "value": "раypal",
+    "expectedDecision": "review",
+    "expectedCategories": ["protectedBrand", "scriptRisk"]
+  },
+  {
+    "label": "mixed-script profanity hit",
+    "kind": "tenantName",
+    "value": "shіt",
+    "expectedDecision": "reject",
+    "expectedCategories": ["profanity", "insult", "scriptRisk"]
+  },
+  {
+    "label": "mixed-script german insult hit",
+    "kind": "tenantName",
+    "value": "аrschloch",
+    "expectedDecision": "reject",
+    "expectedCategories": ["profanity", "insult", "scriptRisk"]
+  },
+  {
+    "label": "brand-adjacent allow should stay allow",
+    "kind": "tenantSlug",
+    "value": "openair",
+    "expectedDecision": "allow",
+    "expectedCategories": []
+  },
+  {
+    "label": "false-positive profanity guard should stay allow",
+    "kind": "tenantSlug",
+    "value": "assistant",
+    "expectedDecision": "allow",
+    "expectedCategories": []
+  },
+  {
+    "label": "non-goal trust-safety phrase should stay allow",
+    "kind": "tenantSlug",
+    "value": "trust-safety",
+    "expectedDecision": "allow",
+    "expectedCategories": []
+  },
+  {
+    "label": "non-goal securityresearch phrase should stay allow",
+    "kind": "tenantSlug",
+    "value": "securityresearch",
+    "expectedDecision": "allow",
+    "expectedCategories": []
+  }
+]

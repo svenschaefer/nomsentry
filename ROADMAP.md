@@ -64,9 +64,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 6. Test-architecture hardening
    - planned:
-     - automated coverage reporting with minimum thresholds
      - split `test/run-tests.js` into focused suites or modules
-     - a dedicated adversarial security-regression corpus
    - Owner:
      - unassigned
    - Dependency:

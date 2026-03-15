@@ -130,6 +130,12 @@ import {
   parseSbom,
 } from "../scripts/check-security-baseline.js";
 import {
+  evaluateCoverageThresholds,
+  loadCoverageSummary,
+  loadCoverageThresholds,
+  parseArgs as parseCoverageThresholdArgs,
+} from "../scripts/check-coverage-thresholds.js";
+import {
   deriveFilterTerm,
   evaluateSearchResults,
   loadTermsFromFixture,
@@ -253,6 +259,12 @@ function loadFixture(name) {
 const publicApiContract = JSON.parse(
   fs.readFileSync(
     new URL("./fixtures/public-api-contract.json", import.meta.url),
+    "utf8",
+  ),
+);
+const adversarialSecurityRegression = JSON.parse(
+  fs.readFileSync(
+    new URL("./fixtures/adversarial-security-regression.json", import.meta.url),
     "utf8",
   ),
 );
@@ -1869,6 +1881,70 @@ assert.throws(
     "CycloneDX",
     "security check helpers should parse npm sbom output",
   );
+  assert.equal(
+    parseCoverageThresholdArgs([
+      "--summary-file",
+      "coverage/custom-summary.json",
+      "--thresholds-file",
+      "coverage-thresholds.local.json",
+    ]).summaryFile.endsWith(path.join("coverage", "custom-summary.json")),
+    true,
+    "coverage threshold CLI should parse custom summary paths",
+  );
+
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-coverage-"));
+  const summaryFile = path.join(tempDir, "coverage-summary.json");
+  const thresholdsFile = path.join(tempDir, "coverage-thresholds.json");
+  fs.writeFileSync(
+    summaryFile,
+    JSON.stringify({
+      total: {},
+      [path.resolve(process.cwd(), "src/core/evaluate.js")]: {
+        lines: { pct: 100 },
+        statements: { pct: 100 },
+        functions: { pct: 100 },
+        branches: { pct: 90 },
+      },
+    }),
+  );
+  fs.writeFileSync(
+    thresholdsFile,
+    JSON.stringify({
+      minimums: {
+        "src/core/evaluate.js": {
+          lines: 100,
+          statements: 100,
+          functions: 100,
+          branches: 85,
+        },
+      },
+    }),
+  );
+
+  try {
+    assert.equal(
+      loadCoverageSummary(summaryFile).total !== undefined,
+      true,
+      "coverage helpers should load a coverage summary",
+    );
+    assert.equal(
+      loadCoverageThresholds(thresholdsFile).minimums["src/core/evaluate.js"]
+        .branches,
+      85,
+      "coverage helpers should load threshold definitions",
+    );
+    assert.deepEqual(
+      evaluateCoverageThresholds(
+        loadCoverageSummary(summaryFile),
+        loadCoverageThresholds(thresholdsFile),
+        process.cwd(),
+      ),
+      [],
+      "coverage helpers should accept files at or above threshold",
+    );
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
 }
 
 {
@@ -4753,6 +4829,31 @@ await assert.rejects(
       base.slug,
       `invisible character ${JSON.stringify(invisible)} should not affect slug support normalization`,
     );
+  }
+}
+
+{
+  for (const testCase of adversarialSecurityRegression) {
+    const result = engine.evaluate({
+      kind: testCase.kind,
+      value: testCase.value,
+    });
+    assert.equal(
+      result.decision,
+      testCase.expectedDecision,
+      `${testCase.label} should keep its documented decision`,
+    );
+
+    const actualCategories = new Set(
+      result.reasons.map((reason) => reason.category),
+    );
+    for (const category of testCase.expectedCategories) {
+      assert.equal(
+        actualCategories.has(category),
+        true,
+        `${testCase.label} should include ${category} evidence`,
+      );
+    }
   }
 }
 

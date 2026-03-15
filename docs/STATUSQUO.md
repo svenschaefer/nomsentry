@@ -12,8 +12,7 @@
   - post-v0.6 hardening and maintainability follow-up only:
     - upstream source-integrity capture or verification
     - release-artifact attestation or signing
-    - automated coverage thresholds and test-suite decomposition
-    - a dedicated adversarial security-regression corpus
+    - automated test-suite decomposition
 
 ## Runtime status
 
@@ -73,6 +72,10 @@
   - `npm run typecheck`
   - shared typedefs in `src/types.js`
   - checked JSDoc on `src/schema/source-format.js`, `src/schema/validate-source.js`, and `src/loaders/runtime-bundle.js`
+- Coverage reporting and thresholds are now in place through:
+  - `npm run coverage:check`
+  - checked-in thresholds in `coverage-thresholds.json`
+  - enforced coverage floors for critical runtime, loader, schema, and maintained-build modules
 - Public integration-surface contract coverage is now in place for:
   - `src/index.js` named exports
   - builtin policy exports
@@ -82,6 +85,9 @@
   - versioned negative fixtures for unsupported bundle versions and broken table references
   - a versioned valid compatibility fixture at `test/fixtures/runtime-bundle-compatible-v1.json`
   - direct engine execution against that compatibility fixture
+- A dedicated adversarial security-regression corpus is now in place at:
+  - `test/fixtures/adversarial-security-regression.json`
+  - it keeps bypass-sensitive mixed-script, brand-like, profanity, and non-goal boundary cases separate from the maintained baseline fixtures
 - Grouped category-level baseline fixtures now cover:
   - the curated identifier catalog is now split into three maintained layers:
     - `catalog-maintained-positives`

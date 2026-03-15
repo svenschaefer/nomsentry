@@ -41,6 +41,7 @@ npm test
 npm run lint:check
 npm run format:check
 npm run typecheck
+npm run coverage:check
 npm run benchmark:runtime
 npm run benchmark:check
 npm run docs:check
@@ -81,6 +82,7 @@ node bin/nomsentry.js check tenantSlug support --bundle path\\to\\runtime-source
 - per-request evaluation latency across maintained fixture inputs
 
 `npm run benchmark:check` runs the same benchmark against the maintained thresholds in `benchmark-budget.json` and fails when bundle load, engine creation, or evaluation latency exceed the accepted budget.
+`npm run coverage:check` now records coverage for the current suite and enforces checked-in thresholds for critical runtime, loader, schema, and maintained-build modules.
 
 ## Runtime model
 

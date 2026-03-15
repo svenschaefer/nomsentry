@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Added coverage thresholds for critical modules and a dedicated adversarial security-regression corpus.
+  - added [coverage-thresholds.json](/C:/code/nomsentry/coverage-thresholds.json)
+  - added [scripts/check-coverage-thresholds.js](/C:/code/nomsentry/scripts/check-coverage-thresholds.js)
+  - added `npm run coverage:check` in [package.json](/C:/code/nomsentry/package.json) and wired it into `ci:check`
+  - added [test/fixtures/adversarial-security-regression.json](/C:/code/nomsentry/test/fixtures/adversarial-security-regression.json)
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now keeps a separate adversarial corpus for bypass-sensitive mixed-script, profanity, brand, and boundary cases
+
 - Added packaged runtime-bundle compatibility regression coverage.
   - added [test/fixtures/runtime-bundle-compatible-v1.json](/C:/code/nomsentry/test/fixtures/runtime-bundle-compatible-v1.json)
   - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now asserts that the valid compatibility fixture remains loadable and executable by the engine

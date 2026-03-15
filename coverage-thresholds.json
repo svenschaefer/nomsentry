@@ -1,0 +1,48 @@
+{
+  "id": "coverage-thresholds",
+  "version": 1,
+  "minimums": {
+    "src/core/evaluate.js": {
+      "lines": 100,
+      "statements": 100,
+      "functions": 100,
+      "branches": 85
+    },
+    "src/core/matchers.js": {
+      "lines": 70,
+      "statements": 70,
+      "functions": 100,
+      "branches": 65
+    },
+    "src/loaders/runtime-bundle.js": {
+      "lines": 75,
+      "statements": 75,
+      "functions": 100,
+      "branches": 50
+    },
+    "src/schema/source-format.js": {
+      "lines": 95,
+      "statements": 95,
+      "functions": 100,
+      "branches": 80
+    },
+    "src/schema/validate-source.js": {
+      "lines": 95,
+      "statements": 95,
+      "functions": 100,
+      "branches": 90
+    },
+    "scripts/build-runtime-sources.js": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 80,
+      "branches": 40
+    },
+    "scripts/build-provenance-manifest.js": {
+      "lines": 95,
+      "statements": 95,
+      "functions": 100,
+      "branches": 70
+    }
+  }
+}
