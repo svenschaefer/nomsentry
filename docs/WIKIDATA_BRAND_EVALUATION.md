@@ -14,6 +14,9 @@ The repo now contains both:
 - a reproducible evaluation path:
   - `npm run evaluate:wikidata-brands`
   - generated report: `docs/generated/wikidata-brand-gap-report.json`
+- a reproducible combined brand-profile calibration path:
+  - `npm run evaluate:brand-profile`
+  - generated report: `docs/generated/brand-profile-calibration-report.json`
 - a maintained derived source:
   - `npm run derive:wikidata-brand-risk`
   - artifact: `custom/sources/derived-wikidata-brand-risk.json`

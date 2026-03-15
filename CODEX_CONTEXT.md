@@ -127,6 +127,7 @@
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
 - The maintained USPTO-derived profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding, which improves brand-facing filter terms without yet solving the broader short-brand calibration problem.
 - The open brand-calibration work is now about the combined USPTO plus Wikidata maintained profile, not about whether to add Wikidata at all.
+- A reproducible combined brand-profile calibration report now exists at `docs/generated/brand-profile-calibration-report.json` and currently shows zero mismatches on the maintained sample corpus, but that corpus is still curated and too small to count as broader real-world calibration.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support`, `official-support`, `payment-support`, and `reset-security`.
 - Broader marketing and trust-signaling nouns such as `verified`, `trust`, and `safety` are now explicit v0.5 non-goals for the maintained default `impersonation` profile because no strong freely redistributable default source was identified for them.
 - Broader deceptive combinations such as trust, privacy, verification, and recovery pairs are now explicit v0.5 non-goals for the maintained default `compositeRisk` profile.
@@ -148,6 +149,7 @@
 - `protectedBrand` is now supplemented by a conservative free Wikidata-derived uncovered-brand seed set.
 - The Wikidata supplement track explicitly allows overlap with the USPTO-derived subset.
 - The repo now contains a reproducible Wikidata uncovered-brand evaluation script, a derived source builder, a generated report, and a versioned `custom/sources/derived-wikidata-brand-risk.json` artifact.
+- The repo now also contains a reproducible combined brand-profile calibration script and generated report for the maintained USPTO plus Wikidata baseline.
 - The evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
 - The current accepted Wikidata cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
 - The current Wikidata supplement still excludes ambiguity-prone terms such as `visa`, `amazon`, and `apple`, so those remain an explicit calibration question rather than an unnoticed gap.

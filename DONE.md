@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added a reproducible combined brand-profile calibration report for the maintained USPTO plus Wikidata baseline.
+  - added [scripts/evaluate-brand-profile.js](/C:/code/nomsentry/scripts/evaluate-brand-profile.js)
+  - added [test/fixtures/brand-profile-calibration.json](/C:/code/nomsentry/test/fixtures/brand-profile-calibration.json)
+  - added [docs/generated/brand-profile-calibration-report.json](/C:/code/nomsentry/docs/generated/brand-profile-calibration-report.json)
+  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, and brand-adjacent allow negatives
+
 - Closed the v0.5 `impersonation` and `compositeRisk` scope at the current conservative maintained baseline.
   - `impersonation` now explicitly accepts the current account-access and operator-facing default profile while leaving `verified`, `trust`, and `safety` as documented v0.5 non-goals
   - `compositeRisk` now explicitly accepts the current support/security-anchor default profile while leaving broader combinations such as `trust-safety`, `customer-recovery`, and `privacy-team` as documented v0.5 non-goals

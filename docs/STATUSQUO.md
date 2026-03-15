@@ -85,10 +85,12 @@
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`
+  - a reproducible combined brand-profile calibration report now exists in `docs/generated/brand-profile-calibration-report.json`
   - a conservative derived source now exists in `custom/sources/derived-wikidata-brand-risk.json`
   - the current accepted cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`
   - the evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
   - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
+  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, and brand-adjacent allow negatives
 - USPTO derived-brand status:
   - the maintained derived USPTO profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding
   - this improves brand-facing runtime terms such as `Harley Davidson Inc.` -> `harley davidson`

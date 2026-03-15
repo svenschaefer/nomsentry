@@ -15,6 +15,7 @@ The v0.5 policy phase is complete only when each remaining area has both:
     - The current thresholds are still too blunt: one-word marks require at least 12 characters, multi-word marks allow at most 2 tokens with at least 6 characters each, and digit-bearing terms are dropped entirely.
     - Those rules reduce noise, but they also exclude many relevant short or otherwise legitimate brand identifiers and are not a clean long-term calibration.
     - The repository now also carries a conservative [custom/sources/derived-wikidata-brand-risk.json](/C:/code/nomsentry/custom/sources/derived-wikidata-brand-risk.json) supplement, which closes `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, but intentionally still excludes ambiguity-prone terms such as `apple`, `amazon`, and `visa`.
+    - A reproducible combined brand-profile calibration report now exists at [docs/generated/brand-profile-calibration-report.json](/C:/code/nomsentry/docs/generated/brand-profile-calibration-report.json) and currently shows `0` mismatches on the maintained sample corpus, but that corpus is still curated and too small to count as broader enterprise-grade calibration.
   - Target:
     - measure false positives on realistic identifier corpora
     - document expected behavior for generic English terms and long-tail marks

@@ -1,0 +1,37 @@
+[
+  {
+    "label": "maintained protectedBrand review positives",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": [
+      "harley-davidson",
+      "national-geographic",
+      "openai",
+      "chatgpt",
+      "paypal",
+      "google",
+      "github",
+      "stripe",
+      "mastercard"
+    ]
+  },
+  {
+    "label": "documented ambiguity-prone brand non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["apple", "amazon", "visa"]
+  },
+  {
+    "label": "brand-adjacent allow negatives",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": [
+      "openair",
+      "googology",
+      "paypals",
+      "striped",
+      "mastercardio",
+      "dropboxing"
+    ]
+  }
+]

@@ -122,6 +122,11 @@ import {
   parseArgs as parseWikidataBrandArgs,
   scoreCandidate,
 } from "../scripts/evaluate-wikidata-brand-supplement.js";
+import {
+  evaluateBrandProfile,
+  loadCalibrationFixture,
+  parseArgs as parseBrandProfileArgs,
+} from "../scripts/evaluate-brand-profile.js";
 import { parseArgs as parseWikidataDeriveArgs } from "../scripts/derive-wikidata-brand-risk.js";
 import { parseArgs as parseDerivedImpersonationArgs } from "../scripts/derive-impersonation.js";
 import { parseArgs as parseDerivedCompositeArgs } from "../scripts/derive-composite-risk.js";
@@ -474,6 +479,32 @@ assert.equal(
 }
 
 {
+  const brandProfileArgs = parseBrandProfileArgs([
+    "--bundle-file",
+    "tmp/runtime-sources.json",
+    "--fixture-file",
+    "tmp/brand-profile-calibration.json",
+    "--output-file",
+    "tmp/brand-profile-report.json",
+  ]);
+  assert.equal(
+    path.basename(brandProfileArgs.bundleFile),
+    "runtime-sources.json",
+    "brand profile evaluation args should parse bundle files",
+  );
+  assert.equal(
+    path.basename(brandProfileArgs.fixtureFile),
+    "brand-profile-calibration.json",
+    "brand profile evaluation args should parse fixture files",
+  );
+  assert.equal(
+    path.basename(brandProfileArgs.outputFile),
+    "brand-profile-report.json",
+    "brand profile evaluation args should parse output files",
+  );
+}
+
+{
   const githubReservedArgs = parseGitHubReservedArgs([
     "--output-dir",
     "tmp/github-reserved",
@@ -534,6 +565,12 @@ assert.equal(
 }
 
 assert.throws(
+  () => parseBrandProfileArgs(["--wat"]),
+  /Unknown option: --wat/,
+  "brand profile evaluation args should reject unknown options",
+);
+
+assert.throws(
   () => parseGitHubReservedArgs(["--wat"]),
   /Unknown option: --wat/,
   "github reserved usernames args should reject unknown options",
@@ -588,6 +625,63 @@ assert.throws(
     fixtureTerms.includes("openai") && fixtureTerms.includes("paypal"),
     true,
     "wikidata evaluation should load the Wikidata seed cohort terms",
+  );
+}
+
+{
+  const calibrationFixture = loadCalibrationFixture(
+    path.resolve(
+      process.cwd(),
+      "test",
+      "fixtures",
+      "brand-profile-calibration.json",
+    ),
+  );
+  assert.equal(
+    calibrationFixture.some(
+      (group) =>
+        group.label === "maintained protectedBrand review positives" &&
+        group.values.includes("openai"),
+    ),
+    true,
+    "brand profile evaluation should load the maintained calibration corpus",
+  );
+}
+
+{
+  const report = evaluateBrandProfile({
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    fixtureFile: path.resolve(
+      process.cwd(),
+      "test",
+      "fixtures",
+      "brand-profile-calibration.json",
+    ),
+  });
+  assert.equal(
+    report.summary.totalCases > 0,
+    true,
+    "brand profile evaluation should emit non-empty reports",
+  );
+  assert.equal(
+    report.evaluations.some(
+      (entry) =>
+        entry.value === "openai" &&
+        entry.expected === "review" &&
+        entry.actual === "review",
+    ),
+    true,
+    "brand profile evaluation should record maintained review positives",
+  );
+  assert.equal(
+    report.evaluations.some(
+      (entry) =>
+        entry.value === "apple" &&
+        entry.expected === "allow" &&
+        entry.actual === "allow",
+    ),
+    true,
+    "brand profile evaluation should record documented ambiguity-prone allows",
   );
 }
 

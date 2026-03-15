@@ -18,7 +18,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 ### v0.5.x
 
 2. Product policy refinement
-   - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, especially around short, numeric, and ambiguity-prone brand forms
+   - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, building on the current reproducible maintained-sample calibration report and extending it to more realistic identifier corpora, especially around short, numeric, and ambiguity-prone brand forms
    - Dependency:
      - benefits from provenance work but does not require indexed matching
    - Exit criteria:

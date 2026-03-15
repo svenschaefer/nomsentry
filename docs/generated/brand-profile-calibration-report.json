@@ -1,0 +1,238 @@
+{
+  "id": "brand-profile-calibration-report",
+  "version": 1,
+  "bundleFile": "runtime-sources.json",
+  "fixtureFile": "brand-profile-calibration.json",
+  "summary": {
+    "totalCases": 18,
+    "mismatchCount": 0,
+    "totalsByExpected": {
+      "allow": 9,
+      "review": 9,
+      "reject": 0
+    },
+    "mismatchesByExpected": {
+      "allow": 0,
+      "review": 0,
+      "reject": 0
+    }
+  },
+  "evaluations": [
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "harley-davidson",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "harley davidson"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "national-geographic",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "national geographic"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "openai",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "openai"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "chatgpt",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "chatgpt"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "paypal",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "paypal"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "google",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "google"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "github",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "github"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "stripe",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "stripe"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "mastercard",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "mastercard"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented ambiguity-prone brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "apple",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented ambiguity-prone brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "amazon",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented ambiguity-prone brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "visa",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "openair",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "googology",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "paypals",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "striped",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "mastercardio",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent allow negatives",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "dropboxing",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    }
+  ]
+}

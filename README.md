@@ -15,6 +15,7 @@ Additional project docs:
 - [Normalization Contract](/C:/code/nomsentry/docs/NORMALIZATION_CONTRACT.md)
 - [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
 - [Wikidata Brand Evaluation](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
+- [Generated Brand Calibration Report](/C:/code/nomsentry/docs/generated/brand-profile-calibration-report.json)
 - [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
 - [npm Release Process](/C:/code/nomsentry/docs/NPM_RELEASE.md)
 - [Release Notes Template](/C:/code/nomsentry/docs/RELEASE_NOTES_TEMPLATE.md)
@@ -60,6 +61,7 @@ npm run import:windows-reserved-uri-schemes
 npm run derive:impersonation
 npm run derive:composite-risk
 npm run evaluate:wikidata-brands
+npm run evaluate:brand-profile
 npm run derive:wikidata-brand-risk
 npm run import:uspto -- --input-file path\\to\\case_file.csv
 npm run derive:uspto-brand-risk
@@ -215,6 +217,8 @@ Trailing legal-entity suffixes such as `Inc.` or `LLC` are stripped before those
 This keeps the official full set available while limiting default runtime `protectedBrand` noise.
 
 The current Wikidata supplement is intentionally conservative. It closes representative uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, while still leaving ambiguity-prone terms such as `apple`, `amazon`, and `visa` out of the maintained default profile.
+
+The repo now also carries a reproducible brand-profile calibration report at `docs/generated/brand-profile-calibration-report.json`. The current maintained sample corpus shows the expected review hits for the accepted combined USPTO plus Wikidata cohort and the expected allows for ambiguity-prone and brand-adjacent negatives, but broader real-world calibration work is still tracked in [TODO.md](/C:/code/nomsentry/TODO.md).
 
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 
