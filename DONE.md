@@ -3,8 +3,9 @@
 ## Completed recently
 
 - Reduced npm package payload to runtime-focused artifacts.
-  - removed `custom/sources/` from the npm `files` allowlist in [package.json](/C:/code/nomsentry/package.json)
-  - the published tarball now ships `dist/` runtime artifacts plus code and docs, while maintained source generation remains available through repository scripts
+  - replaced `custom/sources/` in the npm `files` allowlist with [custom/sources/README.md](/C:/code/nomsentry/custom/sources/README.md) in [package.json](/C:/code/nomsentry/package.json)
+  - the published tarball now keeps the `custom/sources` path discoverable without shipping maintained `custom/sources/*.json` artifacts
+  - runtime artifacts continue to ship from `dist/`, while maintained source generation remains available through repository scripts
   - validated via `npm run pack:check` and `npm run pack:smoke`
 
 - Added release artifact attestation baseline checks and provenance-ready publish workflow.

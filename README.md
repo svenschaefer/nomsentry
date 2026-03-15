@@ -105,6 +105,7 @@ The repository maintains two layers of source artifacts:
   - checked-in integrity lock for non-package fetched maintained sources
 
 Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
+The published npm package keeps `custom/sources/README.md` for discoverability but does not ship the maintained `custom/sources/*.json` artifacts.
 
 ## Fixture tests
 
