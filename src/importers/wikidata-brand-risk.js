@@ -1,7 +1,7 @@
 import { validateSource } from "../schema/validate-source.js";
 
 export const SEARCH_API_URL =
-  "https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&language=en&type=item&limit=10&search=";
+  "https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&language=en&type=item&limit=50&search=";
 export const ENTITY_API_URL =
   "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&languages=en&props=labels|descriptions|aliases|claims&ids=";
 export const USER_AGENT = "nomsentry/0.3.0";

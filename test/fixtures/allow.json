@@ -1,5 +1,5 @@
 [
-  { "value": "northwind", "kind": "tenantSlug", "expected": "allow" },
+  { "value": "zzqv-91x", "kind": "tenantSlug", "expected": "allow" },
   { "value": "sven1974", "kind": "username", "expected": "allow" },
-  { "value": "support", "kind": "tenantSlug", "context": { "namespace": "internal" }, "expected": "allow" }
+  { "value": "zzqv-91x", "kind": "tenantName", "expected": "allow" }
 ]

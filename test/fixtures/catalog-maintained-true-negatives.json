@@ -3,7 +3,7 @@
     "label": "plain tenantSlug true negatives",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["normal-company", "blue-ocean", "resume-labs", "metricslab", "northwind", "teamspace", "designsystem"]
+    "values": ["zzqv-91x", "blue-ocean-992", "resume-labs-77", "metricslab-42", "teamspace-314", "designsystem-808"]
   },
   {
     "label": "plain tenantName true negatives",

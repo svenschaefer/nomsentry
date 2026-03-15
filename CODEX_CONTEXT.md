@@ -151,7 +151,7 @@
 - The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now adds the GitHub Enterprise reserved username `staff`, additive reserved-usernames account-access terms such as `account`, `billing`, `official`, `password`, `payment`, `payments`, `reset`, and `reset-password`, and derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The maintained USPTO-derived default now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding.
-- The maintained default keeps one-word USPTO marks with at least 11 characters, keeps at most two-word USPTO marks with at least 6 characters per token, and drops digit-bearing USPTO terms.
+- The maintained default keeps one-word USPTO marks with at least 5 characters, keeps at most two-word USPTO marks with at least 6 characters per token, and drops digit-bearing USPTO terms.
 - That calibrated default now explicitly includes examples such as `harley davidson`, `national geographic`, and `playstation`, while leaving numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5` out of the maintained default profile.
 - The combined maintained brand profile is now explicit rather than open-ended: USPTO covers structurally stronger official marks, Wikidata supplements uncovered globally recognizable brands, ambiguity-prone terms such as `apple`, `amazon`, and `visa` remain out, and long-tail official marks such as `international`, `professional`, and `entertainment` remain review-level in-scope.
 - A reproducible combined brand-profile calibration report now exists at `docs/generated/brand-profile-calibration-report.json` and currently shows zero mismatches on the maintained sample corpus across accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives.
@@ -178,7 +178,7 @@
 - The repo now contains a reproducible Wikidata uncovered-brand evaluation script, a derived source builder, a generated report, and a versioned `custom/sources/derived-wikidata-brand-risk.json` artifact.
 - The repo now also contains a reproducible combined brand-profile calibration script and generated report for the maintained USPTO plus Wikidata baseline.
 - The evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
-- The current accepted Wikidata cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
+- The current accepted Wikidata cohort covers `bmw`, `openai`, `chatgpt`, `paypal`, `google`, `github`, `sap`, `mercedes`, `stripe`, and `mastercard`.
 - The current Wikidata supplement still excludes ambiguity-prone terms such as `visa`, `amazon`, and `apple`, and those are now explicit default non-goals rather than accidental gaps.
 - The current implementation uses official Wikidata entity APIs at build time, not a runtime dependency.
 - Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.

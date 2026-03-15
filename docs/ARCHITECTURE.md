@@ -112,7 +112,7 @@ USPTO is handled in two layers:
 - full official imports live outside the default runtime path in local `data/uspto/full-sources/`
 - a derived review-level subset is generated into `custom/sources/derived-uspto-brand-risk.json`
 
-The derived USPTO filter now strips trailing legal-entity suffixes such as `Inc.` or `LLC` before the structural thresholds are applied. The maintained default then keeps one-word marks with at least 11 characters, keeps at most two-word marks with at least 6 characters per token, and drops digit-bearing terms, so the runtime-facing term tracks the brand-facing identifier when the remaining form still fits the maintained conservative profile.
+The derived USPTO filter now strips trailing legal-entity suffixes such as `Inc.` or `LLC` before the structural thresholds are applied. The maintained default then keeps one-word marks with at least 5 characters, keeps at most two-word marks with at least 6 characters per token, and drops digit-bearing terms, so the runtime-facing term tracks the brand-facing identifier when the remaining form still fits the maintained conservative profile.
 
 Wikidata is handled as a separate derived layer:
 

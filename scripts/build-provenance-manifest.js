@@ -37,7 +37,7 @@ const TRANSFORM_VERSION_BY_PREFIX = [
   ],
   ["imported-rfc2142-role-mailboxes", "extract-rfc2142-role-mailboxes@1"],
   ["imported-uspto-trademarks-", "import-uspto-trademarks@1"],
-  ["derived-wikidata-brand-risk", "derive-wikidata-brand-risk@1"],
+  ["derived-wikidata-brand-risk", "derive-wikidata-brand-risk@2"],
   ["derived-impersonation", "derive-impersonation@1"],
   ["derived-composite-risk", "derive-composite-risk@1"],
   [
@@ -48,7 +48,7 @@ const TRANSFORM_VERSION_BY_PREFIX = [
     "imported-windows-reserved-uri-schemes",
     "import-windows-reserved-uri-schemes@1",
   ],
-  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@2"],
+  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@4"],
 ];
 
 function normalizeRelativePath(value) {

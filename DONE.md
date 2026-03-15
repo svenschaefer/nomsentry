@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Expanded the maintained Wikidata-derived `protectedBrand` supplement and aligned USPTO/Wikidata brand thresholds.
+  - updated Wikidata seed/evaluation inputs to include `bmw`, `sap`, and `mercedes`
+  - expanded the accepted Wikidata-derived cohort so `bmw`, `sap`, and `mercedes` resolve to `review` in the default runtime
+  - increased Wikidata search breadth from `limit=10` to `limit=50` to surface high-signal brand entities like `Mercedes-Benz` for ambiguous labels
+  - lowered USPTO noise for short names by setting the derived one-word threshold to 5 characters
+  - kept numeric short-brand non-goals such as `3m`, `7eleven`, `formula1`, and `playstation5` outside the maintained default profile
+
 - Added first-class runtime helpers to the public package API.
   - `src/index.js` now exports `loadRuntimeBundle()` for default in-package runtime loading
   - `src/index.js` now exports one strict materialized `defaultPolicy` plus `defaultKind`

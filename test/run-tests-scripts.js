@@ -1586,7 +1586,7 @@ await assert.rejects(
     { id: "imported-uspto-trademarks" },
   );
   const derived = deriveUsptoBrandRiskSource(source, {
-    singleWordMinLength: 11,
+    singleWordMinLength: 5,
     multiWordMinTokenLength: 5,
     maxWords: 2,
     allowDigits: false,
@@ -2726,6 +2726,12 @@ for (const testCase of [
     kind: "tenantName",
     expected: "reject",
     label: "ldnoobw slur",
+  },
+  {
+    value: "n!ggaf!gga",
+    kind: "tenantName",
+    expected: "reject",
+    label: "compact affix slur evasion",
   },
   {
     value: "b!tch",

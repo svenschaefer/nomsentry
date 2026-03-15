@@ -26,7 +26,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/TODO.md).
    - the combined USPTO plus Wikidata brand-risk derivation is documented with concrete included and excluded examples
    - the maintained calibration now covers accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives
    - the maintained default boundary is now explicit:
-     - one-word USPTO marks require at least 11 characters
+     - one-word USPTO marks require at least 5 characters
      - multi-word USPTO marks allow at most two tokens with at least 6 characters each
      - digit-bearing USPTO marks remain out of the maintained default profile
      - ambiguity-prone terms such as `apple`, `amazon`, and `visa` remain out of the default Wikidata supplement

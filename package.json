@@ -1,6 +1,6 @@
 {
   "name": "nomsentry",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Deterministic identifier policy and deception detection engine",
   "keywords": [
     "identifier-validation",

@@ -23,11 +23,14 @@ The repo now contains both:
 
 The current accepted Wikidata-derived cohort is:
 
+- `bmw`
 - `openai`
 - `chatgpt`
 - `paypal`
 - `google`
 - `github`
+- `sap`
+- `mercedes`
 - `stripe`
 - `mastercard`
 
@@ -107,7 +110,7 @@ This improves default runtime coverage for several globally recognizable brands 
 The maintained default is now explicitly:
 
 - USPTO-derived review positives for structurally stronger official marks, with trailing legal suffixes stripped first
-- a conservative Wikidata supplement for uncovered globally recognizable brands such as `openai`, `google`, `paypal`, `github`, `stripe`, and `mastercard`
+- a conservative Wikidata supplement for uncovered globally recognizable brands such as `bmw`, `openai`, `google`, `paypal`, `github`, `sap`, `mercedes`, `stripe`, and `mastercard`
 - explicit default non-goals for ambiguity-prone short terms such as `apple`, `amazon`, and `visa`
 - explicit default non-goals for numeric or short numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5`
 

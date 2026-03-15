@@ -16,3 +16,6 @@
 - Review and tighten package-size budget for runtime bundle growth.
   - Owner: implementation unassigned, acceptance by repository owner / maintainer
   - Scope: add explicit size budget thresholds and failure policy for `dist/runtime-sources.json` and packed tarball size
+- Define and implement a separate short-brand policy path for 2-character brands.
+  - Owner: product-owner decision required, implementation unassigned
+  - Scope: decide whether terms such as `3m` should stay out of default coverage or be included via a dedicated short-brand profile with strict precision controls, rather than broad USPTO threshold relaxation

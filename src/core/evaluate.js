@@ -1,5 +1,6 @@
 import { normalizeValue } from "./normalize.js";
 import { buildRuleIndex, matchRules } from "./matchers.js";
+import { buildAffixRiskIndex, detectAffixRisk } from "./affix-risk.js";
 import { detectCompositeRisk } from "./composite.js";
 import { detectScriptRisk } from "./script-risk.js";
 import { decide } from "./decision.js";
@@ -46,6 +47,7 @@ export function createEngine({
     rule._order = index;
   });
   const ruleIndex = buildRuleIndex(rules);
+  const affixRiskIndex = buildAffixRiskIndex(rules);
   const compositeRules = sources.flatMap((s) =>
     (s.compositeRules || []).map((rule) => ({
       ...rule,
@@ -108,6 +110,23 @@ export function createEngine({
         ruleIndex,
       }),
     );
+    for (const evaluationKind of evaluationKinds) {
+      for (const affixMatch of detectAffixRisk({
+        normalized,
+        kind: evaluationKind,
+        index: affixRiskIndex,
+      })) {
+        matches.push({
+          rule: {
+            id: `derived/affix-risk/${affixMatch.category}/${affixMatch.term}`,
+            term: affixMatch.term,
+            category: affixMatch.category,
+          },
+          matchType: `derived-affix-${affixMatch.position}`,
+          comparedField: "compact",
+        });
+      }
+    }
 
     const scriptRisk = detectScriptRisk(normalized.raw);
     if (scriptRisk.mixed) {

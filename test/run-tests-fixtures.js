@@ -1351,7 +1351,7 @@ assert.throws(
     manifest.sourceArtifacts.find(
       (entry) => entry.id === "derived-uspto-brand-risk",
     )?.transformVersion,
-    "derive-uspto-brand-risk@2",
+    "derive-uspto-brand-risk@4",
     "build manifest should record deterministic transform versions for derived artifacts",
   );
   assert.equal(
@@ -1379,7 +1379,7 @@ assert.throws(
     manifest.sourceArtifacts.find(
       (entry) => entry.id === "derived-wikidata-brand-risk",
     )?.transformVersion,
-    "derive-wikidata-brand-risk@1",
+    "derive-wikidata-brand-risk@2",
     "build manifest should record deterministic transform versions for the Wikidata supplement",
   );
   assert.equal(
