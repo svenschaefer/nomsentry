@@ -2,6 +2,17 @@
 
 ## Completed recently
 
+- Added upstream source-integrity capture and verification for non-package external sources.
+  - added [source-integrity-lock.json](/C:/code/nomsentry/source-integrity-lock.json)
+  - added [scripts/source-integrity.js](/C:/code/nomsentry/scripts/source-integrity.js)
+  - added [scripts/capture-source-integrity.js](/C:/code/nomsentry/scripts/capture-source-integrity.js)
+  - added [scripts/check-source-integrity.js](/C:/code/nomsentry/scripts/check-source-integrity.js)
+  - added `npm run integrity:check` and `npm run integrity:capture` in [package.json](/C:/code/nomsentry/package.json)
+  - wired `npm run integrity:check` into the main local validation gate
+  - extended [source-refresh-policy.json](/C:/code/nomsentry/source-refresh-policy.json) with `requiresUpstreamIntegrity` flags for fetched non-package sources
+  - extended [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json) to record the checked-in integrity-lock hash and attach captured upstream integrity metadata to covered source artifacts
+  - added regression coverage for integrity target selection, lock validation, manifest integration, and gate evaluation
+
 - Split the monolithic test entrypoint into focused suites while keeping the deterministic gate stable.
   - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) is now a small orchestrator
   - added [test/run-tests-fixtures.js](/C:/code/nomsentry/test/run-tests-fixtures.js)

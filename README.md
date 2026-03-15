@@ -46,6 +46,8 @@ npm run benchmark:runtime
 npm run benchmark:check
 npm run docs:check
 npm run freshness:check
+npm run integrity:check
+npm run integrity:capture
 npm run determinism:check
 npm run ci:check
 npm run release:check
@@ -98,6 +100,8 @@ The repository maintains two layers of source artifacts:
   - machine-readable provenance manifest for maintained source artifacts and the compiled runtime bundle
 - `source-refresh-policy.json`
   - deterministic refresh-cadence policy used by the staleness check
+- `source-integrity-lock.json`
+  - checked-in integrity lock for non-package fetched maintained sources
 
 Downstream projects can add their own sources separately, but they are not part of the maintained source set in this repository.
 
@@ -140,6 +144,7 @@ data/uspto/full-sources/imported-uspto-trademarks-<chunk>.json
 dist/runtime-sources.json
 dist/build-manifest.json
 source-refresh-policy.json
+source-integrity-lock.json
 ```
 
 These inputs currently come from three maintained source families plus one compiled runtime artifact:
@@ -230,8 +235,9 @@ The repo now also carries a reproducible brand-profile calibration report at `do
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 
 For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`, a single flattened bundle that contains only the fields used by the engine.
-The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime bundle hash for that exact source set.
+The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, captured non-package source-integrity metadata where available, and the runtime bundle hash for that exact source set.
 The repository also carries `source-refresh-policy.json`, which defines expected refresh cadences per maintained source family. `npm run freshness:check` resolves each maintained source artifact to its last git commit date and fails when an artifact exceeds its configured age limit.
+The repository also carries `source-integrity-lock.json`, a checked-in lock file with response hashes and captured upstream headers for the maintained non-package fetched sources. `npm run integrity:check` verifies that the lock still covers the exact current maintained artifact set and that required fetched sources are not missing integrity metadata.
 Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.
 `npm run release:check` now also performs a packaged-artifact smoke check by installing the packed tarball in a temporary directory and validating both the installed library exports and the installed CLI.
 `npm run security:check` now runs a production dependency audit and validates CycloneDX SBOM generation from the locked dependency graph.

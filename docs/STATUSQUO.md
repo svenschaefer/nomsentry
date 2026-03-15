@@ -8,11 +8,10 @@
   - compiled runtime bundle in `dist/runtime-sources.json`
   - machine-readable provenance manifest in `dist/build-manifest.json`
   - deterministic refresh policy in `source-refresh-policy.json`
+  - checked-in source-integrity lock in `source-integrity-lock.json`
 - Major open workstreams:
   - post-v0.6 hardening and maintainability follow-up only:
-    - upstream source-integrity capture or verification
     - release-artifact attestation or signing
-    - automated test-suite decomposition
 
 ## Runtime status
 
@@ -24,6 +23,7 @@
   - `npm run benchmark:runtime`
   - `npm run docs:check`
   - `npm run freshness:check`
+  - `npm run integrity:check`
   - `npm run determinism:check`
   - `npm run ci:check`
   - `npm run release:check`
@@ -40,6 +40,7 @@
   - deterministic transform versions per maintained artifact
   - refresh-policy linkage per maintained artifact
   - package-lock-backed upstream versions for package-derived maintained sources
+  - checked-in non-package upstream integrity metadata through `source-integrity-lock.json`
 - Runtime matching now uses:
   - a prebuilt indexed matcher instead of a per-request full rule scan
 - Runtime benchmarking is available through:
@@ -49,6 +50,8 @@
   - maintained benchmark budgets now live in `benchmark-budget.json`
 - Source freshness checks are in place for:
   - maintained source artifacts based on git commit dates and `source-refresh-policy.json`
+- Source-integrity checks are now in place for:
+  - fetched non-package maintained source artifacts based on `source-refresh-policy.json` and `source-integrity-lock.json`
 - In-suite determinism coverage now includes:
   - stable source-directory load ordering
   - byte-stable recompaction of unchanged source inputs
@@ -145,6 +148,7 @@
   - staged USPTO chunk-set replacement with rollback on swap failure
   - preservation of the current single-file derived USPTO artifact while cleaning up only legacy chunked outputs
   - atomic write cleanup coverage for `writeTextFileAtomic()` after write and rename failures
+  - source-integrity target selection, lock validation, and manifest integration coverage
 - Direct schema edge-case coverage now includes:
   - shared compact default extraction
   - metadata/default merging

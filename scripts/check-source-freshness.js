@@ -82,6 +82,14 @@ export function validateRefreshPolicy(policy) {
         `source refresh policy policies[${index}].maxAgeDays must be a positive integer`,
       );
     }
+    if (
+      entry.requiresUpstreamIntegrity !== undefined &&
+      typeof entry.requiresUpstreamIntegrity !== "boolean"
+    ) {
+      throw new Error(
+        `source refresh policy policies[${index}].requiresUpstreamIntegrity must be a boolean`,
+      );
+    }
   }
 
   return policy;

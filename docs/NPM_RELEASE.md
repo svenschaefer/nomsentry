@@ -35,6 +35,12 @@ Current release validation includes:
 - `npm pack --dry-run`
 - `npm run pack:smoke`
 
+If any maintained non-package source import changed, refresh `source-integrity-lock.json` before publishing:
+
+```bash
+npm run integrity:capture
+```
+
 ## Release flow
 
 1. Update code, tests, docs, and artifacts.

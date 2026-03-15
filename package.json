@@ -11,6 +11,7 @@
     "custom/sources/",
     "docs/",
     "source-refresh-policy.json",
+    "source-integrity-lock.json",
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"
@@ -28,6 +29,7 @@
     "benchmark:check": "node scripts/check-runtime-benchmark-budget.js",
     "docs:check": "node scripts/check-docs-consistency.js",
     "freshness:check": "node scripts/check-source-freshness.js",
+    "integrity:check": "node scripts/check-source-integrity.js",
     "determinism:check": "npm run determinism:check:sources && npm run determinism:check:runtime",
     "determinism:check:sources": "node scripts/check-maintained-sources-determinism.js",
     "determinism:check:runtime": "node scripts/check-runtime-bundle-determinism.js",
@@ -35,7 +37,7 @@
     "pack:smoke": "node scripts/check-package-smoke.js",
     "security:check": "node scripts/check-security-baseline.js",
     "release:check": "npm run ci:check && npm run pack:check && npm run pack:smoke",
-    "ci:check": "npm run lint:check && npm run format:check && npm run typecheck && npm test && npm run coverage:check && npm run docs:check && npm run build:runtime-sources && npm run determinism:check && npm run freshness:check && npm run security:check && npm run benchmark:check",
+    "ci:check": "npm run lint:check && npm run format:check && npm run typecheck && npm test && npm run coverage:check && npm run docs:check && npm run build:runtime-sources && npm run determinism:check && npm run freshness:check && npm run integrity:check && npm run security:check && npm run benchmark:check",
     "import:ldnoobw": "node scripts/import-ldnoobw.js",
     "import:2toad": "node scripts/import-2toad-profanity.js",
     "import:obscenity": "node scripts/import-obscenity.js",
@@ -56,7 +58,8 @@
     "derive:composite-risk": "node scripts/derive-composite-risk.js",
     "evaluate:wikidata-brands": "node scripts/evaluate-wikidata-brand-supplement.js",
     "evaluate:brand-profile": "node scripts/evaluate-brand-profile.js",
-    "derive:wikidata-brand-risk": "node scripts/derive-wikidata-brand-risk.js"
+    "derive:wikidata-brand-risk": "node scripts/derive-wikidata-brand-risk.js",
+    "integrity:capture": "node scripts/capture-source-integrity.js"
   },
   "engines": {
     "node": ">=20.0.0"

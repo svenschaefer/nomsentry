@@ -14,6 +14,7 @@
 - The compiled runtime artifact lives in `dist/runtime-sources.json`.
 - The machine-readable provenance manifest lives in `dist/build-manifest.json`.
 - The deterministic source refresh policy lives in `source-refresh-policy.json`.
+- The checked-in non-package source-integrity lock lives in `source-integrity-lock.json`.
 - Local full USPTO imports live under `data/uspto/full-sources/` and are intentionally ignored by git.
 - The CLI should validate against the compiled runtime bundle, not scan `custom/sources/` directly.
 
@@ -65,7 +66,9 @@
 - Runtime bundle writes use atomic write paths.
 - The runtime build step emits a deterministic provenance manifest for maintained source artifacts and the runtime bundle.
 - The provenance manifest now includes deterministic transform versions, refresh-policy linkage, and package-lock-backed upstream versions for package-derived maintained sources.
+- The provenance manifest now also includes the `source-integrity-lock.json` hash and attaches captured upstream integrity metadata to covered fetched source artifacts.
 - Source freshness is checked against git commit dates plus the deterministic refresh policy file.
+- Source integrity for non-package fetched maintained sources is checked against `source-integrity-lock.json` plus the `requiresUpstreamIntegrity` flags in `source-refresh-policy.json`.
 - Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - A lightweight runtime benchmark harness exists for bundle load, engine creation, and evaluation latency over maintained fixture inputs.
 - Lint and formatting gates now exist for human-maintained files through ESLint and Prettier, and they are part of `npm run ci:check`.
@@ -123,7 +126,6 @@
   - all currently tracked follow-up items are unassigned
   - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
 - currently tracked follow-up gaps:
-  - upstream integrity capture or verification for non-package external sources
   - release-artifact attestation or signing
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.

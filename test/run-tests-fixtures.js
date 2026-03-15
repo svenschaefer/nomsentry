@@ -159,6 +159,16 @@ import {
   validateRefreshPolicy,
 } from "../scripts/check-source-freshness.js";
 import {
+  buildIntegrityTargets,
+  captureUrlIntegrity,
+  parseContentType,
+  validateSourceIntegrityLock,
+} from "../scripts/source-integrity.js";
+import {
+  evaluateSourceIntegrity,
+  parseArgs as parseSourceIntegrityArgs,
+} from "../scripts/check-source-integrity.js";
+import {
   compactSourcesDirectory,
   resolveCompactFilename,
 } from "../scripts/compact-sources.js";
@@ -1219,7 +1229,7 @@ assert.throws(
   );
   assert.equal(
     manifest.version,
-    2,
+    3,
     "build manifest should have a stable version",
   );
   assert.equal(
@@ -1392,6 +1402,28 @@ assert.throws(
     manifest.sourceArtifactSetSha256,
     "build manifest should tie the runtime artifact to the exact source artifact set",
   );
+  assert.equal(
+    manifest.provenanceInputs.sourceIntegrityLockFile,
+    "source-integrity-lock.json",
+    "build manifest should record the checked-in source integrity lock file",
+  );
+  assert.equal(
+    typeof manifest.provenanceInputs.sourceIntegrityLockSha256,
+    "string",
+    "build manifest should hash the source integrity lock file",
+  );
+  assert.equal(
+    manifest.provenanceInputs.sourceIntegrityLockVersion,
+    1,
+    "build manifest should record the source integrity lock schema version",
+  );
+  assert.equal(
+    typeof manifest.sourceArtifacts.find(
+      (entry) => entry.id === "imported-gitlab-reserved-names",
+    )?.upstreamIntegrity?.responseSha256,
+    "string",
+    "build manifest should attach captured upstream integrity metadata to external fetched sources",
+  );
 }
 
 {
@@ -1414,12 +1446,34 @@ assert.throws(
     "2026-03-14",
     "freshness checks should accept ISO date inputs",
   );
+  assert.equal(
+    ldnoobwPolicy?.requiresUpstreamIntegrity,
+    true,
+    "refresh policy should flag external fetched sources that require captured upstream integrity",
+  );
 }
 
 assert.throws(
   () => validateRefreshPolicy({ id: "bad", version: 1, policies: [] }),
   /source refresh policy must have id 'source-refresh-policy'/,
   "refresh policy validation should require the stable policy id",
+);
+
+assert.throws(
+  () =>
+    validateRefreshPolicy({
+      id: "source-refresh-policy",
+      version: 1,
+      policies: [
+        {
+          match: { source: "LDNOOBW" },
+          maxAgeDays: 180,
+          requiresUpstreamIntegrity: "yes",
+        },
+      ],
+    }),
+  /requiresUpstreamIntegrity must be a boolean/,
+  "refresh policy validation should reject non-boolean upstream-integrity flags",
 );
 
 {
@@ -1499,4 +1553,224 @@ assert.throws(
     }),
   /No refresh policy found/,
   "freshness assessment should fail fast for unmanaged sources",
+);
+
+assert.equal(
+  parseContentType("text/html; charset=utf-8"),
+  "text/html",
+  "content-type parsing should normalize MIME types without parameters",
+);
+
+{
+  const integrity = await captureUrlIntegrity(
+    "https://example.test/source.txt",
+    async () =>
+      new Response("hello world", {
+        status: 200,
+        headers: {
+          etag: '"abc123"',
+          "last-modified": "Sat, 14 Mar 2026 00:00:00 GMT",
+          "content-type": "text/plain; charset=utf-8",
+        },
+      }),
+  );
+  assert.deepEqual(
+    integrity,
+    {
+      responseSha256:
+        "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9",
+      etag: '"abc123"',
+      lastModified: "Sat, 14 Mar 2026 00:00:00 GMT",
+      contentType: "text/plain",
+    },
+    "captured source integrity should include a body hash and normalized headers",
+  );
+}
+
+{
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-integrity-targets-"),
+  );
+  try {
+    writeTextFileAtomic(
+      path.join(tmpDir, "gitlab-reserved-names.json"),
+      JSON.stringify({
+        id: "imported-gitlab-reserved-names",
+        metadata: {
+          source: "GitLab Docs",
+          sourceUrl: "https://docs.gitlab.com/user/reserved_names/",
+        },
+        rules: [],
+      }),
+    );
+    writeTextFileAtomic(
+      path.join(tmpDir, "reserved-usernames.json"),
+      JSON.stringify({
+        id: "imported-reserved-usernames",
+        metadata: {
+          source: "reserved-usernames",
+          sourceUrl: "https://github.com/mvila/reserved-usernames",
+        },
+        rules: [],
+      }),
+    );
+
+    const targets = buildIntegrityTargets(tmpDir, {
+      id: "source-refresh-policy",
+      version: 1,
+      policies: [
+        {
+          match: { source: "GitLab Docs" },
+          maxAgeDays: 180,
+          requiresUpstreamIntegrity: true,
+        },
+        {
+          match: { source: "reserved-usernames" },
+          maxAgeDays: 180,
+        },
+      ],
+    });
+    assert.deepEqual(
+      targets.map((target) => ({
+        file: path.basename(target.file),
+        id: target.id,
+        source: target.source,
+        fetchUrl: target.fetchUrl,
+      })),
+      [
+        {
+          file: "gitlab-reserved-names.json",
+          id: "imported-gitlab-reserved-names",
+          source: "GitLab Docs",
+          fetchUrl:
+            "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md",
+        },
+      ],
+      "integrity target selection should only include policy-managed external fetch sources and use the real fetch URL",
+    );
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+}
+
+{
+  const validLock = validateSourceIntegrityLock({
+    id: "source-integrity-lock",
+    version: 1,
+    entries: [
+      {
+        file: "custom/sources/gitlab-reserved-names.json",
+        id: "imported-gitlab-reserved-names",
+        source: "GitLab Docs",
+        fetchUrl:
+          "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md",
+        sourceArtifactSha256: "a".repeat(64),
+        responseSha256: "b".repeat(64),
+        etag: '"abc123"',
+        lastModified: "Sat, 14 Mar 2026 00:00:00 GMT",
+        contentType: "text/markdown",
+      },
+    ],
+  });
+  assert.equal(
+    validLock.entries.length,
+    1,
+    "source integrity lock validation should accept well-formed lock files",
+  );
+  assert.throws(
+    () =>
+      validateSourceIntegrityLock({
+        id: "source-integrity-lock",
+        version: 1,
+        entries: [
+          {
+            file: "x.json",
+            id: "x",
+            source: "x",
+            fetchUrl: "https://example.test/x",
+            sourceArtifactSha256: "short",
+            responseSha256: "y".repeat(64),
+          },
+        ],
+      }),
+    /sha256 hex digests/,
+    "source integrity lock validation should reject malformed digests",
+  );
+}
+
+{
+  const count = evaluateSourceIntegrity({
+    targets: [
+      {
+        file: "custom/sources/gitlab-reserved-names.json",
+        id: "imported-gitlab-reserved-names",
+        source: "GitLab Docs",
+        fetchUrl:
+          "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md",
+        sourceArtifactSha256: "c".repeat(64),
+      },
+    ],
+    lock: {
+      id: "source-integrity-lock",
+      version: 1,
+      entries: [
+        {
+          file: "custom/sources/gitlab-reserved-names.json",
+          id: "imported-gitlab-reserved-names",
+          source: "GitLab Docs",
+          fetchUrl:
+            "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md",
+          sourceArtifactSha256: "c".repeat(64),
+          responseSha256: "d".repeat(64),
+          etag: null,
+          lastModified: null,
+          contentType: "text/markdown",
+        },
+      ],
+    },
+  });
+  assert.equal(
+    count,
+    1,
+    "source integrity evaluation should accept matching lock entries",
+  );
+  assert.throws(
+    () =>
+      evaluateSourceIntegrity({
+        targets: [
+          {
+            file: "custom/sources/gitlab-reserved-names.json",
+            id: "imported-gitlab-reserved-names",
+            source: "GitLab Docs",
+            fetchUrl:
+              "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/user/reserved_names.md",
+            sourceArtifactSha256: "c".repeat(64),
+          },
+        ],
+        lock: {
+          id: "source-integrity-lock",
+          version: 1,
+          entries: [],
+        },
+      }),
+    /Missing source integrity entry/,
+    "source integrity evaluation should fail fast for missing required entries",
+  );
+}
+
+assert.deepEqual(
+  parseSourceIntegrityArgs([
+    "--input-dir",
+    "fixtures",
+    "--policy-file",
+    "source-refresh-policy.json",
+    "--lock-file",
+    "source-integrity-lock.json",
+  ]),
+  {
+    inputDir: path.resolve(process.cwd(), "fixtures"),
+    policyFile: path.resolve(process.cwd(), "source-refresh-policy.json"),
+    lockFile: path.resolve(process.cwd(), "source-integrity-lock.json"),
+  },
+  "source integrity check argument parsing should resolve explicit paths",
 );

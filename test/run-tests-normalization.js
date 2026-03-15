@@ -159,6 +159,16 @@ import {
   validateRefreshPolicy,
 } from "../scripts/check-source-freshness.js";
 import {
+  buildIntegrityTargets,
+  captureUrlIntegrity,
+  parseContentType,
+  validateSourceIntegrityLock,
+} from "../scripts/source-integrity.js";
+import {
+  evaluateSourceIntegrity,
+  parseArgs as parseSourceIntegrityArgs,
+} from "../scripts/check-source-integrity.js";
+import {
   compactSourcesDirectory,
   resolveCompactFilename,
 } from "../scripts/compact-sources.js";

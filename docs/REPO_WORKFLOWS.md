@@ -20,9 +20,10 @@ The repository CI workflow runs the same `npm run ci:check` gate on pushes to `m
 When maintained source artifacts change:
 
 1. Refresh or rebuild the relevant source artifacts in `custom/sources/`.
-2. Rebuild `dist/runtime-sources.json`.
-3. Run `npm run determinism:check`.
-4. Verify the resulting artifacts are intended and documented.
+2. Refresh `source-integrity-lock.json` when a non-package fetched source changed.
+3. Rebuild `dist/runtime-sources.json`.
+4. Run `npm run determinism:check`.
+5. Verify the resulting artifacts are intended and documented.
 
 ## Downstream extension flow
 
@@ -37,5 +38,6 @@ When a downstream project extends the source set:
 
 - Do not add self-maintained built-in rule lists to the maintained repository source set.
 - Keep third-party or normative source provenance explicit.
+- Keep fetched non-package source integrity explicit through `source-integrity-lock.json` and `npm run integrity:check`.
 - Do not bypass the compiled runtime bundle path in normal CLI validation.
 - Keep the worktree clean before pushing.

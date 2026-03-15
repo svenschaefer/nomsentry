@@ -67,6 +67,7 @@ The runtime loader rejects unsupported bundle versions and malformed table refer
 Maintained-source rewrites and runtime-bundle generation use atomic write or stage-and-swap paths to avoid partially-written artifacts on interruption.
 The runtime build step also emits `dist/build-manifest.json`, which records the maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime-bundle hash tied to that exact source artifact set.
 The freshness gate uses `source-refresh-policy.json` plus git commit dates for the maintained source artifacts to detect stale imports without introducing nondeterministic timestamps into the versioned manifest.
+The adjacent source-integrity gate uses the checked-in `source-integrity-lock.json` file to bind non-package fetched maintained sources to captured upstream response hashes and selected response headers without making CI depend on live network verification.
 
 The currently maintained source families are:
 

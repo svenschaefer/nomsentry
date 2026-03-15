@@ -4,7 +4,7 @@ import { pathToFileURL } from "node:url";
 import { buildDsojevicSource } from "../src/importers/dsojevic-profanity.js";
 import { writeSourceFile } from "../src/schema/source-io.js";
 
-const BASE_URL =
+export const BASE_URL =
   "https://raw.githubusercontent.com/dsojevic/profanity-list/main";
 
 export function parseArgs(argv) {

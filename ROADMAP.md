@@ -55,12 +55,11 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 5. Release and source-pipeline hardening
    - planned:
-     - upstream integrity capture or verification for non-package external sources
      - release-artifact attestation or signing
    - Owner:
      - unassigned
    - Dependency:
-     - builds on the current provenance, freshness, and release-check infrastructure
+     - builds on the current provenance, freshness, source-integrity, and release-check infrastructure
 
 6. Test-architecture hardening
    - completed

@@ -5,6 +5,10 @@ import { pathToFileURL } from "node:url";
 import { loadSourceFromFile } from "../src/loaders/source-loader.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
+import {
+  DEFAULT_SOURCE_INTEGRITY_LOCK_FILE,
+  validateSourceIntegrityLock,
+} from "./source-integrity.js";
 
 const DEFAULT_REFRESH_POLICY_FILE = path.resolve(
   process.cwd(),
@@ -96,6 +100,14 @@ function readRefreshPolicy(refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE) {
   return refreshPolicy;
 }
 
+function readSourceIntegrityLock(
+  sourceIntegrityLockFile = DEFAULT_SOURCE_INTEGRITY_LOCK_FILE,
+) {
+  const lock = readOptionalJson(sourceIntegrityLockFile);
+  if (!lock) return null;
+  return validateSourceIntegrityLock(lock);
+}
+
 function findRefreshPolicyEntry(refreshPolicy, sourceName) {
   if (!refreshPolicy || !sourceName) return null;
   return (
@@ -144,8 +156,12 @@ export function buildSourceArtifactEntries(
   {
     refreshPolicy = readRefreshPolicy(),
     packageVersions = readPackageVersions(),
+    sourceIntegrityLock = readSourceIntegrityLock(),
   } = {},
 ) {
+  const integrityEntries = new Map(
+    (sourceIntegrityLock?.entries ?? []).map((entry) => [entry.file, entry]),
+  );
   return fs
     .readdirSync(inputDir)
     .filter((entry) => entry.endsWith(".json"))
@@ -155,14 +171,26 @@ export function buildSourceArtifactEntries(
       const serialized = readText(filePath);
       const source = loadSourceFromFile(pathToFileURL(filePath));
       const sourceName = source.metadata?.source ?? null;
+      const relativeFile = normalizeRelativePath(
+        path.relative(process.cwd(), filePath),
+      );
       return {
-        file: normalizeRelativePath(path.relative(process.cwd(), filePath)),
+        file: relativeFile,
         id: source.id,
         source: sourceName,
         artifactType: inferArtifactType(source.id),
         transformVersion: inferTransformVersion(source.id),
         upstreamVersion: inferUpstreamVersion(sourceName, packageVersions),
         refreshPolicy: buildRefreshPolicyMetadata(refreshPolicy, sourceName),
+        upstreamIntegrity: integrityEntries.get(relativeFile)
+          ? {
+              fetchUrl: integrityEntries.get(relativeFile).fetchUrl,
+              responseSha256: integrityEntries.get(relativeFile).responseSha256,
+              etag: integrityEntries.get(relativeFile).etag,
+              lastModified: integrityEntries.get(relativeFile).lastModified,
+              contentType: integrityEntries.get(relativeFile).contentType,
+            }
+          : null,
         license: source.metadata?.license ?? null,
         sourceUrl: source.metadata?.sourceUrl ?? null,
         ruleCount: source.rules?.length ?? 0,
@@ -200,12 +228,15 @@ export function buildProvenanceManifest({
   runtimeFileLabel = outputFile,
   refreshPolicyFile = DEFAULT_REFRESH_POLICY_FILE,
   packageLockFile = DEFAULT_PACKAGE_LOCK_FILE,
+  sourceIntegrityLockFile = DEFAULT_SOURCE_INTEGRITY_LOCK_FILE,
 }) {
   const refreshPolicy = readRefreshPolicy(refreshPolicyFile);
   const packageVersions = readPackageVersions(packageLockFile);
+  const sourceIntegrityLock = readSourceIntegrityLock(sourceIntegrityLockFile);
   const sourceArtifacts = buildSourceArtifactEntries(inputDir, {
     refreshPolicy,
     packageVersions,
+    sourceIntegrityLock,
   });
   const sourceArtifactSetSha256 = buildSourceArtifactSetHash(sourceArtifacts);
   const runtimeArtifact = buildRuntimeArtifactEntry(
@@ -218,10 +249,13 @@ export function buildProvenanceManifest({
   const packageLockFileRelative = normalizeRelativePath(
     path.relative(process.cwd(), packageLockFile),
   );
+  const sourceIntegrityLockFileRelative = normalizeRelativePath(
+    path.relative(process.cwd(), sourceIntegrityLockFile),
+  );
 
   return {
     id: "build-provenance-manifest",
-    version: 2,
+    version: 3,
     provenanceInputs: {
       refreshPolicyFile: fs.existsSync(refreshPolicyFile)
         ? refreshPolicyFileRelative
@@ -236,6 +270,13 @@ export function buildProvenanceManifest({
       packageLockSha256: fs.existsSync(packageLockFile)
         ? hashText(readText(packageLockFile))
         : null,
+      sourceIntegrityLockFile: fs.existsSync(sourceIntegrityLockFile)
+        ? sourceIntegrityLockFileRelative
+        : null,
+      sourceIntegrityLockSha256: fs.existsSync(sourceIntegrityLockFile)
+        ? hashText(readText(sourceIntegrityLockFile))
+        : null,
+      sourceIntegrityLockVersion: sourceIntegrityLock?.version ?? null,
     },
     sourceArtifacts,
     sourceArtifactSetSha256,

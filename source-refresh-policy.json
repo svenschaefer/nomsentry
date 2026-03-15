@@ -34,6 +34,7 @@
       "match": {
         "source": "LDNOOBW"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 180,
       "notes": "Community profanity lists should be reviewed at least twice per year."
     },
@@ -41,6 +42,7 @@
       "match": {
         "source": "insult.wiki"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 180,
       "notes": "Public insult lists should be reviewed at least twice per year."
     },
@@ -55,6 +57,7 @@
       "match": {
         "source": "dsojevic/profanity-list"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 180,
       "notes": "Structured profanity imports should be reviewed at least twice per year."
     },
@@ -76,6 +79,7 @@
       "match": {
         "source": "GitLab Docs"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 180,
       "notes": "Documentation-derived reserved routes should be reviewed at least twice per year."
     },
@@ -83,6 +87,7 @@
       "match": {
         "source": "GitHub Docs"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 180,
       "notes": "Documentation-derived reserved usernames should be reviewed at least twice per year."
     },
@@ -90,6 +95,7 @@
       "match": {
         "source": "ICANN"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 365,
       "notes": "Normative ICANN reserved-name extracts should be reviewed annually."
     },
@@ -111,6 +117,7 @@
       "match": {
         "source": "Microsoft Learn"
       },
+      "requiresUpstreamIntegrity": true,
       "maxAgeDays": 365,
       "notes": "Normative Windows reserved-name extracts should be reviewed annually."
     }
