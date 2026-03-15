@@ -4384,6 +4384,11 @@ await assert.rejects(
     "scheisse",
     "slug should track the hardened latin folding",
   );
+  assert.equal(
+    normalized.technicalExact,
+    "scheisse",
+    "technicalExact should keep accent folding without leetspeak or separator rewriting",
+  );
 }
 
 {
@@ -4398,6 +4403,103 @@ await assert.rejects(
     "atb",
     "word joiners should be removed before tokenization",
   );
+  assert.equal(
+    normalized.technicalExact,
+    "a+b",
+    "technicalExact should preserve technical punctuation while still removing invisibles",
+  );
+}
+
+{
+  const clock = normalizeValue("clock$");
+  const com1 = normalizeValue("com1");
+  const comi = normalizeValue("comi");
+  assert.equal(
+    clock.technicalExact,
+    "clock$",
+    "technicalExact should preserve symbol-bearing technical identifiers",
+  );
+  assert.equal(
+    com1.technicalExact,
+    "com1",
+    "technicalExact should preserve numeric technical identifiers",
+  );
+  assert.equal(
+    com1.technicalExact === comi.technicalExact,
+    false,
+    "technicalExact should not collapse numeric technical identifiers into letter-lookalikes",
+  );
+}
+
+{
+  const exactTechnicalRules = [
+    {
+      id: "indexed/clock",
+      term: "clock$",
+      normalizedTerm: "clock$",
+      category: "reservedTechnical",
+      scopes: ["tenantSlug"],
+      match: "exact",
+      normalizationField: "technicalExact",
+      _order: 0,
+    },
+    {
+      id: "indexed/com1",
+      term: "com1",
+      normalizedTerm: "com1",
+      category: "reservedTechnical",
+      scopes: ["tenantSlug"],
+      match: "exact",
+      normalizationField: "technicalExact",
+      _order: 1,
+    },
+  ];
+  const exactMatches = matchRules({
+    normalized: normalizeValue("clock$ com1"),
+    kind: "tenantSlug",
+    ruleIndex: buildRuleIndex(exactTechnicalRules),
+  });
+  assert.deepEqual(
+    exactMatches.map((match) => match.rule.id),
+    [],
+    "technicalExact exact rules should not token-match through whitespace-separated text",
+  );
+  assert.deepEqual(
+    matchRules({
+      normalized: normalizeValue("clock$"),
+      kind: "tenantSlug",
+      ruleIndex: buildRuleIndex(exactTechnicalRules),
+    }).map((match) => match.rule.id),
+    ["indexed/clock"],
+    "technicalExact exact rules should match symbol-bearing technical identifiers",
+  );
+  assert.deepEqual(
+    matchRules({
+      normalized: normalizeValue("comi"),
+      kind: "tenantSlug",
+      ruleIndex: buildRuleIndex(exactTechnicalRules),
+    }).map((match) => match.rule.id),
+    [],
+    "technicalExact exact rules should not collapse numeric technical identifiers into letter-lookalikes",
+  );
+}
+
+{
+  const checks = [
+    ["clock$", "reject"],
+    ["com1", "reject"],
+    ["lpt1", "reject"],
+    ["comi", "allow"],
+    ["lpti", "allow"],
+  ];
+  for (const [value, expected] of checks) {
+    const result = maintainedEngine.evaluate({ kind: "tenantSlug", value });
+    assert.equal(
+      result.decision,
+      expected,
+      `maintained exact technical handling should keep ${value} at ${expected}`,
+    );
+  }
 }
 
 {

@@ -100,6 +100,11 @@
   - this improves brand-facing runtime terms such as `Harley Davidson Inc.` -> `harley davidson`
   - the maintained default now keeps one-word terms with at least 11 characters, keeps at most two-word terms with at least 6 characters per token, and drops digit-bearing terms
   - that calibrated default now includes examples such as `playstation` while still excluding numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5`
+- Technical exact-identifier status:
+  - the normalization layer now includes `technicalExact` for exact technical identifiers that must preserve digits and punctuation
+  - Windows reserved device names now match against `technicalExact` instead of `slug`
+  - the maintained Windows device baseline now includes `clock$`
+  - nearby non-reserved lookalikes such as `comi` and `lpti` now stay `allow` instead of collapsing into Windows reserved-name matches
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation

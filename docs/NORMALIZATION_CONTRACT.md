@@ -23,6 +23,10 @@ Current supported transformations include:
 - the maintained leetspeak folding rules
 - the maintained confusable and Latin-variant folding rules
 
+For exact technical identifiers, the runtime also supports a separate `technicalExact` projection.
+That projection still applies case folding, accent folding, invisible stripping, and confusable folding, but it does not apply separator folding or leetspeak folding.
+It is intended for exact technical tokens where digits and punctuation remain significant, for example Windows reserved names such as `clock$`, `com1`, and `lpt1`.
+
 In practice, this means the runtime is expected to match examples such as:
 
 - `adm1n` -> `admin`

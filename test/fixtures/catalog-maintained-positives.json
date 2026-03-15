@@ -3,7 +3,7 @@
     "label": "windows reserved device names",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["con", "prn", "aux", "nul", "com1", "com9", "lpt1", "lpt9"]
+    "values": ["con", "prn", "aux", "nul", "com1", "com9", "lpt1", "lpt9", "clock$"]
   },
   {
     "label": "gitlab reserved route names",

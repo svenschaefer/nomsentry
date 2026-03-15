@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Fixed the general exact-technical-identifier normalization gap for Windows reserved device names.
+  - added the `technicalExact` normalization projection in [src/core/normalize.js](/C:/code/nomsentry/src/core/normalize.js)
+  - switched [custom/sources/windows-reserved-device-names.json](/C:/code/nomsentry/custom/sources/windows-reserved-device-names.json) to `technicalExact`
+  - completed the maintained Windows device list with `clock$`
+  - added direct regression coverage in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) so `clock$`, `com1`, and `lpt1` still reject while nearby non-reserved lookalikes such as `comi` and `lpti` stay `allow`
+  - regenerated [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) and [dist/build-manifest.json](/C:/code/nomsentry/dist/build-manifest.json)
+
 - Refined the curated identifier catalog into explicit maintained baseline, negative, and boundary layers.
   - expanded `catalog-maintained-positives` with more current-scope reserved, impersonation, profanity, composite, and brand cases
   - expanded current negative fixtures with additional nearby false positives from the reviewed catalog

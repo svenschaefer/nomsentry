@@ -12,6 +12,9 @@ export function normalizeValue(value) {
   const nfkc = trimmed.normalize("NFKC");
   const lower = nfkc.toLowerCase();
   const zeroWidthStripped = lower.replace(INVISIBLE_OR_CONTROL, "");
+  const technicalExact = stripCombiningMarks(
+    foldLatinVariants(foldConfusables(zeroWidthStripped)),
+  );
   const leetFolded = foldLeetspeak(zeroWidthStripped);
   const separatorFolded = leetFolded
     .replace(SEPARATOR_RUN, " ")
@@ -34,6 +37,7 @@ export function normalizeValue(value) {
     nfkc,
     lower,
     zeroWidthStripped,
+    technicalExact,
     separatorFolded,
     leetFolded,
     confusableSkeleton,
