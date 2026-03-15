@@ -117,11 +117,18 @@
 
 ## Current major open areas
 
-- no currently tracked open implementation areas
-- the last v0.5 policy block is now closed, and the current maintained runtime boundary is explicitly documented in the repo docs and calibration fixtures
+- the last scoped v0.5 policy block is closed, and the current maintained runtime boundary is explicitly documented in the repo docs and calibration fixtures
+- current follow-up work is now limited to post-v0.6 hardening and maintainability items rather than unresolved product-scope work
 - current ownership state:
-  - no implementation tasks are currently assigned because no open tracked work remains
+  - all currently tracked follow-up items are unassigned
   - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
+- currently tracked follow-up gaps:
+  - upstream integrity capture or verification for non-package external sources
+  - benchmark budgets and regression thresholds for runtime performance
+  - packaged-artifact smoke validation
+  - automated coverage reporting with minimum thresholds
+  - decomposition of the monolithic `test/run-tests.js` entrypoint
+  - packaged-bundle compatibility regression fixtures for the compiled runtime artifact
 
 ## Recent catalog-based gap findings
 

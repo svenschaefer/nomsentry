@@ -49,5 +49,26 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ## Current state
 
-- No open roadmap items are currently tracked.
-- If new work starts, add the task details to [TODO.md](/C:/code/nomsentry/TODO.md) and the sequence, release bucket, dependency, and owner here.
+- Open follow-up work is now limited to post-v0.6 hardening and maintainability items.
+
+### Post-v0.6 follow-up
+
+5. Release and source-pipeline hardening
+   - planned:
+     - upstream integrity capture or verification for non-package external sources
+     - packaged-artifact smoke validation
+     - benchmark budgets and regression thresholds
+   - Owner:
+     - unassigned
+   - Dependency:
+     - builds on the current provenance, freshness, and release-check infrastructure
+
+6. Test-architecture hardening
+   - planned:
+     - automated coverage reporting with minimum thresholds
+     - split `test/run-tests.js` into focused suites or modules
+     - packaged-bundle compatibility regression fixtures
+   - Owner:
+     - unassigned
+   - Dependency:
+     - should preserve the current deterministic test gate semantics while improving maintainability and measurability

@@ -9,7 +9,11 @@
   - machine-readable provenance manifest in `dist/build-manifest.json`
   - deterministic refresh policy in `source-refresh-policy.json`
 - Major open workstreams:
-  - broader maintained coverage for brands
+  - post-v0.6 hardening and maintainability follow-up only:
+    - upstream source-integrity capture or verification
+    - benchmark budgets and regression thresholds
+    - packaged-artifact smoke validation
+    - automated coverage thresholds and test-suite decomposition
 
 ## Runtime status
 
