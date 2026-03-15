@@ -2,12 +2,19 @@
   "publicExports": [
     "builtinPolicies",
     "createEngine",
+    "defaultPolicies",
+    "loadRuntimeBundle",
     "loadRuntimeBundleFromFile",
     "loadSourceFromFile",
     "loadSourcesFromDirectory",
     "validateSource"
   ],
   "policyExports": [
+    "tenantName",
+    "tenantSlug",
+    "username"
+  ],
+  "defaultPolicyExports": [
     "tenantName",
     "tenantSlug",
     "username"

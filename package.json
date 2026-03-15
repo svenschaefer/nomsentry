@@ -1,6 +1,6 @@
 {
   "name": "nomsentry",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Deterministic identifier policy and deception detection engine",
   "type": "module",
   "main": "src/index.js",

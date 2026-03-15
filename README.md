@@ -21,10 +21,16 @@ npx nomsentry explain tenantName "example value"
 import { createEngine, loadRuntimeBundle, defaultPolicies } from "nomsentry";
 
 const bundle = loadRuntimeBundle();
-const engine = createEngine(bundle);
+const engine = createEngine({
+  sources: [bundle],
+  policies: [
+    defaultPolicies.username,
+    defaultPolicies.tenantSlug,
+    defaultPolicies.tenantName,
+  ],
+});
 
-const policy = defaultPolicies.tenantSlug;
-const result = engine.evaluate(policy, "support");
+const result = engine.evaluate({ kind: "tenantSlug", value: "support" });
 console.log(result.decision);
 ```
 

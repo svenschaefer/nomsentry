@@ -62,24 +62,26 @@ import { pathToFileURL } from "node:url";
 import {
   createEngine,
   builtinPolicies,
-  loadRuntimeBundleFromFile,
+  defaultPolicies,
+  loadRuntimeBundle,
   validateSource,
 } from "nomsentry";
 
 const policyNames = Object.keys(builtinPolicies).sort();
 assert.deepEqual(policyNames, ["tenantName", "tenantSlug", "username"]);
+const defaultPolicyNames = Object.keys(defaultPolicies).sort();
+assert.deepEqual(defaultPolicyNames, ["tenantName", "tenantSlug", "username"]);
 assert.equal(typeof createEngine, "function");
-assert.equal(typeof loadRuntimeBundleFromFile, "function");
+assert.equal(typeof loadRuntimeBundle, "function");
 assert.equal(typeof validateSource, "function");
 
-const bundlePath = path.resolve("node_modules", "nomsentry", "dist", "runtime-sources.json");
-const runtimeBundle = loadRuntimeBundleFromFile(pathToFileURL(bundlePath));
+const runtimeBundle = loadRuntimeBundle();
 const engine = createEngine({
   sources: [runtimeBundle],
   policies: [
-    builtinPolicies.username(),
-    builtinPolicies.tenantSlug(),
-    builtinPolicies.tenantName(),
+    defaultPolicies.username,
+    defaultPolicies.tenantSlug,
+    defaultPolicies.tenantName,
   ],
 });
 
