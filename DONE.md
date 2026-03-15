@@ -6,6 +6,7 @@
   - `src/index.js` now exports `loadRuntimeBundle()` for default in-package runtime loading
   - `src/index.js` now exports one strict materialized `defaultPolicy` plus `defaultKind`
   - default evaluation no longer requires an explicit `kind` when `defaultPolicy` is used
+  - CLI default flow now accepts value-only usage (`nomsentry check <value>` / `nomsentry explain <value>`) with optional `--kind`
   - package smoke validation now verifies the simplified default API path
   - public API contract fixtures now cover `defaultPolicy` and `loadRuntimeBundle`
 

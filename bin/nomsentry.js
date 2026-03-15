@@ -3,11 +3,11 @@
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
-import { username, tenantSlug, tenantName } from "../src/policies/index.js";
+import { defaultPolicy } from "../src/policies/index.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 
 const COMMANDS = new Set(["check", "explain"]);
-const POLICIES = [username(), tenantSlug(), tenantName()];
+const POLICIES = [defaultPolicy()];
 const KINDS = new Set(POLICIES.flatMap((policy) => policy.appliesTo || []));
 const EXIT_USAGE = 64;
 const EXIT_VALIDATION = 65;
@@ -22,6 +22,8 @@ function parseArgs(argv) {
     const token = args.shift();
     if (token === "--namespace") {
       options.namespace = args.shift();
+    } else if (token === "--kind") {
+      options.kind = args.shift();
     } else if (token === "--bundle") {
       options.bundle = path.resolve(process.cwd(), String(args.shift() || ""));
     } else {
@@ -35,10 +37,10 @@ function parseArgs(argv) {
 function printUsage() {
   console.log("Usage:");
   console.log(
-    "  nomsentry check <kind> <value> [--namespace <ns>] [--bundle <path>]",
+    "  nomsentry check <value> [--kind <kind>] [--namespace <ns>] [--bundle <path>]",
   );
   console.log(
-    "  nomsentry explain <kind> <value> [--namespace <ns>] [--bundle <path>]",
+    "  nomsentry explain <value> [--kind <kind>] [--namespace <ns>] [--bundle <path>]",
   );
 }
 
@@ -52,27 +54,17 @@ function createCliEngine(bundlePath) {
   return createEngine({
     sources: [runtimeBundle],
     policies: POLICIES,
-    allowOverrides: [
-      {
-        id: "allow/internal-support",
-        term: "support",
-        scopes: ["tenantSlug"],
-        match: "exact",
-        conditions: { namespace: ["internal"] },
-        override: {
-          action: "allow",
-          suppressCategories: ["impersonation"],
-        },
-      },
-    ],
+    allowOverrides: [],
   });
 }
 
 function main(argv) {
   const { positional, options } = parseArgs(argv);
-  const [command, kind, value] = positional;
+  const [command, first, second] = positional;
+  const kind = options.kind ?? (second ? first : undefined);
+  const value = second ? second : first;
 
-  if (!command || !kind || !value) {
+  if (!command || !value) {
     printUsage();
     return EXIT_USAGE;
   }
@@ -82,14 +74,14 @@ function main(argv) {
     return EXIT_VALIDATION;
   }
 
-  if (!KINDS.has(kind)) {
+  if (kind && !KINDS.has(kind)) {
     console.error(`Unknown kind: ${kind}`);
     return EXIT_VALIDATION;
   }
 
   const engine = createCliEngine(options.bundle);
   const result = engine.evaluate({
-    kind,
+    ...(kind ? { kind } : {}),
     value,
     context: {
       namespace: options.namespace,

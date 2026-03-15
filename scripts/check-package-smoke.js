@@ -134,11 +134,9 @@ export function runPackageSmokeCheck() {
       "bin",
       "nomsentry.js",
     );
-    const cliCheck = runCommand(
-      process.execPath,
-      [cliPath, "check", "tenantName", "depp"],
-      { cwd: installDir },
-    );
+    const cliCheck = runCommand(process.execPath, [cliPath, "check", "depp"], {
+      cwd: installDir,
+    });
 
     if (cliCheck.stdout.trim() !== "reject") {
       throw new Error(

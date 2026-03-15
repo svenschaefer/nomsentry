@@ -19,8 +19,14 @@ npm install nomsentry
 ## CLI quick start
 
 ```bash
-npx nomsentry check tenantSlug support
-npx nomsentry explain tenantName "example value"
+npx nomsentry check support
+npx nomsentry explain "example value"
+```
+
+Optional explicit kind:
+
+```bash
+npx nomsentry check support --kind default
 ```
 
 ## Library quick start

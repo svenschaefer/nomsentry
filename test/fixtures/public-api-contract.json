@@ -18,8 +18,8 @@
     "username"
   ],
   "usageLines": [
-    "nomsentry check <kind> <value> [--namespace <ns>] [--bundle <path>]",
-    "nomsentry explain <kind> <value> [--namespace <ns>] [--bundle <path>]"
+    "nomsentry check <value> [--kind <kind>] [--namespace <ns>] [--bundle <path>]",
+    "nomsentry explain <value> [--kind <kind>] [--namespace <ns>] [--bundle <path>]"
   ],
   "explainKeys": [
     "input",

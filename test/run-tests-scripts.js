@@ -513,7 +513,7 @@ assert.throws(
     "cli should reject unknown commands before evaluation",
   );
 
-  const kindResult = runCli("check", "tenantWhatever", "value");
+  const kindResult = runCli("check", "value", "--kind", "tenantWhatever");
   assert.equal(
     kindResult.status,
     65,
@@ -525,7 +525,7 @@ assert.throws(
     "cli should reject unknown kinds before evaluation",
   );
 
-  const checkResult = runCli("check", "tenantName", "depp");
+  const checkResult = runCli("check", "depp");
   assert.equal(
     checkResult.status,
     0,
@@ -561,7 +561,6 @@ assert.throws(
   );
   const customBundleResult = runCli(
     "check",
-    "tenantName",
     "alpha",
     "--bundle",
     customBundlePath,
@@ -578,13 +577,7 @@ assert.throws(
   );
   fs.rmSync(customBundleDir, { recursive: true, force: true });
 
-  const explainResult = runCli(
-    "explain",
-    "tenantSlug",
-    "support",
-    "--namespace",
-    "internal",
-  );
+  const explainResult = runCli("explain", "support");
   assert.equal(
     explainResult.status,
     0,
@@ -593,8 +586,8 @@ assert.throws(
   const explained = JSON.parse(explainResult.stdout);
   assert.equal(
     explained.decision,
-    "allow",
-    "cli explain should preserve namespace-based overrides",
+    "reject",
+    "cli explain should evaluate with strict default policy",
   );
   assert.deepEqual(
     Object.keys(explained),
@@ -631,6 +624,15 @@ assert.throws(
     defaultDecision.decision,
     "reject",
     "default policy should produce strict decisions without explicit kind",
+  );
+  const explicitDefaultDecision = defaultEngine.evaluate({
+    kind: publicApi.defaultKind,
+    value: "support",
+  });
+  assert.equal(
+    explicitDefaultDecision.decision,
+    "reject",
+    "default policy should also support explicit default kind",
   );
   assert.equal(
     typeof publicApi.loadRuntimeBundle,
@@ -750,6 +752,41 @@ assert.throws(
       }).evaluate({ value: "anything" }),
     /No policy configured for kind: undefined/,
     "multiple non-default policies without appliesTo entries should fail when kind is omitted",
+  );
+
+  const missingScopesEngine = createEngine({
+    sources: [
+      {
+        id: "missing-scopes-source",
+        version: 1,
+        rules: [
+          {
+            id: "missing-scopes-rule",
+            term: "support",
+            category: "impersonation",
+            match: "token",
+            normalizationField: "separatorFolded",
+          },
+        ],
+        compositeRules: [
+          {
+            id: "missing-scopes-composite",
+            term: "a+b",
+            category: "compositeRisk",
+            allOf: ["a", "b"],
+          },
+        ],
+      },
+    ],
+    policies: [publicApi.defaultPolicy],
+  });
+  const missingScopesResult = missingScopesEngine.evaluate({
+    value: "support",
+  });
+  assert.equal(
+    missingScopesResult.decision,
+    "allow",
+    "sources without explicit scopes should not crash and should not match default evaluation kinds",
   );
 }
 
