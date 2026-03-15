@@ -7,17 +7,6 @@ The v0.5 policy phase is complete only when each remaining area has both:
 - a shipped maintained runtime behavior
 - a documented final boundary for what is intentionally still out of scope
 
-- Expand maintained `reservedTechnical` coverage beyond Windows device names when the product contract expects broader platform or system identifiers.
-  - Why:
-    - A catalog-based runtime evaluation originally showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` evaluated to `allow`.
-    - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, `status`, `settings`, `nic`, and `whois` but still leaves the broader technical-identifier expectation only partially met.
-    - A follow-up inspection of the remaining obvious `reserved-usernames` raw candidates found only generic additions such as `client`, `clients`, `private`, `public`, `service`, and `services`, which are too noisy for the current default maintained baseline.
-    - A direct evaluation of `github-reserved-names` against the maintained baseline showed unacceptable noise for the default set, for example `seven-labs` becoming `reject` because of the generic `labs` route term.
-  - Target:
-    - decide the intended `reservedTechnical` scope explicitly
-    - if broader coverage is intended, evaluate whether to add further filtered imports or optional Windows reserved URI scheme names
-    - only revisit `github-reserved-names` with a stricter documented derived filter strategy
-
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
     - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, a conservative additive `reserved-usernames` impersonation import now contributes `account`, `accounts`, `billing`, `official`, `password`, `payment`, `payments`, `reset`, and `reset-password`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.

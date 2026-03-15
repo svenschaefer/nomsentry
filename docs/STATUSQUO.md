@@ -9,7 +9,7 @@
   - machine-readable provenance manifest in `dist/build-manifest.json`
   - deterministic refresh policy in `source-refresh-policy.json`
 - Major open workstreams:
-  - broader maintained coverage for impersonation, technical identifiers, brands, and composite risks
+  - broader maintained coverage for impersonation, brands, and composite risks
 
 ## Runtime status
 
@@ -70,6 +70,7 @@
   - maintained mixed-script positives and explicit documented current gaps, including additive lexical hits such as `admin`, `official`, `billing`, `login`, `profile`, `ssh`, `oauth`, `xml`, `staff`, `nic`, `whois`, `webmaster`, and `server`, plus a wider uncovered-brand gap set
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
   - together these grouped fixtures now provide explicit TP, FP, TN, and documented FN coverage for the maintained baseline
+  - the documented reserved-technical non-goal boundary keeps generic nouns such as `webhook`, `gateway`, `proxy`, `internal`, `private`, `public`, `service`, and `client` out of the maintained default profile
 - Category-refinement status:
   - the maintained v0.5 split boundary for profanity-like content is now explicitly accepted for this phase
   - `dsojevic/profanity-list` now maps `general` tagged entries to `generalProfanity`

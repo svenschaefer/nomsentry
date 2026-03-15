@@ -112,15 +112,16 @@
 
 ## Current major open areas
 
-- broader maintained source coverage for impersonation, technical identifiers, brands, and composite risks
+- broader maintained source coverage for impersonation, brands, and composite risks
 - v0.5 should not be treated as open-ended exploration anymore. The exit bar is:
   - each remaining policy area must end with shipped maintained behavior
   - each remaining policy area must also end with an explicit documented scope boundary for what stays out of scope
 
 ## Recent catalog-based gap findings
 
-- The current maintained `reservedTechnical` coverage is improved by the Windows reserved URI-scheme subset, the GitLab reserved-routes import, and a conservative filtered reserved-usernames import, but it is still narrower than a fully broad platform or namespace-identifier contract.
-- The current maintained `reservedTechnical` coverage is also improved by a conservative ICANN .com reserved-name subset that adds `example`, `iana`, `nic`, `rfc-editor`, `root-servers`, and `whois` style technical namespace identifiers.
+- The current maintained `reservedTechnical` baseline is now intentionally accepted for v0.5 as a conservative route-collision, protocol-handler, registry, and system-identifier profile.
+- That accepted `reservedTechnical` baseline includes Windows reserved device names, the conservative Windows reserved URI-scheme subset, the conservative GitLab reserved-routes import, the conservative ICANN .com reserved-name subset, and a conservative filtered reserved-usernames import that now also covers exact namespace-collision terms such as `settings`, `nic`, and `whois`.
+- Broader generic nouns such as `webhook`, `gateway`, `proxy`, `internal`, `private`, `public`, `service`, and `client` are now explicit non-goals for the maintained default `reservedTechnical` profile because they are too noisy for the current contract.
 - The current maintained `impersonation` coverage is broader than the original RFC 2142-only baseline because the repo now adds the GitHub Enterprise reserved username `staff`, additive reserved-usernames account-access terms such as `account`, `billing`, `official`, `password`, `payment`, `payments`, `reset`, and `reset-password`, and derives additive exact-token account-access terms such as `admin`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
 - The current official USPTO-derived subset still misses many short global brands on its own, which is why the repo now carries a conservative separate Wikidata supplement.
 - The current default USPTO-derived thresholds are only a stopgap noise filter. The one-word `>= 12`, two-token `>= 6`, and digit-drop rules are useful for shrinking the official set, but they are too blunt as a long-term maintained calibration.
@@ -133,10 +134,7 @@
 
 ## Recent source-research findings
 
-- `reservedTechnical` is the easiest current gap to improve with free third-party sources.
-- The most promising currently identified `reservedTechnical` additions are:
-  - `github-reserved-names`
-  - optionally Windows reserved URI scheme names if the product scope wants URI-scheme coverage
+- `github-reserved-names` was evaluated as a possible `reservedTechnical` extension source but remains intentionally excluded from the maintained default baseline because even conservative filtering still produced noisy generic route-term collisions.
 - Early review suggested `reserved-usernames` and `github-reserved-names` were materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - Microsoft Learn reserved URI schemes are now part of the maintained baseline through a conservative exact-match subset that keeps protocol-like and system-handler scheme names while excluding consumer-brand and common-noun entries.
 - `reserved-usernames` is now part of the maintained baseline through a conservative filtered import that keeps only clearly technical and namespace-collision terms.

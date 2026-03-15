@@ -1,6 +1,6 @@
 [
   {
-    "label": "documented reservedTechnical gaps",
+    "label": "documented reservedTechnical non-goals",
     "kind": "tenantSlug",
     "expected": "allow",
     "values": ["webhook"]

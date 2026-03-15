@@ -19,17 +19,11 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 2. Product policy refinement
    - expand maintained impersonation coverage beyond the current RFC 2142 plus additive GitHub `staff` plus additive reserved-usernames trust/account terms plus conservative derived account-access baseline, knowing that free source options are limited for modern verification, trust, and safety vocabulary
-   - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows device-name plus Windows URI-scheme plus GitLab plus ICANN plus reserved-usernames baseline and, only with stricter filtering, `github-reserved-names`
    - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, especially around short, numeric, and ambiguity-prone brand forms
    - expand composite-risk coverage beyond the current support/security-anchor derived baseline if that broader contract is intended, likely through a further derived layer rather than a direct free source import
-   - document downstream source extension policy
    - Dependency:
      - benefits from provenance work but does not require indexed matching
    - Exit criteria:
-     - `reservedTechnical`
-       - a final maintained scope is documented
-       - either the current baseline is accepted as final or additional filtered maintained sources are added
-       - residual uncovered examples are explicitly documented as non-goals if they remain
      - `impersonation`
        - the maintained default either covers the agreed modern account-access and trust-facing vocabulary or the unsupported remainder is explicitly documented as out of scope
        - the maintained baseline and documented-gap fixtures agree on that boundary

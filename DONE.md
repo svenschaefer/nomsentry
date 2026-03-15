@@ -2,6 +2,10 @@
 
 ## Completed recently
 
+- Closed the v0.5 `reservedTechnical` scope at the current conservative maintained baseline.
+  - the accepted default baseline is now explicitly documented as Windows device names plus Windows URI schemes plus GitLab reserved routes plus ICANN reserved names plus filtered `reserved-usernames`
+  - broader generic nouns such as `webhook`, `gateway`, `proxy`, `internal`, `private`, `public`, `service`, and `client` are now explicitly documented as non-goals for the maintained default profile
+
 - Broadened the conservative `reserved-usernames` impersonation subset with the exact-token alias `payments`.
   - [src/importers/reserved-usernames-impersonation.js](/C:/code/nomsentry/src/importers/reserved-usernames-impersonation.js) now adds only the conservative plural alias `payments` when the maintained token `payment` is present
   - [custom/sources/reserved-usernames-impersonation.json](/C:/code/nomsentry/custom/sources/reserved-usernames-impersonation.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
