@@ -119,6 +119,9 @@
 
 - no currently tracked open implementation areas
 - the last v0.5 policy block is now closed, and the current maintained runtime boundary is explicitly documented in the repo docs and calibration fixtures
+- current ownership state:
+  - no implementation tasks are currently assigned because no open tracked work remains
+  - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
 
 ## Recent catalog-based gap findings
 

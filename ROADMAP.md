@@ -5,6 +5,11 @@
 This file describes sequencing, expected release groupings, and dependencies.
 Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/TODO.md).
 
+## Ownership
+
+- Release-line sequencing and acceptance decisions: repository owner / maintainer
+- Implementation ownership for roadmap items: unassigned unless a future roadmap entry says otherwise
+
 ## Planned sequence
 
 ### v0.4.x
@@ -41,3 +46,8 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
      - lightweight JSDoc and TypeScript-based type checking for compact source and runtime-bundle schema surfaces
    - Dependency:
      - can proceed incrementally after the higher-risk runtime and policy work
+
+## Current state
+
+- No open roadmap items are currently tracked.
+- If new work starts, add the task details to [TODO.md](/C:/code/nomsentry/TODO.md) and the sequence, release bucket, dependency, and owner here.
