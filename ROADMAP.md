@@ -63,8 +63,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
      - builds on the current provenance, freshness, and release-check infrastructure
 
 6. Test-architecture hardening
-   - planned:
-     - split `test/run-tests.js` into focused suites or modules
+   - completed
    - Owner:
      - unassigned
    - Dependency:

@@ -76,6 +76,11 @@
   - `npm run coverage:check`
   - checked-in thresholds in `coverage-thresholds.json`
   - enforced coverage floors for critical runtime, loader, schema, and maintained-build modules
+- The test entrypoint is now decomposed into focused suites:
+  - `test/run-tests.js` orchestrates
+  - `test/run-tests-fixtures.js`
+  - `test/run-tests-scripts.js`
+  - `test/run-tests-normalization.js`
 - Public integration-surface contract coverage is now in place for:
   - `src/index.js` named exports
   - builtin policy exports

@@ -125,7 +125,6 @@
 - currently tracked follow-up gaps:
   - upstream integrity capture or verification for non-package external sources
   - release-artifact attestation or signing
-  - decomposition of the monolithic `test/run-tests.js` entrypoint
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
 - dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.
@@ -134,6 +133,7 @@
 - runtime-bundle compatibility regression coverage now includes both invalid fixtures and a valid versioned compatibility fixture that remains executable by the engine.
 - coverage reporting is now in place through `npm run coverage:check` with checked-in thresholds for critical runtime, loader, schema, and maintained-build modules.
 - a dedicated adversarial security-regression corpus now exists in `test/fixtures/adversarial-security-regression.json` to keep bypass-sensitive cases separate from the maintained baseline fixtures.
+- the former monolithic `test/run-tests.js` entrypoint is now split into focused suite modules while preserving the single-command local gate.
 
 ## Recent catalog-based gap findings
 

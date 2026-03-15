@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Split the monolithic test entrypoint into focused suites while keeping the deterministic gate stable.
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) is now a small orchestrator
+  - added [test/run-tests-fixtures.js](/C:/code/nomsentry/test/run-tests-fixtures.js)
+  - added [test/run-tests-scripts.js](/C:/code/nomsentry/test/run-tests-scripts.js)
+  - added [test/run-tests-normalization.js](/C:/code/nomsentry/test/run-tests-normalization.js)
+  - the suite remains compatible with `npm test`, `npm run coverage:check`, and the existing deterministic CI gates
+
 - Added coverage thresholds for critical modules and a dedicated adversarial security-regression corpus.
   - added [coverage-thresholds.json](/C:/code/nomsentry/coverage-thresholds.json)
   - added [scripts/check-coverage-thresholds.js](/C:/code/nomsentry/scripts/check-coverage-thresholds.js)

@@ -22,9 +22,3 @@
     - enterprise consumers often need stronger provenance than a passing CI run plus a git tag
 
 ### Quality and test coverage
-
-- Split the monolithic `test/run-tests.js` into focused suites or modules.
-  - Owner: unassigned
-  - Why:
-    - current coverage is concentrated in one very large test entrypoint
-    - this makes failures harder to localize and raises maintenance cost for future policy or source changes
