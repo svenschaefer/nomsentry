@@ -9,7 +9,7 @@
     "src/",
     "dist/",
     "custom/sources/README.md",
-    "docs/",
+    "docs/*.md",
     "source-refresh-policy.json",
     "source-integrity-lock.json",
     "README.md",
