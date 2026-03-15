@@ -13,7 +13,10 @@
     - upstream source-integrity capture or verification
     - benchmark budgets and regression thresholds
     - packaged-artifact smoke validation
+    - multi-platform CI validation, especially Windows
+    - dependency-security and SBOM generation checks
     - automated coverage thresholds and test-suite decomposition
+    - explicit public API and CLI contract coverage
 
 ## Runtime status
 

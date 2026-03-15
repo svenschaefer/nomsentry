@@ -58,6 +58,8 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
      - upstream integrity capture or verification for non-package external sources
      - packaged-artifact smoke validation
      - benchmark budgets and regression thresholds
+     - multi-platform CI validation, especially Windows
+     - dependency-security and SBOM generation checks
    - Owner:
      - unassigned
    - Dependency:
@@ -68,6 +70,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
      - automated coverage reporting with minimum thresholds
      - split `test/run-tests.js` into focused suites or modules
      - packaged-bundle compatibility regression fixtures
+     - public API and CLI contract fixtures for the documented integration surface
    - Owner:
      - unassigned
    - Dependency:

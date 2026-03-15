@@ -126,9 +126,12 @@
   - upstream integrity capture or verification for non-package external sources
   - benchmark budgets and regression thresholds for runtime performance
   - packaged-artifact smoke validation
+  - multi-platform CI validation, especially Windows
+  - dependency-security and SBOM generation checks
   - automated coverage reporting with minimum thresholds
   - decomposition of the monolithic `test/run-tests.js` entrypoint
   - packaged-bundle compatibility regression fixtures for the compiled runtime artifact
+  - explicit public API and CLI contract fixtures for the documented integration surface
 
 ## Recent catalog-based gap findings
 
