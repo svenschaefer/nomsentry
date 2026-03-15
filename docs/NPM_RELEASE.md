@@ -36,6 +36,11 @@ Current release validation includes:
 - `npm pack --dry-run`
 - `npm run pack:smoke`
 
+Note on provenance:
+
+- `npm publish --provenance` requires an OIDC-capable CI provider context.
+- Local shell publishing without CI identity should use `npm publish --access public`.
+
 If any maintained non-package source import changed, refresh `source-integrity-lock.json` before publishing:
 
 ```bash
@@ -66,6 +71,12 @@ git push origin v<x.y.z>
 
 ```bash
 npm publish --provenance --access public
+```
+
+For manual local publishing:
+
+```bash
+npm publish --access public
 ```
 
 For automated publishing, use the checked-in GitHub Actions workflow at `.github/workflows/release-publish.yml`, which requests `id-token: write` and publishes with npm provenance enabled.

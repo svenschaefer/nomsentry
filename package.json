@@ -14,7 +14,7 @@
     "THIRD_PARTY_NOTICES.md"
   ],
   "bin": {
-    "nomsentry": "./bin/nomsentry.js"
+    "nomsentry": "bin/nomsentry.js"
   },
   "scripts": {
     "test": "node test/run-tests.js",

@@ -123,12 +123,15 @@
 ## Current major open areas
 
 - the last scoped v0.5 policy block is closed, and the current maintained runtime boundary is explicitly documented in the repo docs and calibration fixtures
-- current follow-up work is now limited to post-v0.6 hardening and maintainability items rather than unresolved product-scope work
+- `v1.0.0` is released on npm and tagged in git
+- current follow-up work is now focused on `v1.1.x` boundary and release hardening items
 - current ownership state:
-  - all currently tracked follow-up items are unassigned
-  - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
+  - product boundary and release acceptance decisions: repository owner / maintainer
+  - implementation items: currently unassigned unless explicitly assigned in `TODO.md` or `ROADMAP.md`
 - currently tracked follow-up gaps:
-  - none currently tracked
+  - approve and freeze `v1.1.x` conservative vs expanded policy boundary
+  - make CI/OIDC provenance publishing the default documented release path
+  - add explicit runtime/tarball size budgets with failing gate semantics
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
 - dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.

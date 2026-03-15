@@ -7,4 +7,12 @@
 
 ## Open items
 
-- none currently tracked
+- Define and approve the `v1.1.x` policy expansion boundary.
+  - Owner: repository owner / maintainer
+  - Scope: decide whether to keep the current conservative default boundary or accept targeted expansions for `reservedTechnical`, `impersonation`, and `compositeRisk`
+- Add a reproducible npm provenance publish path for tagged releases.
+  - Owner: implementation unassigned, approval by repository owner / maintainer
+  - Scope: make CI-based publish with provenance the default documented path; keep local publish guidance as fallback
+- Review and tighten package-size budget for runtime bundle growth.
+  - Owner: implementation unassigned, acceptance by repository owner / maintainer
+  - Scope: add explicit size budget thresholds and failure policy for `dist/runtime-sources.json` and packed tarball size

@@ -10,7 +10,9 @@
   - deterministic refresh policy in `source-refresh-policy.json`
   - checked-in source-integrity lock in `source-integrity-lock.json`
 - Major open workstreams:
-  - none currently tracked
+  - `v1.1.x` policy-boundary freeze
+  - provenance-first CI publish path as default release path
+  - runtime/package size budget hardening
 
 ## Runtime status
 

@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Published `nomsentry@1.0.0` to npm and aligned the CLI bin metadata.
+  - package is now available on npm under the maintainer account
+  - `package.json` `bin.nomsentry` is now `bin/nomsentry.js` (without `./`) to avoid npm auto-correction on publish
+  - release tag `v1.0.0` remains pushed on `main`
+
 - Reduced npm package payload to runtime-focused artifacts.
   - replaced `custom/sources/` in the npm `files` allowlist with [custom/sources/README.md](/custom/sources/README.md) in [package.json](/package.json)
   - the published tarball now keeps the `custom/sources` path discoverable without shipping maintained `custom/sources/*.json` artifacts

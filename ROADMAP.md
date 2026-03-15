@@ -49,7 +49,36 @@ Task descriptions and detailed rationale belong in [TODO.md](/TODO.md).
 
 ## Current state
 
-- No open follow-up work is currently tracked.
+- Active follow-up work is now tracked for `v1.1.x`.
+
+### v1.1.x
+
+7. Policy-boundary decision and freeze
+   - Owner:
+     - repository owner / maintainer
+   - Dependency:
+     - requires agreement on the exact conservative vs expanded boundary for `reservedTechnical`, `impersonation`, and `compositeRisk`
+   - Exit criteria:
+     - approved and documented boundary in `README.md`, `docs/SPEC.md`, and `TODO.md`
+
+8. Provenance-first publish path
+   - Owner:
+     - implementation unassigned
+     - approval: repository owner / maintainer
+   - Dependency:
+     - requires a CI publish workflow trigger aligned with existing release tagging
+   - Exit criteria:
+     - release docs show CI/OIDC provenance publish as default
+     - local non-provenance fallback remains documented for emergency/manual cases
+
+9. Runtime/package size budget hardening
+   - Owner:
+     - implementation unassigned
+     - approval: repository owner / maintainer
+   - Dependency:
+     - builds on the existing benchmark and pack smoke checks
+   - Exit criteria:
+     - explicit tracked size budgets and failing gate for budget regressions
 
 ### Post-v0.6 follow-up
 
