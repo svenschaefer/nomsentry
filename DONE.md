@@ -2,6 +2,8 @@
 
 ## Completed recently
 
+- Closed the v0.5 profanity-split scope for this phase by documenting the accepted maintained boundary at `generalProfanity`, `insult`, `slur`, `sexual`, and `shock`, with `extremism` explicitly deferred.
+
 - Extended the profanity-category refinement with a source-backed `generalProfanity` category.
   - [src/importers/dsojevic-profanity.js](/C:/code/nomsentry/src/importers/dsojevic-profanity.js) now maps `general` tagged entries from `dsojevic/profanity-list` to `generalProfanity`
   - [src/policies/username.js](/C:/code/nomsentry/src/policies/username.js), [src/policies/tenantSlug.js](/C:/code/nomsentry/src/policies/tenantSlug.js), and [src/policies/tenantName.js](/C:/code/nomsentry/src/policies/tenantName.js) now carry explicit `generalProfanity` decisions

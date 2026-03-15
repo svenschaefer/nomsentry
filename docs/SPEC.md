@@ -39,7 +39,7 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 ## Category intent
 
 - `profanity`
-  - general profanity and abuse-oriented terms from third-party lexicons
+  - residual broad profanity and abuse-oriented terms from third-party lexicons that are not yet separated into a more specific maintained category
 - `generalProfanity`
   - source-backed general profanity terms, currently led by tagged `dsojevic/profanity-list` entries
 - `insult`
@@ -50,6 +50,8 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
   - source-backed sexual-content terms, currently led by tagged `dsojevic/profanity-list` entries
 - `shock`
   - source-backed shock-content terms, currently led by tagged `dsojevic/profanity-list` entries
+- `extremism`
+  - not currently a maintained default runtime category; this remains deferred because the current freely redistributable structured sources do not provide a clean split axis for it
 - `protectedBrand`
   - review-level trademark risk terms derived from official trademark data
 - `impersonation`

@@ -11,6 +11,7 @@ The v0.5 policy phase is complete only when each remaining area has both:
   - Why:
     - A catalog-based runtime evaluation originally showed that terms such as `admin`, `root`, `system`, `api`, `mail`, `status`, and `webhook` evaluated to `allow`.
     - The maintained repo source set now includes Windows reserved device names, a conservative Windows reserved URI-scheme subset, a conservative GitLab reserved-routes import, a conservative ICANN .com reserved-name subset, and a conservative filtered `reserved-usernames` import, which closes `root`, `system`, `mail`, `status`, `settings`, `nic`, and `whois` but still leaves the broader technical-identifier expectation only partially met.
+    - A follow-up inspection of the remaining obvious `reserved-usernames` raw candidates found only generic additions such as `client`, `clients`, `private`, `public`, `service`, and `services`, which are too noisy for the current default maintained baseline.
     - A direct evaluation of `github-reserved-names` against the maintained baseline showed unacceptable noise for the default set, for example `seven-labs` becoming `reject` because of the generic `labs` route term.
   - Target:
     - decide the intended `reservedTechnical` scope explicitly
@@ -28,17 +29,6 @@ The v0.5 policy phase is complete only when each remaining area has both:
     - preserve the current conservative derived operator/account-access layer
     - ingest any additional free extensions that can be justified without turning the default set into a noisy project-maintained list
     - document where a derived project layer is still required because no strong free source exists
-
-- Continue splitting the current broad `profanity` handling into more precise policy categories.
-  - Why:
-    - The first explicit refinements are now in place: `insult.wiki` feeds `insult`, and `dsojevic/profanity-list` maps `general` tagged entries to `generalProfanity`, `racial`, `religious`, and `lgbtq` tagged entries to `slur`, `sexual` tagged entries to `sexual`, and `shock` tagged entries to `shock`.
-    - The remaining maintained sources still put some general profanity from other sources and extremist references into broad buckets.
-    - The current refinement is still source-based, so some overlapping terms can surface both `profanity` and `generalProfanity` evidence, both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence.
-    - Even with `severity`, the semantic grouping is still too coarse for explainability, customer policy customization, and compliance review.
-  - Target:
-    - continue toward categories such as `generalProfanity`, `insult`, `slur`, `sexual`, `shock`, and `extremism`
-    - decide how overlapping source evidence should be represented when the same term appears in multiple finer categories
-    - keep source-specific evidence while mapping to clearer runtime policy decisions
 
 - Revisit the default USPTO brand-risk derivation with measured false-positive analysis.
   - Why:

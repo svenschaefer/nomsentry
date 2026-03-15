@@ -112,7 +112,6 @@
 
 ## Current major open areas
 
-- policy-category refinement beyond broad `profanity`
 - broader maintained source coverage for impersonation, technical identifiers, brands, and composite risks
 - v0.5 should not be treated as open-ended exploration anymore. The exit bar is:
   - each remaining policy area must end with shipped maintained behavior
@@ -130,6 +129,7 @@
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support`, `official-support`, `payment-support`, and `reset-security`, but broader deceptive combinations such as trust, privacy, verification, and recovery pairs are still mostly uncovered.
 - The current test suite is strong on targeted regressions but still too narrow as a full TP/FP/TN/FN product matrix.
 - The current category refinement is still source-based, so overlapping terms can legitimately surface both `profanity` and `generalProfanity` evidence, both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence.
+- The v0.5 profanity split boundary is now considered complete for this phase: `generalProfanity`, `insult`, `slur`, `sexual`, and `shock` are maintained and policy-backed, while a separate `extremism` category is intentionally deferred because the current freely redistributable structured sources do not provide a clean maintained split axis.
 
 ## Recent source-research findings
 
@@ -140,6 +140,7 @@
 - Early review suggested `reserved-usernames` and `github-reserved-names` were materially noisier than GitLab reserved names and should be added only with explicit filtering criteria.
 - Microsoft Learn reserved URI schemes are now part of the maintained baseline through a conservative exact-match subset that keeps protocol-like and system-handler scheme names while excluding consumer-brand and common-noun entries.
 - `reserved-usernames` is now part of the maintained baseline through a conservative filtered import that keeps only clearly technical and namespace-collision terms.
+- A follow-up inspection of the remaining obvious `reserved-usernames` raw candidates found only generic additions such as `client`, `clients`, `private`, `public`, `service`, and `services`, so those were intentionally not promoted into the maintained default baseline.
 - `reserved-usernames` is now also part of the maintained impersonation baseline through a separate conservative additive import that keeps only `account`, `accounts`, `billing`, `official`, and `password`.
 - GitHub Enterprise reserved usernames are now part of the maintained baseline through a conservative additive import that keeps only the impersonation-relevant term `staff`.
 - ICANN .com reserved names are now part of the maintained baseline through a conservative technical subset that keeps clearly namespace- and registry-oriented identifiers.

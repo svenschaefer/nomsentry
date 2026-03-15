@@ -18,7 +18,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 ### v0.5.x
 
 2. Product policy refinement
-   - continue the initial `profanity` split beyond the current source-based `generalProfanity`, `insult`, `slur`, `sexual`, and `shock` refinements
    - expand maintained impersonation coverage beyond the current RFC 2142 plus additive GitHub `staff` plus additive reserved-usernames trust/account terms plus conservative derived account-access baseline, knowing that free source options are limited for modern payments, verification, trust, and safety vocabulary
    - decide whether broader `reservedTechnical` coverage is part of the product contract, then evaluate filtered additions beyond the current Windows device-name plus Windows URI-scheme plus GitLab plus ICANN plus reserved-usernames baseline and, only with stricter filtering, `github-reserved-names`
    - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, especially around short, numeric, and ambiguity-prone brand forms
@@ -34,9 +33,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
      - `impersonation`
        - the maintained default either covers the agreed modern account-access and trust-facing vocabulary or the unsupported remainder is explicitly documented as out of scope
        - the maintained baseline and documented-gap fixtures agree on that boundary
-     - `profanity`
-       - the maintained category split is documented and policy-backed at least for `generalProfanity`, `insult`, `slur`, `sexual`, and `shock`
-       - the remaining broad `profanity` bucket is explicitly characterized, including whether `extremism` remains deferred
      - `protectedBrand`
        - the combined USPTO plus Wikidata derived profile is documented with concrete included and excluded examples
        - the maintained calibration explains how short, numeric, and ambiguity-prone brands are handled

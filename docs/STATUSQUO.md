@@ -71,13 +71,14 @@
   - maintained false-positive baselines for nearby impersonation, composite, profanity, and brand terms, including additional reviewed negatives such as `salesforce`, `userspace`, `hosted`, `webview`, `wikipedia`, `serverless`, `mastercardio`, and `dropboxing`
   - together these grouped fixtures now provide explicit TP, FP, TN, and documented FN coverage for the maintained baseline
 - Category-refinement status:
-  - the first explicit split beyond broad `profanity` is now in place
+  - the maintained v0.5 split boundary for profanity-like content is now explicitly accepted for this phase
   - `dsojevic/profanity-list` now maps `general` tagged entries to `generalProfanity`
   - `insult.wiki` now feeds `insult`
   - `dsojevic/profanity-list` now maps `racial`, `religious`, and `lgbtq` tagged entries to `slur`
   - `dsojevic/profanity-list` now also maps `sexual` tagged entries to `sexual`
   - `dsojevic/profanity-list` now also maps `shock` tagged entries to `shock`
   - the current refinement is intentionally source-based, so some overlapping terms can still surface both `profanity` and `generalProfanity` evidence, both `profanity` and `insult` evidence, both `profanity` and `slur` evidence, both `profanity` and `sexual` evidence, or both `profanity` and `shock` evidence
+  - a separate `extremism` category is intentionally deferred because the current freely redistributable structured sources do not provide a clean maintained split axis for it
 - Wikidata uncovered-brand evaluation status:
   - a documented evaluation now exists in `docs/WIKIDATA_BRAND_EVALUATION.md`
   - a reproducible generated report now exists in `docs/generated/wikidata-brand-gap-report.json`
