@@ -676,12 +676,32 @@ assert.throws(
   assert.equal(
     report.evaluations.some(
       (entry) =>
+        entry.value === "playstation" &&
+        entry.expected === "review" &&
+        entry.actual === "review",
+    ),
+    true,
+    "brand profile evaluation should record calibrated USPTO-derived review positives",
+  );
+  assert.equal(
+    report.evaluations.some(
+      (entry) =>
         entry.value === "apple" &&
         entry.expected === "allow" &&
         entry.actual === "allow",
     ),
     true,
     "brand profile evaluation should record documented ambiguity-prone allows",
+  );
+  assert.equal(
+    report.evaluations.some(
+      (entry) =>
+        entry.value === "3m" &&
+        entry.expected === "allow" &&
+        entry.actual === "allow",
+    ),
+    true,
+    "brand profile evaluation should record numeric brand non-goals explicitly",
   );
 }
 
@@ -1219,7 +1239,7 @@ assert.throws(
     manifest.sourceArtifacts.find(
       (entry) => entry.id === "derived-uspto-brand-risk",
     )?.transformVersion,
-    "derive-uspto-brand-risk@1",
+    "derive-uspto-brand-risk@2",
     "build manifest should record deterministic transform versions for derived artifacts",
   );
   assert.equal(
@@ -2314,19 +2334,27 @@ await assert.rejects(
         cfh_status_cd: "800",
         trade_mark_in: "1",
       },
+      {
+        serial_no: "7",
+        registration_no: "7",
+        mark_id_char: "PlayStation",
+        mark_draw_cd: "4000",
+        cfh_status_cd: "800",
+        trade_mark_in: "1",
+      },
     ],
     { id: "imported-uspto-trademarks" },
   );
   const derived = deriveUsptoBrandRiskSource(source, {
-    singleWordMinLength: 12,
+    singleWordMinLength: 11,
     multiWordMinTokenLength: 5,
     maxWords: 2,
     allowDigits: false,
   });
   assert.deepEqual(
     derived.rules.map((rule) => rule.term).sort(),
-    ["harley davidson", "silver rocket", "superbrandname"],
-    "uspto derived risk subset should keep structurally stronger review candidates and strip trailing legal suffixes before thresholding",
+    ["harley davidson", "playstation", "silver rocket", "superbrandname"],
+    "uspto derived risk subset should keep calibrated stronger review candidates, exclude digit-bearing terms, and strip trailing legal suffixes before thresholding",
   );
 }
 

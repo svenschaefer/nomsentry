@@ -4,11 +4,11 @@
   "bundleFile": "runtime-sources.json",
   "fixtureFile": "brand-profile-calibration.json",
   "summary": {
-    "totalCases": 18,
+    "totalCases": 26,
     "mismatchCount": 0,
     "totalsByExpected": {
-      "allow": 9,
-      "review": 9,
+      "allow": 13,
+      "review": 13,
       "reject": 0
     },
     "mismatchesByExpected": {
@@ -43,6 +43,20 @@
       ],
       "matchedTerms": [
         "national geographic"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "maintained protectedBrand review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "playstation",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "playstation"
       ],
       "matchesExpectation": true
     },
@@ -172,6 +186,88 @@
       "actual": "allow",
       "matchedCategories": [],
       "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented numeric and short brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "3m",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented numeric and short brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "7eleven",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented numeric and short brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "formula1",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented numeric and short brand non-goals",
+      "kind": "tenantSlug",
+      "expected": "allow",
+      "value": "playstation5",
+      "actual": "allow",
+      "matchedCategories": [],
+      "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented long-tail official review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "international",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "international"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented long-tail official review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "professional",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "professional"
+      ],
+      "matchesExpectation": true
+    },
+    {
+      "label": "documented long-tail official review positives",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "entertainment",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "entertainment"
+      ],
       "matchesExpectation": true
     },
     {

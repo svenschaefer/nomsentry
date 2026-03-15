@@ -44,7 +44,7 @@ const TRANSFORM_VERSION_BY_PREFIX = [
     "imported-windows-reserved-uri-schemes",
     "import-windows-reserved-uri-schemes@1",
   ],
-  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@1"],
+  ["derived-uspto-brand-risk", "derive-uspto-brand-risk@2"],
 ];
 
 function normalizeRelativePath(value) {

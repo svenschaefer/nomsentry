@@ -208,17 +208,17 @@ For USPTO, the repository now separates:
 
 The default derived USPTO profile is structural and conservative:
 
-- one-word marks: minimum 12 characters
+- one-word marks: minimum 11 characters
 - multi-word marks: maximum 2 words, each token minimum 6 characters
 - terms containing digits are dropped
 
 Trailing legal-entity suffixes such as `Inc.` or `LLC` are stripped before those structural thresholds are applied, so runtime-facing terms collapse to the brand-facing identifier when that still fits the maintained default profile.
 
-This keeps the official full set available while limiting default runtime `protectedBrand` noise.
+This keeps the official full set available while limiting default runtime `protectedBrand` noise. The maintained default now intentionally includes review-level cases such as `harley-davidson`, `national-geographic`, `playstation`, `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`.
 
 The current Wikidata supplement is intentionally conservative. It closes representative uncovered brands such as `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`, while still leaving ambiguity-prone terms such as `apple`, `amazon`, and `visa` out of the maintained default profile.
 
-The repo now also carries a reproducible brand-profile calibration report at `docs/generated/brand-profile-calibration-report.json`. The current maintained sample corpus shows the expected review hits for the accepted combined USPTO plus Wikidata cohort and the expected allows for ambiguity-prone and brand-adjacent negatives, but broader real-world calibration work is still tracked in [TODO.md](/C:/code/nomsentry/TODO.md).
+The repo now also carries a reproducible brand-profile calibration report at `docs/generated/brand-profile-calibration-report.json`. The current maintained sample corpus covers accepted review positives, documented ambiguity-prone allows, documented numeric and short-brand allows such as `3m`, `7eleven`, `formula1`, and `playstation5`, documented long-tail official review positives such as `international`, `professional`, and `entertainment`, and brand-adjacent allow negatives.
 
 The raw USPTO bulk CSV/ZIP and the local full-import artifacts under `data/uspto/` are intentionally ignored by git because of their size. The derived runtime subset in `custom/sources/` remains the versioned project artifact.
 

@@ -6,6 +6,7 @@
     "values": [
       "harley-davidson",
       "national-geographic",
+      "playstation",
       "openai",
       "chatgpt",
       "paypal",
@@ -20,6 +21,18 @@
     "kind": "tenantSlug",
     "expected": "allow",
     "values": ["apple", "amazon", "visa"]
+  },
+  {
+    "label": "documented numeric and short brand non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["3m", "7eleven", "formula1", "playstation5"]
+  },
+  {
+    "label": "documented long-tail official review positives",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["international", "professional", "entertainment"]
   },
   {
     "label": "brand-adjacent allow negatives",

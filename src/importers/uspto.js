@@ -347,7 +347,7 @@ export function deriveUsptoBrandRiskSource(
   source,
   {
     id = "derived-uspto-brand-risk",
-    singleWordMinLength = 12,
+    singleWordMinLength = 11,
     multiWordMinTokenLength = 6,
     maxWords = 2,
     allowDigits = false,
@@ -398,7 +398,7 @@ export function deriveUsptoBrandRiskSource(
       sourceUrl:
         "https://www.uspto.gov/trademarks/apply/check-status-view-documents/trademark-bulk-data",
       notes:
-        "Derived structural review subset from imported USPTO standard-character trademarks and service marks. Trailing legal-entity suffixes are stripped to the filter-facing brand term before structural thresholding.",
+        "Derived structural review subset from imported USPTO standard-character trademarks and service marks. Trailing legal-entity suffixes are stripped to the filter-facing brand term before structural thresholding. The maintained default keeps one-word marks with at least 11 characters, keeps at most two-word marks with at least 6 characters per token, and drops digit-bearing terms.",
     },
     rules: filteredRules,
   });

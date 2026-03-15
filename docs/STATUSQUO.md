@@ -90,11 +90,12 @@
   - the current accepted cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`
   - the evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
   - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
-  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, and brand-adjacent allow negatives
+  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, documented numeric and short-brand allows, documented long-tail official review positives, and brand-adjacent allow negatives
 - USPTO derived-brand status:
   - the maintained derived USPTO profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding
   - this improves brand-facing runtime terms such as `Harley Davidson Inc.` -> `harley davidson`
-  - the profile is still intentionally conservative and still needs broader calibration around short, numeric, and ambiguity-prone brands
+  - the maintained default now keeps one-word terms with at least 11 characters, keeps at most two-word terms with at least 6 characters per token, and drops digit-bearing terms
+  - that calibrated default now includes examples such as `playstation` while still excluding numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5`
 - Maintenance-script failure coverage now includes:
   - importer argument validation
   - runtime-builder argument validation

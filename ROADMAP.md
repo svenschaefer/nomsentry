@@ -17,14 +17,16 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ### v0.5.x
 
-2. Product policy refinement
-   - improve the combined USPTO plus Wikidata brand-risk derivation with measured precision and recall analysis, building on the current reproducible maintained-sample calibration report and extending it to more realistic identifier corpora, especially around short, numeric, and ambiguity-prone brand forms
+2. Completed
+   - the combined USPTO plus Wikidata brand-risk derivation is documented with concrete included and excluded examples
+   - the maintained calibration now covers accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives
+   - the maintained default boundary is now explicit:
+     - one-word USPTO marks require at least 11 characters
+     - multi-word USPTO marks allow at most two tokens with at least 6 characters each
+     - digit-bearing USPTO marks remain out of the maintained default profile
+     - ambiguity-prone terms such as `apple`, `amazon`, and `visa` remain out of the default Wikidata supplement
    - Dependency:
-     - benefits from provenance work but does not require indexed matching
-   - Exit criteria:
-     - `protectedBrand`
-       - the combined USPTO plus Wikidata derived profile is documented with concrete included and excluded examples
-       - the maintained calibration explains how short, numeric, and ambiguity-prone brands are handled
+     - benefited from provenance and calibration-report work but did not require additional runtime changes beyond the maintained derived profile
 
 3. Quality expansion
    - completed for the currently planned v0.5 quality gates

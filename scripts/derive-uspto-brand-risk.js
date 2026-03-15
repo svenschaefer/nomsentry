@@ -10,7 +10,7 @@ function parseArgs(argv) {
   const options = {
     inputDir: path.resolve(process.cwd(), "data", "uspto", "full-sources"),
     outputDir: path.resolve(process.cwd(), "custom", "sources"),
-    singleWordMinLength: 12,
+    singleWordMinLength: 11,
     multiWordMinTokenLength: 6,
     maxWords: 2,
     allowDigits: false,

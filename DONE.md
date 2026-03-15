@@ -2,11 +2,16 @@
 
 ## Completed recently
 
+- Completed the v0.5 `protectedBrand` calibration block and closed the remaining tracked policy work for this phase.
+  - raised the maintained USPTO one-word threshold calibration from `>= 12` to `>= 11`, which now admits `playstation` without opening the default profile to numeric brand forms
+  - expanded the maintained brand calibration corpus to explicit accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives
+  - regenerated the maintained USPTO-derived source, runtime bundle, provenance manifest, and brand calibration report
+
 - Added a reproducible combined brand-profile calibration report for the maintained USPTO plus Wikidata baseline.
   - added [scripts/evaluate-brand-profile.js](/C:/code/nomsentry/scripts/evaluate-brand-profile.js)
   - added [test/fixtures/brand-profile-calibration.json](/C:/code/nomsentry/test/fixtures/brand-profile-calibration.json)
   - added [docs/generated/brand-profile-calibration-report.json](/C:/code/nomsentry/docs/generated/brand-profile-calibration-report.json)
-  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, and brand-adjacent allow negatives
+  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, documented numeric and short-brand allows, documented long-tail official review positives, and brand-adjacent allow negatives
 
 - Closed the v0.5 `impersonation` and `compositeRisk` scope at the current conservative maintained baseline.
   - `impersonation` now explicitly accepts the current account-access and operator-facing default profile while leaving `verified`, `trust`, and `safety` as documented v0.5 non-goals

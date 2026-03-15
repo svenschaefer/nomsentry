@@ -104,13 +104,12 @@ The combined default `protectedBrand` strategy is now:
 
 This improves default runtime coverage for several globally recognizable brands while keeping the remaining ambiguity problem explicit.
 
-The next open brand work is therefore no longer "should Wikidata be used?".
-It is the broader calibration question:
+The maintained default is now explicitly:
 
-- how to improve the USPTO-derived profile
-- how to treat short brands
-- how to treat numeric brands
-- how to treat ambiguity-prone brands such as `apple`, `amazon`, and `visa`
+- USPTO-derived review positives for structurally stronger official marks, with trailing legal suffixes stripped first
+- a conservative Wikidata supplement for uncovered globally recognizable brands such as `openai`, `google`, `paypal`, `github`, `stripe`, and `mastercard`
+- explicit default non-goals for ambiguity-prone short terms such as `apple`, `amazon`, and `visa`
+- explicit default non-goals for numeric or short numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5`
 
 ## Licensing
 
