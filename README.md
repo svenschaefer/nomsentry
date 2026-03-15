@@ -2,25 +2,25 @@
 
 Deterministic identifier policy and deception detection engine.
 
-Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/C:/code/nomsentry/THIRD_PARTY_NOTICES.md).
-Contribution guidance is in [CONTRIBUTING.md](/C:/code/nomsentry/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/C:/code/nomsentry/SECURITY.md).
-Persistent project context for repository-wide assumptions is in [CODEX_CONTEXT.md](/C:/code/nomsentry/CODEX_CONTEXT.md).
+Third-party source and attribution details are listed in [THIRD_PARTY_NOTICES.md](/THIRD_PARTY_NOTICES.md).
+Contribution guidance is in [CONTRIBUTING.md](/CONTRIBUTING.md). Security reporting guidance is in [SECURITY.md](/SECURITY.md).
+Persistent project context for repository-wide assumptions is in [CODEX_CONTEXT.md](/CODEX_CONTEXT.md).
 Additional project docs:
 
-- [Architecture](/C:/code/nomsentry/docs/ARCHITECTURE.md)
-- [Specification](/C:/code/nomsentry/docs/SPEC.md)
-- [Guarantees](/C:/code/nomsentry/docs/GUARANTEES.md)
-- [Repo Workflows](/C:/code/nomsentry/docs/REPO_WORKFLOWS.md)
-- [Source Extension Policy](/C:/code/nomsentry/docs/SOURCE_EXTENSION_POLICY.md)
-- [Normalization Contract](/C:/code/nomsentry/docs/NORMALIZATION_CONTRACT.md)
-- [Status Quo](/C:/code/nomsentry/docs/STATUSQUO.md)
-- [Wikidata Brand Evaluation](/C:/code/nomsentry/docs/WIKIDATA_BRAND_EVALUATION.md)
-- [Generated Brand Calibration Report](/C:/code/nomsentry/docs/generated/brand-profile-calibration-report.json)
-- [Baseline Test Run](/C:/code/nomsentry/docs/BASELINE_TEST_RUN.md)
-- [npm Release Process](/C:/code/nomsentry/docs/NPM_RELEASE.md)
-- [Release Notes Template](/C:/code/nomsentry/docs/RELEASE_NOTES_TEMPLATE.md)
+- [Architecture](/docs/ARCHITECTURE.md)
+- [Specification](/docs/SPEC.md)
+- [Guarantees](/docs/GUARANTEES.md)
+- [Repo Workflows](/docs/REPO_WORKFLOWS.md)
+- [Source Extension Policy](/docs/SOURCE_EXTENSION_POLICY.md)
+- [Normalization Contract](/docs/NORMALIZATION_CONTRACT.md)
+- [Status Quo](/docs/STATUSQUO.md)
+- [Wikidata Brand Evaluation](/docs/WIKIDATA_BRAND_EVALUATION.md)
+- [Generated Brand Calibration Report](/docs/generated/brand-profile-calibration-report.json)
+- [Baseline Test Run](/docs/BASELINE_TEST_RUN.md)
+- [npm Release Process](/docs/NPM_RELEASE.md)
+- [Release Notes Template](/docs/RELEASE_NOTES_TEMPLATE.md)
 
-## v0.3 highlights
+## Current highlights
 
 - normalization pipeline
 - rule schema validation
@@ -64,6 +64,7 @@ npm run import:gitlab-reserved
 npm run import:github-reserved-usernames
 npm run import:icann-reserved-names
 npm run import:reserved-usernames
+npm run import:reserved-usernames-impersonation
 npm run import:windows-reserved-uri-schemes
 npm run derive:impersonation
 npm run derive:composite-risk

@@ -3,7 +3,7 @@
 ## Ordering
 
 This file describes sequencing, expected release groupings, and dependencies.
-Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/TODO.md).
+Task descriptions and detailed rationale belong in [TODO.md](/TODO.md).
 
 ## Ownership
 

@@ -1,7 +1,7 @@
 # Third-Party Notices
 
 This repository includes imported or derived artifacts from third-party data sources and libraries.
-The project itself is licensed under the MIT license in [LICENSE](/C:/code/nomsentry/LICENSE). Third-party sources keep their own licenses and usage conditions.
+The project itself is licensed under the MIT license in [LICENSE](/LICENSE). Third-party sources keep their own licenses and usage conditions.
 
 The current maintained source families are:
 
