@@ -35,12 +35,6 @@
     - current coverage is concentrated in one very large test entrypoint
     - this makes failures harder to localize and raises maintenance cost for future policy or source changes
 
-- Add packaged-bundle compatibility regression tests.
-  - Owner: unassigned
-  - Why:
-    - the runtime bundle has version validation, but the repo does not yet keep compatibility fixtures for prior valid bundle shapes or upgrade expectations
-    - this is relevant if the compiled bundle becomes a long-lived integration surface for downstream consumers
-
 - Add a dedicated adversarial security-regression corpus.
   - Owner: unassigned
   - Why:

@@ -1611,6 +1611,45 @@ assert.throws(
   );
 }
 
+{
+  const compatibilityBundle = loadRuntimeBundleFromFile(
+    new URL("./fixtures/runtime-bundle-compatible-v1.json", import.meta.url),
+  );
+  assert.equal(
+    compatibilityBundle.id,
+    "runtime-bundle-compatible-v1",
+    "runtime bundle compatibility fixture should stay loadable",
+  );
+  assert.equal(
+    compatibilityBundle.rules.some(
+      (rule) =>
+        rule.term === "clock$" &&
+        rule.category === "reservedTechnical" &&
+        rule.normalizationField === "technicalExact",
+    ),
+    true,
+    "runtime bundle compatibility fixture should preserve technicalExact rules",
+  );
+  assert.equal(
+    compatibilityBundle.compositeRules.some(
+      (rule) => rule.term === "security+support",
+    ),
+    true,
+    "runtime bundle compatibility fixture should preserve composite rules",
+  );
+
+  const compatibilityEngine = createEngine({
+    sources: [compatibilityBundle],
+    policies: [username(), tenantSlug(), tenantName()],
+  });
+  assert.equal(
+    compatibilityEngine.evaluate({ kind: "tenantSlug", value: "clock$" })
+      .decision,
+    "reject",
+    "runtime bundle compatibility fixture should remain executable by the engine",
+  );
+}
+
 assert.throws(
   () =>
     loadRuntimeBundleFromFile(

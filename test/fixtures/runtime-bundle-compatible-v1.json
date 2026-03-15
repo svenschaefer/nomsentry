@@ -1,0 +1,23 @@
+{
+  "id": "runtime-bundle-compatible-v1",
+  "version": 1,
+  "scopeTable": [
+    ["username", "tenantSlug", "tenantName"],
+    ["username", "tenantSlug"]
+  ],
+  "matchTable": ["token", "exact"],
+  "categoryTable": ["impersonation", "reservedTechnical"],
+  "severityTable": [],
+  "normalizationFieldTable": ["confusableSkeleton", "technicalExact"],
+  "profileTable": [
+    [0, 0, 0, 0],
+    [1, 1, 1, 1]
+  ],
+  "rules": [
+    ["support", 0],
+    ["clock$", 1]
+  ],
+  "compositeRules": [
+    ["security+support", "compositeRisk", 0, ["security", "support"]]
+  ]
+}

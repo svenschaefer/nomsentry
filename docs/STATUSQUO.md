@@ -78,6 +78,10 @@
   - builtin policy exports
   - CLI usage lines
   - the top-level JSON shape of `nomsentry explain`
+- Runtime-bundle compatibility regression coverage is now in place through:
+  - versioned negative fixtures for unsupported bundle versions and broken table references
+  - a versioned valid compatibility fixture at `test/fixtures/runtime-bundle-compatible-v1.json`
+  - direct engine execution against that compatibility fixture
 - Grouped category-level baseline fixtures now cover:
   - the curated identifier catalog is now split into three maintained layers:
     - `catalog-maintained-positives`

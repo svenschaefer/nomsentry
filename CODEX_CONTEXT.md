@@ -127,13 +127,13 @@
   - release-artifact attestation or signing
   - automated coverage reporting with minimum thresholds
   - decomposition of the monolithic `test/run-tests.js` entrypoint
-  - packaged-bundle compatibility regression fixtures for the compiled runtime artifact
   - a dedicated adversarial security-regression corpus for bypass-sensitive cases
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
 - dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.
 - GitHub Actions CI now runs the maintained local validation gate across both Ubuntu and Windows.
 - maintained runtime benchmark budgets now exist in `benchmark-budget.json`, and `npm run benchmark:check` enforces them in the main local validation gate.
+- runtime-bundle compatibility regression coverage now includes both invalid fixtures and a valid versioned compatibility fixture that remains executable by the engine.
 
 ## Recent catalog-based gap findings
 

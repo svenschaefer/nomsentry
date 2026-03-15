@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Added packaged runtime-bundle compatibility regression coverage.
+  - added [test/fixtures/runtime-bundle-compatible-v1.json](/C:/code/nomsentry/test/fixtures/runtime-bundle-compatible-v1.json)
+  - [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) now asserts that the valid compatibility fixture remains loadable and executable by the engine
+  - the runtime bundle integration surface now has both valid and invalid compatibility fixtures in the suite
+
 - Added maintained runtime benchmark budgets and a regression gate.
   - added [benchmark-budget.json](/C:/code/nomsentry/benchmark-budget.json)
   - added [scripts/check-runtime-benchmark-budget.js](/C:/code/nomsentry/scripts/check-runtime-benchmark-budget.js)

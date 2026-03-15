@@ -66,7 +66,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - planned:
      - automated coverage reporting with minimum thresholds
      - split `test/run-tests.js` into focused suites or modules
-     - packaged-bundle compatibility regression fixtures
      - a dedicated adversarial security-regression corpus
    - Owner:
      - unassigned
