@@ -16,12 +16,19 @@ It is designed for signup, workspace creation, and naming workflows where impers
 npm install nomsentry
 ```
 
+Requires Node.js `>=20`.
+
 ## CLI quick start
 
 ```bash
 npx nomsentry check support
 npx nomsentry explain "example value"
 ```
+
+Typical output:
+
+- `check` prints one of `allow`, `review`, `reject`
+- `explain` prints JSON with matched rules and reasons
 
 Optional explicit kind:
 
@@ -68,14 +75,6 @@ Use `check` for a final decision and `explain` when you need matched reasons for
 
 - `dist/runtime-sources.json`: compiled runtime bundle
 - `dist/build-manifest.json`: machine-readable provenance manifest
-
-## Validation commands
-
-```bash
-npm test
-npm run ci:check
-npm run release:check
-```
 
 ## Full documentation
 
