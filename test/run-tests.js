@@ -4,6 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import * as publicApi from "../src/index.js";
 import { createEngine } from "../src/core/evaluate.js";
 import { applyAllowOverrides } from "../src/core/overrides.js";
 import { username, tenantSlug, tenantName } from "../src/policies/index.js";
@@ -115,6 +116,10 @@ import {
   benchmarkRuntime,
   parseArgs as parseRuntimeBenchmarkArgs,
 } from "../scripts/benchmark-runtime.js";
+import {
+  buildPackageSmokeScript,
+  parsePackOutput,
+} from "../scripts/check-package-smoke.js";
 import {
   deriveFilterTerm,
   evaluateSearchResults,
@@ -235,6 +240,13 @@ function loadFixture(name) {
     ),
   );
 }
+
+const publicApiContract = JSON.parse(
+  fs.readFileSync(
+    new URL("./fixtures/public-api-contract.json", import.meta.url),
+    "utf8",
+  ),
+);
 
 for (const name of ["allow", "reject", "review"]) {
   for (const testCase of loadFixture(name)) {
@@ -1570,6 +1582,13 @@ assert.throws(
     /Usage:/,
     "cli should print usage when arguments are missing",
   );
+  for (const line of publicApiContract.usageLines) {
+    assert.match(
+      usageResult.stdout,
+      new RegExp(line.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+      `cli usage should document ${line}`,
+    );
+  }
 
   const commandResult = runCli("wat", "tenantName", "value");
   assert.equal(
@@ -1665,6 +1684,37 @@ assert.throws(
     explained.decision,
     "allow",
     "cli explain should preserve namespace-based overrides",
+  );
+  assert.deepEqual(
+    Object.keys(explained),
+    publicApiContract.explainKeys,
+    "cli explain should keep the documented top-level result shape",
+  );
+}
+
+{
+  assert.deepEqual(
+    Object.keys(publicApi).sort(),
+    publicApiContract.publicExports,
+    "src/index.js should keep the documented public export surface",
+  );
+  assert.deepEqual(
+    Object.keys(publicApi.builtinPolicies).sort(),
+    publicApiContract.policyExports,
+    "builtin policy exports should stay stable",
+  );
+}
+
+{
+  assert.equal(
+    parsePackOutput('[{"filename":"nomsentry-0.3.0.tgz"}]'),
+    "nomsentry-0.3.0.tgz",
+    "package smoke helpers should parse npm pack JSON output",
+  );
+  assert.match(
+    buildPackageSmokeScript(),
+    /Package smoke check passed/,
+    "package smoke script should verify the installed package surface",
   );
 }
 

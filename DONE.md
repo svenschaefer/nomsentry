@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Added packaged-artifact smoke validation and explicit public API/CLI contract coverage.
+  - added [scripts/check-package-smoke.js](/C:/code/nomsentry/scripts/check-package-smoke.js)
+  - added `npm run pack:smoke` in [package.json](/C:/code/nomsentry/package.json) and wired it into `release:check`
+  - the release path now installs the packed tarball in a temporary directory, verifies the installed library surface, and smoke-tests the installed CLI
+  - added [test/fixtures/public-api-contract.json](/C:/code/nomsentry/test/fixtures/public-api-contract.json)
+  - added explicit contract assertions in [test/run-tests.js](/C:/code/nomsentry/test/run-tests.js) for `src/index.js` exports, builtin policy exports, CLI usage lines, and the top-level JSON shape of `explain`
+
 - Fixed the general exact-technical-identifier normalization gap for Windows reserved device names.
   - added the `technicalExact` normalization projection in [src/core/normalize.js](/C:/code/nomsentry/src/core/normalize.js)
   - switched [custom/sources/windows-reserved-device-names.json](/C:/code/nomsentry/custom/sources/windows-reserved-device-names.json) to `technicalExact`

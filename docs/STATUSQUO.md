@@ -12,12 +12,10 @@
   - post-v0.6 hardening and maintainability follow-up only:
     - upstream source-integrity capture or verification
     - benchmark budgets and regression thresholds
-    - packaged-artifact smoke validation
     - multi-platform CI validation, especially Windows
     - dependency-security and SBOM generation checks
     - release-artifact attestation or signing
     - automated coverage thresholds and test-suite decomposition
-    - explicit public API and CLI contract coverage
     - a dedicated adversarial security-regression corpus
 
 ## Runtime status
@@ -64,6 +62,7 @@
   - generated confusable-heavy variants combined with separators, invisibles, and mixed normalization forms
   - a seeded fuzz-style corpus across supported separators, invisibles, case mixing, NFD forms, leetspeak substitutions, confusable substitutions, and fullwidth ASCII variants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
+- Release validation now also includes a packaged-artifact smoke check that installs the packed tarball and validates both the installed library surface and the installed CLI.
 - Lint and formatting gates are now in place for human-maintained repository files through:
   - `npm run lint:check`
   - `npm run format:check`
@@ -71,6 +70,11 @@
   - `npm run typecheck`
   - shared typedefs in `src/types.js`
   - checked JSDoc on `src/schema/source-format.js`, `src/schema/validate-source.js`, and `src/loaders/runtime-bundle.js`
+- Public integration-surface contract coverage is now in place for:
+  - `src/index.js` named exports
+  - builtin policy exports
+  - CLI usage lines
+  - the top-level JSON shape of `nomsentry explain`
 - Grouped category-level baseline fixtures now cover:
   - the curated identifier catalog is now split into three maintained layers:
     - `catalog-maintained-positives`

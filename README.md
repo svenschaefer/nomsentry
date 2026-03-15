@@ -47,6 +47,7 @@ npm run freshness:check
 npm run determinism:check
 npm run ci:check
 npm run release:check
+npm run pack:smoke
 npm run import:ldnoobw
 npm run import:2toad
 npm run import:obscenity
@@ -226,3 +227,4 @@ For runtime use, `custom/sources/` is compiled into `dist/runtime-sources.json`,
 The same build step also emits `dist/build-manifest.json`, a stable provenance manifest that records maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime bundle hash for that exact source set.
 The repository also carries `source-refresh-policy.json`, which defines expected refresh cadences per maintained source family. `npm run freshness:check` resolves each maintained source artifact to its last git commit date and fails when an artifact exceeds its configured age limit.
 Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.
+`npm run release:check` now also performs a packaged-artifact smoke check by installing the packed tarball in a temporary directory and validating both the installed library exports and the installed CLI.

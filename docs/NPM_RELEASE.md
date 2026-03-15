@@ -32,6 +32,7 @@ Current release validation includes:
 
 - `npm run ci:check`
 - `npm pack --dry-run`
+- `npm run pack:smoke`
 
 ## Release flow
 

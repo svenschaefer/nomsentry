@@ -21,12 +21,6 @@
     - `npm run benchmark:runtime` exists, but there is no pass/fail budget for bundle load, engine creation, or evaluation latency
     - without enforced thresholds, performance regressions can still land unnoticed
 
-- Add packaged-artifact smoke validation.
-  - Owner: unassigned
-  - Why:
-    - `npm pack --dry-run` validates contents, but the release gate does not yet install the packed tarball and execute a CLI smoke test against the packaged artifact
-    - an enterprise-grade release path should verify that the published package works as shipped, not only in the source checkout
-
 - Add multi-platform CI validation, especially Windows.
   - Owner: unassigned
   - Why:
@@ -64,12 +58,6 @@
   - Why:
     - the runtime bundle has version validation, but the repo does not yet keep compatibility fixtures for prior valid bundle shapes or upgrade expectations
     - this is relevant if the compiled bundle becomes a long-lived integration surface for downstream consumers
-
-- Add public API and CLI contract tests for the documented integration surface.
-  - Owner: unassigned
-  - Why:
-    - the repo tests behavior broadly, but it does not yet keep explicit contract fixtures for `src/index.js` exports, CLI help/usage behavior, and the stable JSON shape of `explain`
-    - this makes accidental breaking changes to downstream integration surfaces harder to detect
 
 - Add a dedicated adversarial security-regression corpus.
   - Owner: unassigned
