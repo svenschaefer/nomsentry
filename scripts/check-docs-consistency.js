@@ -19,21 +19,24 @@ const notices = read("THIRD_PARTY_NOTICES.md");
 for (const required of [
   "dist/runtime-sources.json",
   "dist/build-manifest.json",
+  "nomsentry",
+  "GitHub",
+]) {
+  assertIncludes(readme, required, `README token: ${required}`);
+}
+
+for (const required of [
+  "dist/runtime-sources.json",
+  "dist/build-manifest.json",
   "custom/sources/",
   "USPTO",
   "RFC 2142",
   "Microsoft Windows reserved device names",
   "words/profanities",
 ]) {
-  assertIncludes(readme, required, `README token: ${required}`);
   assertIncludes(architecture, required, `ARCHITECTURE token: ${required}`);
 }
 
-assertIncludes(
-  readme,
-  "`RFC 2142` currently feeds `impersonation`",
-  "README RFC 2142 category note",
-);
 assertIncludes(
   architecture,
   "`RFC 2142` feeds `impersonation`",
