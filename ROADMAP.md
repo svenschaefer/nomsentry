@@ -55,11 +55,12 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 5. Release and source-pipeline hardening
    - planned:
-     - upstream integrity capture or verification for non-package external sources
-     - packaged-artifact smoke validation
-     - benchmark budgets and regression thresholds
-     - multi-platform CI validation, especially Windows
-     - dependency-security and SBOM generation checks
+      - upstream integrity capture or verification for non-package external sources
+      - packaged-artifact smoke validation
+      - benchmark budgets and regression thresholds
+      - multi-platform CI validation, especially Windows
+      - dependency-security and SBOM generation checks
+      - release-artifact attestation or signing
    - Owner:
      - unassigned
    - Dependency:
@@ -67,10 +68,11 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 6. Test-architecture hardening
    - planned:
-     - automated coverage reporting with minimum thresholds
-     - split `test/run-tests.js` into focused suites or modules
-     - packaged-bundle compatibility regression fixtures
-     - public API and CLI contract fixtures for the documented integration surface
+      - automated coverage reporting with minimum thresholds
+      - split `test/run-tests.js` into focused suites or modules
+      - packaged-bundle compatibility regression fixtures
+      - public API and CLI contract fixtures for the documented integration surface
+      - a dedicated adversarial security-regression corpus
    - Owner:
      - unassigned
    - Dependency:

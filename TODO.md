@@ -39,6 +39,12 @@
     - the repo currently has version pinning and release checks, but it does not yet run dependency-vulnerability scanning or generate a machine-readable SBOM
     - for enterprise consumption, release artifacts are easier to approve when dependency risk and component inventory are part of the standard pipeline
 
+- Add release-artifact attestation or signing for published packages.
+  - Owner: unassigned
+  - Why:
+    - the repo currently validates what would be packed, but it does not yet produce signed release metadata or attestations for the published npm artifact
+    - enterprise consumers often need stronger provenance than a passing CI run plus a git tag
+
 ### Quality and test coverage
 
 - Add automated coverage reporting and minimum thresholds for critical modules.
@@ -64,3 +70,9 @@
   - Why:
     - the repo tests behavior broadly, but it does not yet keep explicit contract fixtures for `src/index.js` exports, CLI help/usage behavior, and the stable JSON shape of `explain`
     - this makes accidental breaking changes to downstream integration surfaces harder to detect
+
+- Add a dedicated adversarial security-regression corpus.
+  - Owner: unassigned
+  - Why:
+    - the suite has broad maintained fixtures and normalization/property coverage, but it does not yet maintain a clearly separated security-bypass corpus for adversarial lookalikes, mixed-script evasions, and category-boundary abuse cases
+    - keeping those cases in a dedicated corpus would make future bypass regressions easier to review and expand without overloading the maintained baseline fixtures

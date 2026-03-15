@@ -15,8 +15,10 @@
     - packaged-artifact smoke validation
     - multi-platform CI validation, especially Windows
     - dependency-security and SBOM generation checks
+    - release-artifact attestation or signing
     - automated coverage thresholds and test-suite decomposition
     - explicit public API and CLI contract coverage
+    - a dedicated adversarial security-regression corpus
 
 ## Runtime status
 

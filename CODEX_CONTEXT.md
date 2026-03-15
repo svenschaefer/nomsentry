@@ -128,10 +128,12 @@
   - packaged-artifact smoke validation
   - multi-platform CI validation, especially Windows
   - dependency-security and SBOM generation checks
+  - release-artifact attestation or signing
   - automated coverage reporting with minimum thresholds
   - decomposition of the monolithic `test/run-tests.js` entrypoint
   - packaged-bundle compatibility regression fixtures for the compiled runtime artifact
   - explicit public API and CLI contract fixtures for the documented integration surface
+  - a dedicated adversarial security-regression corpus for bypass-sensitive cases
 
 ## Recent catalog-based gap findings
 
