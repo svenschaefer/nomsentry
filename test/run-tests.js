@@ -117,6 +117,11 @@ import {
   parseArgs as parseRuntimeBenchmarkArgs,
 } from "../scripts/benchmark-runtime.js";
 import {
+  evaluateBenchmarkBudget,
+  loadBenchmarkBudget,
+  parseArgs as parseBenchmarkBudgetArgs,
+} from "../scripts/check-runtime-benchmark-budget.js";
+import {
   buildPackageSmokeScript,
   parsePackOutput,
 } from "../scripts/check-package-smoke.js";
@@ -1120,6 +1125,70 @@ assert.throws(
     summary.avgEvalMs >= 0,
     true,
     "runtime benchmark should measure evaluation latency",
+  );
+}
+
+{
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-budget-"));
+  const budgetFile = path.join(tempDir, "budget.json");
+  fs.writeFileSync(
+    budgetFile,
+    JSON.stringify({
+      max: {
+        bundleLoadMs: 1,
+        engineCreateMs: 2,
+        avgEvalMs: 3,
+        p95EvalMs: 4,
+        p99EvalMs: 5,
+      },
+    }),
+  );
+
+  try {
+    const budget = loadBenchmarkBudget(budgetFile);
+    assert.equal(
+      budget.max.p95EvalMs,
+      4,
+      "benchmark budget helper should load numeric limits",
+    );
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+
+  assert.deepEqual(
+    evaluateBenchmarkBudget(
+      {
+        bundleLoadMs: 10,
+        engineCreateMs: 1,
+        avgEvalMs: 0.01,
+        p95EvalMs: 0.02,
+        p99EvalMs: 0.03,
+      },
+      {
+        max: {
+          bundleLoadMs: 5,
+          engineCreateMs: 2,
+          avgEvalMs: 0.1,
+          p95EvalMs: 0.2,
+          p99EvalMs: 0.3,
+        },
+      },
+    ),
+    [
+      {
+        metric: "bundleLoadMs",
+        actual: 10,
+        max: 5,
+      },
+    ],
+    "benchmark budget helper should report metrics above budget",
+  );
+
+  assert.equal(
+    parseBenchmarkBudgetArgs(["--iterations", "25", "--warmup-iterations", "5"])
+      .iterations,
+    25,
+    "benchmark budget CLI should parse iteration overrides",
   );
 }
 

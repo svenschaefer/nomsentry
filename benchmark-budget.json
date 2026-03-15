@@ -1,0 +1,11 @@
+{
+  "id": "runtime-benchmark-budget",
+  "version": 1,
+  "max": {
+    "bundleLoadMs": 500,
+    "engineCreateMs": 5000,
+    "avgEvalMs": 0.1,
+    "p95EvalMs": 0.25,
+    "p99EvalMs": 0.5
+  }
+}

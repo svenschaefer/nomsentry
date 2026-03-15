@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added maintained runtime benchmark budgets and a regression gate.
+  - added [benchmark-budget.json](/C:/code/nomsentry/benchmark-budget.json)
+  - added [scripts/check-runtime-benchmark-budget.js](/C:/code/nomsentry/scripts/check-runtime-benchmark-budget.js)
+  - added `npm run benchmark:check` in [package.json](/C:/code/nomsentry/package.json) and wired it into `ci:check`
+  - the repo now fails locally when maintained bundle-load, engine-creation, or evaluation-latency metrics exceed the accepted budget
+
 - Added multi-platform CI validation and a dependency-security/SBOM baseline.
   - [/.github/workflows/ci.yml](/C:/code/nomsentry/.github/workflows/ci.yml) now runs `npm run ci:check` on both Ubuntu and Windows
   - added [scripts/check-security-baseline.js](/C:/code/nomsentry/scripts/check-security-baseline.js)

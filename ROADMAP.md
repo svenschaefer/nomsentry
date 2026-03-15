@@ -56,7 +56,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 5. Release and source-pipeline hardening
    - planned:
      - upstream integrity capture or verification for non-package external sources
-     - benchmark budgets and regression thresholds
      - release-artifact attestation or signing
    - Owner:
      - unassigned

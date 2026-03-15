@@ -15,12 +15,6 @@
     - the repo now tracks freshness and provenance, but it still does not record or verify upstream response hashes, ETags, or equivalent integrity markers for GitLab, ICANN, Microsoft Learn, insult.wiki, and similar fetched inputs
     - for an enterprise-grade source pipeline, freshness alone is weaker than freshness plus authenticity or tamper-detection signals
 
-- Add benchmark budgets and regression thresholds for runtime performance.
-  - Owner: unassigned
-  - Why:
-    - `npm run benchmark:runtime` exists, but there is no pass/fail budget for bundle load, engine creation, or evaluation latency
-    - without enforced thresholds, performance regressions can still land unnoticed
-
 - Add release-artifact attestation or signing for published packages.
   - Owner: unassigned
   - Why:

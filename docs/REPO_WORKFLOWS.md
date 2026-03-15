@@ -7,9 +7,10 @@
 3. Run `npm test`.
 4. Run `npm run docs:check` when docs or contracts may be affected.
 5. Run `npm run security:check` when dependency or release-surface changes may be affected.
-6. Run `npm run ci:check` before commit.
-7. Update `README.md`, `docs/*`, `TODO.md`, `DONE.md`, and `ROADMAP.md` when behavior or project status changed.
-8. Commit with a clear message.
+6. Run `npm run benchmark:check` when runtime performance-sensitive paths changed.
+7. Run `npm run ci:check` before commit.
+8. Update `README.md`, `docs/*`, `TODO.md`, `DONE.md`, and `ROADMAP.md` when behavior or project status changed.
+9. Commit with a clear message.
 
 The repository CI workflow runs the same `npm run ci:check` gate on pushes to `main` and on pull requests across Ubuntu and Windows.
 

@@ -124,7 +124,6 @@
   - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
 - currently tracked follow-up gaps:
   - upstream integrity capture or verification for non-package external sources
-  - benchmark budgets and regression thresholds for runtime performance
   - release-artifact attestation or signing
   - automated coverage reporting with minimum thresholds
   - decomposition of the monolithic `test/run-tests.js` entrypoint
@@ -134,6 +133,7 @@
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
 - dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.
 - GitHub Actions CI now runs the maintained local validation gate across both Ubuntu and Windows.
+- maintained runtime benchmark budgets now exist in `benchmark-budget.json`, and `npm run benchmark:check` enforces them in the main local validation gate.
 
 ## Recent catalog-based gap findings
 

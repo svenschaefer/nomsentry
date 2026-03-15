@@ -11,7 +11,6 @@
 - Major open workstreams:
   - post-v0.6 hardening and maintainability follow-up only:
     - upstream source-integrity capture or verification
-    - benchmark budgets and regression thresholds
     - release-artifact attestation or signing
     - automated coverage thresholds and test-suite decomposition
     - a dedicated adversarial security-regression corpus
@@ -46,7 +45,9 @@
   - a prebuilt indexed matcher instead of a per-request full rule scan
 - Runtime benchmarking is available through:
   - `npm run benchmark:runtime`
+  - `npm run benchmark:check`
   - current measurements cover bundle load time, engine creation time, and evaluation latency across maintained fixture inputs
+  - maintained benchmark budgets now live in `benchmark-budget.json`
 - Source freshness checks are in place for:
   - maintained source artifacts based on git commit dates and `source-refresh-policy.json`
 - In-suite determinism coverage now includes:

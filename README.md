@@ -42,6 +42,7 @@ npm run lint:check
 npm run format:check
 npm run typecheck
 npm run benchmark:runtime
+npm run benchmark:check
 npm run docs:check
 npm run freshness:check
 npm run determinism:check
@@ -78,6 +79,8 @@ node bin/nomsentry.js check tenantSlug support --bundle path\\to\\runtime-source
 - runtime-bundle load time
 - engine creation time
 - per-request evaluation latency across maintained fixture inputs
+
+`npm run benchmark:check` runs the same benchmark against the maintained thresholds in `benchmark-budget.json` and fails when bundle load, engine creation, or evaluation latency exceed the accepted budget.
 
 ## Runtime model
 
