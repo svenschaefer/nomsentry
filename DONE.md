@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Broadened the conservative `reserved-usernames` impersonation subset with the exact-token alias `payments`.
+  - [src/importers/reserved-usernames-impersonation.js](/C:/code/nomsentry/src/importers/reserved-usernames-impersonation.js) now adds only the conservative plural alias `payments` when the maintained token `payment` is present
+  - [custom/sources/reserved-usernames-impersonation.json](/C:/code/nomsentry/custom/sources/reserved-usernames-impersonation.json) and [dist/runtime-sources.json](/C:/code/nomsentry/dist/runtime-sources.json) were regenerated
+  - grouped maintained positive, obfuscated-positive, and documented-gap fixtures were updated so the remaining impersonation gap is narrowed to `verified`, `trust`, and `safety`
+
 - Closed the v0.5 profanity-split scope for this phase by documenting the accepted maintained boundary at `generalProfanity`, `insult`, `slur`, `sexual`, and `shock`, with `extremism` explicitly deferred.
 
 - Extended the profanity-category refinement with a source-backed `generalProfanity` category.

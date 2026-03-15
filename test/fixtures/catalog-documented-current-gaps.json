@@ -9,7 +9,7 @@
     "label": "documented impersonation gaps",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["payments", "verified", "trust", "safety"]
+    "values": ["verified", "trust", "safety"]
   },
   {
     "label": "documented uncovered-brand gaps after the current conservative Wikidata supplement",

@@ -5,17 +5,25 @@ import { RESERVED_USERNAMES_SOURCE_URL } from "./reserved-usernames.js";
 const IMPERSONATION_TERM_PATTERN =
   /^(account|accounts|billing|official|password|payment|reset|reset-password|resetpassword)$/;
 
+function addConservativeAliases(terms) {
+  const expanded = new Set(terms);
+  if (expanded.has("payment")) expanded.add("payments");
+  return Array.from(expanded);
+}
+
 export function filterReservedUsernameImpersonationTerms(terms) {
   return Array.from(
     new Set(
-      terms
-        .map((term) => {
-          const normalized = normalizeValue(term);
-          return normalized.slug || normalized.compact;
-        })
-        .filter(Boolean)
-        .filter((term) => term.length >= 2)
-        .filter((term) => IMPERSONATION_TERM_PATTERN.test(term)),
+      addConservativeAliases(
+        terms
+          .map((term) => {
+            const normalized = normalizeValue(term);
+            return normalized.slug || normalized.compact;
+          })
+          .filter(Boolean)
+          .filter((term) => term.length >= 2)
+          .filter((term) => IMPERSONATION_TERM_PATTERN.test(term)),
+      ),
     ),
   ).sort((left, right) => left.localeCompare(right));
 }
@@ -36,7 +44,7 @@ export function buildReservedUsernamesImpersonationSource({
       license: "MIT",
       sourceUrl: RESERVED_USERNAMES_SOURCE_URL,
       notes:
-        "Filtered to exact account-access and trust-facing identifiers to avoid importing the package's broader generic reserved-name set directly.",
+        "Filtered to exact account-access and trust-facing identifiers to avoid importing the package's broader generic reserved-name set directly. Adds only the conservative plural alias `payments` when the maintained exact token `payment` is present.",
     },
     ruleDefaults: {
       category,

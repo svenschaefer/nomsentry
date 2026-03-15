@@ -20,9 +20,9 @@ The v0.5 policy phase is complete only when each remaining area has both:
 
 - Expand maintained `impersonation` coverage beyond the current RFC 2142-centered role set.
   - Why:
-    - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, a conservative additive `reserved-usernames` impersonation import now contributes `account`, `accounts`, `billing`, `official`, `password`, `payment`, `reset`, and `reset-password`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
-    - A catalog-based runtime evaluation now closes `official`, `billing`, `payment`, `account-recovery`, and `password-reset`, but still shows that `payments`, `verified`, `trust`, and `safety` do not match maintained `impersonation` sources.
-    - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern payments, verification, trust, and safety vocabulary.
+    - A conservative additive GitHub Enterprise reserved-username import now contributes `staff`, a conservative additive `reserved-usernames` impersonation import now contributes `account`, `accounts`, `billing`, `official`, `password`, `payment`, `payments`, `reset`, and `reset-password`, and a conservative derived impersonation layer now supplements the RFC 2142 core with exact-token account-access and operator-facing identifiers such as `admin`, `administrator`, `help`, `login`, `oauth`, `profile`, `secure`, `sysadmin`, and `webmail`.
+    - A catalog-based runtime evaluation now closes `official`, `billing`, `payment`, `payments`, `account-recovery`, and `password-reset`, but still shows that `verified`, `trust`, and `safety` do not match maintained `impersonation` sources.
+    - The maintained set is no longer only RFC 2142, but it is still materially narrower than a modern verification, trust, and safety vocabulary.
     - A follow-up source review did not identify a strong freely redistributable standard source for the modern trust, billing, verification, and recovery vocabulary.
   - Target:
     - define the intended impersonation-role vocabulary

@@ -55,7 +55,7 @@ That bundle is built from versioned source artifacts in `custom/sources/`, which
 - `protectedBrand`
   - review-level trademark risk terms derived from official trademark data
 - `impersonation`
-  - impersonation-relevant role and account-access names such as `support`, `security`, `postmaster`, `webmaster`, `admin`, `login`, `oauth`, `payment`, and `reset-password`
+  - impersonation-relevant role and account-access names such as `support`, `security`, `postmaster`, `webmaster`, `admin`, `login`, `oauth`, `payment`, `payments`, and `reset-password`
 - `reservedTechnical`
   - technical reserved identifiers such as Windows device names and reserved URI schemes
 - `compositeRisk`

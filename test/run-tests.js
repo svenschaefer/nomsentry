@@ -3916,6 +3916,7 @@ await assert.rejects(
       "official",
       "password",
       "payment",
+      "payments",
       "reset",
       "reset-password",
     ],
@@ -3962,6 +3963,7 @@ await assert.rejects(
       "official",
       "password",
       "payment",
+      "payments",
       "reset",
       "reset-password",
     ],
@@ -4141,6 +4143,16 @@ await assert.rejects(
     payment.reasons.some((reason) => reason.category === "impersonation"),
     true,
     "reserved-usernames impersonation imports should now surface payment as impersonation in the maintained baseline",
+  );
+
+  const payments = maintainedEngine.evaluate({
+    value: "payments",
+    kind: "tenantSlug",
+  });
+  assert.equal(
+    payments.reasons.some((reason) => reason.category === "impersonation"),
+    true,
+    "reserved-usernames impersonation imports should now surface payments as impersonation in the maintained baseline",
   );
 
   const accountRecovery = maintainedEngine.evaluate({
