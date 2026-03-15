@@ -10,8 +10,7 @@
   - deterministic refresh policy in `source-refresh-policy.json`
   - checked-in source-integrity lock in `source-integrity-lock.json`
 - Major open workstreams:
-  - post-v0.6 hardening and maintainability follow-up only:
-    - release-artifact attestation or signing
+  - none currently tracked
 
 ## Runtime status
 
@@ -24,6 +23,7 @@
   - `npm run docs:check`
   - `npm run freshness:check`
   - `npm run integrity:check`
+  - `npm run attestation:check`
   - `npm run determinism:check`
   - `npm run ci:check`
   - `npm run release:check`
@@ -64,6 +64,10 @@
   - a seeded fuzz-style corpus across supported separators, invisibles, case mixing, NFD forms, leetspeak substitutions, confusable substitutions, and fullwidth ASCII variants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Release validation now also includes a packaged-artifact smoke check that installs the packed tarball and validates both the installed library surface and the installed CLI.
+- Release-attestation baseline checks are now in place through:
+  - `.github/workflows/release-publish.yml` with `id-token: write`
+  - `npm publish --provenance --access public` in the automated publish workflow
+  - `npm run attestation:check` in the main local validation gate
 - Dependency-security and component-inventory validation are now in place through:
   - `npm run security:check`
   - production `npm audit --json --omit=dev`

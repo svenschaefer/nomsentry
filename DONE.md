@@ -2,6 +2,13 @@
 
 ## Completed recently
 
+- Added release artifact attestation baseline checks and provenance-ready publish workflow.
+  - added [.github/workflows/release-publish.yml](/C:/code/nomsentry/.github/workflows/release-publish.yml) with `id-token: write` and `npm publish --provenance --access public`
+  - added [scripts/check-release-attestation.js](/C:/code/nomsentry/scripts/check-release-attestation.js)
+  - added `npm run attestation:check` in [package.json](/C:/code/nomsentry/package.json)
+  - wired the attestation check into `npm run ci:check`
+  - added regression coverage for release-attestation workflow evaluation and argument parsing
+
 - Added upstream source-integrity capture and verification for non-package external sources.
   - added [source-integrity-lock.json](/C:/code/nomsentry/source-integrity-lock.json)
   - added [scripts/source-integrity.js](/C:/code/nomsentry/scripts/source-integrity.js)

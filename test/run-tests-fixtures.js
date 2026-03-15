@@ -169,6 +169,10 @@ import {
   parseArgs as parseSourceIntegrityArgs,
 } from "../scripts/check-source-integrity.js";
 import {
+  evaluateReleaseWorkflow,
+  parseArgs as parseReleaseAttestationArgs,
+} from "../scripts/check-release-attestation.js";
+import {
   compactSourcesDirectory,
   resolveCompactFilename,
 } from "../scripts/compact-sources.js";
@@ -1773,4 +1777,52 @@ assert.deepEqual(
     lockFile: path.resolve(process.cwd(), "source-integrity-lock.json"),
   },
   "source integrity check argument parsing should resolve explicit paths",
+);
+
+assert.deepEqual(
+  parseReleaseAttestationArgs([
+    "--workflow-file",
+    ".github/workflows/release-publish.yml",
+  ]),
+  {
+    workflowFile: path.resolve(
+      process.cwd(),
+      ".github/workflows/release-publish.yml",
+    ),
+  },
+  "release attestation check argument parsing should resolve explicit paths",
+);
+
+assert.deepEqual(
+  evaluateReleaseWorkflow(`
+name: Release
+jobs:
+  publish:
+    permissions:
+      id-token: write
+    steps:
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: \${{ secrets.NPM_TOKEN }}
+`),
+  [],
+  "release attestation evaluation should accept workflows with provenance publishing and OIDC permissions",
+);
+
+assert.deepEqual(
+  evaluateReleaseWorkflow(`
+name: Release
+jobs:
+  publish:
+    permissions:
+      contents: read
+    steps:
+      - run: npm publish --access public
+`),
+  [
+    "release workflow must request id-token: write permissions",
+    "release workflow must publish with npm --provenance",
+    "release workflow must read npm auth from secrets.NPM_TOKEN",
+  ],
+  "release attestation evaluation should report missing OIDC, provenance, and npm-token settings",
 );

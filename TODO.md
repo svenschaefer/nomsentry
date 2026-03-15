@@ -7,10 +7,4 @@
 
 ## Open items
 
-### Enterprise readiness
-
-- Add release-artifact attestation or signing for published packages.
-  - Owner: unassigned
-  - Why:
-    - the repo currently validates what would be packed, but it does not yet produce signed release metadata or attestations for the published npm artifact
-    - enterprise consumers often need stronger provenance than a passing CI run plus a git tag
+- none currently tracked

@@ -32,6 +32,7 @@ Current release validation includes:
 
 - `npm run ci:check`
 - `npm run security:check`
+- `npm run attestation:check`
 - `npm pack --dry-run`
 - `npm run pack:smoke`
 
@@ -64,8 +65,10 @@ git push origin v<x.y.z>
 7. Publish when intended:
 
 ```bash
-npm publish --access public
+npm publish --provenance --access public
 ```
+
+For automated publishing, use the checked-in GitHub Actions workflow at `.github/workflows/release-publish.yml`, which requests `id-token: write` and publishes with npm provenance enabled.
 
 ## Packaging expectations
 

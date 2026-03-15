@@ -69,6 +69,7 @@
 - The provenance manifest now also includes the `source-integrity-lock.json` hash and attaches captured upstream integrity metadata to covered fetched source artifacts.
 - Source freshness is checked against git commit dates plus the deterministic refresh policy file.
 - Source integrity for non-package fetched maintained sources is checked against `source-integrity-lock.json` plus the `requiresUpstreamIntegrity` flags in `source-refresh-policy.json`.
+- Release attestation baseline checks are enforced through `npm run attestation:check`, which validates the checked-in publish workflow requests OIDC `id-token: write` and publishes with npm provenance.
 - Runtime rule matching now uses a prebuilt index instead of a per-request full scan.
 - A lightweight runtime benchmark harness exists for bundle load, engine creation, and evaluation latency over maintained fixture inputs.
 - Lint and formatting gates now exist for human-maintained files through ESLint and Prettier, and they are part of `npm run ci:check`.
@@ -126,7 +127,7 @@
   - all currently tracked follow-up items are unassigned
   - any future scope change or new release-line item should record owner and decision authority explicitly in `TODO.md` and `ROADMAP.md`
 - currently tracked follow-up gaps:
-  - release-artifact attestation or signing
+  - none currently tracked
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
 - dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.

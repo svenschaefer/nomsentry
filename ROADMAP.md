@@ -49,13 +49,12 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
 
 ## Current state
 
-- Open follow-up work is now limited to post-v0.6 hardening and maintainability items.
+- No open follow-up work is currently tracked.
 
 ### Post-v0.6 follow-up
 
 5. Release and source-pipeline hardening
-   - planned:
-     - release-artifact attestation or signing
+   - completed
    - Owner:
      - unassigned
    - Dependency:

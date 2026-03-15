@@ -47,6 +47,7 @@ npm run benchmark:check
 npm run docs:check
 npm run freshness:check
 npm run integrity:check
+npm run attestation:check
 npm run integrity:capture
 npm run determinism:check
 npm run ci:check
@@ -241,3 +242,4 @@ The repository also carries `source-integrity-lock.json`, a checked-in lock file
 Maintained-source rewrites and runtime-bundle writes use atomic temp-file or stage-and-swap paths, and `npm run determinism:check` verifies `custom/sources/`, `dist/runtime-sources.json`, and `dist/build-manifest.json`.
 `npm run release:check` now also performs a packaged-artifact smoke check by installing the packed tarball in a temporary directory and validating both the installed library exports and the installed CLI.
 `npm run security:check` now runs a production dependency audit and validates CycloneDX SBOM generation from the locked dependency graph.
+`npm run attestation:check` validates that the checked-in release publish workflow requests OIDC token permissions and uses `npm publish --provenance` with `secrets.NPM_TOKEN`.
