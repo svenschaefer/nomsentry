@@ -12,8 +12,6 @@
   - post-v0.6 hardening and maintainability follow-up only:
     - upstream source-integrity capture or verification
     - benchmark budgets and regression thresholds
-    - multi-platform CI validation, especially Windows
-    - dependency-security and SBOM generation checks
     - release-artifact attestation or signing
     - automated coverage thresholds and test-suite decomposition
     - a dedicated adversarial security-regression corpus
@@ -32,7 +30,7 @@
   - `npm run ci:check`
   - `npm run release:check`
 - CI status:
-  - GitHub Actions CI is configured to run `npm run ci:check` on pushes to `main` and on pull requests
+  - GitHub Actions CI is configured to run `npm run ci:check` on pushes to `main` and on pull requests across both Ubuntu and Windows
 
 ## Quality status
 
@@ -63,6 +61,10 @@
   - a seeded fuzz-style corpus across supported separators, invisibles, case mixing, NFD forms, leetspeak substitutions, confusable substitutions, and fullwidth ASCII variants
 - The npm package surface is explicitly bounded through the `package.json` `files` allowlist.
 - Release validation now also includes a packaged-artifact smoke check that installs the packed tarball and validates both the installed library surface and the installed CLI.
+- Dependency-security and component-inventory validation are now in place through:
+  - `npm run security:check`
+  - production `npm audit --json --omit=dev`
+  - CycloneDX SBOM generation from the locked dependency graph through `npm sbom --omit=dev --package-lock-only --sbom-format cyclonedx`
 - Lint and formatting gates are now in place for human-maintained repository files through:
   - `npm run lint:check`
   - `npm run format:check`

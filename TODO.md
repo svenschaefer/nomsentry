@@ -21,18 +21,6 @@
     - `npm run benchmark:runtime` exists, but there is no pass/fail budget for bundle load, engine creation, or evaluation latency
     - without enforced thresholds, performance regressions can still land unnoticed
 
-- Add multi-platform CI validation, especially Windows.
-  - Owner: unassigned
-  - Why:
-    - the current CI runs only on Ubuntu even though the project explicitly models Windows reserved identifiers and ships a CLI intended for general Node.js environments
-    - enterprise-grade confidence is stronger if the maintained gates run at least on Linux and Windows for path handling, packaging, and runtime behavior
-
-- Add dependency-security and SBOM generation checks.
-  - Owner: unassigned
-  - Why:
-    - the repo currently has version pinning and release checks, but it does not yet run dependency-vulnerability scanning or generate a machine-readable SBOM
-    - for enterprise consumption, release artifacts are easier to approve when dependency risk and component inventory are part of the standard pipeline
-
 - Add release-artifact attestation or signing for published packages.
   - Owner: unassigned
   - Why:

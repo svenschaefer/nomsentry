@@ -121,6 +121,10 @@ import {
   parsePackOutput,
 } from "../scripts/check-package-smoke.js";
 import {
+  parseAuditReport,
+  parseSbom,
+} from "../scripts/check-security-baseline.js";
+import {
   deriveFilterTerm,
   evaluateSearchResults,
   loadTermsFromFixture,
@@ -1715,6 +1719,47 @@ assert.throws(
     buildPackageSmokeScript(),
     /Package smoke check passed/,
     "package smoke script should verify the installed package surface",
+  );
+  assert.deepEqual(
+    parseAuditReport(
+      JSON.stringify({
+        metadata: {
+          vulnerabilities: {
+            info: 0,
+            low: 0,
+            moderate: 0,
+            high: 0,
+            critical: 0,
+            total: 0,
+          },
+        },
+      }),
+    ),
+    {
+      info: 0,
+      low: 0,
+      moderate: 0,
+      high: 0,
+      critical: 0,
+      total: 0,
+    },
+    "security check helpers should parse npm audit output",
+  );
+  assert.equal(
+    parseSbom(
+      JSON.stringify({
+        bomFormat: "CycloneDX",
+        specVersion: "1.5",
+        metadata: {
+          component: {
+            name: "nomsentry",
+          },
+        },
+        components: [],
+      }),
+    ).bomFormat,
+    "CycloneDX",
+    "security check helpers should parse npm sbom output",
   );
 }
 

@@ -31,6 +31,7 @@ npm run release:check
 Current release validation includes:
 
 - `npm run ci:check`
+- `npm run security:check`
 - `npm pack --dry-run`
 - `npm run pack:smoke`
 

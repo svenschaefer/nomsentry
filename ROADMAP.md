@@ -57,8 +57,6 @@ Task descriptions and detailed rationale belong in [TODO.md](/C:/code/nomsentry/
    - planned:
      - upstream integrity capture or verification for non-package external sources
      - benchmark budgets and regression thresholds
-     - multi-platform CI validation, especially Windows
-     - dependency-security and SBOM generation checks
      - release-artifact attestation or signing
    - Owner:
      - unassigned

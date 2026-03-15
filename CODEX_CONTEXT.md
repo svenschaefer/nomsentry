@@ -125,8 +125,6 @@
 - currently tracked follow-up gaps:
   - upstream integrity capture or verification for non-package external sources
   - benchmark budgets and regression thresholds for runtime performance
-  - multi-platform CI validation, especially Windows
-  - dependency-security and SBOM generation checks
   - release-artifact attestation or signing
   - automated coverage reporting with minimum thresholds
   - decomposition of the monolithic `test/run-tests.js` entrypoint
@@ -134,6 +132,8 @@
   - a dedicated adversarial security-regression corpus for bypass-sensitive cases
 - release validation now includes a packaged-artifact smoke check that installs the packed tarball and verifies both the installed library surface and the installed CLI.
 - explicit public API and CLI contract fixtures now exist for the documented integration surface, including `src/index.js` exports, CLI usage lines, and the top-level JSON shape of `explain`.
+- dependency-security and component-inventory validation are now in place through a production `npm audit` gate plus CycloneDX SBOM generation from the locked dependency graph.
+- GitHub Actions CI now runs the maintained local validation gate across both Ubuntu and Windows.
 
 ## Recent catalog-based gap findings
 

@@ -2,6 +2,12 @@
 
 ## Completed recently
 
+- Added multi-platform CI validation and a dependency-security/SBOM baseline.
+  - [/.github/workflows/ci.yml](/C:/code/nomsentry/.github/workflows/ci.yml) now runs `npm run ci:check` on both Ubuntu and Windows
+  - added [scripts/check-security-baseline.js](/C:/code/nomsentry/scripts/check-security-baseline.js)
+  - added `npm run security:check` in [package.json](/C:/code/nomsentry/package.json) and wired it into `ci:check`
+  - the repo now validates a production `npm audit --json --omit=dev` run and CycloneDX SBOM generation from the locked dependency graph
+
 - Added packaged-artifact smoke validation and explicit public API/CLI contract coverage.
   - added [scripts/check-package-smoke.js](/C:/code/nomsentry/scripts/check-package-smoke.js)
   - added `npm run pack:smoke` in [package.json](/C:/code/nomsentry/package.json) and wired it into `release:check`
