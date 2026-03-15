@@ -4,9 +4,9 @@
 
 - Added first-class runtime helpers to the public package API.
   - `src/index.js` now exports `loadRuntimeBundle()` for default in-package runtime loading
-  - `src/index.js` now exports materialized `defaultPolicies` alongside existing `builtinPolicies` factories
+  - `src/index.js` now exports one strict materialized `defaultPolicy`
   - package smoke validation now verifies the simplified default API path
-  - public API contract fixtures now cover `defaultPolicies` and `loadRuntimeBundle`
+  - public API contract fixtures now cover `defaultPolicy` and `loadRuntimeBundle`
 
 - Published `nomsentry@1.0.0` to npm and aligned the CLI bin metadata.
   - package is now available on npm under the maintainer account

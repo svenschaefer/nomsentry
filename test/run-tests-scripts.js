@@ -607,20 +607,16 @@ assert.throws(
     publicApiContract.policyExports,
     "builtin policy exports should stay stable",
   );
-  assert.deepEqual(
-    Object.keys(publicApi.defaultPolicies).sort(),
-    publicApiContract.defaultPolicyExports,
-    "default policy exports should stay stable",
+  assert.equal(typeof publicApi.defaultPolicy, "object");
+  assert.equal(
+    publicApi.defaultPolicy.appliesTo.includes("tenantSlug"),
+    true,
+    "default policy should apply to tenantSlug",
   );
   assert.equal(
     typeof publicApi.loadRuntimeBundle,
     "function",
     "public API should expose loadRuntimeBundle",
-  );
-  assert.equal(
-    publicApi.defaultPolicies.tenantSlug.appliesTo.includes("tenantSlug"),
-    true,
-    "default tenantSlug policy should be materialized",
   );
 }
 

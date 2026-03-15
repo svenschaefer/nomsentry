@@ -62,15 +62,21 @@ import { pathToFileURL } from "node:url";
 import {
   createEngine,
   builtinPolicies,
-  defaultPolicies,
+  defaultPolicy,
   loadRuntimeBundle,
   validateSource,
 } from "nomsentry";
 
 const policyNames = Object.keys(builtinPolicies).sort();
-assert.deepEqual(policyNames, ["tenantName", "tenantSlug", "username"]);
-const defaultPolicyNames = Object.keys(defaultPolicies).sort();
-assert.deepEqual(defaultPolicyNames, ["tenantName", "tenantSlug", "username"]);
+assert.deepEqual(policyNames, [
+  "defaultPolicy",
+  "tenantName",
+  "tenantSlug",
+  "username",
+]);
+assert.equal(typeof defaultPolicy, "object");
+assert.equal(Array.isArray(defaultPolicy.appliesTo), true);
+assert.equal(defaultPolicy.appliesTo.includes("tenantSlug"), true);
 assert.equal(typeof createEngine, "function");
 assert.equal(typeof loadRuntimeBundle, "function");
 assert.equal(typeof validateSource, "function");
@@ -78,11 +84,7 @@ assert.equal(typeof validateSource, "function");
 const runtimeBundle = loadRuntimeBundle();
 const engine = createEngine({
   sources: [runtimeBundle],
-  policies: [
-    defaultPolicies.username,
-    defaultPolicies.tenantSlug,
-    defaultPolicies.tenantName,
-  ],
+  policies: [defaultPolicy],
 });
 
 const result = engine.evaluate({ kind: "tenantName", value: "depp" });
