@@ -5,11 +5,15 @@
     "expected": "reject",
     "values": [
       "a.p.i",
+      "Admin",
+      "ADMIN",
       "log-in",
       "health_check",
       "u.p.l.o.a.d.s",
       "a_d_m_i_n",
       "a.d.m.i.n",
+      "r00t",
+      "ro0t",
       "mail-admin",
       "o.a.u.t.h",
       "o_p_e_n_i_d",
@@ -21,6 +25,7 @@
       "HTTP",
       "ms_settings",
       "mail-to",
+      "api-api",
       "n.i.c",
       "wh0is",
       "root_servers"
@@ -45,6 +50,9 @@
       "paym3nt",
       "paym3nts",
       "log1n",
+      "help-desk",
+      "cust0mer-support",
+      "acc0unt-recovery",
       "o.a.u.t.h",
       "passw0rd",
       "pr0file",
@@ -65,7 +73,8 @@
       "sch3isse",
       "sche1sse",
       "4rschloch",
-      "f!ck"
+      "f!ck",
+      "wich5er"
     ]
   }
 ]

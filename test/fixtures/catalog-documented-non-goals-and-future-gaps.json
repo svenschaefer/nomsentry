@@ -1,0 +1,60 @@
+[
+  {
+    "label": "documented reservedTechnical non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": [
+      "gateway",
+      "proxy",
+      "internal",
+      "private",
+      "service",
+      "client",
+      "webhook"
+    ]
+  },
+  {
+    "label": "documented impersonation non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["verified", "trust", "safety"]
+  },
+  {
+    "label": "documented uncovered-brand default non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["apple", "amazon", "visa"]
+  },
+  {
+    "label": "documented uncovered-brand future candidates",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": [
+      "microsoft",
+      "youtube",
+      "gmail",
+      "netflix",
+      "spotify",
+      "dropbox",
+      "oracle",
+      "adobe",
+      "canva",
+      "klarna",
+      "coinbase",
+      "wise",
+      "revolut"
+    ]
+  },
+  {
+    "label": "documented compositeRisk non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["trust-safety", "customer-recovery", "privacy-team"]
+  },
+  {
+    "label": "documented unsupported compact-form non-goals",
+    "kind": "tenantSlug",
+    "expected": "allow",
+    "values": ["fck"]
+  }
+]

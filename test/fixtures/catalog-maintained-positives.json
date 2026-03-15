@@ -3,7 +3,7 @@
     "label": "windows reserved device names",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["con", "prn", "aux", "nul", "com1", "lpt1"]
+    "values": ["con", "prn", "aux", "nul", "com1", "com9", "lpt1", "lpt9"]
   },
   {
     "label": "gitlab reserved route names",
@@ -29,6 +29,7 @@
     "values": [
       "root",
       "system",
+      "sys",
       "mail",
       "status",
       "server",
@@ -97,6 +98,7 @@
       "sales",
       "news",
       "usenet",
+      "mail",
       "www",
       "ftp"
     ]
@@ -147,7 +149,11 @@
       "payment-support",
       "password-security",
       "profile-security",
-      "reset-security"
+      "reset-security",
+      "google-billing",
+      "mastercard-security",
+      "openai-support",
+      "paypal-security"
     ]
   },
   {
@@ -157,6 +163,7 @@
     "values": [
       "harley-davidson",
       "national-geographic",
+      "playstation",
       "scientific-american",
       "openai",
       "chatgpt",
@@ -172,14 +179,21 @@
     "kind": "tenantName",
     "expected": "reject",
     "values": [
+      "damn",
+      "bitch",
+      "wanker",
       "shit",
       "fuckyou",
       "shithead",
       "asshole",
+      "scheiße",
       "scheisse",
       "arschloch",
+      "fotze",
       "hurensohn",
-      "depp"
+      "depp",
+      "vollidiot",
+      "miststück"
     ]
   },
   {

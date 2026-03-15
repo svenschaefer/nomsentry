@@ -61,7 +61,7 @@ function collectBenchmarkCases() {
     "catalog-maintained-false-positives",
     "catalog-maintained-obfuscated-positives",
     "catalog-maintained-mixed-script",
-    "catalog-documented-current-gaps",
+    "catalog-documented-non-goals-and-future-gaps",
   ]
     .flatMap((name) => loadJson(`test/fixtures/${name}.json`))
     .flatMap((group) =>

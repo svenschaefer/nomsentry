@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Refined the curated identifier catalog into explicit maintained baseline, negative, and boundary layers.
+  - expanded `catalog-maintained-positives` with more current-scope reserved, impersonation, profanity, composite, and brand cases
+  - expanded current negative fixtures with additional nearby false positives from the reviewed catalog
+  - replaced the old documented-gap fixture with `catalog-documented-non-goals-and-future-gaps.json` so the repo now separates current baseline from explicit non-goals and future-candidate coverage
+
 - Completed the v0.5 `protectedBrand` calibration block and closed the remaining tracked policy work for this phase.
   - raised the maintained USPTO one-word threshold calibration from `>= 12` to `>= 11`, which now admits `playstation` without opening the default profile to numeric brand forms
   - expanded the maintained brand calibration corpus to explicit accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives

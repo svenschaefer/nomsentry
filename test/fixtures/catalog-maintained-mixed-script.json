@@ -3,18 +3,18 @@
     "label": "maintained mixed-script lexical hits",
     "kind": "tenantSlug",
     "expected": "reject",
-    "values": ["suppоrt", "securіty", "pоstmaster", "ѕsh", "оauth", "хml", "wеbmaster", "sеrvеr", "аdmin", "lоgin", "prоfile", "оfficial", "bіlling", "stаff", "nіc", "whоis"]
+    "values": ["suppоrt", "securіty", "pоstmaster", "ѕsh", "оauth", "хml", "wеbmaster", "sеrvеr", "аdmin", "lоgin", "prоfile", "оfficial", "bіlling", "stаff", "nіc", "whоis", "раyments"]
   },
   {
     "label": "maintained profanity mixed-script hits",
     "kind": "tenantName",
     "expected": "reject",
-    "values": ["shіt", "fuсk", "аrschloch"]
+    "values": ["shіt", "fuсk", "аrschloch", "bіtch", "wіchser"]
   },
   {
     "label": "mixed-script fallback reviews without maintained lexical source",
     "kind": "tenantSlug",
     "expected": "review",
-    "values": ["раypalx", "gооglex", "trυstx", "helрdesk", "opеnaii", "amazоnx", "chatgрtx", "gіthubx"]
+    "values": ["раypalx", "gооglex", "trυstx", "helрdesk", "opеnaii", "amazоnx", "chatgрtx", "gіthubx", "mоd"]
   }
 ]

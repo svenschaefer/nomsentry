@@ -258,7 +258,7 @@ for (const fixtureName of [
   "catalog-maintained-obfuscated-positives",
   "catalog-maintained-compact-contract",
   "catalog-maintained-mixed-script",
-  "catalog-documented-current-gaps",
+  "catalog-documented-non-goals-and-future-gaps",
 ]) {
   for (const group of loadFixture(fixtureName)) {
     for (const value of group.values) {
