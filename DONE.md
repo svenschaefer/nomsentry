@@ -2,6 +2,11 @@
 
 ## Completed recently
 
+- Reduced npm package payload to runtime-focused artifacts.
+  - removed `custom/sources/` from the npm `files` allowlist in [package.json](/C:/code/nomsentry/package.json)
+  - the published tarball now ships `dist/` runtime artifacts plus code and docs, while maintained source generation remains available through repository scripts
+  - validated via `npm run pack:check` and `npm run pack:smoke`
+
 - Added release artifact attestation baseline checks and provenance-ready publish workflow.
   - added [.github/workflows/release-publish.yml](/C:/code/nomsentry/.github/workflows/release-publish.yml) with `id-token: write` and `npm publish --provenance --access public`
   - added [scripts/check-release-attestation.js](/C:/code/nomsentry/scripts/check-release-attestation.js)

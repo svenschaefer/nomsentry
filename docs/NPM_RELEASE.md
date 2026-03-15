@@ -8,8 +8,8 @@ This repo ships:
 
 - a library surface through `package.json`
 - the `nomsentry` CLI
-- versioned maintained source artifacts
 - a compiled runtime bundle in `dist/runtime-sources.json`
+- a build provenance manifest in `dist/build-manifest.json`
 
 Every release should validate both code and shipped artifacts.
 
@@ -76,6 +76,7 @@ Before publishing, verify that the tarball contains the expected public artifact
 
 - `bin/nomsentry.js`
 - `dist/runtime-sources.json`
+- `dist/build-manifest.json`
 - current documentation files that should ship with the package
 
 The package boundary is explicitly controlled through the `package.json` `files` allowlist.

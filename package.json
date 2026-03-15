@@ -8,7 +8,6 @@
     "bin/",
     "src/",
     "dist/",
-    "custom/sources/",
     "docs/",
     "source-refresh-policy.json",
     "source-integrity-lock.json",
