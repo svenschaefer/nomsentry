@@ -25,7 +25,7 @@ reject > review > allow
 
 ## Runtime inputs
 
-The engine runs against a compiled runtime bundle in `dist/runtime-sources.json`.
+The engine runs against a compiled runtime bundle in `dist/runtime-sources.json.br`.
 That bundle is versioned and validated for structural compatibility before runtime evaluation.
 
 That bundle is built from versioned source artifacts in `custom/sources/`, which currently include:

@@ -12,31 +12,88 @@ function pushIndexedRule(map, key, rule) {
   map.get(key).push(rule);
 }
 
+function asIndexedRuleRef(rule) {
+  if (Number.isInteger(rule?.rid)) return rule.rid;
+  return rule;
+}
+
 function tokenIndexKeys(term) {
   const tokens = tokenize(term);
   if (tokens.length <= 1) return [term];
   return Array.from(new Set([term, tokens.join(" ")]));
 }
 
-function getKindEntry(index, kind) {
-  if (!index.byKind.has(kind)) {
-    index.byKind.set(kind, {
-      fields: new Map(),
-      compact: new Map(),
-    });
-  }
-  return index.byKind.get(kind);
-}
-
-function getFieldEntry(kindEntry, field) {
-  if (!kindEntry.fields.has(field)) {
-    kindEntry.fields.set(field, {
+function getFieldEntry(index, field) {
+  if (!index.fields.has(field)) {
+    index.fields.set(field, {
       exact: new Map(),
       token: new Map(),
       contains: [],
     });
   }
-  return kindEntry.fields.get(field);
+  return index.fields.get(field);
+}
+
+function compactPostingList(list) {
+  if (list.length === 1 && Number.isInteger(list[0])) return list[0];
+  if (list.length < 16) return list;
+  for (let index = 0; index < list.length; index += 1) {
+    if (!Number.isInteger(list[index])) return list;
+  }
+  return Uint32Array.from(list);
+}
+
+function compactPostingMap(map) {
+  for (const [key, list] of map.entries()) {
+    map.set(key, compactPostingList(list));
+  }
+}
+
+function finalizeLookupMap(map) {
+  const entries = Array.from(map.entries());
+  entries.sort((left, right) => left[0].localeCompare(right[0]));
+  return {
+    keys: entries.map((entry) => entry[0]),
+    postings: entries.map((entry) => entry[1]),
+  };
+}
+
+function lookupPosting(table, key) {
+  if (!table || !table.keys || table.keys.length === 0) return undefined;
+  let low = 0;
+  let high = table.keys.length - 1;
+  while (low <= high) {
+    const mid = (low + high) >>> 1;
+    const value = table.keys[mid];
+    if (value === key) return table.postings[mid];
+    if (value < key) low = mid + 1;
+    else high = mid - 1;
+  }
+  return undefined;
+}
+
+function getKindBit(index, kind) {
+  if (!index.kindBits.has(kind)) {
+    const nextBit = 1 << index.kindBits.size;
+    if (nextBit <= 0) {
+      throw new Error("Too many distinct kinds for matcher bitmask indexing");
+    }
+    index.kindBits.set(kind, nextBit);
+  }
+  return index.kindBits.get(kind);
+}
+
+function computeScopeMask(index, scopes) {
+  let mask = 0;
+  for (const kind of scopes || []) {
+    mask |= getKindBit(index, kind);
+  }
+  return mask;
+}
+
+function setRuleScopeMask(index, rid, scopes) {
+  const previous = index.ruleScopeMasks[rid] ?? 0;
+  index.ruleScopeMasks[rid] = previous | computeScopeMask(index, scopes);
 }
 
 function collectTokenCandidates(value) {
@@ -63,66 +120,156 @@ function collectTokenCandidates(value) {
 
 export function buildRuleIndex(rules) {
   const index = {
-    byKind: new Map(),
+    fields: new Map(),
+    compact: new Map(),
+    kindBits: new Map(),
+    ruleScopeMasks: [],
   };
+  let maxRid = -1;
 
   for (const rule of rules) {
     if (rule.enabled === false) continue;
 
+    if (Number.isInteger(rule?.rid)) {
+      if (rule.rid > maxRid) maxRid = rule.rid;
+      setRuleScopeMask(index, rule.rid, rule.scopes);
+    }
+
     const term = String(rule.normalizedTerm ?? rule.term ?? "").toLowerCase();
     const field = rule.normalizationField || "separatorFolded";
+    const ruleRef = asIndexedRuleRef(rule);
 
-    for (const kind of rule.scopes || []) {
-      const kindEntry = getKindEntry(index, kind);
-
-      if (rule.match === "compact") {
-        pushIndexedRule(kindEntry.compact, term, rule);
-        continue;
-      }
-
-      const fieldEntry = getFieldEntry(kindEntry, field);
-      if (rule.match === "exact") pushIndexedRule(fieldEntry.exact, term, rule);
-      else if (rule.match === "token") {
-        for (const key of tokenIndexKeys(term)) {
-          pushIndexedRule(fieldEntry.token, key, rule);
-        }
-      } else if (rule.match === "contains") fieldEntry.contains.push(rule);
+    if (rule.match === "compact") {
+      pushIndexedRule(index.compact, term, ruleRef);
+      continue;
     }
+
+    const fieldEntry = getFieldEntry(index, field);
+    if (rule.match === "exact") {
+      pushIndexedRule(fieldEntry.exact, term, ruleRef);
+    } else if (rule.match === "token") {
+      for (const key of tokenIndexKeys(term)) {
+        pushIndexedRule(fieldEntry.token, key, ruleRef);
+      }
+    } else if (rule.match === "contains") {
+      if (Number.isInteger(rule?.rid)) {
+        fieldEntry.contains.push({ rid: rule.rid, term });
+      } else {
+        fieldEntry.contains.push(rule);
+      }
+    }
+  }
+
+  for (const [, fieldEntry] of index.fields.entries()) {
+    compactPostingMap(fieldEntry.exact);
+    compactPostingMap(fieldEntry.token);
+    fieldEntry.contains = compactPostingList(fieldEntry.contains);
+    fieldEntry.exact = finalizeLookupMap(fieldEntry.exact);
+    fieldEntry.token = finalizeLookupMap(fieldEntry.token);
+  }
+  compactPostingMap(index.compact);
+  index.compact = finalizeLookupMap(index.compact);
+  if (maxRid >= 0) {
+    const masks = new Uint32Array(maxRid + 1);
+    for (let rid = 0; rid <= maxRid; rid += 1) {
+      masks[rid] = index.ruleScopeMasks[rid] ?? 0;
+    }
+    index.ruleScopeMasks = masks;
   }
 
   return index;
 }
 
 function matchIndexedRules({ normalized, kind, ruleIndex }) {
-  const kindEntry = ruleIndex.byKind.get(kind);
-  if (!kindEntry) return [];
-
   const matches = [];
+  const kindBit = ruleIndex.kindBits.get(kind) ?? 0;
 
-  for (const [field, fieldEntry] of kindEntry.fields.entries()) {
-    const target = projection(normalized, field);
+  function resolveRule(entry) {
+    if (Number.isInteger(entry)) {
+      return ruleIndex.ruleCatalog?.[entry] ?? null;
+    }
+    if (entry && typeof entry === "object" && Number.isInteger(entry.rid)) {
+      return ruleIndex.ruleCatalog?.[entry.rid] ?? null;
+    }
+    return entry;
+  }
 
-    for (const rule of fieldEntry.exact.get(target) ?? []) {
+  function matchesKindScope(entry) {
+    if (Number.isInteger(entry)) {
+      return (ruleIndex.ruleScopeMasks[entry] & kindBit) !== 0;
+    }
+    if (entry && typeof entry === "object" && Number.isInteger(entry.rid)) {
+      return (ruleIndex.ruleScopeMasks[entry.rid] & kindBit) !== 0;
+    }
+    return (entry?.scopes || []).includes(kind);
+  }
+
+  function pushMatchesFromPosting(posting, comparedField, matchType) {
+    if (posting === undefined || posting === null) return;
+    if (Number.isInteger(posting)) {
+      const entry = posting;
+      if (!matchesKindScope(entry)) return;
+      const rule = resolveRule(entry);
+      if (!rule) return;
       matches.push({
         rule,
-        matchType: "exact",
-        comparedField: field,
+        matchType,
+        comparedField,
       });
+      return;
     }
-
-    for (const candidate of collectTokenCandidates(target)) {
-      for (const rule of fieldEntry.token.get(candidate) ?? []) {
+    if (posting instanceof Uint32Array) {
+      for (let idx = 0; idx < posting.length; idx += 1) {
+        const entry = posting[idx];
+        if (!matchesKindScope(entry)) continue;
+        const rule = resolveRule(entry);
+        if (!rule) continue;
         matches.push({
           rule,
-          matchType: "token",
-          comparedField: field,
+          matchType,
+          comparedField,
         });
       }
+      return;
     }
 
-    for (const rule of fieldEntry.contains) {
-      const term = String(rule.normalizedTerm ?? rule.term ?? "").toLowerCase();
+    for (const entry of posting) {
+      if (!matchesKindScope(entry)) continue;
+      const rule = resolveRule(entry);
+      if (!rule) continue;
+      matches.push({
+        rule,
+        matchType,
+        comparedField,
+      });
+    }
+  }
+
+  for (const [field, fieldEntry] of ruleIndex.fields.entries()) {
+    const target = projection(normalized, field);
+
+    pushMatchesFromPosting(
+      lookupPosting(fieldEntry.exact, target),
+      field,
+      "exact",
+    );
+
+    for (const candidate of collectTokenCandidates(target)) {
+      pushMatchesFromPosting(
+        lookupPosting(fieldEntry.token, candidate),
+        field,
+        "token",
+      );
+    }
+
+    for (const entry of fieldEntry.contains) {
+      if (!matchesKindScope(entry)) continue;
+      const term = Number.isInteger(entry?.rid)
+        ? String(entry.term ?? "").toLowerCase()
+        : String(entry.normalizedTerm ?? entry.term ?? "").toLowerCase();
       if (!target.includes(term)) continue;
+      const rule = resolveRule(entry);
+      if (!rule) continue;
       matches.push({
         rule,
         matchType: "contains",
@@ -131,13 +278,11 @@ function matchIndexedRules({ normalized, kind, ruleIndex }) {
     }
   }
 
-  for (const rule of kindEntry.compact.get(normalized.compact) ?? []) {
-    matches.push({
-      rule,
-      matchType: "compact",
-      comparedField: "compact",
-    });
-  }
+  pushMatchesFromPosting(
+    lookupPosting(ruleIndex.compact, normalized.compact),
+    "compact",
+    "compact",
+  );
 
   matches.sort(
     (left, right) => (left.rule._order ?? 0) - (right.rule._order ?? 0),

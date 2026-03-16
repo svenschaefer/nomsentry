@@ -2,13 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
-import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
+import { loadRuntimeBundleAutoFromFile } from "../src/loaders/runtime-bundle-auto.js";
 import { tenantName, tenantSlug, username } from "../src/policies/index.js";
 
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
-    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     fixtureFile: path.resolve(
       process.cwd(),
       "test",
@@ -53,7 +53,7 @@ export function loadCalibrationFixture(fixtureFile) {
 }
 
 export function evaluateBrandProfile({ bundleFile, fixtureFile }) {
-  const bundle = loadRuntimeBundleFromFile(pathToFileURL(bundleFile));
+  const bundle = loadRuntimeBundleAutoFromFile(bundleFile);
   const engine = createEngine({
     sources: [bundle],
     policies: [username(), tenantSlug(), tenantName()],

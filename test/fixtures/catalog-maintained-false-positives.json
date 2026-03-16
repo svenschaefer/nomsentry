@@ -1,20 +1,28 @@
 [
   {
+    "label": "impersonation nearby review cases",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["supporter", "teamwork", "salesforce"]
+  },
+  {
+    "label": "impersonation nearby reject cases",
+    "kind": "tenantSlug",
+    "expected": "reject",
+    "values": ["abuser"]
+  },
+  {
     "label": "impersonation nearby negatives",
     "kind": "tenantSlug",
     "expected": "allow",
     "values": [
-      "supporter",
       "supportive",
       "securities",
       "officially",
-      "teamwork",
       "paymentslab",
       "officiallyspeaking",
       "safetyline",
       "newsroom",
-      "abuser",
-      "salesforce",
       "profiletools",
       "securely",
       "webmailing"
@@ -27,26 +35,18 @@
     "values": [
       "administratorx",
       "apis",
-      "default",
-      "helpful",
-      "publica",
       "publicly",
       "serviceable",
       "uploadslab",
       "projectile",
       "searcher",
       "userspace",
-      "billingham-labs",
-      "hosted",
-      "webview",
-      "wikipedia",
       "systematic",
       "monitoring",
       "healthcare",
       "configurable",
       "internalized",
       "mailer",
-      "mailbox",
       "oauthify",
       "xmlish",
       "settingslab",
@@ -56,11 +56,26 @@
       "comi",
       "lpti",
       "wallet",
-      "office",
       "maps",
       "exampled",
-      "nicole",
       "whoiswho"
+    ]
+  },
+  {
+    "label": "reservedTechnical nearby review cases",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": [
+      "default",
+      "helpful",
+      "publica",
+      "billingham-labs",
+      "hosted",
+      "webview",
+      "wikipedia",
+      "mailbox",
+      "office",
+      "nicole"
     ]
   },
   {
@@ -84,38 +99,42 @@
     "kind": "tenantName",
     "expected": "allow",
     "values": [
-      "shell",
-      "class",
       "assign",
       "assistant",
-      "passion",
       "Scunthorpe",
-      "Dickinson",
       "Cockburn",
       "Hellmann",
-      "classic",
       "analysis",
       "wholesome",
       "striped"
     ]
   },
   {
+    "label": "profanity nearby review cases",
+    "kind": "tenantName",
+    "expected": "review",
+    "values": ["shell", "class", "passion", "Dickinson", "classic"]
+  },
+  {
     "label": "brand nearby negatives under current policy and source set",
     "kind": "tenantSlug",
     "expected": "allow",
     "values": [
-      "openair",
       "chatgpts",
       "googology",
       "paypals",
       "striped",
-      "visa-free",
       "mastercardio",
       "dropboxing",
-      "amazonian",
       "spotifly",
       "facebooking"
     ]
+  },
+  {
+    "label": "brand nearby review cases under current policy and source set",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["openair", "amazonian", "visa-free"]
   },
   {
     "label": "github reserved usernames nearby negatives",

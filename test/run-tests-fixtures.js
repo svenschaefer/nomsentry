@@ -529,7 +529,7 @@ assert.equal(
 {
   const brandProfileArgs = parseBrandProfileArgs([
     "--bundle-file",
-    "tmp/runtime-sources.json",
+    "tmp/runtime-sources.json.br",
     "--fixture-file",
     "tmp/brand-profile-calibration.json",
     "--output-file",
@@ -537,7 +537,7 @@ assert.equal(
   ]);
   assert.equal(
     path.basename(brandProfileArgs.bundleFile),
-    "runtime-sources.json",
+    "runtime-sources.json.br",
     "brand profile evaluation args should parse bundle files",
   );
   assert.equal(
@@ -698,7 +698,7 @@ assert.throws(
 
 {
   const report = evaluateBrandProfile({
-    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     fixtureFile: path.resolve(
       process.cwd(),
       "test",
@@ -735,11 +735,11 @@ assert.throws(
     report.evaluations.some(
       (entry) =>
         entry.value === "apple" &&
-        entry.expected === "allow" &&
-        entry.actual === "allow",
+        entry.expected === "review" &&
+        entry.actual === "review",
     ),
     true,
-    "brand profile evaluation should record documented ambiguity-prone allows",
+    "brand profile evaluation should record documented ambiguity-prone reviews",
   );
   assert.equal(
     report.evaluations.some(
@@ -826,8 +826,8 @@ assert.throws(
   );
   assert.equal(
     isAcceptedWikidataBrandCandidate("apple", legalSuffixCandidate),
-    false,
-    "wikidata supplement should reject ambiguity-blocked brand terms by default",
+    true,
+    "wikidata supplement should accept strong brand candidates when no default exclusions are configured",
   );
 }
 
@@ -1096,8 +1096,8 @@ assert.throws(
   });
   assert.deepEqual(
     source.rules.map((rule) => rule.term),
-    ["mastercard", "openai"],
-    "wikidata supplement should keep the accepted cohort and exclude ambiguity-blocked terms",
+    ["apple", "mastercard", "openai"],
+    "wikidata supplement should keep strong accepted candidates in sorted order",
   );
   assert.equal(
     source.metadata.source,
@@ -1114,7 +1114,7 @@ assert.throws(
 
 {
   const summary = benchmarkRuntime({
-    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     iterations: 20,
     warmupIterations: 2,
   });

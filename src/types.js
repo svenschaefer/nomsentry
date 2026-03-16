@@ -64,14 +64,15 @@
  * @typedef {{
  *   id?: string,
  *   version: number,
+ *   defaultProfileIndex?: number,
  *   scopeTable?: string[][],
  *   matchTable?: string[],
  *   categoryTable?: string[],
  *   severityTable?: string[],
  *   normalizationFieldTable?: string[],
  *   profileTable?: RuntimeProfile[],
- *   rules?: Array<[string, number, string?]>,
- *   compositeRules?: Array<[string, string, number, string[]]>,
+ *   rules?: Array<string | [string] | [string, number] | [string, number, string?]>,
+ *   compositeRules?: Array<[string, string | number, number, string[]]>,
  * }} RuntimeBundle
  */
 

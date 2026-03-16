@@ -9,6 +9,7 @@ Task descriptions and detailed rationale belong in [TODO.md](/TODO.md).
 
 - Release-line sequencing and acceptance decisions: repository owner / maintainer
 - Implementation ownership for roadmap items: unassigned unless a future roadmap entry says otherwise
+- Current execution role for this delivery cycle: Codex agent (implementation and validation), with final acceptance by repository owner / maintainer
 
 ## Planned sequence
 
@@ -24,12 +25,12 @@ Task descriptions and detailed rationale belong in [TODO.md](/TODO.md).
 
 2. Completed
    - the combined USPTO plus Wikidata brand-risk derivation is documented with concrete included and excluded examples
-   - the maintained calibration now covers accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives
+   - the maintained calibration now covers accepted review positives, ambiguity-prone review/allow boundary cases, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow/review boundary cases
    - the maintained default boundary is now explicit:
      - one-word USPTO marks require at least 5 characters
      - multi-word USPTO marks allow at most two tokens with at least 6 characters each
      - digit-bearing USPTO marks remain out of the maintained default profile
-     - ambiguity-prone terms such as `apple`, `amazon`, and `visa` remain out of the default Wikidata supplement
+     - the Wikidata supplement now defaults to score/evidence-based acceptance without default named exclusions
    - Dependency:
      - benefited from provenance and calibration-report work but did not require additional runtime changes beyond the maintained derived profile
 

@@ -7,7 +7,7 @@
 - Fail-fast validation:
   - malformed sources, malformed runtime bundles, and invalid CLI inputs are rejected explicitly
 - Clear artifact authority:
-  - `custom/sources/` and `dist/runtime-sources.json` are authoritative project artifacts
+  - `custom/sources/` and `dist/runtime-sources.json.br` are authoritative project artifacts
   - derived CLI output and local rebuild logs are non-authoritative views
 - Explicit policy surface:
   - decisions are produced from documented categories, policies, derived risks, and allow overrides

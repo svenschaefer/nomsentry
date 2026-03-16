@@ -73,7 +73,7 @@ Use `check` for a final decision and `explain` when you need matched reasons for
 
 ## Runtime artifacts
 
-- `dist/runtime-sources.json`: compiled runtime bundle
+- `dist/runtime-sources.json.br`: compiled runtime bundle (default)
 - `dist/build-manifest.json`: machine-readable provenance manifest
 
 ## Full documentation

@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import path from "node:path";
-import { pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
+import {
+  loadDefaultRuntimeBundle,
+  loadRuntimeBundleAutoFromFile,
+} from "../src/loaders/runtime-bundle-auto.js";
 import { defaultPolicy } from "../src/policies/index.js";
-import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 
 const COMMANDS = new Set(["check", "explain"]);
 const POLICIES = [defaultPolicy()];
@@ -46,10 +48,10 @@ function printUsage() {
 
 function createCliEngine(bundlePath) {
   const runtimeBundle = bundlePath
-    ? loadRuntimeBundleFromFile(pathToFileURL(bundlePath))
-    : loadRuntimeBundleFromFile(
-        new URL("../dist/runtime-sources.json", import.meta.url),
-      );
+    ? loadRuntimeBundleAutoFromFile(bundlePath)
+    : loadDefaultRuntimeBundle({
+        baseDir: new URL("../dist/", import.meta.url),
+      });
 
   return createEngine({
     sources: [runtimeBundle],

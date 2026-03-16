@@ -14,6 +14,21 @@ import {
   loadSourcesFromDirectory,
 } from "../src/loaders/source-loader.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
+import {
+  decodeRuntimeBundleBinary,
+  encodeRuntimeBundleBinary,
+  loadRuntimeBundleBinaryFromFile,
+} from "../src/loaders/runtime-bundle-binary.js";
+import {
+  decodeRuntimeBundleBrotli,
+  encodeRuntimeBundleBrotli,
+  loadRuntimeBundleBrotliFromFile,
+} from "../src/loaders/runtime-bundle-brotli.js";
+import {
+  decodeRuntimeBundleGzip,
+  encodeRuntimeBundleGzip,
+  loadRuntimeBundleGzipFromFile,
+} from "../src/loaders/runtime-bundle-gzip.js";
 import { normalizeValue } from "../src/core/normalize.js";
 import { validateSource } from "../src/schema/validate-source.js";
 import {
@@ -94,6 +109,12 @@ import {
   buildRuntimeBundle,
   writeRuntimeBundle,
 } from "../scripts/build-runtime-sources.js";
+import { parseArgs as parseRuntimeBinaryBuildArgs } from "../scripts/build-runtime-sources-binary.js";
+import { parseArgs as parseRuntimeBrotliBuildArgs } from "../scripts/build-runtime-sources-brotli.js";
+import { parseArgs as parseRuntimeGzipBuildArgs } from "../scripts/build-runtime-sources-gzip.js";
+import { parseArgs as parseRuntimeBundleCompareArgs } from "../scripts/compare-runtime-bundle-formats.js";
+import { parseArgs as parseRuntimeBrotliCompareArgs } from "../scripts/compare-runtime-bundle-brotli.js";
+import { parseArgs as parseRuntimeGzipCompareArgs } from "../scripts/compare-runtime-bundle-gzip.js";
 import {
   fetchAvailableLanguages as fetchLdnoobwLanguages,
   fetchWordList as fetchLdnoobwWordList,
@@ -379,8 +400,8 @@ const adversarialSecurityRegression = JSON.parse(
 }
 
 {
-  const bundle = loadRuntimeBundleFromFile(
-    new URL("../dist/runtime-sources.json", import.meta.url),
+  const bundle = loadRuntimeBundleBrotliFromFile(
+    new URL("../dist/runtime-sources.json.br", import.meta.url),
   );
   assert.equal(
     bundle.rules.some(
@@ -551,7 +572,7 @@ assert.throws(
             id: "cli-custom-bundle/alpha",
             term: "alpha",
             category: "profanity",
-            scopes: ["tenantName"],
+            scopes: ["default"],
             match: "token",
             normalizationField: "confusableSkeleton",
           },
@@ -2367,6 +2388,289 @@ assert.throws(
 }
 
 {
+  const bundle = buildRuntimeBundle([
+    {
+      id: "runtime-binary-test-source",
+      rules: [
+        {
+          id: "runtime-binary-test-source/test",
+          term: "test",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+      ],
+      compositeRules: [
+        {
+          id: "runtime-binary-test-source/composite",
+          term: "security-support",
+          category: "compositeRisk",
+          scopes: ["tenantName"],
+          allOf: ["security", "support"],
+        },
+      ],
+    },
+  ]);
+
+  const encoded = encodeRuntimeBundleBinary(bundle);
+  const decoded = decodeRuntimeBundleBinary(encoded);
+  assert.deepEqual(
+    decoded,
+    bundle,
+    "runtime binary bundle should round-trip through encode/decode",
+  );
+
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-runtime-binary-bundle-"),
+  );
+  const outputFile = path.join(tmpDir, "runtime-sources.bin");
+  fs.writeFileSync(outputFile, encoded);
+
+  const loaded = loadRuntimeBundleBinaryFromFile(pathToFileURL(outputFile));
+  assert.equal(
+    loaded.rules[0].term,
+    "test",
+    "runtime binary loader should produce a runtime source compatible with the engine",
+  );
+  assert.equal(
+    loaded.compositeRules[0].term,
+    "security-support",
+    "runtime binary loader should preserve composite rules",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const bundle = buildRuntimeBundle([
+    {
+      id: "runtime-brotli-test-source",
+      rules: [
+        {
+          id: "runtime-brotli-test-source/test",
+          term: "test",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+      ],
+      compositeRules: [
+        {
+          id: "runtime-brotli-test-source/composite",
+          term: "security-support",
+          category: "compositeRisk",
+          scopes: ["tenantName"],
+          allOf: ["security", "support"],
+        },
+      ],
+    },
+  ]);
+
+  const encoded = encodeRuntimeBundleBrotli(bundle);
+  const decoded = decodeRuntimeBundleBrotli(encoded);
+  assert.deepEqual(
+    decoded,
+    bundle,
+    "runtime brotli bundle should round-trip through encode/decode",
+  );
+
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-runtime-brotli-bundle-"),
+  );
+  const outputFile = path.join(tmpDir, "runtime-sources.json.br");
+  fs.writeFileSync(outputFile, encoded);
+
+  const loaded = loadRuntimeBundleBrotliFromFile(pathToFileURL(outputFile));
+  assert.equal(
+    loaded.rules[0].term,
+    "test",
+    "runtime brotli loader should produce a runtime source compatible with the engine",
+  );
+  assert.equal(
+    loaded.compositeRules[0].term,
+    "security-support",
+    "runtime brotli loader should preserve composite rules",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const bundle = buildRuntimeBundle([
+    {
+      id: "runtime-gzip-test-source",
+      rules: [
+        {
+          id: "runtime-gzip-test-source/test",
+          term: "test",
+          category: "profanity",
+          scopes: ["tenantName"],
+          match: "token",
+          normalizationField: "confusableSkeleton",
+        },
+      ],
+      compositeRules: [
+        {
+          id: "runtime-gzip-test-source/composite",
+          term: "security-support",
+          category: "compositeRisk",
+          scopes: ["tenantName"],
+          allOf: ["security", "support"],
+        },
+      ],
+    },
+  ]);
+
+  const encoded = encodeRuntimeBundleGzip(bundle);
+  const decoded = decodeRuntimeBundleGzip(encoded);
+  assert.deepEqual(
+    decoded,
+    bundle,
+    "runtime gzip bundle should round-trip through encode/decode",
+  );
+
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "nomsentry-runtime-gzip-bundle-"),
+  );
+  const outputFile = path.join(tmpDir, "runtime-sources.json.gz");
+  fs.writeFileSync(outputFile, encoded);
+
+  const loaded = loadRuntimeBundleGzipFromFile(pathToFileURL(outputFile));
+  assert.equal(
+    loaded.rules[0].term,
+    "test",
+    "runtime gzip loader should produce a runtime source compatible with the engine",
+  );
+  assert.equal(
+    loaded.compositeRules[0].term,
+    "security-support",
+    "runtime gzip loader should preserve composite rules",
+  );
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+{
+  const parsedBinaryBuild = parseRuntimeBinaryBuildArgs([
+    "--input-dir",
+    "tmp/sources",
+    "--output-file",
+    "tmp/runtime-sources.bin",
+  ]);
+  assert.equal(
+    parsedBinaryBuild.inputDir,
+    path.resolve(process.cwd(), "tmp/sources"),
+    "runtime binary build args should parse input-dir",
+  );
+  assert.equal(
+    parsedBinaryBuild.outputFile,
+    path.resolve(process.cwd(), "tmp/runtime-sources.bin"),
+    "runtime binary build args should parse output-file",
+  );
+  const parsedBrotliBuild = parseRuntimeBrotliBuildArgs([
+    "--input-dir",
+    "tmp/sources",
+    "--output-file",
+    "tmp/runtime-sources.json.br",
+  ]);
+  assert.equal(
+    parsedBrotliBuild.inputDir,
+    path.resolve(process.cwd(), "tmp/sources"),
+    "runtime brotli build args should parse input-dir",
+  );
+  assert.equal(
+    parsedBrotliBuild.outputFile,
+    path.resolve(process.cwd(), "tmp/runtime-sources.json.br"),
+    "runtime brotli build args should parse output-file",
+  );
+  const parsedGzipBuild = parseRuntimeGzipBuildArgs([
+    "--input-dir",
+    "tmp/sources",
+    "--output-file",
+    "tmp/runtime-sources.json.gz",
+  ]);
+  assert.equal(
+    parsedGzipBuild.inputDir,
+    path.resolve(process.cwd(), "tmp/sources"),
+    "runtime gzip build args should parse input-dir",
+  );
+  assert.equal(
+    parsedGzipBuild.outputFile,
+    path.resolve(process.cwd(), "tmp/runtime-sources.json.gz"),
+    "runtime gzip build args should parse output-file",
+  );
+
+  const parsedCompare = parseRuntimeBundleCompareArgs([
+    "--json-file",
+    "dist/runtime-sources.json",
+    "--binary-file",
+    "dist/runtime-sources.bin",
+    "--iterations",
+    "5",
+  ]);
+  assert.equal(
+    parsedCompare.iterations,
+    5,
+    "runtime bundle format compare args should parse iteration overrides",
+  );
+  assert.equal(
+    parsedCompare.jsonFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.json"),
+    "runtime bundle format compare args should parse json-file",
+  );
+  assert.equal(
+    parsedCompare.binaryFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.bin"),
+    "runtime bundle format compare args should parse binary-file",
+  );
+  const parsedBrotliCompare = parseRuntimeBrotliCompareArgs([
+    "--json-file",
+    "dist/runtime-sources.json",
+    "--brotli-file",
+    "dist/runtime-sources.json.br",
+    "--iterations",
+    "5",
+  ]);
+  assert.equal(
+    parsedBrotliCompare.iterations,
+    5,
+    "runtime bundle brotli compare args should parse iteration overrides",
+  );
+  assert.equal(
+    parsedBrotliCompare.jsonFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.json"),
+    "runtime bundle brotli compare args should parse json-file",
+  );
+  assert.equal(
+    parsedBrotliCompare.brotliFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.json.br"),
+    "runtime bundle brotli compare args should parse brotli-file",
+  );
+  const parsedGzipCompare = parseRuntimeGzipCompareArgs([
+    "--json-file",
+    "dist/runtime-sources.json",
+    "--gzip-file",
+    "dist/runtime-sources.json.gz",
+    "--iterations",
+    "5",
+  ]);
+  assert.equal(
+    parsedGzipCompare.iterations,
+    5,
+    "runtime bundle gzip compare args should parse iteration overrides",
+  );
+  assert.equal(
+    parsedGzipCompare.jsonFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.json"),
+    "runtime bundle gzip compare args should parse json-file",
+  );
+  assert.equal(
+    parsedGzipCompare.gzipFile,
+    path.resolve(process.cwd(), "dist/runtime-sources.json.gz"),
+    "runtime bundle gzip compare args should parse gzip-file",
+  );
+}
+
+{
   const tmpDir = fs.mkdtempSync(
     path.join(os.tmpdir(), "nomsentry-atomic-write-failure-"),
   );
@@ -2830,7 +3134,7 @@ for (const testCase of [
     label: "nfkc fullwidth admin",
   },
   {
-    value: "normal-company",
+    value: "qzmxk-vjtr-plynd",
     kind: "tenantSlug",
     expected: "allow",
     label: "normal slug",
@@ -2848,7 +3152,7 @@ for (const testCase of [
     label: "foreign language lookalike should not match",
   },
   {
-    value: "müller",
+    value: "fröhlich",
     kind: "tenantName",
     expected: "allow",
     label: "latin diacritics should remain allowed",

@@ -4,8 +4,13 @@
     "createEngine",
     "defaultKind",
     "defaultPolicy",
+    "loadDefaultRuntimeBundle",
     "loadRuntimeBundle",
+    "loadRuntimeBundleAutoFromFile",
+    "loadRuntimeBundleBinaryFromFile",
+    "loadRuntimeBundleBrotliFromFile",
     "loadRuntimeBundleFromFile",
+    "loadRuntimeBundleGzipFromFile",
     "loadSourceFromFile",
     "loadSourcesFromDirectory",
     "validateSource"

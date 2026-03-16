@@ -8,7 +8,7 @@ This repo ships:
 
 - a library surface through `package.json`
 - the `nomsentry` CLI
-- a compiled runtime bundle in `dist/runtime-sources.json`
+- a compiled runtime bundle in `dist/runtime-sources.json.br`
 - a build provenance manifest in `dist/build-manifest.json`
 
 Every release should validate both code and shipped artifacts.
@@ -86,7 +86,7 @@ For automated publishing, use the checked-in GitHub Actions workflow at `.github
 Before publishing, verify that the tarball contains the expected public artifacts, especially:
 
 - `bin/nomsentry.js`
-- `dist/runtime-sources.json`
+- `dist/runtime-sources.json.br`
 - `dist/build-manifest.json`
 - `custom/sources/README.md` (directory discoverability without shipping maintained source JSON artifacts)
 - `README.md`

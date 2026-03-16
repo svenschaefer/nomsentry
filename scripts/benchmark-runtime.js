@@ -3,7 +3,7 @@ import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { pathToFileURL } from "node:url";
 import { createEngine } from "../src/core/evaluate.js";
-import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
+import { loadRuntimeBundleAutoFromFile } from "../src/loaders/runtime-bundle-auto.js";
 import { tenantName, tenantSlug, username } from "../src/policies/index.js";
 
 function loadJson(relativePath) {
@@ -15,7 +15,7 @@ function loadJson(relativePath) {
 export function parseArgs(argv) {
   const args = [...argv];
   const options = {
-    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     iterations: 2000,
     warmupIterations: 200,
   };
@@ -88,7 +88,7 @@ function percentile(sorted, ratio) {
 
 export function benchmarkRuntime({ bundleFile, iterations, warmupIterations }) {
   const bundleLoadStart = performance.now();
-  const bundle = loadRuntimeBundleFromFile(pathToFileURL(bundleFile));
+  const bundle = loadRuntimeBundleAutoFromFile(bundleFile);
   const bundleLoadMs = performance.now() - bundleLoadStart;
 
   const engineCreateStart = performance.now();

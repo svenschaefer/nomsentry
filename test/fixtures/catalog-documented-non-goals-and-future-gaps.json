@@ -3,32 +3,42 @@
     "label": "documented reservedTechnical non-goals",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": [
-      "gateway",
-      "proxy",
-      "internal",
-      "private",
-      "service",
-      "client",
-      "webhook"
-    ]
+    "values": ["webhook"]
+  },
+  {
+    "label": "documented reservedTechnical nearby review cases",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["gateway", "proxy", "internal", "private", "service", "client"]
   },
   {
     "label": "documented impersonation non-goals",
     "kind": "tenantSlug",
-    "expected": "allow",
+    "expected": "review",
     "values": ["verified", "trust", "safety"]
   },
   {
-    "label": "documented uncovered-brand default non-goals",
+    "label": "documented uncovered-brand default review boundaries",
     "kind": "tenantSlug",
-    "expected": "allow",
-    "values": ["apple", "amazon", "visa"]
+    "expected": "review",
+    "values": ["visa"]
+  },
+  {
+    "label": "documented uncovered-brand default nearby review cases",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["apple", "amazon"]
   },
   {
     "label": "documented uncovered-brand future candidates",
     "kind": "tenantSlug",
     "expected": "allow",
+    "values": ["klarna", "wise"]
+  },
+  {
+    "label": "documented uncovered-brand future candidates now covered",
+    "kind": "tenantSlug",
+    "expected": "review",
     "values": [
       "microsoft",
       "youtube",
@@ -39,16 +49,14 @@
       "oracle",
       "adobe",
       "canva",
-      "klarna",
       "coinbase",
-      "wise",
       "revolut"
     ]
   },
   {
     "label": "documented compositeRisk non-goals",
     "kind": "tenantSlug",
-    "expected": "allow",
+    "expected": "review",
     "values": ["trust-safety", "customer-recovery", "privacy-team"]
   },
   {

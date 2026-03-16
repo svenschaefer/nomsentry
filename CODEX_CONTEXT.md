@@ -11,7 +11,7 @@
 ## Authoritative artifact model
 
 - Maintained source artifacts live in `custom/sources/`.
-- The compiled runtime artifact lives in `dist/runtime-sources.json`.
+- The compiled runtime artifact lives in `dist/runtime-sources.json.br`.
 - The machine-readable provenance manifest lives in `dist/build-manifest.json`.
 - The deterministic source refresh policy lives in `source-refresh-policy.json`.
 - The checked-in non-package source-integrity lock lives in `source-integrity-lock.json`.
@@ -127,7 +127,7 @@
 - current follow-up work is now focused on `v1.1.x` boundary and release hardening items
 - current ownership state:
   - product boundary and release acceptance decisions: repository owner / maintainer
-  - implementation items: currently unassigned unless explicitly assigned in `TODO.md` or `ROADMAP.md`
+  - implementation items: currently unassigned unless explicitly assigned in `TODO.md` or `ROADMAP.md`; current delivery-cycle execution is handled by the Codex agent with maintainer acceptance
 - currently tracked follow-up gaps:
   - approve and freeze `v1.1.x` conservative vs expanded policy boundary
   - make CI/OIDC provenance publishing the default documented release path
@@ -153,8 +153,8 @@
 - The maintained USPTO-derived default now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding.
 - The maintained default keeps one-word USPTO marks with at least 5 characters, keeps at most two-word USPTO marks with at least 6 characters per token, and drops digit-bearing USPTO terms.
 - That calibrated default now explicitly includes examples such as `harley davidson`, `national geographic`, and `playstation`, while leaving numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5` out of the maintained default profile.
-- The combined maintained brand profile is now explicit rather than open-ended: USPTO covers structurally stronger official marks, Wikidata supplements uncovered globally recognizable brands, ambiguity-prone terms such as `apple`, `amazon`, and `visa` remain out, and long-tail official marks such as `international`, `professional`, and `entertainment` remain review-level in-scope.
-- A reproducible combined brand-profile calibration report now exists at `docs/generated/brand-profile-calibration-report.json` and currently shows zero mismatches on the maintained sample corpus across accepted review positives, ambiguity-prone allows, numeric and short-brand allows, long-tail official review positives, and brand-adjacent allow negatives.
+- The combined maintained brand profile is now explicit rather than open-ended: USPTO covers structurally stronger official marks, Wikidata supplements uncovered globally recognizable brands, ambiguity-prone terms such as `apple`, `amazon`, and `visa` currently resolve to `review`, and long-tail official marks such as `international`, `professional`, and `entertainment` remain review-level in-scope.
+- A reproducible combined brand-profile calibration report now exists at `docs/generated/brand-profile-calibration-report.json` and currently shows zero mismatches on the maintained sample corpus across accepted review positives, ambiguity-prone review cases, numeric and short-brand allows, long-tail official review positives, brand-adjacent allow negatives, and brand-adjacent review boundaries.
 - The current runtime bundle now carries the RFC 2142 `security+support` rule plus a conservative derived support/security-anchor composite layer, which now closes additive combinations such as `billing-support`, `official-support`, `payment-support`, and `reset-security`.
 - Broader marketing and trust-signaling nouns such as `verified`, `trust`, and `safety` are now explicit v0.5 non-goals for the maintained default `impersonation` profile because no strong freely redistributable default source was identified for them.
 - Broader deceptive combinations such as trust, privacy, verification, and recovery pairs are now explicit v0.5 non-goals for the maintained default `compositeRisk` profile.
@@ -179,7 +179,7 @@
 - The repo now also contains a reproducible combined brand-profile calibration script and generated report for the maintained USPTO plus Wikidata baseline.
 - The evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`.
 - The current accepted Wikidata cohort covers `bmw`, `openai`, `chatgpt`, `paypal`, `google`, `github`, `sap`, `mercedes`, `stripe`, and `mastercard`.
-- The current Wikidata supplement still excludes ambiguity-prone terms such as `visa`, `amazon`, and `apple`, and those are now explicit default non-goals rather than accidental gaps.
+- The current Wikidata supplement no longer applies default named exclusions; it now relies on score/evidence-based acceptance, with optional downstream `excludedTerms` if stricter profiles are needed.
 - The current implementation uses official Wikidata entity APIs at build time, not a runtime dependency.
 - Downstream source extension is now documented as an additive build-time model with separate downstream source directories and a downstream compiled bundle, not as in-place editing of the maintained source set.
 - The CLI now accepts `--bundle <path>` for downstream validation against an alternate compiled runtime bundle.

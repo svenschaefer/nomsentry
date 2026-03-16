@@ -8,11 +8,7 @@ export const USER_AGENT = "nomsentry/0.3.0";
 export const LEGAL_SUFFIX_PATTERN =
   /\b(inc\.?|corp\.?|corporation|company|co\.?|llc|ltd\.?|limited|plc|ag|gmbh|s\.a\.|sa|n\.v\.|nv)\b/gi;
 export const DEFAULT_WIKIDATA_BRAND_SCORE_THRESHOLD = 120;
-export const DEFAULT_WIKIDATA_AMBIGUOUS_TERMS = new Set([
-  "amazon",
-  "apple",
-  "visa",
-]);
+export const DEFAULT_WIKIDATA_AMBIGUOUS_TERMS = new Set();
 
 const POSITIVE_DESCRIPTION_PATTERN =
   /\b(company|corporation|brand|service|software|platform|organization|payments|chatbot|product|technology)\b/i;
@@ -273,7 +269,7 @@ export function buildWikidataBrandRiskSource(
       license: "CC0-1.0",
       sourceUrl: "https://www.wikidata.org/wiki/Wikidata:Licensing",
       notes:
-        "Derived from exact-match Wikidata entity evaluation with explicit ambiguity exclusions for apple, amazon, and visa.",
+        "Derived from exact-match Wikidata entity evaluation without default excluded terms.",
     },
     ruleDefaults: {
       category: "protectedBrand",

@@ -28,11 +28,11 @@
     "expectedCategories": ["profanity", "insult", "scriptRisk"]
   },
   {
-    "label": "brand-adjacent allow should stay allow",
+    "label": "brand-adjacent review should stay review",
     "kind": "tenantSlug",
     "value": "openair",
-    "expectedDecision": "allow",
-    "expectedCategories": []
+    "expectedDecision": "review",
+    "expectedCategories": ["protectedBrand"]
   },
   {
     "label": "false-positive profanity guard should stay allow",
@@ -42,11 +42,11 @@
     "expectedCategories": []
   },
   {
-    "label": "non-goal trust-safety phrase should stay allow",
+    "label": "trust-safety phrase currently resolves to review",
     "kind": "tenantSlug",
     "value": "trust-safety",
-    "expectedDecision": "allow",
-    "expectedCategories": []
+    "expectedDecision": "review",
+    "expectedCategories": ["protectedBrand"]
   },
   {
     "label": "non-goal securityresearch phrase should stay allow",

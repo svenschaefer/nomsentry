@@ -21,7 +21,7 @@ When maintained source artifacts change:
 
 1. Refresh or rebuild the relevant source artifacts in `custom/sources/`.
 2. Refresh `source-integrity-lock.json` when a non-package fetched source changed.
-3. Rebuild `dist/runtime-sources.json`.
+3. Rebuild `dist/runtime-sources.json.br`.
 4. Run `npm run determinism:check`.
 5. Verify the resulting artifacts are intended and documented.
 

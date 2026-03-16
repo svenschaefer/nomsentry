@@ -2,6 +2,19 @@
 
 ## Completed recently
 
+- Prepared `v1.1.1` from the current runtime and policy state.
+  - removed default named `excludedTerms` from Wikidata brand-risk derivation; the default now relies on score/evidence gates
+  - rebuilt `custom/sources/derived-wikidata-brand-risk.json`, `dist/runtime-sources.json.br`, and `dist/build-manifest.json`
+  - updated fixture and calibration expectations for the current brand boundary (including `visa`/`visa-free` review behavior)
+  - aligned `CODEX_CONTEXT.md`, `TODO.md`, `ROADMAP.md`, and source docs with the current ownership model and policy wording
+
+- Finalized the runtime bundle optimization and fixed matcher regression side effects.
+  - switched the default compiled artifact to `dist/runtime-sources.json.br` and aligned loader defaults, package payload, determinism checks, and benchmark/build scripts
+  - compact runtime encoding now elides default rule profiles and keeps deterministic sorted/deduplicated rule rows for better compression
+  - fixed indexed matcher posting handling so rule id `0` is matched correctly (prevented false `allow` outcomes in some bundles)
+  - updated brand/adversarial calibration fixtures to the current maintained runtime boundary (`apple`, `amazon`, and `openair` now `review`; `visa` remains `allow`)
+  - regenerated `docs/generated/brand-profile-calibration-report.json` and revalidated with zero mismatches
+
 - Expanded the maintained Wikidata-derived `protectedBrand` supplement and aligned USPTO/Wikidata brand thresholds.
   - updated Wikidata seed/evaluation inputs to include `bmw`, `sap`, and `mercedes`
   - expanded the accepted Wikidata-derived cohort so `bmw`, `sap`, and `mercedes` resolve to `review` in the default runtime

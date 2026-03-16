@@ -2,6 +2,9 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { loadRuntimeBundleBrotliFromFile } from "../src/loaders/runtime-bundle-brotli.js";
+import { loadRuntimeBundleBinaryFromFile } from "../src/loaders/runtime-bundle-binary.js";
+import { loadRuntimeBundleGzipFromFile } from "../src/loaders/runtime-bundle-gzip.js";
 import { loadSourceFromFile } from "../src/loaders/source-loader.js";
 import { loadRuntimeBundleFromFile } from "../src/loaders/runtime-bundle.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
@@ -57,6 +60,10 @@ function normalizeRelativePath(value) {
 
 function hashText(text) {
   return crypto.createHash("sha256").update(text).digest("hex");
+}
+
+function hashBytes(bytes) {
+  return crypto.createHash("sha256").update(bytes).digest("hex");
 }
 
 function readText(filePath) {
@@ -210,15 +217,22 @@ export function buildRuntimeArtifactEntry(
   outputFile,
   runtimeFileLabel = outputFile,
 ) {
-  const serialized = readText(outputFile);
-  const bundle = loadRuntimeBundleFromFile(pathToFileURL(outputFile));
+  const bytes = fs.readFileSync(outputFile);
+  const bundleUrl = pathToFileURL(outputFile);
+  const bundle = outputFile.endsWith(".json.br")
+    ? loadRuntimeBundleBrotliFromFile(bundleUrl)
+    : outputFile.endsWith(".json.gz")
+      ? loadRuntimeBundleGzipFromFile(bundleUrl)
+      : outputFile.endsWith(".bin")
+        ? loadRuntimeBundleBinaryFromFile(bundleUrl)
+        : loadRuntimeBundleFromFile(bundleUrl);
   return {
     file: normalizeRelativePath(path.relative(process.cwd(), runtimeFileLabel)),
     artifactType: "compiled-runtime",
     transformVersion: "build-runtime-sources@1",
     ruleCount: bundle.rules.length,
     compositeRuleCount: bundle.compositeRules.length,
-    sha256: hashText(serialized),
+    sha256: hashBytes(bytes),
   };
 }
 

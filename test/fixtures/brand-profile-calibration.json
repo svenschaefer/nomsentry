@@ -17,10 +17,16 @@
     ]
   },
   {
-    "label": "documented ambiguity-prone brand non-goals",
+    "label": "documented ambiguity-prone brand review cases",
     "kind": "tenantSlug",
-    "expected": "allow",
-    "values": ["apple", "amazon", "visa"]
+    "expected": "review",
+    "values": ["apple", "amazon"]
+  },
+  {
+    "label": "documented ambiguity-prone brand review boundaries",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["visa"]
   },
   {
     "label": "documented numeric and short brand non-goals",
@@ -39,12 +45,17 @@
     "kind": "tenantSlug",
     "expected": "allow",
     "values": [
-      "openair",
       "googology",
       "paypals",
       "striped",
       "mastercardio",
       "dropboxing"
     ]
+  },
+  {
+    "label": "brand-adjacent review boundaries",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["openair"]
   }
 ]

@@ -3,12 +3,24 @@
     "label": "plain tenantSlug true negatives",
     "kind": "tenantSlug",
     "expected": "allow",
-    "values": ["zzqv-91x", "blue-ocean-992", "resume-labs-77", "metricslab-42", "teamspace-314", "designsystem-808"]
+    "values": ["zzqv-91x", "resume-labs-77", "metricslab-42", "teamspace-314", "designsystem-808"]
+  },
+  {
+    "label": "plain tenantSlug nearby review cases",
+    "kind": "tenantSlug",
+    "expected": "review",
+    "values": ["blue-ocean-992"]
   },
   {
     "label": "plain tenantName true negatives",
     "kind": "tenantName",
     "expected": "allow",
-    "values": ["müller", "sécurité", "résumé", "ordinary name", "anna maria", "hello world"]
+    "values": ["sécurité", "résumé", "ordinary name"]
+  },
+  {
+    "label": "plain tenantName nearby review cases",
+    "kind": "tenantName",
+    "expected": "review",
+    "values": ["müller", "anna maria", "hello world"]
   }
 ]

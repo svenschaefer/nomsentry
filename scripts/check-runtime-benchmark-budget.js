@@ -52,7 +52,7 @@ export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     budgetFile: path.resolve(process.cwd(), "benchmark-budget.json"),
-    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    bundleFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     iterations: 2000,
     warmupIterations: 200,
   };

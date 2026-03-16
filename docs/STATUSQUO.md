@@ -5,7 +5,7 @@
 - Branch target: `main`
 - Maintained source strategy:
   - imported or extracted third-party and normative artifacts in `custom/sources/`
-  - compiled runtime bundle in `dist/runtime-sources.json`
+  - compiled runtime bundle in `dist/runtime-sources.json.br`
   - machine-readable provenance manifest in `dist/build-manifest.json`
   - deterministic refresh policy in `source-refresh-policy.json`
   - checked-in source-integrity lock in `source-integrity-lock.json`
@@ -31,6 +31,20 @@
   - `npm run release:check`
 - CI status:
   - GitHub Actions CI is configured to run `npm run ci:check` on pushes to `main` and on pull requests across both Ubuntu and Windows
+
+## Active special handling (default profile)
+
+The default profile uses explicit structural and source filters. These are not runtime bugs; they are current policy gates.
+
+| Area | Special handling | Goal | Main side effect |
+| --- | --- | --- | --- |
+| Wikidata `protectedBrand` derivation | score-gated acceptance, exact normalized-term alignment, class/description checks, optional `excludedTerms` hook (default: none) | keep only high-signal brand candidates | review-level hits can still include ambiguous/common terms if they pass scoring |
+| USPTO `protectedBrand` derivation | structural thresholds (single-word min length, multi-word token limits), digit drop by default, legal-suffix stripping | reduce long-tail trademark noise while preserving strong identifiers | short or numeric brands can be excluded from default coverage |
+| `reserved-usernames` technical import | conservative regex filter before import | avoid importing broad generic route nouns | lower recall for broader technical vocabulary |
+| `reserved-usernames` impersonation import | conservative account-access/trust-facing subset filter | preserve precision for impersonation terms | broader trust/marketing vocabulary remains out |
+| GitLab/GitHub/ICANN/Windows derived technical imports | conservative subset extraction, not full upstream ingestion | keep runtime defaults stable and low-noise | some upstream reserved terms are intentionally omitted |
+| `derived-impersonation` | additive conservative derivation from maintained role/account-access terms | close core impersonation gaps without hand-curated wordlists | does not fully cover modern trust/billing/recovery semantics |
+| `derived-composite-risk` | anchored conservative pair generation around maintained support/security terms | catch high-signal deceptive combinations | broader composites stay out unless policy is expanded |
 
 ## Quality status
 
@@ -133,8 +147,8 @@
   - a conservative derived source now exists in `custom/sources/derived-wikidata-brand-risk.json`
   - the current accepted cohort covers `openai`, `chatgpt`, `paypal`, `google`, `github`, `stripe`, and `mastercard`
   - the evaluator and derived-source builder derive runtime-facing brand terms without company suffixes such as `Inc.` or `Ltd.`
-  - ambiguity-prone terms such as `visa`, `amazon`, and `apple` remain intentionally excluded from the maintained default profile
-  - the current maintained sample corpus reports `0` mismatches across accepted review positives, documented ambiguity-prone allows, documented numeric and short-brand allows, documented long-tail official review positives, and brand-adjacent allow negatives
+  - default named ambiguity exclusions are no longer applied in the Wikidata supplement; acceptance is score/evidence-based, with optional downstream `excludedTerms` only
+  - the current maintained sample corpus reports `0` mismatches across accepted review positives, ambiguity-prone review/allow boundary cases, documented numeric and short-brand allows, documented long-tail official review positives, and brand-adjacent allow/review boundaries
 - USPTO derived-brand status:
   - the maintained derived USPTO profile now strips trailing legal-entity suffixes such as `Inc.` and `LLC` before structural thresholding
   - this improves brand-facing runtime terms such as `Harley Davidson Inc.` -> `harley davidson`

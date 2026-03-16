@@ -23,6 +23,7 @@ The repo now contains both:
 
 The current accepted Wikidata-derived cohort is:
 
+- `amazon`
 - `bmw`
 - `openai`
 - `chatgpt`
@@ -33,14 +34,7 @@ The current accepted Wikidata-derived cohort is:
 - `mercedes`
 - `stripe`
 - `mastercard`
-
-The current ambiguity-prone exclusions are:
-
-- `apple`
-- `amazon`
 - `visa`
-
-Those excluded terms remain intentionally outside the maintained default profile until the broader brand-calibration work is settled.
 
 ## Why the supplement exists
 
@@ -75,7 +69,7 @@ The evaluator and derived-source builder:
 - look at English labels, descriptions, aliases, and `instance of` classes
 - derive runtime-facing brand terms without legal suffixes such as `Inc.` or `Ltd.`
 - require positive brand-facing evidence
-- explicitly exclude ambiguity-prone terms from the maintained default cohort
+- do not apply default named exclusions; optional exclusions are available via `excludedTerms` if a stricter downstream profile is needed
 
 Overlap with the USPTO-derived subset is allowed.
 
@@ -90,10 +84,7 @@ Accepted by default:
 
 Rejected from the maintained default cohort for now:
 
-- terms whose surface form is strongly ambiguous in ordinary language, such as:
-  - `apple`
-  - `amazon`
-  - `visa`
+- terms that fail the current score and evidence gates, for example ambiguity-prone labels without strong enough supporting entity evidence (for example `apple` in the current build)
 
 This means the current Wikidata layer is not trying to maximize recall.
 It is trying to close obvious missed brands without importing broad common-noun collisions into the maintained default runtime.
@@ -110,8 +101,7 @@ This improves default runtime coverage for several globally recognizable brands 
 The maintained default is now explicitly:
 
 - USPTO-derived review positives for structurally stronger official marks, with trailing legal suffixes stripped first
-- a conservative Wikidata supplement for uncovered globally recognizable brands such as `bmw`, `openai`, `google`, `paypal`, `github`, `sap`, `mercedes`, `stripe`, and `mastercard`
-- explicit default non-goals for ambiguity-prone short terms such as `apple`, `amazon`, and `visa`
+- a conservative Wikidata supplement for uncovered globally recognizable brands such as `amazon`, `bmw`, `openai`, `google`, `paypal`, `github`, `sap`, `mercedes`, `stripe`, `mastercard`, and `visa`
 - explicit default non-goals for numeric or short numeric forms such as `3m`, `7eleven`, `formula1`, and `playstation5`
 
 ## Licensing

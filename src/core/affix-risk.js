@@ -31,13 +31,16 @@ export function buildAffixRiskIndex(
   const index = {
     byKind: new Map(),
   };
+  const seenByKind = new Map();
 
   for (const rule of rules) {
     if (rule.enabled === false) continue;
     if (!AFFIX_RISK_CATEGORIES.has(rule.category)) continue;
     if (rule.match !== "token") continue;
 
-    const compactTerm = normalizeValue(rule.normalizedTerm ?? rule.term).compact;
+    const compactTerm = normalizeValue(
+      rule.normalizedTerm ?? rule.term,
+    ).compact;
     if (!compactTerm || compactTerm.length < minTermLength) continue;
 
     const firstChar = compactTerm[0];
@@ -48,6 +51,12 @@ export function buildAffixRiskIndex(
     };
 
     for (const kind of rule.scopes || []) {
+      if (!seenByKind.has(kind)) seenByKind.set(kind, new Set());
+      const seen = seenByKind.get(kind);
+      const dedupeKey = `${rule.category}|${compactTerm}`;
+      if (seen.has(dedupeKey)) continue;
+      seen.add(dedupeKey);
+
       const kindEntry = getKindEntry(index, kind);
       pushByChar(kindEntry.byFirstChar, firstChar, entry);
       pushByChar(kindEntry.byLastChar, lastChar, entry);

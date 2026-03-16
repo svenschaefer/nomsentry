@@ -27,15 +27,34 @@ export function expandRuntimeBundle(bundle) {
   const severityTable = bundle.severityTable ?? [];
   const normalizationFieldTable = bundle.normalizationFieldTable ?? [];
   const profileTable = bundle.profileTable ?? [];
+  const defaultProfileIndex = Number.isInteger(bundle.defaultProfileIndex)
+    ? bundle.defaultProfileIndex
+    : 0;
 
   const rules = (bundle.rules ?? []).map((entry, index) => {
-    if (!Array.isArray(entry) || entry.length < 2 || entry.length > 3) {
+    /** @type {string} */
+    let term;
+    /** @type {number} */
+    let profileIndex;
+
+    if (typeof entry === "string") {
+      term = entry;
+      profileIndex = defaultProfileIndex;
+    } else if (Array.isArray(entry) && entry.length === 1) {
+      [term] = entry;
+      profileIndex = defaultProfileIndex;
+    } else if (Array.isArray(entry) && entry.length === 2) {
+      [term, profileIndex] = entry;
+    } else if (Array.isArray(entry) && entry.length === 3) {
+      const [legacySuffix, legacyProfileIndex, explicitTerm] = entry;
+      term = explicitTerm ?? legacySuffix;
+      profileIndex = legacyProfileIndex;
+    } else {
       throw new Error(
-        `runtime bundle rule[${index}] must be a tuple of length 2 or 3`,
+        `runtime bundle rule[${index}] must be a string or tuple of length 1, 2, or 3`,
       );
     }
 
-    const [suffix, profileIndex, explicitTerm] = entry;
     const profile = profileTable[profileIndex];
     if (!Array.isArray(profile) || profile.length < 4 || profile.length > 5) {
       throw new Error(
@@ -50,7 +69,6 @@ export function expandRuntimeBundle(bundle) {
       normalizationFieldIndex,
       severityIndex,
     ] = profile;
-    const term = explicitTerm ?? suffix;
     if (categoryTable[categoryIndex] === undefined) {
       throw new Error(
         `runtime bundle profile[${profileIndex}] references missing categoryTable[${categoryIndex}]`,
@@ -81,7 +99,8 @@ export function expandRuntimeBundle(bundle) {
     }
 
     return {
-      id: `r${index.toString(36)}`,
+      rid: index,
+      idPrefix: "r",
       term,
       category: categoryTable[categoryIndex],
       match: matchTable[matchIndex],
@@ -100,9 +119,19 @@ export function expandRuntimeBundle(bundle) {
       );
     }
 
-    const [term, category, scopeIndex, allOf] = entry;
+    const [term, rawCategory, scopeIndex, allOf] = entry;
+    const category =
+      typeof rawCategory === "number"
+        ? categoryTable[rawCategory]
+        : rawCategory;
+    if (category === undefined) {
+      throw new Error(
+        `runtime bundle compositeRules[${index}] references missing category`,
+      );
+    }
     return {
-      id: `c${index.toString(36)}`,
+      rid: index,
+      idPrefix: "c",
       term,
       category,
       scopes: scopeTable[scopeIndex],

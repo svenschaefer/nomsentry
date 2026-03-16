@@ -21,6 +21,12 @@
     "label": "unsupported shorthand profanity compact forms",
     "kind": "tenantName",
     "expected": "allow",
-    "values": ["fck", "arschlch"]
+    "values": ["fck"]
+  },
+  {
+    "label": "shorthand profanity forms now covered by current normalization",
+    "kind": "tenantName",
+    "expected": "reject",
+    "values": ["arschlch"]
   }
 ]

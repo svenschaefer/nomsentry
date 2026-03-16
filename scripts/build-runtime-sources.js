@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { encodeRuntimeBundleBrotli } from "../src/loaders/runtime-bundle-brotli.js";
 import { loadSourcesFromDirectory } from "../src/loaders/source-loader.js";
 import { writeTextFileAtomic } from "../src/schema/source-io.js";
 import {
@@ -12,7 +13,7 @@ export function parseArgs(argv) {
   const args = [...argv];
   const options = {
     inputDir: path.resolve(process.cwd(), "custom", "sources"),
-    outputFile: path.resolve(process.cwd(), "dist", "runtime-sources.json"),
+    outputFile: path.resolve(process.cwd(), "dist", "runtime-sources.json.br"),
     manifestFile: path.resolve(process.cwd(), "dist", "build-manifest.json"),
   };
 
@@ -61,12 +62,11 @@ export function buildRuntimeBundle(sources) {
 
   const rules = [];
   const compositeRules = [];
+  const profileUsage = new Map();
+  const seenRules = new Set();
 
   for (const source of sources) {
     for (const rule of source.rules ?? []) {
-      const suffix = String(rule.id).slice(
-        String(rule.id).lastIndexOf("/") + 1,
-      );
       const profile = [
         intern(categoryTable, rule.category),
         intern(matchTable, rule.match),
@@ -77,12 +77,12 @@ export function buildRuntimeBundle(sources) {
         ),
         ...(rule.severity ? [intern(severityTable, rule.severity)] : []),
       ];
-      const entry = [
-        suffix,
-        intern(profileTable, profile),
-        ...(suffix === rule.term ? [] : [rule.term]),
-      ];
-      rules.push(entry);
+      const profileIndex = intern(profileTable, profile);
+      profileUsage.set(profileIndex, (profileUsage.get(profileIndex) ?? 0) + 1);
+      const dedupeKey = `${profileIndex}\u0000${rule.term}`;
+      if (seenRules.has(dedupeKey)) continue;
+      seenRules.add(dedupeKey);
+      rules.push([rule.term, profileIndex]);
     }
 
     for (const rule of source.compositeRules ?? []) {
@@ -95,16 +95,35 @@ export function buildRuntimeBundle(sources) {
     }
   }
 
+  let defaultProfileIndex = 0;
+  let defaultProfileCount = -1;
+  for (const [profileIndex, count] of profileUsage.entries()) {
+    if (count > defaultProfileCount) {
+      defaultProfileCount = count;
+      defaultProfileIndex = profileIndex;
+    }
+  }
+
+  rules.sort((left, right) => {
+    if (left[1] !== right[1]) return left[1] - right[1];
+    return String(left[0]).localeCompare(String(right[0]));
+  });
+
+  const compactRules = rules.map(([term, profileIndex]) =>
+    profileIndex === defaultProfileIndex ? term : [term, profileIndex],
+  );
+
   return {
     id: "runtime-sources",
     version: 1,
+    defaultProfileIndex,
     scopeTable: scopeTable.items,
     matchTable: matchTable.items,
     categoryTable: categoryTable.items,
     severityTable: severityTable.items,
     normalizationFieldTable: normalizationFieldTable.items,
     profileTable: profileTable.items,
-    rules,
+    rules: compactRules,
     compositeRules,
   };
 }
@@ -123,10 +142,25 @@ export function writeRuntimeBundle(outputFile, bundle) {
   writeTextFileAtomic(outputFile, `${JSON.stringify(bundle)}\n`);
 }
 
+export function writeRuntimeBundleBrotli(outputFile, bundle) {
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  const tmpFile = `${outputFile}.tmp-${process.pid}-${Date.now()}`;
+  fs.writeFileSync(tmpFile, encodeRuntimeBundleBrotli(bundle));
+  fs.renameSync(tmpFile, outputFile);
+}
+
+function writeRuntimeBundleByExtension(outputFile, bundle) {
+  if (outputFile.endsWith(".json.br")) {
+    writeRuntimeBundleBrotli(outputFile, bundle);
+    return;
+  }
+  writeRuntimeBundle(outputFile, bundle);
+}
+
 function main(argv) {
   const options = parseArgs(argv);
   const bundle = buildRuntimeBundleFromDirectory(options.inputDir);
-  writeRuntimeBundle(options.outputFile, bundle);
+  writeRuntimeBundleByExtension(options.outputFile, bundle);
   const manifest = buildProvenanceManifest({
     inputDir: options.inputDir,
     outputFile: options.outputFile,

@@ -16,6 +16,14 @@ function resolveAction(rule, policy) {
   return "review";
 }
 
+function resolveRuleId(rule) {
+  if (rule.id) return rule.id;
+  if (Number.isInteger(rule.rid)) {
+    return `${rule.idPrefix || "r"}${rule.rid.toString(36)}`;
+  }
+  return null;
+}
+
 export function decide({ matches, policy }) {
   let outcome = "allow";
   const reasons = [];
@@ -25,7 +33,7 @@ export function decide({ matches, policy }) {
     const action = resolveAction(rule, policy);
 
     reasons.push({
-      ruleId: rule.id,
+      ruleId: resolveRuleId(rule),
       category: rule.category,
       term: rule.term,
       severity: rule.severity,

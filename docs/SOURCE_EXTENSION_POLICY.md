@@ -4,7 +4,7 @@
 
 This document defines how downstream projects should extend `nomsentry` without modifying the repository's maintained source set.
 
-The maintained repository sources remain the files under `custom/sources/` plus the compiled runtime bundle in `dist/runtime-sources.json`.
+The maintained repository sources remain the files under `custom/sources/` plus the compiled runtime bundle in `dist/runtime-sources.json.br`.
 Downstream extensions are additive project-specific inputs outside that maintained set.
 
 ## Core rules
@@ -29,7 +29,7 @@ Recommended layout in a downstream project:
 ```text
 vendor/nomsentry/custom/sources/
 custom/nomsentry-sources/
-dist/runtime-sources.json
+dist/runtime-sources.json.br
 ```
 
 ## Merge semantics
@@ -47,7 +47,7 @@ The repository CLI uses the maintained runtime bundle by default.
 For downstream validation against a custom compiled bundle, the CLI now supports:
 
 ```bash
-nomsentry check tenantSlug value --bundle path\\to\\runtime-sources.json
+nomsentry check tenantSlug value --bundle path\\to\\runtime-sources.json.br
 ```
 
 The library surface also exposes source and runtime-bundle loaders for downstream build pipelines:

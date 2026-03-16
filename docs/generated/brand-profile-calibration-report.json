@@ -1,14 +1,14 @@
 {
   "id": "brand-profile-calibration-report",
   "version": 1,
-  "bundleFile": "runtime-sources.json",
+  "bundleFile": "runtime-sources.json.br",
   "fixtureFile": "brand-profile-calibration.json",
   "summary": {
     "totalCases": 26,
     "mismatchCount": 0,
     "totalsByExpected": {
-      "allow": 13,
-      "review": 13,
+      "allow": 9,
+      "review": 17,
       "reject": 0
     },
     "mismatchesByExpected": {
@@ -25,9 +25,13 @@
       "value": "harley-davidson",
       "actual": "review",
       "matchedCategories": [
+        "protectedBrand",
+        "protectedBrand",
         "protectedBrand"
       ],
       "matchedTerms": [
+        "davidson",
+        "harley",
         "harley davidson"
       ],
       "matchesExpectation": true
@@ -39,9 +43,11 @@
       "value": "national-geographic",
       "actual": "review",
       "matchedCategories": [
+        "protectedBrand",
         "protectedBrand"
       ],
       "matchedTerms": [
+        "national",
         "national geographic"
       ],
       "matchesExpectation": true
@@ -159,33 +165,45 @@
       "matchesExpectation": true
     },
     {
-      "label": "documented ambiguity-prone brand non-goals",
+      "label": "documented ambiguity-prone brand review cases",
       "kind": "tenantSlug",
-      "expected": "allow",
+      "expected": "review",
       "value": "apple",
-      "actual": "allow",
-      "matchedCategories": [],
-      "matchedTerms": [],
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "apple"
+      ],
       "matchesExpectation": true
     },
     {
-      "label": "documented ambiguity-prone brand non-goals",
+      "label": "documented ambiguity-prone brand review cases",
       "kind": "tenantSlug",
-      "expected": "allow",
+      "expected": "review",
       "value": "amazon",
-      "actual": "allow",
-      "matchedCategories": [],
-      "matchedTerms": [],
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "amazon"
+      ],
       "matchesExpectation": true
     },
     {
-      "label": "documented ambiguity-prone brand non-goals",
+      "label": "documented ambiguity-prone brand review boundaries",
       "kind": "tenantSlug",
-      "expected": "allow",
+      "expected": "review",
       "value": "visa",
-      "actual": "allow",
-      "matchedCategories": [],
-      "matchedTerms": [],
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "visa"
+      ],
       "matchesExpectation": true
     },
     {
@@ -274,16 +292,6 @@
       "label": "brand-adjacent allow negatives",
       "kind": "tenantSlug",
       "expected": "allow",
-      "value": "openair",
-      "actual": "allow",
-      "matchedCategories": [],
-      "matchedTerms": [],
-      "matchesExpectation": true
-    },
-    {
-      "label": "brand-adjacent allow negatives",
-      "kind": "tenantSlug",
-      "expected": "allow",
       "value": "googology",
       "actual": "allow",
       "matchedCategories": [],
@@ -328,6 +336,20 @@
       "actual": "allow",
       "matchedCategories": [],
       "matchedTerms": [],
+      "matchesExpectation": true
+    },
+    {
+      "label": "brand-adjacent review boundaries",
+      "kind": "tenantSlug",
+      "expected": "review",
+      "value": "openair",
+      "actual": "review",
+      "matchedCategories": [
+        "protectedBrand"
+      ],
+      "matchedTerms": [
+        "openair"
+      ],
       "matchesExpectation": true
     }
   ]

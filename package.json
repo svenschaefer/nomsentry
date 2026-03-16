@@ -1,6 +1,6 @@
 {
   "name": "nomsentry",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Deterministic identifier policy and deception detection engine",
   "keywords": [
     "identifier-validation",
@@ -17,7 +17,8 @@
   "files": [
     "bin/",
     "src/",
-    "dist/",
+    "dist/runtime-sources.json.br",
+    "dist/build-manifest.json",
     "custom/sources/README.md",
     "README.md",
     "LICENSE",
@@ -53,6 +54,12 @@
     "derive:uspto-brand-risk": "node scripts/derive-uspto-brand-risk.js",
     "compact:sources": "node scripts/compact-sources.js",
     "build:runtime-sources": "node scripts/build-runtime-sources.js",
+    "build:runtime-sources:binary": "node scripts/build-runtime-sources-binary.js",
+    "build:runtime-sources:brotli": "node scripts/build-runtime-sources-brotli.js",
+    "build:runtime-sources:gzip": "node scripts/build-runtime-sources-gzip.js",
+    "compare:runtime-bundle-formats": "node scripts/compare-runtime-bundle-formats.js --iterations 3",
+    "compare:runtime-bundle-brotli": "node scripts/compare-runtime-bundle-brotli.js --iterations 3",
+    "compare:runtime-bundle-gzip": "node scripts/compare-runtime-bundle-gzip.js --iterations 3",
     "import:cuss": "node scripts/import-cuss.js",
     "import:dsojevic": "node scripts/import-dsojevic-profanity.js",
     "import:insult-wiki": "node scripts/import-insult-wiki.js",

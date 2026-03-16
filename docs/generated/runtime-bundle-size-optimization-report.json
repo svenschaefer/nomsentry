@@ -1,0 +1,50 @@
+{
+  "id": "runtime-bundle-size-optimization-report",
+  "version": 1,
+  "date": "2026-03-16",
+  "targetArtifact": "dist/runtime-sources.json.br",
+  "checkpoints": [
+    {
+      "label": "checkpoint-a",
+      "description": "default-profile-elision only",
+      "rules": 968353,
+      "files": {
+        "dist/runtime-sources.json": 11786128,
+        "dist/runtime-sources.json.br": 4510727
+      }
+    },
+    {
+      "label": "checkpoint-b",
+      "description": "default-profile-elision + exact rule dedupe + compression-friendly rule sorting",
+      "rules": 966799,
+      "files": {
+        "dist/runtime-sources.json": 11765125,
+        "dist/runtime-sources.json.br": 2859210
+      }
+    }
+  ],
+  "deltaFromCheckpointAtoB": {
+    "rules": {
+      "absolute": -1554,
+      "percent": -0.16
+    },
+    "dist/runtime-sources.json": {
+      "bytes": -21003,
+      "percent": -0.178
+    },
+    "dist/runtime-sources.json.br": {
+      "bytes": -1651517,
+      "percent": -36.613
+    }
+  },
+  "triedAndReverted": [
+    {
+      "change": "composite category default elision",
+      "result": "no material benefit; brotli output slightly worse"
+    }
+  ],
+  "notes": [
+    "The strongest win came from reducing redundancy before brotli (exact rule-row dedupe + deterministic clustering), not from changing compression format.",
+    "Runtime behavior stayed equivalent for check/explain decisions after the retained changes."
+  ]
+}

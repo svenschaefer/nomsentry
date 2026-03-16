@@ -17,7 +17,7 @@ const spec = read("docs/SPEC.md");
 const notices = read("THIRD_PARTY_NOTICES.md");
 
 for (const required of [
-  "dist/runtime-sources.json",
+  "dist/runtime-sources.json.br",
   "dist/build-manifest.json",
   "nomsentry",
   "GitHub",
@@ -26,7 +26,7 @@ for (const required of [
 }
 
 for (const required of [
-  "dist/runtime-sources.json",
+  "dist/runtime-sources.json.br",
   "dist/build-manifest.json",
   "custom/sources/",
   "USPTO",

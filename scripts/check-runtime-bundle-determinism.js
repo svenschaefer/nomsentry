@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import {
   buildRuntimeBundleFromDirectory,
-  writeRuntimeBundle,
+  writeRuntimeBundleBrotli,
 } from "./build-runtime-sources.js";
 import {
   buildProvenanceManifest,
@@ -14,7 +14,7 @@ const inputDir = path.resolve(process.cwd(), "custom", "sources");
 const expectedFile = path.resolve(
   process.cwd(),
   "dist",
-  "runtime-sources.json",
+  "runtime-sources.json.br",
 );
 const expectedManifestFile = path.resolve(
   process.cwd(),
@@ -22,12 +22,12 @@ const expectedManifestFile = path.resolve(
   "build-manifest.json",
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "nomsentry-runtime-"));
-const candidateFile = path.join(tempDir, "runtime-sources.json");
+const candidateFile = path.join(tempDir, "runtime-sources.json.br");
 const candidateManifestFile = path.join(tempDir, "build-manifest.json");
 
 try {
   const bundle = buildRuntimeBundleFromDirectory(inputDir);
-  writeRuntimeBundle(candidateFile, bundle);
+  writeRuntimeBundleBrotli(candidateFile, bundle);
   writeProvenanceManifest(
     candidateManifestFile,
     buildProvenanceManifest({
@@ -37,14 +37,14 @@ try {
     }),
   );
 
-  const expected = fs.readFileSync(expectedFile, "utf8");
-  const actual = fs.readFileSync(candidateFile, "utf8");
+  const expected = fs.readFileSync(expectedFile);
+  const actual = fs.readFileSync(candidateFile);
   const expectedManifest = fs.readFileSync(expectedManifestFile, "utf8");
   const actualManifest = fs.readFileSync(candidateManifestFile, "utf8");
 
-  if (expected !== actual) {
+  if (!expected.equals(actual)) {
     throw new Error(
-      "Runtime bundle determinism check failed: rebuilt bundle differs from dist/runtime-sources.json",
+      "Runtime bundle determinism check failed: rebuilt bundle differs from dist/runtime-sources.json.br",
     );
   }
   if (expectedManifest !== actualManifest) {

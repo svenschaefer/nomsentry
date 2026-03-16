@@ -13,7 +13,8 @@ function dedupeMatches(matches) {
   for (const match of matches) {
     const key = [
       match.rule.category,
-      match.rule.normalizedTerm || match.rule.term,
+      match.rule.term ??
+        (Number.isInteger(match.rule.rid) ? `#${match.rule.rid}` : ""),
       match.matchType,
       match.comparedField,
     ].join("|");
@@ -31,23 +32,45 @@ export function createEngine({
   policies = [],
   allowOverrides = [],
 } = {}) {
-  const rules = sources.flatMap((s) =>
-    (s.rules || []).map((rule, index) => {
+  const indexedRules = [];
+  const ruleCatalog = [];
+  let order = 0;
+
+  for (const source of sources) {
+    for (const rule of source.rules || []) {
       const field = rule.normalizationField || "separatorFolded";
-      return {
-        ...rule,
-        _order: index,
-        normalizedTerm:
-          normalizeValue(rule.term)[field] ||
-          String(rule.term ?? "").toLowerCase(),
-      };
-    }),
-  );
-  rules.forEach((rule, index) => {
-    rule._order = index;
-  });
-  const ruleIndex = buildRuleIndex(rules);
-  const affixRiskIndex = buildAffixRiskIndex(rules);
+      const normalizedTerm =
+        normalizeValue(rule.term)[field] ||
+        String(rule.term ?? "").toLowerCase();
+      const rid = ruleCatalog.length;
+      const sourceRid = Number.isInteger(rule.rid) ? rule.rid : rid;
+      const idPrefix = rule.idPrefix || "r";
+      ruleCatalog.push({
+        rid: sourceRid,
+        idPrefix,
+        id: rule.id,
+        term: rule.term,
+        category: rule.category,
+        severity: rule.severity,
+        _order: order,
+      });
+      indexedRules.push({
+        rid,
+        term: rule.term,
+        category: rule.category,
+        enabled: rule.enabled,
+        scopes: rule.scopes,
+        match: rule.match,
+        normalizationField: field,
+        normalizedTerm,
+      });
+      order += 1;
+    }
+  }
+
+  const ruleIndex = buildRuleIndex(indexedRules);
+  ruleIndex.ruleCatalog = ruleCatalog;
+  const affixRiskIndex = buildAffixRiskIndex(indexedRules);
   const compositeRules = sources.flatMap((s) =>
     (s.compositeRules || []).map((rule) => ({
       ...rule,
@@ -58,7 +81,7 @@ export function createEngine({
   );
 
   const ruleKinds = Array.from(
-    new Set(rules.flatMap((rule) => rule.scopes || []).filter(Boolean)),
+    new Set(indexedRules.flatMap((rule) => rule.scopes || []).filter(Boolean)),
   );
   const compositeKinds = Array.from(
     new Set(
@@ -106,7 +129,6 @@ export function createEngine({
       matchRules({
         normalized,
         kind: evaluationKind,
-        rules,
         ruleIndex,
       }),
     );
@@ -155,8 +177,11 @@ export function createEngine({
       }
     }
 
-    const dedupedMatches = dedupeMatches(matches);
-    const provisional = decide({ matches: dedupedMatches, policy });
+    const matchesForDecision = dedupeMatches(matches);
+    const provisional = decide({
+      matches: matchesForDecision,
+      policy,
+    });
     const override = applyAllowOverrides({
       normalized,
       kind,
@@ -171,8 +196,12 @@ export function createEngine({
       input: value,
       kind: resolvedKind,
       normalized,
-      matchedRules: dedupedMatches.map((m) => ({
-        ruleId: m.rule.id,
+      matchedRules: matchesForDecision.map((m) => ({
+        ruleId:
+          m.rule.id ??
+          (Number.isInteger(m.rule.rid)
+            ? `${m.rule.idPrefix || "r"}${m.rule.rid.toString(36)}`
+            : null),
         category: m.rule.category,
         term: m.rule.term,
         severity: m.rule.severity,
@@ -185,7 +214,7 @@ export function createEngine({
       override: override.override,
       reasons: override.reasons,
       projectionsUsed: Array.from(
-        new Set(dedupedMatches.map((m) => m.comparedField).filter(Boolean)),
+        new Set(matchesForDecision.map((m) => m.comparedField).filter(Boolean)),
       ),
     };
   }

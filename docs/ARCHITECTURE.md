@@ -58,11 +58,11 @@ The repository does not maintain built-in source packs anymore.
 Instead it maintains:
 
 - versioned source artifacts in `custom/sources/`
-- a compiled runtime bundle in `dist/runtime-sources.json`
+- a compiled runtime bundle in `dist/runtime-sources.json.br`
 - a machine-readable build manifest in `dist/build-manifest.json`
 - a deterministic source refresh policy in `source-refresh-policy.json`
 
-`custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json` by default, and downstream projects can point it at another compiled bundle with `--bundle`.
+`custom/sources/` contains imported or extracted third-party and normative artifacts. The CLI does not scan that directory directly anymore. It loads the compiled runtime bundle from `dist/runtime-sources.json.br` by default, and downstream projects can point it at another compiled bundle with `--bundle`.
 The runtime loader rejects unsupported bundle versions and malformed table references before evaluation.
 Maintained-source rewrites and runtime-bundle generation use atomic write or stage-and-swap paths to avoid partially-written artifacts on interruption.
 The runtime build step also emits `dist/build-manifest.json`, which records the maintained source artifacts, their hashes, deterministic transform versions, matched refresh-policy metadata, package-backed upstream versions where available, and the runtime-bundle hash tied to that exact source artifact set.
@@ -119,4 +119,4 @@ Wikidata is handled as a separate derived layer:
 - an evaluation report can be refreshed into `docs/generated/wikidata-brand-gap-report.json`
 - a conservative derived supplement is generated into `custom/sources/derived-wikidata-brand-risk.json`
 
-The derived-brand path is still intentionally conservative rather than editorial. The repository does not maintain its own hand-written brand allow/block list, but it now does carry explicit ambiguity exclusions in the Wikidata-derived layer for terms such as `apple`, `amazon`, and `visa`.
+The derived-brand path is still intentionally conservative rather than editorial. The repository does not maintain its own hand-written brand allow/block list. The Wikidata-derived layer supports optional explicit exclusions through `excludedTerms`, but the maintained default now leaves that set empty and relies on structural scoring/acceptance gates.
