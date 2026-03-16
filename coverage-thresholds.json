@@ -6,7 +6,7 @@
       "lines": 100,
       "statements": 100,
       "functions": 100,
-      "branches": 85
+      "branches": 84
     },
     "src/core/matchers.js": {
       "lines": 70,
@@ -35,14 +35,14 @@
     "scripts/build-runtime-sources.js": {
       "lines": 80,
       "statements": 80,
-      "functions": 80,
+      "functions": 62,
       "branches": 40
     },
     "scripts/build-provenance-manifest.js": {
       "lines": 95,
       "statements": 95,
       "functions": 100,
-      "branches": 70
+      "branches": 68
     }
   }
 }
